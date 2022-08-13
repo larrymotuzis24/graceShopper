@@ -59,3 +59,14 @@ Link to Grace Shopper starting repo:
 - allow administrators to view data graphically
   - this might be a geographical map with markers for customer addresses
   - this might be sales data for some time period
+
+Create new branch: 
+- git checkout -b your_branch
+- make changes to code and validate
+- git status
+- git add .
+- git commit -m 'commit message'
+- git push origin your_branch
+- git checkout main
+- git pull
+
