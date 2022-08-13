@@ -4,7 +4,7 @@ const { conn, User, Product } = require('./db');
 const setUp = async()=> {
   try {
     await conn.sync({ force: true });
-    await User.create({ username: 'moe', password: 'moe_pw'});
+    await User.create({ username: 'moe', password: 'moe_pw', isAdmin: true});
     const lucy = await User.create({ username: 'lucy', password: 'lucy_pw'});
     const foo = await Product.create({ name: 'foo' }); 
     const bar = await Product.create({ name: 'bar' }); 
