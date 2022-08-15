@@ -1,5 +1,7 @@
 [
     {
+      "firstName": "Moe",
+      "lastName": "King",
       "username": "moe",
       "password": "moe_pw",
       "isAdmin": true,
@@ -7,132 +9,176 @@
       "address": "364 Shanahan Fork Burlington WV 94179"
     },
     {
+        "firstName": "Lucy",
+        "lastName": "Wong",
         "username": "lucy",
         "password": "lucy_pw",
         "email": "lucy123@hotmail.com",
         "address": "972 Eunice Creek Bowling Green NH 78736-8287"
     },
     {
+        "firstName": "Larry",
+        "lastName": "Harvey",
         "username": "larry",
         "password": "larry_pw",
         "email": "larry12@yahoo.com",
         "address": "154 Breana Ford Middletown TX 90066"
     },
     {
+        "firstName": "John",
+        "lastName": "Doe",
         "username": "john",
         "password": "john_pw",
         "email": "john_12@yahoo.com",
         "address": "44596 Franey Green Plano CT 22954"
     },
     {
+        "firstName": "Kevin",
+        "lastName": "Gibbs",
         "username": "kevin",
         "password": "kevin_pw",
         "email": "kevin_ac@gmail.com",
         "address": "6961 Porter Mission Middletown ID 64368-2972"
     },
     {
-        "username": "john",
-        "password": "john_pw",
-        "email": "john_123@yahoo.com",
+        "firstName": "Kathy",
+        "lastName": "Pearl",
+        "username": "kathy",
+        "password": "kathy_pw",
+        "email": "katty_123@yahoo.com",
         "address": "6343 Harris Dr Middletown ID 64368-2972"
     },
     {
+        "firstName": "Mark",
+        "lastName": "Olche",
         "username": "mark",
         "password": "mark_pw",
         "email": "mark.hr@gmail.com",
         "address": "2345 Eagle Creek Lane Houston TX 77034-2972"
     },
     {
+        "firstName": "Pat",
+        "lastName": "Green",
         "username": "pat",
         "password": "pat_pw",
         "email": "pat.34@yahoo.com",
         "address": "2783 Milan Avenue Denver CO 77234-2972"
     },
     {
+        "firstName": "Nathn",
+        "lastName": "Blurr",
         "username": "nathan",
         "password": "nathan_pw",
         "email": "nathan123@hotmail.com",
         "address": "9133 Augusta Street Palm Beach Gardens, FL 33410"
     },
     {
+        "firstName": "Mark",
+        "lastName": "Gomer",
         "username": "mark12",
         "password": "mark12_pw",
         "email": "mark132@yahoo.com",
         "address": "57 Washington St. Shakopee, MN 55379"
     },
     {
+        "firstName": "Robert",
+        "lastName": "Aldred",
         "username": "robert",
         "password": "robert_pw",
         "email": "robert.king@yahoo.com",
         "address": "712 Mill St. Fair Lawn, NJ 07410"
     },
     {
+        "firstName": "Yvette",
+        "lastName": "Hook",
         "username": "yvette",
         "password": "yvette_pw",
         "email": "yvette09@yahoo.com",
         "address": "45 Edgewater Street Kennewick, WA 99337"
     },
     {
+        "firstName": "Tevin",
+        "lastName": "Vance",
         "username": "tevin",
         "password": "tevin_pw",
         "email": "tevin12@yahoo.com",
         "address": "9236 Prospect Lane Queensbury, NY 12804"
     },
     {
+        "firstName": "Brandon",
+        "lastName": "Alpac",
         "username": "brandon",
         "password": "brandon_pw",
         "email": "brandon.re@yahoo.com",
         "address": "45 Edgewater Street Kennewick, WA 99337"
     },
     {
+        "firstName": "Luis",
+        "lastName": "Vu",
         "username": "luis",
         "password": "luisu_pw",
         "email": "luis_12@yahoo.com",
         "address": "644 Jockey Hollow Street Menasha, WI 54952"
     },
     {
+        "firstName": "Seth",
+        "lastName": "Mcgowan",
         "username": "seth",
         "password": "seth_pw",
         "email": "seth@yahoo.com",
         "address": "8596 Maiden Dr. Neenah, WI 54956"
     },
     {
+        "firstName": "Ioan",
+        "lastName": "Orr",
         "username": "ioan",
         "password": "ioan_pw",
         "email": "ioan_12@yahoo.com",
         "address": "95 Deerfield Dr. Piscataway, NJ 08854"
     },
     {
+        "firstName": "Prof",
+        "lastName": "Hurl",
         "username": "prof",
         "password": "prof_pw",
         "email": "prof123@yahoo.com",
         "address": "90 Talbot St. Patchogue, NY 11772"
     },
     {
+        "firstName": "Carlos",
+        "lastName": "Benavidez",
         "username": "carlos",
         "password": "carlos_pw",
         "email": "carlos_crow@yahoo.com",
         "address": "7836 Westport St. Dearborn, MI 48124"
     },
     {
+        "firstName": "Joe",
+        "lastName": "Arval",
         "username": "joe",
         "password": "joe_pw",
         "email": "joe.lo@yahoo.com",
         "address": "7547A Glendale Ave. Abingdon, MD 21009"
     },
     {
+        "firstName": "Tony",
+        "lastName": "Khan",
         "username": "tony",
         "password": "tony_pw",
         "email": "tony_po@yahoo.com",
         "address": "8825 Carriage Ave. Banning, CA 92220"
     },
     {
+        "firstName": "Tivi",
+        "lastName": "Shawn",
         "username": "tivi",
         "password": "tivi_pw",
         "email": "tivi123@yahoo.com",
         "address": "45 W. Wagon Lane Saratoga Springs, NY 12866"
     },
     {
+        "firstName": "Robert",
+        "lastName": "Rod",
         "username": "robert",
         "password": "robert_pw",
         "email": "robert45@yahoo.com",
