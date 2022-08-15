@@ -6,11 +6,33 @@ const bcrypt = require('bcrypt');
 
 
 const User = conn.define('user', {
+  firstName:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
+  },
+  lastName:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
+  },
   username: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
   },
   password: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
   },
   isAdmin:{
     type: Sequelize.BOOLEAN,
