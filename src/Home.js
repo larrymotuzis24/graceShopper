@@ -1,11 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import Nav from './Nav';
 
-const Home = (state) => {
-    console.log(state)
+const Home = ({ books }) => {
+    console.log(books)
     return (
         <div>
-            <h1> GraceShopper Bookstore </h1>
+            <h1> GraceShopper Bookstore  </h1>
         </div>
     )
 };

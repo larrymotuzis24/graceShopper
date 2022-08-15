@@ -4,7 +4,8 @@ import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
 import { Link, Route } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Cart';
-import Home from './Home';
+import Nav from './Nav';
+
 
 class App extends React.Component{
   componentDidMount(){
@@ -20,12 +21,8 @@ class App extends React.Component{
     const { auth, logout, cart } = this.props;
     return (
       <main>
-        <h1>Grace Shopper</h1>
         {
-          auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
-        }
-        {
-          auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
+          auth.id ? <Nav /> : <SignIn />
         }
         {
           auth.id ? (
