@@ -1,13 +1,15 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout } from './store';
+import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
 import { Link, Route } from 'react-router-dom';
 import SignIn from './SignIn';
 import Cart from './Cart';
+import Home from './Home';
 
 class App extends React.Component{
   componentDidMount(){
     this.props.exchangeToken();
+    this.props.fetchBooks();
   }
   componentDidUpdate(prevProps){
     if(!prevProps.auth.id && this.props.auth.id){
@@ -20,7 +22,7 @@ class App extends React.Component{
       <main>
         <h1>Grace Shopper</h1>
         {
-          auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
+          auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <Home />
         }
         {
           auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
@@ -41,7 +43,8 @@ const mapDispatch = (dispatch)=> {
   return {
     exchangeToken: ()=> dispatch(exchangeToken()),
     logout: ()=> dispatch(logout()),
-    fetchCart: ()=> dispatch(fetchCart())
+    fetchCart: ()=> dispatch(fetchCart()),
+    fetchBooks: () => dispatch(fetchBooks())
   };
 };
 const mapStateToProps = (state)=> {
