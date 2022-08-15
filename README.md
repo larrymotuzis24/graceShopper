@@ -61,6 +61,9 @@ Link to Grace Shopper starting repo:
   - this might be sales data for some time period
 
 Create new branch: 
+
+Note: Use this command if you want to know the current branch you are working in: git branch –show-current
+
 - Before making changes, do a "git pull" to get the latest code.
 - git checkout -b your_branch
 - make changes to code and validate
