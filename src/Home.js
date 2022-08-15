@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 
-const Home = () => {
+const Home = (state) => {
+    console.log(state)
     return (
         <div>
             <h1> GraceShopper Bookstore </h1>
