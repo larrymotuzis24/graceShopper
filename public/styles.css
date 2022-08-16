@@ -16,12 +16,37 @@ nav {
   align-items: center;
   background-color: gainsboro;
 }
+
 .homeBookDiv {
   border: solid black 3px;
   height: 200px;
   width: 200px;
 }
 
+#homeTitle {
+  text-align: center;
+}
+
+#homeFooter {
+  border-top: solid black ;
+  border-bottom: solid black;
+  text-align: center;
+}
+#homeFooterDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.footer-individual-detail-div {
+  display: flex;
+  flex-direction: column;
+  
+}
+.footer-individual-detail-div p {
+  border-bottom: solid lightgray;
+  margin: 1px;
+}
 
 div.top-books-info {
   padding: 1rem;
