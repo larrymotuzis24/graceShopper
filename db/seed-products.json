@@ -5,7 +5,8 @@
         "publisher":"Simon & Schuster, Inc",
         "year":2008,
         "description":"Code is clean if it can be understood easily – by everyone on the team. Clean code can be read and enhanced by a developer other than its original author. With understandability comes readability, changeability, extensibility and maintainability.",
-        "inventory":10
+        "inventory":10,
+        "rating":4
     },
     {
         "title":"Cracking the Coding Interview",
@@ -13,7 +14,8 @@
         "publisher":"Marti Garcia",
         "year":2018,
         "description":"The book that we are discussing here includes some amazing tips and methods mentioned that will help you comprehend the process, effortlessly. The questions that are asked during the interview will have layers to unfold before you can answer them. The questions that are asked will not be picked from any textbook instead the questions will all be asked in real-time on the basis of real-life applications. Going through this book, you will be able to give your very best during any coding interview.",
-        "inventory":30
+        "inventory":30,
+        "rating":3
     },
     {
         "title":"Introduction to Algorithms",
@@ -21,7 +23,8 @@
         "publisher":"Cydonia Press",
         "year":2016,
         "description":"The book will contain a myriad of methods and tips in relation to topics such as dynamic programming, edge-based flow, and multithreaded algorithms.",
-        "inventory":33
+        "inventory":33,
+        "rating":5
     },
     {
         "title":"Clean Architecture",
@@ -29,6 +32,7 @@
         "publisher":"Simon & Schuster, Inc",
         "year":2019,
         "description":"This book will help you get a much better insight into the aspects that truly matter in coding and the things you can skip without causing much harm to the software that you are working on.",
-        "inventory":38
+        "inventory":38,
+        "rating":5
     }
 ]

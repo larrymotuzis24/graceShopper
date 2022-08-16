@@ -1,0 +1,26 @@
+form {
+    display: flex;
+    flex-direction: column;
+  }
+  form > * {
+    margin: 1rem;
+  }
+  nav {
+    display: flex;
+    justify-content: space-around;
+    border: solid black;
+  }
+  .homeBookDiv {
+    border: solid black 3px;
+    height: 200px;
+    width: 200px;
+  }
+
+  #topBooksDiv {
+      display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .selected {
+    border: solid black;
+  }

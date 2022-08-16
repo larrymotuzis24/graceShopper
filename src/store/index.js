@@ -2,13 +2,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import auth from './auth';
 import cart from './cart';
 import books from './books';
+import view from './view';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 const reducer = combineReducers({
   auth,
   cart,
-  books
+  books, 
+  view
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

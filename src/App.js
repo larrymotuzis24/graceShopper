@@ -2,34 +2,34 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
 import { Link, Route } from 'react-router-dom';
-import SignIn from './SignIn';
-import Cart from './Cart';
 import Home from './Home';
+import Cart from './Cart';
+import Nav from './Nav';
 import User from './User';
+import Books from './Books';
+import SignIn from './SignIn';
 import UserEdit from './UserEdit';
 import UserEditPwd from './UserEditPwd';
 
-class App extends React.Component{
-  componentDidMount(){
+class App extends React.Component {
+  componentDidMount() {
+    window.addEventListener('hashchange', ()=> {
+      this.props.setView(window.location.hash.slice(1));
+    });
     this.props.exchangeToken();
     this.props.fetchBooks();
   }
-  componentDidUpdate(prevProps){
-    if(!prevProps.auth.id && this.props.auth.id){
+  componentDidUpdate(prevProps) {
+    if (!prevProps.auth.id && this.props.auth.id) {
       this.props.fetchCart();
     }
   }
-  render(){
-    const { auth, logout, cart } = this.props;
+  render() {
+    const { auth, logout, cart, books } = this.props;
     return (
       <main>
-        <h1>Grace Shopper</h1>
-        {
-          auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: <SignIn />
-        }
-        {
-          auth.id ? <Link to='/cart'>Cart ({cart.lineItems.length})</Link>: null
-        }
+       <Nav />
+      <Home /> 
         {
           auth.id ? (
             <Fragment>
@@ -38,22 +38,28 @@ class App extends React.Component{
               <Route path='/editUser' component={ UserEdit} />
               <Route path='/passwordUser' component={ UserEditPwd } />
             </Fragment>
-          ): null 
+          ):
+          <Fragment>
+            <Route path='/signIn' component={ SignIn }/>
+          </Fragment>
         }
+        <Route path="/books" component={Books} />
       </main>
     );
-
   }
 }
-const mapDispatch = (dispatch)=> {
+const mapDispatch = (dispatch) => {
   return {
-    exchangeToken: ()=> dispatch(exchangeToken()),
-    logout: ()=> dispatch(logout()),
-    fetchCart: ()=> dispatch(fetchCart()),
-    fetchBooks: () => dispatch(fetchBooks())
+    exchangeToken: () => dispatch(exchangeToken()),
+    logout: () => dispatch(logout()),
+    fetchCart: () => dispatch(fetchCart()),
+    fetchBooks: () => dispatch(fetchBooks()),
+    setView: ( view ) => {
+      dispatch({ type:'SET_VIEW', view})
+  }
   };
 };
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state) => {
   return state;
 };
 export default connect(mapStateToProps, mapDispatch)(App);

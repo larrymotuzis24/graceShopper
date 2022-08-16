@@ -7,6 +7,8 @@ const bcrypt = require('bcrypt');
 
 app.use('/dist', express.static('dist'));
 
+app.use('/public', express.static('public'));
+
 
 const isLoggedIn = async(req, res, next)=> {
   try {
