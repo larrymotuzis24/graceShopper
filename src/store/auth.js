@@ -6,11 +6,11 @@ const auth = (state = {}, action)=> {
   return state;
 };
 
-export const logout = ()=> {
+export const logout = (history)=> {
   return (dispatch)=> {
     window.localStorage.removeItem('token');
     dispatch({ type: 'SET_AUTH', auth: {}});
-
+    history.push('/');
   };
 };
 

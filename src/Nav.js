@@ -35,9 +35,9 @@ const Nav = (props) => {
   );
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = (dispatch, { history }) => {
   return {
-    logout: () => dispatch(logout()),
+    logout: () => dispatch(logout(history)),
   };
 };
 

@@ -25,7 +25,7 @@ class App extends React.Component {
     }
   }
   render() {
-    const { auth, logout, cart, books } = this.props;
+    const { auth } = this.props;
     return (
       <main>
        <Route path='/:view?' component={ Nav} />
