@@ -50,6 +50,10 @@ const Product = conn.define('product', {
     validate:{
       notEmpty: true
     }
+  },
+  price:{
+    type: Sequelize.DECIMAL(10,2),
+    allowNull: false,
   }
 });
 
