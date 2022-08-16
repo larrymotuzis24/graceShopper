@@ -6,7 +6,12 @@ import { Link } from 'react-router-dom'
 const Home = ({ books, auth }) => {
   const topBooks = books.filter(book => book.rating >= 4);
     return (
-        <div>
+        <div id="home-page">
+            {auth.id ? (
+              <h2>
+                Welcome, {auth.firstName} {auth.lastName}
+              </h2>
+             ) : null}
             <div id='homeTitle'>
                 <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
                 <h2> Top Rated </h2>
@@ -62,4 +67,3 @@ const mapDispatch = (dispatch) => {
   };
   
   export default connect(mapStateToProps, mapDispatch)(Home);
-  

@@ -112,6 +112,44 @@ img{
   border-radius: 20%;
 }
 
+pre{
+  text-align: center;
+  color: red;
+}
+
+div#books-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#books-page h2{
+  text-align: end;
+}
+
+div#cart-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#cart-page h2{
+  text-align: end;
+}
+
+div#home-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#home-page h2{
+  text-align: end;
+}
+
 .checked {
   color: orange;
 }
