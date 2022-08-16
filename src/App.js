@@ -2,12 +2,12 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
 import { Link, Route } from 'react-router-dom';
-import SignIn from './SignIn';
-import Cart from './Cart';
 import Home from './Home';
+import Cart from './Cart';
+import Nav from './Nav';
 import User from './User';
 import Books from './Books';
-import Nav from './Nav';
+import SignIn from './SignIn';
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,13 +23,19 @@ class App extends React.Component {
     const { auth, logout, cart, books } = this.props;
     return (
       <main>
-        {auth.id ? <Nav /> : <SignIn />}
-        {auth.id ? (
+       <Nav />
+      <Home /> 
+        {
+          auth.id ? (
+            <Fragment>
+              <Route path='/cart' component={ Cart } />
+              <Route path='/user' component={ User } />
+            </Fragment>
+          ):
           <Fragment>
-            <Route path="/cart" component={Cart} />
-            <Route path="/user" component={User} />
+            <Route path='/signIn' component={ SignIn }/>
           </Fragment>
-        ) : null}
+        }
         <Route path="/books" component={Books} />
       </main>
     );
