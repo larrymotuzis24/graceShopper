@@ -34,7 +34,6 @@ class User extends Component {
 
 const mapStateToProps = (state) => {
   return state;
-  
 };
 
 export default connect(mapStateToProps)(User);
