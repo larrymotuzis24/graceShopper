@@ -65,17 +65,18 @@ class UserEdit extends Component {
     const { onChange, save } = this;
 
     return (
-      <div>
+      <div id="edit-user">
         <h2>
-          Welcome, {auth.firstName} {auth.lastName}
+          Welcome, {auth.firstName} {auth.lastName}!
         </h2>
-        <form onSubmit={save}>
+        <form onSubmit={save} >
           <label htmlFor="firstName">First Name</label>
           <input
             placeholder="First Name"
             value={firstName}
             name="firstName"
             onChange={onChange}
+            className='input'
           />
           <label htmlFor="lastName">Last Name</label>
           <input

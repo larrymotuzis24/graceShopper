@@ -9,7 +9,7 @@ class Books extends Component {
       <div id='books-page'>
         {
           auth.id ? <h2>
-          Welcome, {auth.firstName} {auth.lastName}
+          Welcome, {auth.firstName} {auth.lastName}!
         </h2> : null
         }
         
