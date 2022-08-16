@@ -22,10 +22,15 @@ nav {
   width: 200px;
 }
 
-#topBooksDiv {
+
+div.top-books-info {
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 2px grey;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  text-align: center;
 }
 
 nav#nav-var a{
@@ -80,4 +85,8 @@ img{
   width: 15%;
   height: 15%;
   border-radius: 20%;
+}
+
+.checked {
+  color: orange;
 }
