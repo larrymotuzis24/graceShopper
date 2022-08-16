@@ -29,7 +29,7 @@ export const exchangeToken = ()=> {
   };
 };
 
-export const login = (credentials)=> {
+export const login = (credentials, history)=> {
   return async(dispatch)=> {
     let response = await axios.post('/api/sessions', credentials);
     const { token } = response.data;
@@ -41,7 +41,7 @@ export const login = (credentials)=> {
     });
     const auth = response.data;
     dispatch({ auth, type: 'SET_AUTH'});
-
+    history.push('/');
   };
 };
 
