@@ -58,7 +58,9 @@ const User = conn.define('user', {
 });
 
 User.addHook('beforeSave', async(user)=> {
-  user.password = await bcrypt.hash(user.password, 5);
+  if(user.changed('password')){
+    user.password = await bcrypt.hash(user.password, 5);
+  }
 });
 
 User.prototype.createOrderFromCart = async function(){
@@ -67,7 +69,7 @@ User.prototype.createOrderFromCart = async function(){
   cart.lineItems.map(async (lineItem) => {
     const quantity = lineItem.quantity;
     const productId = lineItem.productId;
-    const product = conn.models.product.findByToken(productId);
+    const product = conn.models.product.findByPk(productId);
     product.inventory = product.inventory - quantity;
     await product.save();
   })
