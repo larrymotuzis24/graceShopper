@@ -1,26 +1,36 @@
 form {
-    display: flex;
-    flex-direction: column;
-  }
-  form > * {
-    margin: 1rem;
-  }
-  nav {
-    display: flex;
-    justify-content: space-around;
-    border: solid black;
-  }
-  .homeBookDiv {
-    border: solid black 3px;
-    height: 200px;
-    width: 200px;
-  }
+  display: flex;
+  flex-direction: column;
+}
+form > * {
+  margin: 1rem;
+}
+nav {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 20px;
+  align-items: center;
+  background-color: gainsboro;
+}
+.homeBookDiv {
+  border: solid black 3px;
+  height: 200px;
+  width: 200px;
+}
 
-  #topBooksDiv {
-      display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .selected {
-    border: solid black;
-  }
+#topBooksDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav#nav-var a{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav#nav-var a.selected{
+  color: green;
+  font-weight: bold;
+}

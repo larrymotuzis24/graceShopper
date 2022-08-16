@@ -1,40 +1,48 @@
 import React from "react";
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import SignIn from "./SignIn";
 import { logout } from "./store";
 
-const Nav = ({auth, cart, logout, view}) => {
-    console.log(view)
-    return (
-        <div>
-            <nav>
-                <Link to={'/'} className={view === '/' ? 'selected': ''}> Grace Shopper </Link>
-                <Link to={'/books' } className={view === '/books' ? 'selected': ''}> Books </Link>
-                <Link to={'/cart'} className={view === '/cart' ? 'selected': ''} >Cart ({cart.lineItems.length}) </Link>
+const Nav = (props) => {
     
-                {
-                    auth.id ? <Link to={'/user'}> My Account </Link> : <Link to={'/signIn'}> Sing In </Link> 
-                } 
-               
-                {
-                     auth.id ? <button onClick={ logout }>Logout { auth.username }</button>: null 
-                }
-            </nav>
-          
-        </div>
-      
-    )
+    const { auth, cart, logout, match } = props;
+    const view = match.params.view;
+  return (
+      <nav id="nav-var">
+        <h2>
+          <Link to="/" className={ !view ? 'selected': ''}>
+            Grace Shopper
+          </Link>
+        </h2>
+        <Link to="/books" className={ view === 'books' ? 'selected': ''}>
+          Books
+        </Link>
+        <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
+          Cart ({cart.lineItems.length})
+        </Link>
+
+        {auth.id ? (
+          <Link to="/user" className={ view === 'user' ? 'selected': ''}> My Account </Link>
+        ) : (
+          <Link to="/signIn" className={ view === 'signIn' ? 'selected': ''}> Sign In </Link>
+        )}
+
+        {auth.id ? (
+          <button onClick={logout}><Link to='/'>Log Out</Link></button>
+        ) : null}
+      </nav>
+  );
 };
 
-const mapDispatch = (dispatch)=> {
-    return {
-      logout: ()=> dispatch(logout())
-    };
-};
-
-const mapStateToProps = (state)=> {
-    return state;
+const mapDispatch = (dispatch) => {
+  return {
+    logout: () => dispatch(logout()),
   };
+};
 
-  export default connect(mapStateToProps, mapDispatch)(Nav);
+const mapStateToProps = (state) => {
+  return state;
+};
+
+export default connect(mapStateToProps, mapDispatch)(Nav);
