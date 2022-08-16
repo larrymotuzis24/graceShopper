@@ -11,6 +11,9 @@ import SignIn from './SignIn';
 
 class App extends React.Component {
   componentDidMount() {
+    window.addEventListener('hashchange', ()=> {
+      this.props.setView(window.location.hash.slice(1));
+    });
     this.props.exchangeToken();
     this.props.fetchBooks();
   }
@@ -47,6 +50,9 @@ const mapDispatch = (dispatch) => {
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),
     fetchBooks: () => dispatch(fetchBooks()),
+    setView: ( view ) => {
+      dispatch({ type:'SET_VIEW', view})
+  }
   };
 };
 const mapStateToProps = (state) => {

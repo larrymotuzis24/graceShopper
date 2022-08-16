@@ -21,3 +21,6 @@ form {
     flex-direction: row;
     justify-content: space-between;
   }
+  .selected {
+    border: solid black;
+  }
