@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Nav from './Nav';
 
 const Home = ({ books }) => {
+  const topBooks = books.filter(book => book.rating >= 4);
     return (
         <div>
             <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
@@ -11,7 +12,7 @@ const Home = ({ books }) => {
                 </div>
                 <div id='topBooksDiv'>
                     {
-                        books.map(book => {
+                        topBooks.map(book => {
                             return (
                                 <div key={ book.id } className='homeBookDiv'>
                                     <h3> { book.title }</h3>
@@ -26,4 +27,15 @@ const Home = ({ books }) => {
     )
 };
 
-export default connect(state => state)(Home);
+const mapDispatch = (dispatch) => {
+    return {
+
+    };
+  };
+  
+  const mapStateToProps = (state) => {
+    return state;
+  };
+  
+  export default connect(mapStateToProps, mapDispatch)(Home);
+  
