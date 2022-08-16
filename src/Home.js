@@ -9,7 +9,7 @@ const Home = ({ books, auth }) => {
         <div id="home-page">
             {auth.id ? (
               <h2>
-                Welcome, {auth.firstName} {auth.lastName}
+                Welcome, {auth.firstName} {auth.lastName}!
               </h2>
              ) : null}
             <div id='homeTitle'>

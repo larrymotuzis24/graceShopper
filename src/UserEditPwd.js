@@ -42,10 +42,9 @@ class UserEditPwd extends Component {
     const { onChange, save } = this;
 
     return (
-      <div>
-        <div>
+        <div id="edit-user-password">
           <h2>
-            Welcome, {auth.firstName} {auth.lastName}
+            Welcome, {auth.firstName} {auth.lastName}!
           </h2>
           <form onSubmit={save}>
             <label htmlFor="password">Current Password</label>
@@ -69,7 +68,6 @@ class UserEditPwd extends Component {
           </form>
           <pre>{error ? JSON.stringify(error) : null}</pre>
         </div>
-      </div>
     );
   }
 }
