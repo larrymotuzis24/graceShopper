@@ -6,24 +6,24 @@ import Home from './Home';
 import Cart from './Cart';
 import Nav from './Nav';
 import User from './User';
+import Books from './Books';
 import SignIn from './SignIn';
 
-
-class App extends React.Component{
-  componentDidMount(){
+class App extends React.Component {
+  componentDidMount() {
     this.props.exchangeToken();
     this.props.fetchBooks();
   }
-  componentDidUpdate(prevProps){
-    if(!prevProps.auth.id && this.props.auth.id){
+  componentDidUpdate(prevProps) {
+    if (!prevProps.auth.id && this.props.auth.id) {
       this.props.fetchCart();
     }
   }
-  render(){
-    const { auth, logout, cart } = this.props;
+  render() {
+    const { auth, logout, cart, books } = this.props;
     return (
       <main>
-      <Nav />
+       <Nav />
       <Home /> 
         {
           auth.id ? (
@@ -36,20 +36,20 @@ class App extends React.Component{
             <Route path='/signIn' component={ SignIn }/>
           </Fragment>
         }
+        <Route path="/books" component={Books} />
       </main>
     );
-
   }
 }
-const mapDispatch = (dispatch)=> {
+const mapDispatch = (dispatch) => {
   return {
-    exchangeToken: ()=> dispatch(exchangeToken()),
-    logout: ()=> dispatch(logout()),
-    fetchCart: ()=> dispatch(fetchCart()),
-    fetchBooks: () => dispatch(fetchBooks())
+    exchangeToken: () => dispatch(exchangeToken()),
+    logout: () => dispatch(logout()),
+    fetchCart: () => dispatch(fetchCart()),
+    fetchBooks: () => dispatch(fetchBooks()),
   };
 };
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state) => {
   return state;
 };
 export default connect(mapStateToProps, mapDispatch)(App);
