@@ -6,6 +6,8 @@ const path = require('path');
 
 app.use('/dist', express.static('dist'));
 
+app.use('/public', express.static('public'));
+
 
 const isLoggedIn = async(req, res, next)=> {
   try {

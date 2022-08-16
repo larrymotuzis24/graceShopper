@@ -43,6 +43,13 @@ const Product = conn.define('product', {
     validate:{
       notEmpty: true
     }
+  },
+  rating:{
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    validate:{
+      notEmpty: true
+    }
   }
 });
 
