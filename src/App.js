@@ -28,8 +28,8 @@ class App extends React.Component {
     const { auth, logout, cart, books } = this.props;
     return (
       <main>
-       <Nav />
-      <Home /> 
+       <Route path='/:view?' component={ Nav} />
+       <Route path='/' exact component={ Home }/>
         {
           auth.id ? (
             <Fragment>
