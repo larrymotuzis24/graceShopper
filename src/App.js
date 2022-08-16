@@ -6,6 +6,8 @@ import SignIn from './SignIn';
 import Cart from './Cart';
 import Home from './Home';
 import User from './User';
+import UserEdit from './UserEdit';
+import UserEditPwd from './UserEditPwd';
 
 class App extends React.Component{
   componentDidMount(){
@@ -33,6 +35,8 @@ class App extends React.Component{
             <Fragment>
               <Route path='/cart' component={ Cart } />
               <Route path='/user' component={ User } />
+              <Route path='/editUser' component={ UserEdit} />
+              <Route path='/passwordUser' component={ UserEditPwd } />
             </Fragment>
           ): null 
         }
