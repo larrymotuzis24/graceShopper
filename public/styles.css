@@ -16,16 +16,46 @@ nav {
   align-items: center;
   background-color: gainsboro;
 }
+
 .homeBookDiv {
   border: solid black 3px;
   height: 200px;
   width: 200px;
 }
 
-#topBooksDiv {
+#homeTitle {
+  text-align: center;
+}
+
+#homeFooter {
+  border-top: solid black ;
+  border-bottom: solid black;
+  text-align: center;
+}
+#homeFooterDiv {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.footer-individual-detail-div {
+  display: flex;
+  flex-direction: column;
+  
+}
+.footer-individual-detail-div p {
+  border-bottom: solid lightgray;
+  margin: 1px;
+}
+
+div.top-books-info {
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 2px grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
 }
 
 nav#nav-var a{
@@ -109,7 +139,6 @@ div#cart-page h2{
   text-align: end;
 }
 
-
 div#home-page{
   display: flex;
   flex-direction: column;
@@ -119,4 +148,8 @@ div#home-page{
 
 div#home-page h2{
   text-align: end;
+}
+
+.checked {
+  color: orange;
 }
