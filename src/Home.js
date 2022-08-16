@@ -3,12 +3,12 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
 
-const Home = ({ books }) => {
+const Home = ({ books, auth }) => {
   const topBooks = books.filter(book => book.rating >= 4);
     return (
         <div>
-            <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
-            <div>
+            <div id='homeTitle'>
+                <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
                 <h2> Top Rated </h2>
             </div>
             <div className='top-books-info'>
@@ -30,6 +30,23 @@ const Home = ({ books }) => {
                         })
                     }
             </div>
+            <footer id='homeFooter'>
+                <div id='homeFooterDiv'>
+                    <div className='footer-individual-detail-div'>
+                        <p> Connect </p>
+                        <a href=''> Twitter </a>
+                        <a href=''> Instagram </a>
+
+                    </div>
+                    <div className='footer-individual-detail-div'>
+                        <p> Account </p>
+                        {
+                            !auth.id ? <Link to={''}> Create Account </Link> : <Link to={''}> My Account</Link>
+                        }
+
+                    </div>
+                </div>
+             </footer>
         </div>
     )
 };
