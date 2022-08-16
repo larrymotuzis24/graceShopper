@@ -9,10 +9,11 @@ app.post('/', isLoggedIn, async(req, res, next)=> {
     res.send(await req.user.createOrderFromCart());
   }
   catch(ex){
-    next(ex);
+    next(ex)
   }
 
 });
+
 
 app.put('/cart', isLoggedIn, async(req, res, next)=> {
   try {

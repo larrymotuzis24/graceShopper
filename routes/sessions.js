@@ -18,6 +18,7 @@ app.post('/', async(req, res, next)=> {
   }
 });
 
+
 app.get('/', isLoggedIn, async(req, res, next)=> {
   res.send(req.user);
 });
