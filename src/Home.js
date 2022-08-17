@@ -1,12 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import FeaturedCarusel from './FeaturedCarusel';
+import StarRatingDisplay from "./StarRatingDisplay";
+
 
 
 const Home = ({ books, auth }) => {
   const topBooks = books.filter(book => book.rating >= 4);
     return (
         <div id="home-page">
+            <FeaturedCarusel />
             {auth.id ? (
               <h2>
                 Welcome, {auth.firstName} {auth.lastName}!
@@ -24,11 +28,7 @@ const Home = ({ books, auth }) => {
                             <h3> <Link to={`books/${book.id}`}> { book.title } </Link></h3>
                             <p> { book.author }</p>
                             <p> { book.rating } </p>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star checked"></span>
-                            <span className="fa fa-star"></span>
-                            <span className="fa fa-star"></span>    
+                            <StarRatingDisplay  book={book} /> 
 
                         </div>
                             )
