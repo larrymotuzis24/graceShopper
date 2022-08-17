@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Cart from './Cart';
 import Nav from './Nav';
@@ -15,7 +15,7 @@ class App extends React.Component {
   componentDidMount() {
     window.addEventListener('hashchange', ()=> {
       this.props.setView(window.location.hash.slice(1));
-    });
+    })
     this.props.exchangeToken();
     this.props.fetchBooks();
   }
@@ -38,9 +38,11 @@ class App extends React.Component {
               <Route path='/editUser' component={ UserEdit} />
               <Route path='/passwordUser' component={ UserEditPwd } />
             </Fragment>
-          ):
+          ) :
           <Fragment>
-            <Route path='/signIn' component={ SignIn }/>
+            <Switch>
+              <Route path='/signIn' component={ SignIn }/>
+            </Switch>
           </Fragment>
         }
         <Route path="/books" component={Books} />

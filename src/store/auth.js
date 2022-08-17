@@ -1,4 +1,6 @@
 import axios from 'axios';
+
+
 const auth = (state = {}, action)=> {
   if(action.type === 'SET_AUTH'){
     state = action.auth;
@@ -13,6 +15,12 @@ export const logout = (history)=> {
     history.push('/');
   };
 };
+
+export const register = (user) => {
+  return async(dispatch) => {
+    const response = await axios.post('/users', user)
+  }
+} 
 
 export const exchangeToken = ()=> {
   return async(dispatch)=> {

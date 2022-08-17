@@ -58,6 +58,31 @@ app.put('/api/users/:id', isLoggedIn, async(req, res, next) =>{
 })
 
 
+app.post('/users', async(req, res) => {
+  const existingUser = await User.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+  if (existingUser === null){
+    const user = await User.create(req.body)
+    res.send(user)
+    console.log('added the user')
+  } 
+  else {
+    console.log('user is already existing')
+  }
+})
+
+app.get('/users', async(req, res) => {
+  try {
+    res.send(await User.findAll())
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 app.use((err, req, res, next)=> {
   console.log(err);
   res.status(err.status || 500).send({ error: err });
