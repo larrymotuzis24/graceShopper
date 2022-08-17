@@ -49,7 +49,7 @@ class Books extends Component {
                     <Link to={`/books/${book.id}`}>{book.title}</Link>
                   </h3>
                   <p><span>Author:</span> {book.publisher}</p>
-                  <p><span>Year:</span>  {book.year}</p>
+                  <p><span>Year:</span>  { new Date(book.year).getFullYear()}</p>
                   <p><span>Price:</span>  $ {book.price}</p>
                   <p><span>Stock:</span>  {book.inventory}</p>
                   <StarRatingDisplay  book={book} /> 
@@ -70,8 +70,11 @@ class Books extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state;
+const mapStateToProps = ({books, auth}) => {
+  return {
+    books,
+    auth
+  };
 };
 
 export default connect(mapStateToProps)(Books);

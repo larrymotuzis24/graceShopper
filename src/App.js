@@ -10,6 +10,7 @@ import Books from './Books';
 import SignIn from './SignIn';
 import UserEdit from './UserEdit';
 import UserEditPwd from './UserEditPwd';
+import Book from './Book';
 
 class App extends React.Component {
   componentDidMount() {
@@ -39,6 +40,7 @@ class App extends React.Component {
               <Route path='/passwordUser' component={ UserEditPwd } />
               <Route exact path="/books" component={ Books } />
               <Route path="/books/page/:id" component={ Books } />
+              <Route exact path="/books/:id" component={ Book } />
             </Fragment>
           ) :
           <Fragment>
@@ -51,7 +53,8 @@ class App extends React.Component {
           !auth.id ? 
           (<Fragment>
             <Route exact path="/books" component={ Books } />
-          <Route path="/books/page/:id" component={ Books } />
+            <Route path="/books/page/:id" component={ Books } />
+            <Route exact path="/books/:id" component={ Book } />
           </Fragment>): null
         }
         
@@ -62,10 +65,10 @@ class App extends React.Component {
 }
 const mapDispatch = (dispatch) => {
   return {
+    fetchBooks: () => dispatch(fetchBooks()),
     exchangeToken: () => dispatch(exchangeToken()),
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),
-    fetchBooks: () => dispatch(fetchBooks()),
     setView: ( view ) => {
       dispatch({ type:'SET_VIEW', view})
   }

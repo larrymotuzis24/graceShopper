@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 class User extends Component {
   render() {
     const { auth, match } = this.props;
-    console.log(auth)
     const path = match.path;
     return (
       <div id="user-profile">
