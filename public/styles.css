@@ -22,14 +22,17 @@ nav#nav-var {
 }
 
 .homeBookDiv {
-  display: flex;
-  flex-direction: column;
-  border: solid black 3px;
-  height: 300px;
-  width: 300px;
-  align-items: center;
-  margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/4 - 1rem);
+    height: auto;
+    padding: 1rem;
+    margin: 1rem;
+    border: solid 2px grey;
 }
+
 .homeBookDiv > img {
  padding: 5px;
  height: 150px;
