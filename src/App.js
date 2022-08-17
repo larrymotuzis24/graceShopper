@@ -37,6 +37,8 @@ class App extends React.Component {
               <Route path='/user' component={ User } />
               <Route path='/editUser' component={ UserEdit} />
               <Route path='/passwordUser' component={ UserEditPwd } />
+              <Route exact path="/books" component={ Books } />
+              <Route path="/books/page/:id" component={ Books } />
             </Fragment>
           ) :
           <Fragment>
@@ -45,7 +47,15 @@ class App extends React.Component {
             </Switch>
           </Fragment>
         }
-        <Route path="/books" component={Books} />
+        {
+          !auth.id ? 
+          (<Fragment>
+            <Route exact path="/books" component={ Books } />
+          <Route path="/books/page/:id" component={ Books } />
+          </Fragment>): null
+        }
+        
+        
       </main>
     );
   }
