@@ -14,10 +14,7 @@ class StarRatingDisplay extends Component {
 
     }
     render(){
-        console.log(this.state)
         return (
-
-        
         <ReactStars
         count={5}
         value={this.state.rating}
