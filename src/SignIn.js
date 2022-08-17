@@ -135,7 +135,7 @@ class SignIn extends Component{
                     height: '2.3em', 
                     marginBottom: '0%',
                   }}  name='password' value={ address } onChange={(ev) => this.setState({ address: ev.target.value })  }/>
-                  <select 
+                  {/* <select 
                   value={isAdmin}
                   defaultValue="" 
                   style={{
@@ -150,7 +150,7 @@ class SignIn extends Component{
                       <option value="" disabled>Select User Permissions</option>
                       <option value="true">Admin</option>
                       <option value='false'>User</option>
-                    </select>
+                    </select> */}
                   <button onClick={onRegister} style={{
                     background: 'black',
                     color: 'white',
