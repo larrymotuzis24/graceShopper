@@ -25,18 +25,23 @@ nav#nav-var {
   display: flex;
   flex-direction: column;
   border: solid black 3px;
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   align-items: center;
+  margin: 1rem;
 }
 .homeBookDiv > img {
  padding: 5px;
- height: 250px;
- width: 200px;
+ height: 150px;
+ width: 150px;
 }
 
 #homeTitle {
   text-align: center;
+}
+
+#searchBarInput {
+  width: 350px;
 }
 
 #homeFooter {
@@ -68,6 +73,7 @@ div.top-books-info {
   flex-direction: row;
   justify-content: space-around;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 nav#nav-var a{
