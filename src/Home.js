@@ -26,8 +26,8 @@ const Home = ({ books, auth }) => {
                     console.log(book)
                     return (
                         <div key={ book.id } className='homeBookDiv'>
-                            <h3> <Link to={`books/${book.id}`}> { book.title } </Link></h3>
                             <img src={book.imageUrl} />
+                            <h5> <Link to={`books/${book.id}`}> { book.title } </Link></h5>
                             <p> { book.author }</p>
                             <StarRatingDisplay  book={book} /> 
 

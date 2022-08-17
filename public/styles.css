@@ -24,12 +24,14 @@ nav {
   display: flex;
   flex-direction: column;
   border: solid black 3px;
-  height: 200px;
-  width: 200px;
+  height: 400px;
+  width: 400px;
   align-items: center;
 }
 .homeBookDiv > img {
-  border: solid blue ;
+ padding: 5px;
+ height: 250px;
+ width: 200px;
 }
 
 #homeTitle {
