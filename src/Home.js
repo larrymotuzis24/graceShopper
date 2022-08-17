@@ -7,7 +7,7 @@ import StarRatingDisplay from "./StarRatingDisplay";
 
 
 const Home = ({ books, auth }) => {
-  const topBooks = books.filter(book => book.rating >= 4);
+  const topBooks = books.filter(book => book.rating = 5);
     return (
         <div id="home-page">
             <FeaturedCarusel />

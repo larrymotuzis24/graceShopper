@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import SignIn from "./SignIn";
 import { logout } from "./store";
+import SearchBar from "./SearchBar";
 
 const Nav = (props) => {
     
@@ -21,6 +22,7 @@ const Nav = (props) => {
         <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
           Cart ({cart.lineItems.length})
         </Link>
+        <SearchBar />
 
         {auth.id ? (
           <Link to="/user" className={ view === 'user' ? 'selected': ''}> My Account </Link>
