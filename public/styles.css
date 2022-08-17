@@ -16,6 +16,8 @@ nav {
   border-radius: 20px;
   align-items: center;
   background-color: gainsboro;
+  max-height: 15%;
+  min-height: 60px;
 }
 
 .homeBookDiv {
@@ -227,4 +229,40 @@ div#edit-user-password form button{
   width: 22%;
   height: 31px;
   margin: 1rem;
+}
+
+div#books-page h2{
+  text-align: center;
+}
+
+div#books-page h2.user-name{
+  text-align: end;
+}
+
+div#books {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+div.book-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100%/4 - 1rem);
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 2px grey;
+}
+div.book-info > * {
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+img.photo-books{
+  width: 50%;
+  height: 65%;
+  border-radius: 20%;
 }
