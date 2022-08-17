@@ -61,16 +61,15 @@ app.put('/api/users/:id', isLoggedIn, async(req, res, next) =>{
 app.post('/users', async(req, res) => {
   const existingUser = await User.findOne({
     where: {
-      email: req.body.email
+      username: req.body.username
     }
   })
-  if (existingUser === null){
+  if (!existingUser){
     const user = await User.create(req.body)
     res.send(user)
-    console.log('added the user')
   } 
   else {
-    console.log('user is already existing')
+    res.status(500).send({error: 'Username already exists!. Please choose a different username!.'})
   }
 })
 

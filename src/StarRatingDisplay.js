@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ReactStars from 'react-stars';
-import { connect } from "react-redux";
 
 class StarRatingDisplay extends Component {
     constructor(){
@@ -25,14 +24,4 @@ class StarRatingDisplay extends Component {
     }
 };
 
-const mapState = (state) => {
-    return state;
-};
-
-const mapDispactch = (dispatch) => {
-    return {
-
-    }
-};
-
-export default connect(mapState, mapDispactch)(StarRatingDisplay)
+export default StarRatingDisplay;

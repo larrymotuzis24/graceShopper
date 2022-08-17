@@ -16,9 +16,10 @@ export const logout = (history)=> {
   };
 };
 
-export const register = (user) => {
+export const register = (user, history) => {
   return async(dispatch) => {
     const response = await axios.post('/users', user)
+    history.push('/signIn');
   }
 } 
 

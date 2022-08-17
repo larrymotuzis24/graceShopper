@@ -23,7 +23,6 @@ const Home = ({ books, auth }) => {
             <div className='top-books-info'>
             {
                  topBooks.map(book => {
-                    console.log(book)
                     return (
                         <div key={ book.id } className='homeBookDiv'>
                             <img src={book.imageUrl} />

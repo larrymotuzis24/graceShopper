@@ -85,6 +85,7 @@ nav#nav-var a{
 nav#nav-var a.selected{
   color: green;
   font-weight: bold;
+  font-size: 1.75rem;
 }
 
 div#user-profile{
@@ -133,6 +134,11 @@ img{
 pre{
   text-align: center;
   color: red;
+}
+
+pre#sucess-register{
+  text-align: center;
+  color: blue;
 }
 
 div#books-page{
@@ -204,8 +210,8 @@ div#edit-user form input{
 div#edit-user form button{
   background-color: black;
   color: white;
-  width: 22%;
-  height: 31px;
+  width: 5%;
+  height: 40px;
   margin: 1rem;
 }
 
@@ -241,8 +247,8 @@ div#edit-user-password form input{
 div#edit-user-password form button{
   background-color: black;
   color: white;
-  width: 22%;
-  height: 31px;
+  width: 5%;
+  height: 40px;
   margin: 1rem;
 }
 
@@ -271,6 +277,15 @@ div.book-info{
   margin: 1rem;
   border: solid 2px grey;
 }
+
+div.book-info button{
+  background-color: black;
+  color: white;
+  width: 20%;
+  height: 40px;
+  margin: 1rem;
+}
+
 div.book-info > * {
   padding: 0.25rem;
   margin: 0.25rem;
@@ -308,4 +323,49 @@ ul#pages li.pageSelected{
 
 ul#pages li.pageSelected a{
   color: black;
+}
+
+div#book{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#book h2{
+  text-align: end;
+}
+
+div#book-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 5rem;
+  border: solid 2px grey;
+  border-width: 1px;
+}
+
+div#book-info button{
+  background-color: black;
+  color: white;
+  width: 5%;
+  height: 40px;
+  margin: 1rem;
+}
+
+div#book-info > * {
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+img.photo-book{
+  width: 15%;
+  height: 15%;
+  border-radius: 20%;
+}
+
+p{
+  font-size: 18px;
 }
