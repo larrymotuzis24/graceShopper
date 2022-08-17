@@ -23,11 +23,12 @@ const Home = ({ books, auth }) => {
             <div className='top-books-info'>
             {
                  topBooks.map(book => {
+                    console.log(book)
                     return (
                         <div key={ book.id } className='homeBookDiv'>
                             <h3> <Link to={`books/${book.id}`}> { book.title } </Link></h3>
+                            <img src={book.imageUrl} />
                             <p> { book.author }</p>
-                            <p> { book.rating } </p>
                             <StarRatingDisplay  book={book} /> 
 
                         </div>
