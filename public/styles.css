@@ -1,5 +1,6 @@
 body{
   font-family: verdana;
+  padding: 1rem;
 }
 
 form {
@@ -10,14 +11,14 @@ form > * {
   margin: 1rem;
 }
 
-nav {
+nav#nav-var {
   display: flex;
   justify-content: space-around;
   border-radius: 20px;
   align-items: center;
   background-color: gainsboro;
   max-height: 15%;
-  min-height: 60px;
+  min-height: 80px;
 }
 
 .homeBookDiv {
@@ -273,4 +274,32 @@ img.photo-books{
   width: 50%;
   height: 65%;
   border-radius: 20%;
+}
+
+span{
+  font-weight: bold;
+}
+
+nav#page-list{
+  display: flex;
+  justify-content: center;
+}
+
+ul#pages{
+  display: flex;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+ul#pages li{
+  padding: 0.30rem;
+}
+
+ul#pages li.pageSelected{
+  background-color: grey;
+  border-radius: 0.25rem;
+}
+
+ul#pages li.pageSelected a{
+  color: black;
 }
