@@ -8,6 +8,8 @@ import Nav from './Nav';
 import User from './User';
 import Books from './Books';
 import SignIn from './SignIn';
+import UserEdit from './UserEdit';
+import UserEditPwd from './UserEditPwd';
 
 class App extends React.Component {
   componentDidMount() {
@@ -23,16 +25,18 @@ class App extends React.Component {
     }
   }
   render() {
-    const { auth, logout, cart, books } = this.props;
+    const { auth } = this.props;
     return (
       <main>
-       <Nav />
-      <Home /> 
+       <Route path='/:view?' component={ Nav} />
+       <Route path='/' exact component={ Home }/>
         {
           auth.id ? (
             <Fragment>
               <Route path='/cart' component={ Cart } />
               <Route path='/user' component={ User } />
+              <Route path='/editUser' component={ UserEdit} />
+              <Route path='/passwordUser' component={ UserEditPwd } />
             </Fragment>
           ) :
           <Fragment>

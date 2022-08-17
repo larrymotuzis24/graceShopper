@@ -1,21 +1,27 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-const Cart = ({ cart })=> {
+const Cart = ({ cart, auth }) => {
 
   return (
-    <ul>
-    {
-      cart.lineItems.map( lineItem => {
-        return (
-          <li key={ lineItem.id }>
-            { lineItem.product.name } { lineItem.quantity }
-          </li>
-            )
-      })
-    }
-    </ul>
+    <div id="cart-page">
+      {
+        auth.id ? <h2>
+        Welcome, {auth.firstName} {auth.lastName}!
+      </h2> : null
+      }
+      
+      <ul>
+        {cart.lineItems.map((lineItem) => {
+          return (
+            <li key={lineItem.id}>
+              {lineItem.product.name} {lineItem.quantity}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
-export default connect(state => state)(Cart);
+export default connect((state) => state)(Cart);

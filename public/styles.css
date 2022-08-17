@@ -1,26 +1,230 @@
-form {
-    display: flex;
-    flex-direction: column;
-  }
-  form > * {
-    margin: 1rem;
-  }
-  nav {
-    display: flex;
-    justify-content: space-around;
-    border: solid black;
-  }
-  .homeBookDiv {
-    border: solid black 3px;
-    height: 200px;
-    width: 200px;
-  }
+body{
+  font-family: verdana;
+}
 
-  #topBooksDiv {
-      display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .selected {
-    border: solid black;
-  }
+form {
+  display: flex;
+  flex-direction: column;
+}
+form > * {
+  margin: 1rem;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 20px;
+  align-items: center;
+  background-color: gainsboro;
+}
+
+.homeBookDiv {
+  border: solid black 3px;
+  height: 200px;
+  width: 200px;
+}
+
+#homeTitle {
+  text-align: center;
+}
+
+#homeFooter {
+  border-top: solid black ;
+  border-bottom: solid black;
+  text-align: center;
+}
+#homeFooterDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.footer-individual-detail-div {
+  display: flex;
+  flex-direction: column;
+  
+}
+.footer-individual-detail-div p {
+  border-bottom: solid lightgray;
+  margin: 1px;
+}
+
+div.top-books-info {
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 2px grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+
+nav#nav-var a{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav#nav-var a.selected{
+  color: green;
+  font-weight: bold;
+}
+
+div#user-profile{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#user-profile h2{
+  text-align: end;
+}
+
+main.user-info{
+  display: flex;
+  flex-direction: column;
+}
+
+div.user-links{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1rem;
+}
+
+div.user-links a{
+  font-weight: bolder;
+  color: black;
+}
+
+div.user-personal-info{
+  padding: 1rem;
+  margin: 1rem;
+  border: solid 2px grey;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 15%;
+  height: 15%;
+  border-radius: 20%;
+}
+
+pre{
+  text-align: center;
+  color: red;
+}
+
+div#books-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#books-page h2{
+  text-align: end;
+}
+
+div#cart-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#cart-page h2{
+  text-align: end;
+}
+
+div#home-page{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#home-page h2{
+  text-align: end;
+}
+
+.checked {
+  color: orange;
+}
+
+div#edit-user h2{
+  text-align: end;
+}
+
+div#edit-user{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#edit-user form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px grey;
+}
+
+div#edit-user form label{
+  font-weight: bold;
+}
+
+div#edit-user form input{
+  height: 2.3em;
+  text-indent: 5px;
+  width: 350px;
+  margin-bottom: 0%;
+}
+
+div#edit-user form button{
+  background-color: black;
+  color: white;
+  width: 22%;
+  height: 31px;
+  margin: 1rem;
+}
+
+div#edit-user-password h2{
+  text-align: end;
+}
+
+div#edit-user-password{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#edit-user-password form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px grey;
+}
+
+div#edit-user-password form label{
+  font-weight: bold;
+}
+
+div#edit-user-password form input{
+  height: 2.3em;
+  text-indent: 5px;
+  width: 350px;
+  margin-bottom: 0%;
+}
+
+div#edit-user-password form button{
+  background-color: black;
+  color: white;
+  width: 22%;
+  height: 31px;
+  margin: 1rem;
+}

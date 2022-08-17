@@ -166,14 +166,13 @@ class SignIn extends Component{
   }
 }
 
-const mapDispatch = (dispatch)=> {
-  return {
-    login: (credentials)=> {
-      dispatch(login(credentials));
-    },
-    register: (user) => dispatch(register(user))
-  };
+const mapDispatch = (dispatch, { history })=> {
+ return {
+  login: (credentials)=> {
+   dispatch(login(credentials, history));
+  },
+  register: (user) => dispatch(register(user))
+ };
 };
-//dispatch(register(user))
 
 export default connect(null, mapDispatch)(SignIn);

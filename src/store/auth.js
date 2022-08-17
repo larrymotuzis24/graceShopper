@@ -8,11 +8,11 @@ const auth = (state = {}, action)=> {
   return state;
 };
 
-export const logout = ()=> {
+export const logout = (history)=> {
   return (dispatch)=> {
     window.localStorage.removeItem('token');
     dispatch({ type: 'SET_AUTH', auth: {}});
-
+    history.push('/');
   };
 };
 
@@ -36,7 +36,8 @@ export const exchangeToken = ()=> {
     }
   };
 };
-export const login = (credentials)=> {
+
+export const login = (credentials, history)=> {
   return async(dispatch)=> {
     let response = await axios.post('/api/sessions', credentials);
     const { token } = response.data;
@@ -48,8 +49,21 @@ export const login = (credentials)=> {
     });
     const auth = response.data;
     dispatch({ auth, type: 'SET_AUTH'});
-
+    history.push('/');
   };
 };
+
+export const editUser = (user, history) =>{
+  return async (dispatch) => {
+      const response = await axios.put(`/api/users/${user.id}`, user,{
+        headers: {
+          authorization: window.localStorage.getItem('token')
+        }
+      });
+      dispatch({ type: "SET_AUTH", auth: response.data });
+      history.push('/user');
+      alert('Information was updated.')
+    };
+}
 
 export default auth;
