@@ -71,7 +71,7 @@ const mapDispatch = (dispatch) => {
     fetchCart: () => dispatch(fetchCart()),
     setView: ( view ) => {
       dispatch({ type:'SET_VIEW', view})
-  }
+    }
   };
 };
 const mapStateToProps = (state) => {
