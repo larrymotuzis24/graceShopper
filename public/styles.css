@@ -155,11 +155,16 @@ div#books-page h2{
   text-align: end;
 }
 
+div#block-cart-page h2{
+  text-align: end;
+  margin: 1rem;
+}
+
 div#cart-page{
   display: flex;
-  flex-direction: column;
   padding: 1rem;
   margin: 1rem;
+  justify-content: space-evenly;
 }
 
 div#cart-page h2{
@@ -468,3 +473,25 @@ div#div-info-line-item a{
 
 .dropdown-content p:hover {background-color: #f1f1f1}
 
+div#subtotal-line-items{
+  width: 15%;
+  height: 20%;
+  border: solid 2px grey;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+div#subtotal-line-items button{
+  background-color: black;
+  margin: 1rem;
+}
+
+div#subtotal-line-items button a{
+  color: white;
+  text-decoration: none;
+}
