@@ -1,6 +1,7 @@
-import { Dropdown } from "bootstrap";
+
 import React, { useState } from "react";
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 
 
@@ -22,7 +23,7 @@ const SearchBar = ({ books }) => {
               }).map(book => {
                 if(query !== ''){
                     return (
-                            <p key={book.id}> <Link to={'/'} > { book.title } </Link> </p>
+                            <p key={book.id}> <Link to={`/books/${book.id}`} > { book.title } </Link> </p>
      
 
                   )
