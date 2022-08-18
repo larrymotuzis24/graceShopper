@@ -11,6 +11,7 @@ import SignIn from './SignIn';
 import UserEdit from './UserEdit';
 import UserEditPwd from './UserEditPwd';
 import Book from './Book';
+import Order from './Order';
 
 class App extends React.Component {
   componentDidMount() {
@@ -41,6 +42,7 @@ class App extends React.Component {
               <Route exact path="/books" component={ Books } />
               <Route path="/books/page/:id" component={ Books } />
               <Route exact path="/books/:id" component={ Book } />
+              <Route path="/order" component={ Order } />
             </Fragment>
           ) :
           <Fragment>

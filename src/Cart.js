@@ -12,6 +12,9 @@ const Cart = ({
   deleteLineItem,
 }) => {
   const qtyZero = 0;
+  cart.lineItems.sort((a,b) => {
+    return a.id - b.id
+  })
 
   return (
     <div id="block-cart-page">
@@ -24,7 +27,7 @@ const Cart = ({
         <div id="shopping-cart">
           <h2>Shopping Cart</h2>
           <hr />
-          {cart.lineItems.map((lineItem) => {
+          {cart.lineItems.length > 0 ? cart.lineItems.map((lineItem) => {
             return (
               <main id="display-lineitem" key={lineItem.id}>
                 <img
@@ -81,16 +84,19 @@ const Cart = ({
                 </div>
               </main>
             );
-          })}
+          }) : <p>No items added to your cart!</p>}
           <hr />
         </div>
-        <div id="subtotal-line-items">
+        {
+          cart.lineItems.length > 0 ? <div id="subtotal-line-items">
           <p>
             <span>Subtotal ({totalQty} items): </span>
             <span>${subTotal}</span>
           </p>
           <button><Link to='/order'>Proceed to checkout</Link></button>
-        </div>
+        </div> : null
+        }
+        
       </div>
     </div>
   );
