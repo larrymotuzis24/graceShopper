@@ -160,6 +160,11 @@ div#block-cart-page h2{
   margin: 1rem;
 }
 
+div#block-cart-page h2.cart-title{
+  text-align: center;
+  margin: 2.5rem;
+}
+
 div#cart-page{
   display: flex;
   padding: 1rem;
@@ -266,6 +271,11 @@ div#books-page h2{
 
 div#books-page h2.user-name{
   text-align: end;
+}
+
+div#order-page h2.checkout-title{
+  text-align: center;
+  margin: 2.5rem;
 }
 
 div#books {
@@ -403,6 +413,11 @@ div#cart-books{
   margin: 0.5rem;
 }
 
+div#cart-books img.photo-last-item{
+  width: 5%;
+  height: 10%;
+}
+
 div#shopping-cart{
   padding: 1rem;
   margin: 1rem;
@@ -492,4 +507,81 @@ div#subtotal-line-items button{
 div#subtotal-line-items button a{
   color: white;
   text-decoration: none;
+}
+
+div#order-page{
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#order-page h2.user-name{
+  text-align: end;
+}
+
+main#order-info{
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+main#order-info h2{
+  text-align: center;
+}
+
+div#review-order{
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#review-order > *{
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+
+div#payment-info{
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#shipping-info{
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#shipping-info div{
+  text-align: center;
+}
+
+div#total-line-items{
+  width: 100%;
+  height: 40%;
+  border: solid 2px grey;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  flex-direction: column;
+}
+
+div#total-line-items button{
+  background-color: black;
+  margin: 1rem;
+}
+
+div#total-line-items button a{
+  color: white;
+  text-decoration: none;
+}
+
+span#total-text{
+  color: red;
+  font-weight: 10px;
+}
+
+span#total-amount{
+  color: red;
+  font-weight: 10px;
 }
