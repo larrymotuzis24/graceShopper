@@ -22,14 +22,17 @@ nav#nav-var {
 }
 
 .homeBookDiv {
-  display: flex;
-  flex-direction: column;
-  border: solid black 3px;
-  height: 300px;
-  width: 300px;
-  align-items: center;
-  margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100%/4 - 1rem);
+    height: auto;
+    padding: 1rem;
+    margin: 1rem;
+    border: solid 2px grey;
 }
+
 .homeBookDiv > img {
  padding: 5px;
  height: 150px;
@@ -408,7 +411,6 @@ div#shopping-cart h2{
 
 main#display-lineitem{
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex: 2;
   justify-content: space-evenly;
@@ -417,8 +419,6 @@ main#display-lineitem{
 main#display-lineitem > *{
   padding: 0.5rem;
   margin: 0.5rem;
-  /* width: 25%;
-  height: 20%; */
 }
 
 img#display-photo-lineitem{
@@ -441,3 +441,30 @@ div#div-info-line-item > *{
 div#div-info-line-item a{
   text-decoration: none;
 }
+
+#searchbar-input {
+  box-sizing: border-box;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#searchbar-input:focus {
+  outline: 3px solid #ddd;
+
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  align-self: center;
+  right: 40%;
+}
+
+.dropdown-content p:hover {background-color: #f1f1f1}
+

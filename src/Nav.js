@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 
 const Nav = (props) => {
     
-    const { auth, cart, logout, match } = props;
+    const { auth, cart, logout, match, books } = props;
     const view = match.params.view;
   return (
       <nav id="nav-var">
@@ -22,10 +22,8 @@ const Nav = (props) => {
         {
           auth.id ? <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
           Cart ({cart.lineItems.length})
-        </Link> : null
+          </Link> : null
         }
-        
-        <SearchBar />
 
         {auth.id ? (
           <Link to="/user" className={ view === 'user' ? 'selected': ''}> My Account </Link>
@@ -34,7 +32,7 @@ const Nav = (props) => {
         )}
 
         {auth.id ? (
-          <button onClick={logout}><Link to='/'>Log Out</Link></button>
+          <button onClick={logout}><Link to='/'>Log Out </Link></button>
         ) : null}
       </nav>
   );

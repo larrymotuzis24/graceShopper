@@ -2,12 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import FeaturedCarusel from './FeaturedCarusel';
+import SearchBar from "./SearchBar";
 import StarRatingDisplay from "./StarRatingDisplay";
 
 
 
 const Home = ({ books, auth }) => {
-  const topBooks = books.filter(book => book.rating = 5);
+  const topBooks = books.filter(book => book.rating >= 4);
     return (
         <div id="home-page">
             <FeaturedCarusel />
@@ -18,19 +19,28 @@ const Home = ({ books, auth }) => {
              ) : null}
             <div id='homeTitle'>
                 <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
+                <SearchBar />
                 <h2> Top Rated </h2>
             </div>
             <div className='top-books-info'>
             {
                  topBooks.map(book => {
                     return (
-                        <div key={ book.id } className='homeBookDiv'>
-                            <img src={book.imageUrl} />
-                            <h5> <Link to={`books/${book.id}`}> { book.title } </Link></h5>
-                            <p> { book.author }</p>
-                            <StarRatingDisplay  book={book} /> 
-
-                        </div>
+                        <div key={book.id} className='homeBookDiv'>
+                        <img
+                          className="photo-books"
+                          src={book.imageUrl}>
+                        </img>
+                        <h3>
+                          <Link to={`/books/${book.id}`}>{book.title}</Link>
+                        </h3>
+                        <p><span>Author:</span> {book.publisher}</p>
+                        <p><span>Year:</span>  {book.year}</p>
+                        <p><span>Price:</span>  $ {book.price}</p>
+                        <p><span>Stock:</span>  {book.inventory}</p>
+                        <StarRatingDisplay  book={book} /> 
+                        <button>Add to Cart</button>
+                      </div>
                             )
                         })
                     }
