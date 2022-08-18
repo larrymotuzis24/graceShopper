@@ -20,7 +20,7 @@ class Books extends Component {
 
   render() {
     const pageNumber = this.props.match.params.id * 1;
-    const { books, auth } = this.props;
+    const { books, auth, cart } = this.props;
     const { setCurrentPage } = this;
     let idxOfLastRecord;
     if (!pageNumber) {
@@ -39,6 +39,16 @@ class Books extends Component {
           <h2 className="user-name">
             Welcome, {auth.firstName} {auth.lastName}!
           </h2>
+        ) : null}
+        {cart.lineItems.length > 0 ? (
+          <div id="cart-books">
+            <img
+              src={cart.lineItems[cart.lineItems.length - 1].product.imageUrl}
+            ></img>{" "}
+            <p>
+              <span>Last Item added to the Cart</span>
+            </p>
+          </div>
         ) : null}
         <h2>Books</h2>
         <div id="books">
@@ -59,10 +69,18 @@ class Books extends Component {
                   <span>Price:</span> $ {book.price}
                 </p>
                 <p>
-                  <span>Stock:</span> {book.inventory}
+                  {book.inventory >= 1 && book.inventory <= 10 ? (
+                    <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
+                  ) : book.inventory > 10 ? (
+                    <span id="in-stock">In Stock</span>
+                  ) : (
+                    <span id="out-stock">Out of Stock</span>
+                  )}
                 </p>
-                <StarRatingDisplay  book={book} /> 
-                <button>Add to Cart</button>
+                <StarRatingDisplay book={book} />
+                <button>
+                  <Link to={`/books/${book.id}`}>See Book Description</Link>
+                </button>
               </div>
             );
           })}
@@ -78,10 +96,11 @@ class Books extends Component {
   }
 }
 
-const mapStateToProps = ({ books, auth }) => {
+const mapStateToProps = ({ books, auth, cart }) => {
   return {
     books,
     auth,
+    cart,
   };
 };
 
