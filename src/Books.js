@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import StarRatingDisplay from "./StarRatingDisplay";
 import Pagination from "./Pagination";
+import SearchBar from "./SearchBar";
 
 class Books extends Component {
   constructor() {
