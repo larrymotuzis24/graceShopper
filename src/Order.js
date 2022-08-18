@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { updateLineItem, deleteLineItem } from "./store";
 import { Link } from "react-router-dom";
 
+
 class Order extends Component {
   render() {
     const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty } =
