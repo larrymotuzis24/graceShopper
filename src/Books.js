@@ -44,6 +44,7 @@ class Books extends Component {
           <div id="cart-books">
             <img
               src={cart.lineItems[cart.lineItems.length - 1].product.imageUrl}
+              className='photo-last-item'
             ></img>{" "}
             <p>
               <span>Last Item added to the Cart</span>

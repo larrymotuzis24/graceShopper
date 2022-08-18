@@ -23,9 +23,10 @@ const Cart = ({
           Welcome, {auth.firstName} {auth.lastName}!
         </h2>
       ) : null}
+      <h2 className="cart-title">Shopping Cart</h2>
       <div id="cart-page">
         <div id="shopping-cart">
-          <h2>Shopping Cart</h2>
+          
           <hr />
           {cart.lineItems.length > 0 ? cart.lineItems.map((lineItem) => {
             return (
@@ -80,6 +81,7 @@ const Cart = ({
                   </Link>
                 </div>
                 <div id="div-price-product">
+                  <h5>Price</h5>
                   <h5>${lineItem.product.price}</h5>
                 </div>
               </main>
@@ -91,7 +93,7 @@ const Cart = ({
           cart.lineItems.length > 0 ? <div id="subtotal-line-items">
           <p>
             <span>Subtotal ({totalQty} items): </span>
-            <span>${subTotal}</span>
+            <span>${subTotal.toFixed(2)}</span>
           </p>
           <button><Link to='/order'>Proceed to checkout</Link></button>
         </div> : null

@@ -45,7 +45,12 @@ export const updateLineItem = (book, quantity, history) => {
       }
     );
     dispatch({ type: "SET_CART", cart: response.data });
-    history.push('/cart')
+    if(history.location.pathname === '/order'){
+      history.push('/order')
+    }else{
+      history.push('/cart')
+    }
+    
   }
 }
 
@@ -61,7 +66,11 @@ export const deleteLineItem = (book, qtyZero, history) => {
       }
     );
     dispatch({ type: "SET_CART", cart: response.data });
-    history.push('/cart')
+    if(history.location.pathname === '/order'){
+      history.push('/order')
+    }else{
+      history.push('/cart')
+    }
   }
 }
 

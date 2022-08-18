@@ -32,7 +32,7 @@ const Nav = (props) => {
         )}
 
         {auth.id ? (
-          <button onClick={logout}><Link to='/'>Log Out </Link></button>
+          <Link to='/' onClick={() => logout()}>Log Out </Link>
         ) : null}
       </nav>
   );
