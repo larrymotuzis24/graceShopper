@@ -89,7 +89,7 @@ class Order extends Component {
                           <option value={10}>10</option>
                         </select>
                         <Link
-                          to="/cart"
+                          to="/order"
                           onClick={() =>
                             deleteLineItem(lineItem.product, qtyZero)
                           }
@@ -164,7 +164,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
     updateLineItem: (book, quantity) =>
       dispatch(updateLineItem(book, quantity, history)),
     deleteLineItem: (book, qtyZero) =>
-      dispatch(deleteLineItem(book, qtyZero, history)),
+      dispatch(deleteLineItem(book, qtyZero, history)) 
   };
 };
 
