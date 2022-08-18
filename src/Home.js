@@ -38,7 +38,9 @@ const Home = ({ books, auth }) => {
                         <p><span>Year:</span>  {new Date(book.year).getFullYear()}</p>
                         <p><span>Price:</span>  $ {book.price}</p>
                         <p><span>Stock:</span>  {book.inventory}</p>
+                        <div>
                         <StarRatingDisplay  book={book} /> 
+                        </div>
                         <button>
                             <Link to={`/books/${book.id}`}>See Book Description</Link>
                         </button>

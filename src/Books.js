@@ -79,7 +79,9 @@ class Books extends Component {
                     <span id="out-stock">Out of Stock</span>
                   )}
                 </p>
+                <div>
                 <StarRatingDisplay book={book} />
+                </div>
                 <button>
                   <Link to={`/books/${book.id}`}>See Book Description</Link>
                 </button>
