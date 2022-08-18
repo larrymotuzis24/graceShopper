@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import FeaturedCarusel from './FeaturedCarusel';
+import SearchBar from "./SearchBar";
 import StarRatingDisplay from "./StarRatingDisplay";
 
 
@@ -18,6 +19,7 @@ const Home = ({ books, auth }) => {
              ) : null}
             <div id='homeTitle'>
                 <h1 id='homeTitle'> GraceShopper Bookstore Home   </h1>
+                <SearchBar />
                 <h2> Top Rated </h2>
             </div>
             <div className='top-books-info'>

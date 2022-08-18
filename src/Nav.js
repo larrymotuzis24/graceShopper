@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 
 const Nav = (props) => {
     
-    const { auth, cart, logout, match } = props;
+    const { auth, cart, logout, match, books } = props;
     const view = match.params.view;
   return (
       <nav id="nav-var">
@@ -22,7 +22,6 @@ const Nav = (props) => {
         <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
           Cart ({cart.lineItems.length})
         </Link>
-        <SearchBar />
 
         {auth.id ? (
           <Link to="/user" className={ view === 'user' ? 'selected': ''}> My Account </Link>
