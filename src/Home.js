@@ -35,11 +35,13 @@ const Home = ({ books, auth }) => {
                           <Link to={`/books/${book.id}`}>{book.title}</Link>
                         </h3>
                         <p><span>Author:</span> {book.publisher}</p>
-                        <p><span>Year:</span>  {book.year}</p>
+                        <p><span>Year:</span>  {new Date(book.year).getFullYear()}</p>
                         <p><span>Price:</span>  $ {book.price}</p>
                         <p><span>Stock:</span>  {book.inventory}</p>
                         <StarRatingDisplay  book={book} /> 
-                        <button>Add to Cart</button>
+                        <button>
+                            <Link to={`/books/${book.id}`}>See Book Description</Link>
+                        </button>
                       </div>
                             )
                         })

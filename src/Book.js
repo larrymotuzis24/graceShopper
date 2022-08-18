@@ -68,9 +68,12 @@ class Book extends Component {
             <option value={9}>9</option>
             <option value={10}>10</option>
           </select>
-          <button onClick={() => addToCart(book, quantity * 1)}>
-            Add to Cart
-          </button>
+          {
+              auth.id ? <button onClick={() => addToCart(book, quantity * 1)}>
+              Add to Cart
+            </button> : <p><span>Please Login to start adding items to your cart!</span></p>
+          }
+          
         </div>
       </div>
     );
