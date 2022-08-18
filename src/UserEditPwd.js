@@ -33,6 +33,7 @@ class UserEditPwd extends Component {
       await this.props.updateUserPassword(user);
     } catch (error) {
       this.setState({ error: error.response.data.error });
+      this.setState({password: '', newPassword: ''})
     }
   }
 

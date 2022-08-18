@@ -66,10 +66,10 @@ export const deleteLineItem = (book, qtyZero, history) => {
       }
     );
     dispatch({ type: "SET_CART", cart: response.data });
-    if(history.location.pathname === '/order'){
-      history.push('/order')
-    }else{
+    if(history.location.pathname === '/cart'){
       history.push('/cart')
+    }else{
+      history.push('/order')
     }
   }
 }
