@@ -1,11 +1,42 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { editUser } from "./store";
 
 class User extends Component {
+  constructor(){
+    super();
+    this.state = {
+      avatar: ''
+    }
+    this.save = this.save.bind(this);
+  }
+
+  componentDidMount(){
+    this.el.addEventListener('change', (ev) =>{
+      const file = ev.target.files[0];
+      const reader = new FileReader();
+      reader.addEventListener('load', () =>{
+        this.setState({avatar: reader.result})
+      })
+      reader.readAsDataURL(file);
+    })
+  }
+
+  save(ev){
+    ev.preventDefault();
+    const user = {
+      id: this.props.auth.id,
+      imageUrl: this.state.avatar
+    };
+    this.props.saveAvatar(user);
+  }
+
   render() {
     const { auth, match } = this.props;
     const path = match.path;
+    const { avatar } = this.state;
+    const { save } = this;
     return (
       <div id="user-profile">
         <h2>
@@ -19,7 +50,14 @@ class User extends Component {
             </div>
             {path === "/user" ? (
               <div className="user-personal-info">
-                <img src={auth.imageUrl}/>
+                { !avatar ? <img src={auth.imageUrl}/> : <img src={ avatar }/>}
+                <div id="user-avatar">
+                  <form onSubmit={save}>
+                    <p><span>Change your avatar</span></p>
+                    <input type='file' ref={el => this.el = el}/>
+                    <button id="btn-avatar">Save Avatar</button>
+                  </form>
+                </div>
                 <h3>First Name</h3>
                 <p>{auth.firstName}</p>
                 <h3>Last Name</h3>
@@ -40,4 +78,10 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps)(User);
+const mapDispatchToProps = (dispatch, { history }) =>{
+  return {
+    saveAvatar: (user) => dispatch(editUser(user, history))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(User);
