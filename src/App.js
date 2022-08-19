@@ -58,6 +58,7 @@ class App extends React.Component {
             <Route exact path="/books" component={ Books } />
             <Route path="/books/page/:id" component={ Books } />
             <Route exact path="/books/:id" component={ Book } />
+            <Route path='/cart' component={ Cart } />
           </Fragment>): null
         }
         
