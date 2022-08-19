@@ -25,7 +25,7 @@ const Cart = ({
       return accum;
     }, 0);
      totalQtyGuest = JSON.parse(localStorage.getItem('lineItem')).reduce((accum, lineItem) => {
-      accum += lineItem.qty;
+      accum += lineItem.qty*1;
       return accum;
     }, 0);
   }
@@ -89,7 +89,7 @@ const Cart = ({
                   </select>
                   <Link
                     to="/cart"
-                    onClick={() => deleteLineItem(lineItem.product, qtyZero)}
+                    onClick={() => deleteLineItem(auth, lineItem.product, qtyZero)}
                   >
                     Delete
                   </Link>
@@ -148,7 +148,7 @@ const Cart = ({
                   </select>
                   <Link
                     to="/cart"
-                    onClick={() => deleteLineItem(lineItem.product, qtyZero)}
+                    onClick={() => deleteLineItem(auth, lineItem.product, qtyZero)}
                   >
                     Delete
                   </Link>
@@ -187,8 +187,8 @@ const mapDispatchToProps = (dispatch, { history }) => {
   return {
     updateLineItem: (auth, book, quantity) =>
       dispatch(updateLineItem(auth, book, quantity, history)),
-    deleteLineItem: (book, qtyZero) =>
-      dispatch(deleteLineItem(book, qtyZero, history)),
+    deleteLineItem: (auth, book, qtyZero) =>
+      dispatch(deleteLineItem(auth, book, qtyZero, history)),
   };
 };
 

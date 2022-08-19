@@ -21,33 +21,34 @@ export const addToCart = (auth, book, quantity, history) => {
   return async (dispatch) => {
     if (Object.keys(auth).length === 0) {
       const cartObj = [];
-      if(!localStorage.getItem('lineItem')){
+      if (!localStorage.getItem("lineItem")) {
         cartObj.push({
           product: book,
           qty: quantity,
         });
         localStorage.setItem("lineItem", JSON.stringify(cartObj));
-      }else{
-        const existLineItem = JSON.parse(localStorage.getItem('lineItem'));
+      } else {
+        const existLineItem = JSON.parse(localStorage.getItem("lineItem"));
 
-        for(let i = 0; i < existLineItem.length; i++){
-          if(existLineItem[i].product.id === book.id){
+        for (let i = 0; i < existLineItem.length; i++) {
+          if (existLineItem[i].product.id === book.id) {
             existLineItem[i].product = book;
             existLineItem[i].qty = quantity;
-          }else{
-            const newItem ={
+          } else {
+            const newItem = {
               product: book,
-              qty: quantity
-            }
-            if(!existLineItem.some(e => e.product.id === newItem.product.id)){
+              qty: quantity,
+            };
+            if (
+              !existLineItem.some((e) => e.product.id === newItem.product.id)
+            ) {
               existLineItem.push(newItem);
             }
-            
           }
         }
         localStorage.setItem("lineItem", JSON.stringify(existLineItem));
       }
-    }else{
+    } else {
       const response = await axios.put(
         "/api/orders/cart",
         { product: book, quantity: quantity },
@@ -67,33 +68,34 @@ export const updateLineItem = (auth, book, quantity, history) => {
   return async (dispatch) => {
     if (Object.keys(auth).length === 0) {
       const cartObj = [];
-      if(!localStorage.getItem('lineItem')){
+      if (!localStorage.getItem("lineItem")) {
         cartObj.push({
           product: book,
           qty: quantity,
         });
         localStorage.setItem("lineItem", JSON.stringify(cartObj));
-      }else{
-        const existLineItem = JSON.parse(localStorage.getItem('lineItem'));
+      } else {
+        const existLineItem = JSON.parse(localStorage.getItem("lineItem"));
 
-        for(let i = 0; i < existLineItem.length; i++){
-          if(existLineItem[i].product.id === book.id){
+        for (let i = 0; i < existLineItem.length; i++) {
+          if (existLineItem[i].product.id === book.id) {
             existLineItem[i].product = book;
             existLineItem[i].qty = quantity;
-          }else{
-            const newItem ={
+          } else {
+            const newItem = {
               product: book,
-              qty: quantity
-            }
-            if(!existLineItem.some(e => e.product.id === newItem.product.id)){
+              qty: quantity,
+            };
+            if (
+              !existLineItem.some((e) => e.product.id === newItem.product.id)
+            ) {
               existLineItem.push(newItem);
             }
-            
           }
         }
         localStorage.setItem("lineItem", JSON.stringify(existLineItem));
       }
-    }else{
+    } else {
       const response = await axios.put(
         "/api/orders/cart",
         { product: book, quantity: quantity },
@@ -113,18 +115,32 @@ export const updateLineItem = (auth, book, quantity, history) => {
   };
 };
 
-export const deleteLineItem = (book, qtyZero, history) => {
+export const deleteLineItem = (auth, book, qtyZero, history) => {
   return async (dispatch) => {
-    const response = await axios.put(
-      "/api/orders/cart",
-      { product: book, quantity: qtyZero },
-      {
-        headers: {
-          authorization: window.localStorage.getItem("token"),
-        },
+    if(Object.keys(auth).length === 0 && localStorage.getItem("lineItem")){
+      const guestCart = JSON.parse(localStorage.getItem("lineItem"));
+      for(let i = 0; i < guestCart.length; i++){
+        if(guestCart[i].product.id === book.id){
+          const idx = guestCart.indexOf(guestCart[i]);
+          if(idx > -1){
+            guestCart.splice(idx, 1)
+          }
+        }
       }
-    );
-    dispatch({ type: "SET_CART", cart: response.data });
+      localStorage.setItem("lineItem", JSON.stringify(guestCart));
+    }else{
+      const response = await axios.put(
+        "/api/orders/cart",
+        { product: book, quantity: qtyZero },
+        {
+          headers: {
+            authorization: window.localStorage.getItem("token"),
+          },
+        }
+      );
+      dispatch({ type: "SET_CART", cart: response.data });
+    }
+    
     if (history.location.pathname === "/cart") {
       history.push("/cart");
     } else {
