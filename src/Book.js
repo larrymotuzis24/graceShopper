@@ -41,7 +41,9 @@ class Book extends Component {
           </p>
           <p>
             {book.inventory >= 1 && book.inventory <= 10 ? (
-              <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
+              <span id="stock-left">
+                Only {book.inventory} left in Stock - Order soon.
+              </span>
             ) : book.inventory > 10 ? (
               <span id="in-stock">In Stock</span>
             ) : (
@@ -68,12 +70,9 @@ class Book extends Component {
             <option value={9}>9</option>
             <option value={10}>10</option>
           </select>
-          {
-              auth.id ? <button onClick={() => addToCart(book, quantity * 1)}>
-              Add to Cart
-            </button> : <p><span>Please Login to start adding items to your cart!</span></p>
-          }
-          
+          <button onClick={() => addToCart(auth, book, quantity * 1)}>
+            Add to Cart
+          </button>
         </div>
       </div>
     );
@@ -92,7 +91,9 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    addToCart: (book, quantity) => dispatch(addToCart(book, quantity, history)),
+    addToCart: (auth, book, quantity) => {
+      dispatch(addToCart(auth, book, quantity, history));
+    },
   };
 };
 

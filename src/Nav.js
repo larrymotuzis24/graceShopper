@@ -19,11 +19,10 @@ const Nav = (props) => {
         <Link to="/books" className={ view === 'books' ? 'selected': ''}>
           Books
         </Link>
-        {
-          auth.id ? <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
-          Cart ({cart.lineItems.length})
-          </Link> : null
-        }
+
+        <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
+          { auth.id ? `Cart (${cart.lineItems.length})` : !auth.id && localStorage.getItem('lineItem') ? `Cart (${JSON.parse(localStorage.getItem('lineItem')).length})` : `Cart (${cart.lineItems.length})`}
+        </Link>
 
         {auth.id ? (
           <Link to="/user" className={ view === 'user' ? 'selected': ''}> My Account </Link>

@@ -17,45 +17,104 @@ export const fetchCart = () => {
   };
 };
 
-export const addToCart = (book, quantity, history) => {
+export const addToCart = (auth, book, quantity, history) => {
   return async (dispatch) => {
-    const response = await axios.put(
-      "/api/orders/cart",
-      { product: book, quantity: quantity },
-      {
-        headers: {
-          authorization: window.localStorage.getItem("token"),
-        },
+    if (Object.keys(auth).length === 0) {
+      const cartObj = [];
+      if(!localStorage.getItem('lineItem')){
+        cartObj.push({
+          product: book,
+          qty: quantity,
+        });
+        localStorage.setItem("lineItem", JSON.stringify(cartObj));
+      }else{
+        const existLineItem = JSON.parse(localStorage.getItem('lineItem'));
+
+        for(let i = 0; i < existLineItem.length; i++){
+          if(existLineItem[i].product.id === book.id){
+            existLineItem[i].product = book;
+            existLineItem[i].qty = quantity;
+          }else{
+            const newItem ={
+              product: book,
+              qty: quantity
+            }
+            if(!existLineItem.some(e => e.product.id === newItem.product.id)){
+              existLineItem.push(newItem);
+            }
+            
+          }
+        }
+        localStorage.setItem("lineItem", JSON.stringify(existLineItem));
       }
-    );
-    dispatch({ type: "SET_CART", cart: response.data });
-    history.push('/books')
+    }else{
+      const response = await axios.put(
+        "/api/orders/cart",
+        { product: book, quantity: quantity },
+        {
+          headers: {
+            authorization: window.localStorage.getItem("token"),
+          },
+        }
+      );
+      dispatch({ type: "SET_CART", cart: response.data });
+    }
+    history.push("/books");
   };
 };
 
-export const updateLineItem = (book, quantity, history) => {
-  return async(dispatch) => {
-    const response = await axios.put(
-      "/api/orders/cart",
-      { product: book, quantity: quantity },
-      {
-        headers: {
-          authorization: window.localStorage.getItem("token"),
-        },
+export const updateLineItem = (auth, book, quantity, history) => {
+  return async (dispatch) => {
+    if (Object.keys(auth).length === 0) {
+      const cartObj = [];
+      if(!localStorage.getItem('lineItem')){
+        cartObj.push({
+          product: book,
+          qty: quantity,
+        });
+        localStorage.setItem("lineItem", JSON.stringify(cartObj));
+      }else{
+        const existLineItem = JSON.parse(localStorage.getItem('lineItem'));
+
+        for(let i = 0; i < existLineItem.length; i++){
+          if(existLineItem[i].product.id === book.id){
+            existLineItem[i].product = book;
+            existLineItem[i].qty = quantity;
+          }else{
+            const newItem ={
+              product: book,
+              qty: quantity
+            }
+            if(!existLineItem.some(e => e.product.id === newItem.product.id)){
+              existLineItem.push(newItem);
+            }
+            
+          }
+        }
+        localStorage.setItem("lineItem", JSON.stringify(existLineItem));
       }
-    );
-    dispatch({ type: "SET_CART", cart: response.data });
-    if(history.location.pathname === '/order'){
-      history.push('/order')
     }else{
-      history.push('/cart')
+      const response = await axios.put(
+        "/api/orders/cart",
+        { product: book, quantity: quantity },
+        {
+          headers: {
+            authorization: window.localStorage.getItem("token"),
+          },
+        }
+      );
+      dispatch({ type: "SET_CART", cart: response.data });
     }
-    
-  }
-}
+    if (history.location.pathname === "/order") {
+      history.push("/order");
+    } else {
+      history.push("/cart");
+    }
+  };
+};
 
 export const deleteLineItem = (book, qtyZero, history) => {
-  return async(dispatch) => {
+  return async (dispatch) => {
     const response = await axios.put(
       "/api/orders/cart",
       { product: book, quantity: qtyZero },
@@ -66,12 +125,12 @@ export const deleteLineItem = (book, qtyZero, history) => {
       }
     );
     dispatch({ type: "SET_CART", cart: response.data });
-    if(history.location.pathname === '/cart'){
-      history.push('/cart')
-    }else{
-      history.push('/order')
+    if (history.location.pathname === "/cart") {
+      history.push("/cart");
+    } else {
+      history.push("/order");
     }
-  }
-}
+  };
+};
 
 export default cart;
