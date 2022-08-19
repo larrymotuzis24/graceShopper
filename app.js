@@ -33,7 +33,9 @@ app.use('/api/sessions', require('./routes/sessions'));
 
 app.get('/api/books', async(req, res, next) => {
     try{
-      res.send(await Product.findAll())
+      res.send(await Product.findAll({
+        order: [['title']]
+      }))
     }
     catch(ex){
       next(ex)

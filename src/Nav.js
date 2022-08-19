@@ -21,7 +21,7 @@ const Nav = (props) => {
         </Link>
 
         <Link to="/cart" className={ view === 'cart' ? 'selected': ''}>
-          { auth.id ? `Cart (${cart.lineItems.length})` : !auth.id && localStorage.getItem('lineItem') ? `Cart (${JSON.parse(localStorage.getItem('lineItem')).length})` : `Cart (${cart.lineItems.length})`}
+          { auth.id ? `Cart (${cart.lineItems.length})` : !auth.id && localStorage.getItem('lineItem') ? `Cart (${JSON.parse(localStorage.getItem('lineItem')).length})` : 'Cart (0)'}
         </Link>
 
         {auth.id ? (
