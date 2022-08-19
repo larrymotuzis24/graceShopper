@@ -136,7 +136,7 @@ User.authenticate = async function(credentials){
   }
   else {
     const error = new Error('Bad Credentials');
-    error.status = 401;
+    error.name = 'Incorrect Username or Password. Please try again!.'
     throw error;
   }
 }

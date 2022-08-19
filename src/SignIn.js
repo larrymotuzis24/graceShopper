@@ -30,13 +30,22 @@ class SignIn extends Component {
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
   }
+
   changeEmail(ev) {
     this.setState({ email: ev.target.value });
   }
-  onSubmit(ev) {
+
+  async onSubmit(ev) {
     ev.preventDefault();
-    this.props.login(this.state);
+    try {
+      await this.props.login(this.state);
+    } catch (error) {
+      this.setState({error: error.response.data.error.name});
+      this.setState({username: ""});
+      this.setState({password: ""});
+    }
   }
+
   async onRegister(ev) {
     ev.preventDefault();
     const user = {
@@ -275,9 +284,7 @@ class SignIn extends Component {
 
 const mapDispatch = (dispatch, { history }) => {
   return {
-    login: (credentials) => {
-      dispatch(login(credentials, history));
-    },
+    login: (credentials) =>  dispatch(login(credentials, history)),
     register: (user) => dispatch(register(user, history)),
   };
 };
