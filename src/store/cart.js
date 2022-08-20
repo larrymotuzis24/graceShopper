@@ -17,9 +17,9 @@ export const fetchCart = () => {
   };
 };
 
-export const addToCart = (auth, book, quantity, history) => {
-  return async (dispatch) => {
-    if (Object.keys(auth).length === 0) {
+export const addToCart = (book, quantity, history) => {
+  return async (dispatch, getState) => {
+    if (!getState().auth.id) {
       const cartObj = [];
       if (!localStorage.getItem("lineItem")) {
         cartObj.push({
@@ -64,9 +64,9 @@ export const addToCart = (auth, book, quantity, history) => {
   };
 };
 
-export const updateLineItem = (auth, book, quantity, history) => {
-  return async (dispatch) => {
-    if (Object.keys(auth).length === 0) {
+export const updateLineItem = (book, quantity, history) => {
+  return async (dispatch, getState) => {
+    if (!getState().auth.id) {
       const cartObj = [];
       if (!localStorage.getItem("lineItem")) {
         cartObj.push({
@@ -115,9 +115,9 @@ export const updateLineItem = (auth, book, quantity, history) => {
   };
 };
 
-export const deleteLineItem = (auth, book, qtyZero, history) => {
-  return async (dispatch) => {
-    if(Object.keys(auth).length === 0 && localStorage.getItem("lineItem")){
+export const deleteLineItem = (book, qtyZero, history) => {
+  return async (dispatch, getState) => {
+    if(!getState().auth.id && localStorage.getItem("lineItem")){
       const guestCart = JSON.parse(localStorage.getItem("lineItem"));
       for(let i = 0; i < guestCart.length; i++){
         if(guestCart[i].product.id === book.id){
