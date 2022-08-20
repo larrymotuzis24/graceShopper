@@ -73,7 +73,7 @@ const Cart = ({
                   <select
                     defaultValue={lineItem.quantity}
                     onChange={(ev) =>
-                      updateLineItem(auth, lineItem.product, ev.target.value)
+                      updateLineItem(lineItem.product, ev.target.value)
                     }
                   >
                     <option value={1}>1</option>
@@ -89,7 +89,7 @@ const Cart = ({
                   </select>
                   <Link
                     to="/cart"
-                    onClick={() => deleteLineItem(auth, lineItem.product, qtyZero)}
+                    onClick={() => deleteLineItem(lineItem.product, qtyZero)}
                   >
                     Delete
                   </Link>
@@ -132,7 +132,7 @@ const Cart = ({
                   <select
                     defaultValue={lineItem.qty}
                     onChange={(ev) =>
-                      updateLineItem(auth, lineItem.product, ev.target.value)
+                      updateLineItem(lineItem.product, ev.target.value)
                     }
                   >
                     <option value={1}>1</option>
@@ -148,7 +148,7 @@ const Cart = ({
                   </select>
                   <Link
                     to="/cart"
-                    onClick={() => deleteLineItem(auth, lineItem.product, qtyZero)}
+                    onClick={() => deleteLineItem(lineItem.product, qtyZero)}
                   >
                     Delete
                   </Link>
@@ -185,10 +185,10 @@ const Cart = ({
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    updateLineItem: (auth, book, quantity) =>
-      dispatch(updateLineItem(auth, book, quantity, history)),
-    deleteLineItem: (auth, book, qtyZero) =>
-      dispatch(deleteLineItem(auth, book, qtyZero, history)),
+    updateLineItem: (book, quantity) =>
+      dispatch(updateLineItem(book, quantity, history)),
+    deleteLineItem: (book, qtyZero) =>
+      dispatch(deleteLineItem(book, qtyZero, history)),
   };
 };
 

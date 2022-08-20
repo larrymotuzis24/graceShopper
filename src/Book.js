@@ -17,7 +17,7 @@ class Book extends Component {
   }
 
   render() {
-    const { history, book, auth, addToCart } = this.props;
+    const { book, auth, addToCart } = this.props;
     const { quantity } = this.state;
     const { onChange } = this;
     return (
@@ -70,7 +70,7 @@ class Book extends Component {
             <option value={9}>9</option>
             <option value={10}>10</option>
           </select>
-          <button onClick={() => addToCart(auth, book, quantity * 1)}>
+          <button onClick={() => addToCart(book, quantity * 1)}>
             Add to Cart
           </button>
         </div>
@@ -91,8 +91,8 @@ const mapStateToProps = (state, { match }) => {
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-    addToCart: (auth, book, quantity) => {
-      dispatch(addToCart(auth, book, quantity, history));
+    addToCart: (book, quantity) => {
+      dispatch(addToCart(book, quantity, history));
     },
   };
 };
