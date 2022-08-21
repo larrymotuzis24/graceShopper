@@ -9,6 +9,7 @@ const Nav = (props) => {
     
     const { auth, cart, logout, match, books } = props;
     const view = match.params.view;
+    console.log('auth', auth);
   return (
       <nav id="nav-var">
         <h2>
@@ -29,6 +30,10 @@ const Nav = (props) => {
         ) : (
           <Link to="/signIn" className={ view === 'signIn' ? 'selected': ''}> Sign In </Link>
         )}
+
+        {auth.isAdmin ? (
+          <Link to='/adminPriveldges'> Manage Users </Link>
+        ) : null}
 
         {auth.id ? (
           <Link to='/' onClick={() => logout()}>Log Out </Link>
