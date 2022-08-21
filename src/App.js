@@ -4,19 +4,20 @@ import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Cart from './Cart';
-import Nav from './Nav';
+import NavBar from './NavBar';
 import User from './User';
 import Books from './Books';
 import SignIn from './SignIn';
 import UserEdit from './UserEdit';
 import UserEditPwd from './UserEditPwd';
 import Book from './Book';
+import Footer from './Footer';
 
 class App extends React.Component {
   componentDidMount() {
-    window.addEventListener('hashchange', ()=> {
+    window.addEventListener('hashchange', () => {
       this.props.setView(window.location.hash.slice(1));
-    })
+    });
     this.props.exchangeToken();
     this.props.fetchBooks();
   }
@@ -29,36 +30,33 @@ class App extends React.Component {
     const { auth } = this.props;
     return (
       <main>
-       <Route path='/:view?' component={ Nav} />
-       <Route path='/' exact component={ Home }/>
-        {
-          auth.id ? (
-            <Fragment>
-              <Route path='/cart' component={ Cart } />
-              <Route path='/user' component={ User } />
-              <Route path='/editUser' component={ UserEdit} />
-              <Route path='/passwordUser' component={ UserEditPwd } />
-              <Route exact path="/books" component={ Books } />
-              <Route path="/books/page/:id" component={ Books } />
-              <Route exact path="/books/:id" component={ Book } />
-            </Fragment>
-          ) :
+        <Route path="/:view?" component={NavBar} />
+        <Route path="/" exact component={Home} />
+        {auth.id ? (
+          <Fragment>
+            <Route path="/cart" component={Cart} />
+            <Route path="/user" component={User} />
+            <Route path="/editUser" component={UserEdit} />
+            <Route path="/passwordUser" component={UserEditPwd} />
+            <Route exact path="/books" component={Books} />
+            <Route path="/books/page/:id" component={Books} />
+            <Route exact path="/books/:id" component={Book} />
+          </Fragment>
+        ) : (
           <Fragment>
             <Switch>
-              <Route path='/signIn' component={ SignIn }/>
+              <Route path="/signIn" component={SignIn} />
             </Switch>
           </Fragment>
-        }
-        {
-          !auth.id ? 
-          (<Fragment>
-            <Route exact path="/books" component={ Books } />
-            <Route path="/books/page/:id" component={ Books } />
-            <Route exact path="/books/:id" component={ Book } />
-          </Fragment>): null
-        }
-        
-        
+        )}
+        {!auth.id ? (
+          <Fragment>
+            <Route exact path="/books" component={Books} />
+            <Route path="/books/page/:id" component={Books} />
+            <Route exact path="/books/:id" component={Book} />
+          </Fragment>
+        ) : null}
+        <Footer />
       </main>
     );
   }
@@ -69,9 +67,9 @@ const mapDispatch = (dispatch) => {
     exchangeToken: () => dispatch(exchangeToken()),
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),
-    setView: ( view ) => {
-      dispatch({ type:'SET_VIEW', view})
-    }
+    setView: (view) => {
+      dispatch({ type: 'SET_VIEW', view });
+    },
   };
 };
 const mapStateToProps = (state) => {

@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import StarRatingDisplay from "./StarRatingDisplay";
-import Pagination from "./Pagination";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import StarRatingDisplay from './StarRatingDisplay';
+import Pagination from './Pagination';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 
 class Books extends Component {
   constructor() {
@@ -41,7 +43,56 @@ class Books extends Component {
           </h2>
         ) : null}
         <h2>Books</h2>
-        <div id="books">
+        <div class="container">
+          <div class="row" style={{ gap: '2rem' }}>
+            {listBooks.map((book) => {
+              return (
+                <Link to={`books/${book.id}`} style={{ display: 'contents' }}>
+                  <Card
+                    style={{
+                      width: '18rem',
+                      padding: '0',
+                    }}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={book.imageUrl}
+                      style={{
+                        height: '400px',
+                        objectFit: 'contain',
+                        backgroundColor: 'black',
+                        padding: '2rem',
+                      }}
+                    />
+                    <Card.Body>
+                      <Card.Title>{book.title}</Card.Title>
+                      <Card.Text>{book.author}</Card.Text>
+                      <Card.Text>{book.price}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
+                // <div key={book.id} className="homeBookDiv">
+                //   <img src={book.imageUrl} />
+                //   <h5>
+                //     {' '}
+                //     <Link to={`books/${book.id}`}> {book.title} </Link>
+                //   </h5>
+                //   <p> {book.author}</p>
+                //   <StarRatingDisplay book={book} />
+                // </div>
+              );
+            })}
+            {/* <div class="col card">1</div>
+          <div class="col card">2</div>
+          <div class="col card">3</div> */}
+          </div>
+          {/* <div class="row">
+          <div class="col card">4</div>
+          <div class="col card">5</div>
+          <div class="col card">6</div>
+        </div> */}
+        </div>
+        {/* <div id="books">
           {listBooks.map((book) => {
             return (
               <div key={book.id} className="book-info">
@@ -66,7 +117,7 @@ class Books extends Component {
               </div>
             );
           })}
-        </div>
+        </div> */}
         <Pagination
           numPages={numPages}
           setCurrentPage={setCurrentPage}
