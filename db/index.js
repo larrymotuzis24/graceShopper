@@ -35,5 +35,6 @@ module.exports = {
   LineItem,
   State,
   Order,
+  ProductCategory,
   seeder
 };
