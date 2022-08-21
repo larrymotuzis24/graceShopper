@@ -95,11 +95,11 @@ class SignIn extends Component {
       <div>
         <div style={{ marginTop: "13%" }}>
           <div style={{ textAlign: "center" }}>
-            <div style={{ display: "inline-block" }}>
+            <div style={{ display: "inline-block", marginRight: "3%" }}>
               <h2
                 style={{
                   marginRight: "73%",
-                  marginBottom: "1%",
+                  marginBottom: "3%",
                   textIndent: "-15%",
                 }}
               >
@@ -112,7 +112,8 @@ class SignIn extends Component {
                     width: "350px",
                     marginTop: "3%",
                     height: "2.3em",
-                    marginBottom: "1%",
+                    marginBottom: "3%",
+                    marginRight: '1%'
                   }}
                   placeholder="Username"
                   name="username"
@@ -123,7 +124,7 @@ class SignIn extends Component {
                   style={{
                     textIndent: "5px",
                     width: "350px",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                     height: "2.3em",
                   }}
                   placeholder="Password"
@@ -154,7 +155,9 @@ class SignIn extends Component {
               </form>
             </div>
             <div style={{ display: "inline-block" }}>
-              <h2 style={{ marginRight: "70%", marginBottom: "-1%" }}>
+              <h2 style={{ 
+                marginRight: "70%", 
+                marginBottom: "5%" }}>
                 Register
               </h2>
               <form>
@@ -163,7 +166,7 @@ class SignIn extends Component {
                   style={{
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                     textIndent: "5px",
                   }}
                   name="username"
@@ -177,7 +180,7 @@ class SignIn extends Component {
                   style={{
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                     textIndent: "5px",
                   }}
                   type="password"
@@ -193,7 +196,7 @@ class SignIn extends Component {
                     textIndent: "5px",
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                   }}
                   name="password"
                   value={regEmail}
@@ -207,7 +210,7 @@ class SignIn extends Component {
                     textIndent: "5px",
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                   }}
                   name="password"
                   value={firstName}
@@ -221,7 +224,7 @@ class SignIn extends Component {
                     textIndent: "5px",
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                   }}
                   name="password"
                   value={lastName}
@@ -235,7 +238,7 @@ class SignIn extends Component {
                     textIndent: "5px",
                     width: "350px",
                     height: "2.3em",
-                    marginBottom: "0%",
+                    marginBottom: "3%",
                   }}
                   name="password"
                   value={address}
@@ -264,7 +267,7 @@ class SignIn extends Component {
                     color: "white",
                     width: "22%",
                     height: "31px",
-                    marginTop: "3%",
+                    marginTop: "1%",
                   }}
                   disabled={!regUsername || !regPassword || !regEmail || !firstName || !lastName || !address}
                 >
