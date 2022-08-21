@@ -90,6 +90,17 @@ app.get('/users', async(req, res) => {
   }
 });
 
+app.put('/users/update/:id', async (req, res) => {
+  try{
+    const user = await User.findByPk(req.params.id)
+    await user.update(req.body)
+    res.send(user)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 app.get('/api/states', async(req, res) => {
   try {
     res.send(await State.findAll({

@@ -46,7 +46,7 @@ class App extends React.Component {
               <Route path='/passwordUser' component={ UserEditPwd } />
               <Route path='/addressUser' component={ UserAddress } />
               <Route exact path="/books" component={ Books } />
-              {auth.isAdmin ? <Route exact='/manage/users' component={IsAdminPanel} /> : null } 
+              {auth.isAdmin ? <Route path='/adminPriveldges' component={IsAdminPanel} /> : null } 
               <Route path="/books/page/:id" component={ Books } />
               <Route exact path="/books/:id" component={ Book } />
               <Route path="/order" component={ Order } />

@@ -4,9 +4,20 @@ const auth = (state = {}, action) => {
   if (action.type === "SET_AUTH") {
     state = action.auth;
   }
+  // if (action.type === "GET_USERS"){
+  //   state = action.users
+  // }
   return state;
 };
 
+// export const fetchUsers = () => {
+//   return async (dispatch) => {
+//     console.log('in store')
+//     const response = await axios.get('/users')
+//     const users = response.data
+//     dispatch({ type: 'GET_USERS', users })
+//   }
+// }
 export const logout = (history) => {
   return (dispatch) => {
     window.localStorage.removeItem("token");
