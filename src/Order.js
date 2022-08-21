@@ -3,11 +3,25 @@ import { connect } from "react-redux";
 import { updateLineItem, deleteLineItem } from "./store";
 import { Link } from "react-router-dom";
 
-
 class Order extends Component {
+
+  constructor(){
+    super();
+    this.state = {
+      address: ''
+    }
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(ev){
+    this.setState({[ev.target.name]: ev.target.value});
+  }
+
   render() {
     const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty } =
       this.props;
+    const { onChange } = this;
+    const { address } = this.state;
     const qtyZero = 0;
     const shippingTotal = subTotal * 0.02;
     const beforeTax = subTotal + shippingTotal;
@@ -32,7 +46,28 @@ class Order extends Component {
                 <p>
                   {auth.firstName} {auth.lastName}
                 </p>
-                <p>{auth.address.toUpperCase()}</p>
+                <div>
+                  {!auth.secondaryAddress ? (
+                    <p>{auth.address}</p>
+                  ) : (
+                    <div id="shipping-address">
+                      <label>Select the shipping address</label>
+                      <select value={ address } name='address' onChange={ onChange }>
+                        <option>{ auth.address}</option>
+                        {
+                          auth.secondaryAddress.map((secAddress, idx) =>{
+                            return(
+                              <option key={ idx } value={secAddress}>
+                                {secAddress}
+                              </option>
+                            )
+                          })
+                        }
+                      </select>
+                    </div>
+                    
+                  )}
+                </div>
               </div>
             </div>
             <hr />
@@ -115,20 +150,20 @@ class Order extends Component {
                 <span>${subTotal.toFixed(2)}</span>
               </p>
               <p>
-                  <span>Shipping: </span>
-                  <span>${shippingTotal.toFixed(2)}</span>
+                <span>Shipping: </span>
+                <span>${shippingTotal.toFixed(2)}</span>
               </p>
               <p>
-                  <span>Total before tax: </span>
-                  <span>${beforeTax.toFixed(2)}</span>
+                <span>Total before tax: </span>
+                <span>${beforeTax.toFixed(2)}</span>
               </p>
               <p>
-                  <span>Tax to be collected: </span>
-                  <span>${taxCollected.toFixed(2)}</span>
+                <span>Tax to be collected: </span>
+                <span>${taxCollected.toFixed(2)}</span>
               </p>
               <p>
-                  <span id="total-text">Order total: </span>
-                  <span id="total-amount">${orderTotal.toFixed(2)}</span>
+                <span id="total-text">Order total: </span>
+                <span id="total-amount">${orderTotal.toFixed(2)}</span>
               </p>
               <button>
                 <Link to="/order">Checkout</Link>
@@ -164,7 +199,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
     updateLineItem: (book, quantity) =>
       dispatch(updateLineItem(book, quantity, history)),
     deleteLineItem: (book, qtyZero) =>
-      dispatch(deleteLineItem(book, qtyZero, history)) 
+      dispatch(deleteLineItem(book, qtyZero, history)),
   };
 };
 

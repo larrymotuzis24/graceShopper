@@ -592,3 +592,53 @@ button#btn-avatar{
   background-color: black;
   color: white;
 }
+
+div#shipping-address{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div#shipping-address label{
+  font-weight: bold;
+}
+
+div#shipping-address > *{
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+div#user-address h2{
+  text-align: end;
+}
+
+div#user-address{
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+div#user-address form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 2px grey;
+}
+
+div#user-address form label{
+  font-weight: bold;
+}
+
+div#user-address form input{
+  height: 2.3em;
+  text-indent: 5px;
+  width: 350px;
+  margin-bottom: 0%;
+}
+
+div#user-address form button{
+  background-color: black;
+  color: white;
+  margin: 1rem;
+}

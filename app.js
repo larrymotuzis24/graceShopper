@@ -2,7 +2,7 @@ require('dotenv').config;
 const express = require('express');
 const app = express();
 app.use(express.json({limit: "50mb"}));
-const { User, Product } = require('./db');
+const { User, Product, State } = require('./db');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -84,6 +84,17 @@ app.post('/users', async(req, res) => {
 app.get('/users', async(req, res) => {
   try {
     res.send(await User.findAll())
+  }
+  catch(err){
+    console.log(err)
+  }
+});
+
+app.get('/api/states', async(req, res) => {
+  try {
+    res.send(await State.findAll({
+      order: [['name']]
+    }))
   }
   catch(err){
     console.log(err)
