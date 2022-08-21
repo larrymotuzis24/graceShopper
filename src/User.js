@@ -47,6 +47,7 @@ class User extends Component {
               <Link to="/user">Account Details</Link>
               <Link to="/editUser">Edit Personal Information</Link>
               <Link to="/passwordUser">Change Password</Link>
+              <Link to="/addressUser">Add a new Shipping Address</Link>
             </div>
             {path === "/user" ? (
               <div className="user-personal-info">
