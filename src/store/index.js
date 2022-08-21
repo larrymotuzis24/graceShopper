@@ -6,13 +6,16 @@ import view from './view';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import states from './states';
-import users from './users'
+import categories from './categories';
+import users from './users';
+
 const reducer = combineReducers({
   auth,
   cart,
   books, 
   view,
   states,
+  categories,
   users
 });
 
@@ -24,4 +27,5 @@ export * from './auth';
 export * from './cart';
 export * from './books';
 export * from './states';
+export * from './categories';
 export * from './users'

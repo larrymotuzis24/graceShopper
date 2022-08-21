@@ -7,7 +7,7 @@ import SearchBar from "./SearchBar";
 
 const Nav = (props) => {
     
-    const { auth, cart, logout, match, books } = props;
+    const { auth, cart, logout, match } = props;
     const view = match.params.view;
   return (
       <nav id="nav-var">

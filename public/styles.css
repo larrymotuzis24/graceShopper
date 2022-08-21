@@ -642,3 +642,11 @@ div#user-address form button{
   color: white;
   margin: 1rem;
 }
+
+div#books-category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  margin: 1rem;
+}
