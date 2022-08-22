@@ -30,7 +30,6 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.auth.id && this.props.auth.id) {
       this.props.fetchCart();
-      console.log('FETCH WISH')
       this.props.fetchWishList(this.props.auth);
     }
   }

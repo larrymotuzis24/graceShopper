@@ -62,7 +62,6 @@ app.put('/wish/:id', isLoggedIn, async(req, res, next)=> {
 
 app.get('/wish/:id', isLoggedIn ,async(req, res, next)=> {
   try {
-    console.log(req.params.id)
     res.send(await WishList.findAll({
       where: {
         userId: req.params.id

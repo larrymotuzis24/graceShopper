@@ -6,8 +6,6 @@ const WishList = (props) =>{
 
     const { wishList } = props;
 
-    console.log(wishList)
-
     return (
         <p>Coming Soon!</p>
     )

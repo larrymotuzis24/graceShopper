@@ -8,13 +8,11 @@ const wishList = (state = [], action) => {
     state = state.map(wishList => wishList.productId !== action.wishList.productId ? wishList : action.wishList );
     // state = [...state, action.wishList]
   }
-  console.log(state);
   return state;
 };
 
 export const fetchWishList = (user) => {
   return async (dispatch) => {
-      console.log(user);
     const response = await axios.get(`/api/orders/wish/${user.id}`, {
       headers: {
         authorization: window.localStorage.getItem("token"),
@@ -39,7 +37,6 @@ export const addToWishList = (user, book, quantity, history) => {
         },
       }
     );
-    console.log(response.data);
     dispatch({ type: "ADD_WISH_LIST", wishList: response.data });
     history.push("/books");
   };
