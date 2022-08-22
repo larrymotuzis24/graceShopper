@@ -74,20 +74,13 @@ app.get('/wish/:id', isLoggedIn ,async(req, res, next)=> {
   }
 });
 
-// app.put('/wish', isLoggedIn, async(req, res, next)=> {
-//   try {
-//     res.send(await req.user.addToWishList(req.body));
-//   }
-//   catch(ex){
-//     next(ex);
-//   }
-// });
 
-// app.get('/wish', isLoggedIn, async(req, res, next)=> {
-//   try {
-//     res.send(await req.user.getWishList());
-//   }
-//   catch(ex){
-//     next(ex);
-//   }
-// });
+app.delete('/wish/:id', isLoggedIn, async(req, res, next) =>{
+  try {
+    const wishList = await WishList.findByPk(req.params.id);
+    await wishList.destroy();
+    res.sendStatus(204);
+  } catch (ex) {
+    next(ex);
+  }
+})
