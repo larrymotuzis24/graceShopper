@@ -97,6 +97,24 @@ app.delete('/users/:id', async(req, res) => {
   }
 })
 
+app.post('/products', async(req, res)=> {
+  try {
+    const product = await Product.create(req.body)
+    res.send(product)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+app.post('/createUser', async(req, res)=> {
+  try {
+    const user = await User.create(req.body)
+    res.send(user)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 app.post('/users', async(req, res) => {
   const existingUser = await User.findOne({
     where: {

@@ -11,38 +11,28 @@ import Badge from 'react-bootstrap/Badge';
 import DeleteUserModal from './DeleteUserModal'
 import DeleteProductModal from './DeleteProductModal'
 import UpdateProduct from './UpdateProduct'
-
+import AddProduct from './AddProduct'
 
 class IsAdminPanel extends Component {
  constructor(){
   super()
   this.state = {
-    theUsers: '',
-    books: ''
   }
  }
 
  componentDidMount(){
   try {
     this.props.load()
-    this.setState({ theUsers: this.props.users })
-    this.setState({ books: this.props.books })
+    
   }
   catch(err){
       console.log(err)
   }
 }
-componentDidUpdate(prevProps){
-  if (prevProps.users.length !== this.props.users.length){
-    this.setState({ theUsers: this.props.users })
-  }
-  if (prevProps.books.length === 0 && this.props.books.length > 0){
-    this.setState({ books: this.props.books })
-  }
-}
+
   render() {
     const path = this.props.pathname
-    const amount =  this.state.theUsers.length
+    const amount =  this.props.users.length
     const { books } = this.props.books
     return (
       <div>
@@ -143,6 +133,12 @@ componentDidUpdate(prevProps){
                 }
               </tbody>
             </Table>
+            </Tab>
+            <Tab eventKey="Actions"title={
+                  <React.Fragment>
+                    <AddProduct />
+                  </React.Fragment>
+                }>
             </Tab>
           </Tabs>
           </div>
