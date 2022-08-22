@@ -14,7 +14,7 @@ const NavBar = (props) => {
   const { auth, cart, logout, match } = props;
   const view = match.params.view;
   return (
-    <Navbar bg="white" expand="lg" className="sticky-top">
+    <Navbar bg="white" expand="lg" className="sticky-top mb-3">
       <Container
         style={{
           display: 'flex',

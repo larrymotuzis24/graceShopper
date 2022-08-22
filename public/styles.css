@@ -159,10 +159,6 @@ div#edit-user-password form button {
   margin: 1rem;
 }
 
-div#books-page h2 {
-  text-align: center;
-}
-
 div#books-page h2.user-name {
   text-align: end;
 }
@@ -170,50 +166,6 @@ div#books-page h2.user-name {
 div#order-page h2.checkout-title {
   text-align: center;
   margin: 2.5rem;
-}
-
-div#books {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-div.book-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: calc(100% / 4 - 1rem);
-  padding: 1rem;
-  margin: 1rem;
-  border: solid 2px grey;
-}
-
-div.book-info button a {
-  color: white;
-  text-decoration: none;
-}
-
-div.book-info button {
-  background-color: black;
-  color: white;
-  margin: 1rem;
-}
-
-div.book-info > * {
-  padding: 0.25rem;
-  margin: 0.25rem;
-}
-
-img.photo-books {
-  width: 50%;
-  height: 65%;
-  border-radius: 20%;
-}
-
-span {
-  font-weight: bold;
 }
 
 nav#page-list {
@@ -240,47 +192,8 @@ ul#pages li.pageSelected a {
   color: black;
 }
 
-div#book {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  margin: 1rem;
-}
-
-div#book h2 {
-  text-align: end;
-}
-
-div#book-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  margin: 5rem;
-  border: solid 2px grey;
-  border-width: 1px;
-}
-
-div#book-info button {
-  background-color: black;
-  color: white;
-  margin: 1rem;
-}
-
-div#book-info > * {
-  padding: 0.5rem;
-  margin: 0.5rem;
-}
-
-img.photo-book {
-  width: 15%;
-  height: 15%;
-  border-radius: 20%;
-}
-
 p {
-  font-size: 18px;
+  margin: 0;
 }
 
 span#stock-left {
@@ -548,16 +461,6 @@ div#books-category {
   align-items: center;
   padding: 2rem;
   margin: 1rem;
-}
-
-div#review-book {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-div#review-book h3 {
-  padding: 2rem;
 }
 
 span.review {
