@@ -42,6 +42,28 @@ app.get('/api/books', async(req, res, next) => {
     }
 });
 
+app.delete('/products/:id', async(req, res) => {
+  try {
+    const product = await Product.findByPk(req.params.id)
+    await product.destroy()
+    res.sendStatus(204)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
+app.put('/products/:id', async(req, res) => {
+  try {
+    const product = await Product.findByPk(req.params.id)
+    await product.update(req.body)
+    res.send(product)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
+
 app.put('/api/users/:id', isLoggedIn, async(req, res, next) =>{
   try {
     const user = await User.findByPk(req.params.id);
@@ -65,6 +87,16 @@ app.put('/api/users/:id', isLoggedIn, async(req, res, next) =>{
   }
 })
 
+app.delete('/users/:id', async(req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id)
+    await user.destroy()
+    res.sendStatus(204)
+  }
+  catch(err){
+    console.log(err)
+  }
+})
 
 app.post('/users', async(req, res) => {
   const existingUser = await User.findOne({
