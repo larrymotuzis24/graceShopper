@@ -1,13 +1,19 @@
+require('dotenv').config;
 const express = require('express');
 const app = express();
-app.use(express.json());
-const { User, Product } = require('./db');
+app.use(express.json({limit: "50mb"}));
+const { User, Product, State, ProductCategory } = require('./db');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
+const Stripe = require('stripe');
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 app.use('/dist', express.static('dist'));
 
 app.use('/public', express.static('public'));
+
+app.use(cors());
 
 
 const isLoggedIn = async(req, res, next)=> {
@@ -27,7 +33,9 @@ app.use('/api/sessions', require('./routes/sessions'));
 
 app.get('/api/books', async(req, res, next) => {
     try{
-      res.send(await Product.findAll())
+      res.send(await Product.findAll({
+        order: [['title']]
+      }))
     }
     catch(ex){
       next(ex)
@@ -80,7 +88,58 @@ app.get('/users', async(req, res) => {
   catch(err){
     console.log(err)
   }
+});
+
+app.put('/users/update/:id', async (req, res) => {
+  try{
+    const user = await User.findByPk(req.params.id)
+    await user.update(req.body)
+    res.send(user)
+  }
+  catch(err){
+    console.log(err)
+  }
 })
+
+app.get('/api/states', async(req, res) => {
+  try {
+    res.send(await State.findAll({
+      order: [['name']]
+    }))
+  }
+  catch(err){
+    console.log(err)
+  }
+});
+
+app.get('/api/categories', async(req, res) => {
+  try {
+    res.send(await ProductCategory.findAll({
+      order: [['category']]
+    }))
+  }
+  catch(err){
+    console.log(err)
+  }
+});
+
+app.post('/pay', async(req, res, next) => {
+    try{
+        const { name }  = req.body;
+        if (!name) return res.status(400).json({message: 'Please enter a name'});
+        const paymentIntent = await stripe.paymentIntent.create({
+          currency:'USD',
+          payment_method_types: ['card'],
+          metadata: {name}
+        })
+        const clientSecret = paymentIntent.client_secret;
+        res.json({message: 'payment initiated', clientSecret })
+    }
+    catch(ex){
+      console.log(err)
+      res.status(500).json({ messegae: 'Internal server error '})
+    }
+});
 
 app.use((err, req, res, next)=> {
   console.log(err);

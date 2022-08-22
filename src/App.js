@@ -1,6 +1,13 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout, fetchBooks } from './store';
+import {
+  fetchCart,
+  exchangeToken,
+  logout,
+  fetchBooks,
+  fetchStates,
+  fetchCategories,
+} from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Cart from './Cart';
@@ -12,6 +19,9 @@ import UserEdit from './UserEdit';
 import UserEditPwd from './UserEditPwd';
 import Book from './Book';
 import Footer from './Footer';
+import Order from './Order';
+import UserAddress from './UserAddress';
+import IsAdminPanel from './IsAdminPanel';
 
 class App extends React.Component {
   componentDidMount() {
@@ -20,6 +30,8 @@ class App extends React.Component {
     });
     this.props.exchangeToken();
     this.props.fetchBooks();
+    this.props.fetchStates();
+    this.props.fetchCategories();
   }
   componentDidUpdate(prevProps) {
     if (!prevProps.auth.id && this.props.auth.id) {
@@ -38,9 +50,14 @@ class App extends React.Component {
             <Route path="/user" component={User} />
             <Route path="/editUser" component={UserEdit} />
             <Route path="/passwordUser" component={UserEditPwd} />
+            <Route path="/addressUser" component={UserAddress} />
             <Route exact path="/books" component={Books} />
+            {auth.isAdmin ? (
+              <Route path="/adminPriveldges" component={IsAdminPanel} />
+            ) : null}
             <Route path="/books/page/:id" component={Books} />
             <Route exact path="/books/:id" component={Book} />
+            <Route path="/order" component={Order} />
           </Fragment>
         ) : (
           <Fragment>
@@ -54,6 +71,7 @@ class App extends React.Component {
             <Route exact path="/books" component={Books} />
             <Route path="/books/page/:id" component={Books} />
             <Route exact path="/books/:id" component={Book} />
+            <Route path="/cart" component={Cart} />
           </Fragment>
         ) : null}
         <Footer />
@@ -64,6 +82,8 @@ class App extends React.Component {
 const mapDispatch = (dispatch) => {
   return {
     fetchBooks: () => dispatch(fetchBooks()),
+    fetchStates: () => dispatch(fetchStates()),
+    fetchCategories: () => dispatch(fetchCategories()),
     exchangeToken: () => dispatch(exchangeToken()),
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),

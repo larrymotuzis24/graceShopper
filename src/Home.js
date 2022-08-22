@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import FeaturedCarousel from './FeaturedCarousel';
-import StarRatingDisplay from './StarRatingDisplay';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
+import SearchBar from './SearchBar';
+import StarRatingDisplay from './StarRatingDisplay';
 
 const Home = ({ books, auth }) => {
   const topBooks = books.filter((book) => (book.rating = 5));
@@ -38,6 +39,17 @@ const Home = ({ books, auth }) => {
                     <Card.Title>{book.title}</Card.Title>
                     <Card.Text>{book.author}</Card.Text>
                     <Card.Text>{book.price}</Card.Text>
+                    {/* <Card.Text>
+                    
+                          {book.inventory >= 1 && book.inventory <= 10 ? (
+                          <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
+                          ) : book.inventory > 10 ? (
+                          <span id="in-stock">In Stock</span>
+                          ) : (
+                          <span id="out-stock">Out of Stock</span>
+                            )}
+                        
+                    </Card.Text> */}
                   </Card.Body>
                 </Card>
               </Link>
@@ -56,35 +68,7 @@ const Home = ({ books, auth }) => {
           <div class="col card">2</div>
           <div class="col card">3</div> */}
         </div>
-        {/* <div class="row">
-          <div class="col card">4</div>
-          <div class="col card">5</div>
-          <div class="col card">6</div>
-        </div> */}
       </div>
-      {/* <div className="">
-        {topBooks.map((book) => {
-          return (
-            <Card style={{ width: '18rem' }}>
-              <Card.Img variant="top" src={book.imageUrl} />
-              <Card.Body>
-                <Card.Title>{book.title}</Card.Title>
-                <Card.Text>{book.author}</Card.Text>
-                <Button variant="primary">Learn More</Button>
-              </Card.Body>
-            </Card>
-            // <div key={book.id} className="homeBookDiv">
-            //   <img src={book.imageUrl} />
-            //   <h5>
-            //     {' '}
-            //     <Link to={`books/${book.id}`}> {book.title} </Link>
-            //   </h5>
-            //   <p> {book.author}</p>
-            //   <StarRatingDisplay book={book} />
-            // </div>
-          );
-        })}
-      </div> */}
     </Container>
   );
 };

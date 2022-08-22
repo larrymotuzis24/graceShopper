@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-const SeachBar = () => {
+const SearchBar = ({ books }) => {
+  const [query, setQuery] = useState('');
   return (
-    <div>
-      <input id="searchBarInput" placeholder="Find What Your Looking for" />
+    <div className="dropdown">
+      <div id="myDropdown" className="dropdown-content">
+        <input
+          className="searchbar"
+          id="searchbar-input"
+          placeholder="search by title"
+          onChange={(e) => setQuery(e.target.value)}
+        />
+
+        {books
+          .filter((book) => {
+            if (query === '') {
+              return book;
+            } else if (book.title.toLowerCase().includes(query.toLowerCase())) {
+              return book;
+            }
+          })
+          .map((book) => {
+            if (query !== '') {
+              return (
+                <p key={book.id}>
+                  {' '}
+                  <Link to={`/books/${book.id}`}> {book.title} </Link>{' '}
+                </p>
+              );
+            }
+          })}
+      </div>
     </div>
   );
 };
@@ -13,4 +41,8 @@ const mapStateToProps = (state) => {
   return state;
 };
 
-export default connect(mapStateToProps)(SeachBar);
+const mapDispatch = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatch)(SearchBar);

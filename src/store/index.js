@@ -5,12 +5,18 @@ import books from './books';
 import view from './view';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
+import states from './states';
+import categories from './categories';
+import users from './users';
 
 const reducer = combineReducers({
   auth,
   cart,
   books, 
-  view
+  view,
+  states,
+  categories,
+  users
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -20,3 +26,6 @@ export default store;
 export * from './auth';
 export * from './cart';
 export * from './books';
+export * from './states';
+export * from './categories';
+export * from './users'

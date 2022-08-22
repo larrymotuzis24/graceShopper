@@ -6,7 +6,12 @@
       "password": "moe_pw",
       "isAdmin": true,
       "email": "moe11@yahoo.com",
-      "address": "364 Shanahan Fork Burlington WV 94179"
+      "address": "364 Shanahan Fork Burlington WV 94179",
+      "secondaryAddress": [
+          "568 Texas Street Houston TX 77032",
+          "3345 Lakeway Dr Houston TX 77324",
+          "1902 Eagle Creek Ln Houston TX 77034"
+      ]
     },
     {
         "firstName": "Lucy",

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "category": "Coding"
+    },
+    {
+        "id": 2,
+        "category": "Romance Novel"
+    },
+    {
+        "id": 3,
+        "category": "Poetry"
+    },
+    {
+        "id": 4,
+        "category": "Fiction"
+    },
+    {
+        "id": 5,
+        "category": "Horror"
+    },
+    {
+        "id": 6,
+        "category": "Biography"
+    }
+]
