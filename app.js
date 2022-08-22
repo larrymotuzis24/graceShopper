@@ -179,7 +179,7 @@ app.post('/api/payment', cors(), async(req, res) => {
     try{
       const payment = await stripe.paymentIntents.create({
         amount, 
-        currency:'USD',
+        currency:'usd',
         description:'GraceShopper Bookerstore',
         payment_method:id,
         confirm: true      
