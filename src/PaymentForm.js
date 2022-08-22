@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import states from "./store/states";
 
 
 const CARD_OPTIONS = {
@@ -25,7 +26,9 @@ const CARD_OPTIONS = {
 }
 
 
-const PaymentForm = ({cart}) => {
+const PaymentForm = (props) => {
+   const orderTotal = Math.round(props.orderTotal * 100)
+   console.log(orderTotal)
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -42,7 +45,7 @@ const PaymentForm = ({cart}) => {
         try{
             const { id } = paymentMethod
             const response = await axios.post('/api/payment', {
-                amount:1000,
+                amount:orderTotal,
                 id
             })
 
@@ -71,7 +74,7 @@ const PaymentForm = ({cart}) => {
 
                 </div>
             </fieldset>
-            <button> Pay </button>
+            <button id='paymentBTN'> Pay </button>
         </form> 
         :
         <div>
@@ -83,8 +86,29 @@ const PaymentForm = ({cart}) => {
     )
 };
 
-const mapStateToProps = (state) => {
-    return state
-}
+
+
+const mapStateToProps = ({ auth, cart }) => {
+    const subTotal = cart.lineItems.reduce((accum, lineItem) => {
+      const qty = lineItem.quantity;
+      accum += qty * lineItem.product.price;
+      return accum;
+    }, 0);
+    const totalQty = cart.lineItems.reduce((accum, lineItem) => {
+      accum += lineItem.quantity;
+      return accum;
+    }, 0);
+    const shippingTotal = subTotal * 0.02;
+    const beforeTax = subTotal + shippingTotal;
+    const taxCollected = subTotal * 0.081;
+    const orderTotal = subTotal + shippingTotal + taxCollected;
+    return {
+      auth,
+      cart,
+      subTotal,
+      totalQty,
+      orderTotal
+    };
+  };
 
 export default connect(mapStateToProps)(PaymentForm)
