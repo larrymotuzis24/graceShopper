@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateLineItem, deleteLineItem } from "./store";
 import { Link } from "react-router-dom";
+import StripeContainer from "./StripeContainer";
 
 class Order extends Component {
 
@@ -73,6 +74,7 @@ class Order extends Component {
             <hr />
             <div id="payment-info">
               <h3>Payment Method</h3>
+              < StripeContainer />
             </div>
             <hr />
             <div id="review-order">
