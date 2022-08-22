@@ -1,13 +1,12 @@
 require('dotenv').config;
 const express = require('express');
 const app = express();
+const bcrypt = require('bcrypt');
+const stripe = require('stripe')('sk_test_51LY9OXEi9E0TRZFzdXz2VcsDGfpdGj8esyVkY5JxUsDlnBtPwivg08Ci6DtwnZ41kd2nL3TYQ30LpBWxKhK1Lh9800tkJxNAwB');
+const cors = require('cors');
 app.use(express.json({limit: "50mb"}));
 const { User, Product, State, ProductCategory, Review } = require('./db');
 const path = require('path');
-const bcrypt = require('bcrypt');
-const cors = require('cors');
-const Stripe = require('stripe');
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 app.use('/dist', express.static('dist'));
 
@@ -175,21 +174,28 @@ app.post('/api/reviews', isLoggedIn, async(req, res, next) => {
   }
 });
 
-app.post('/pay', async(req, res, next) => {
+app.post('/api/payment', cors(), async(req, res) => {
+  let { amount, id } = req.body;
     try{
-        const { name }  = req.body;
-        if (!name) return res.status(400).json({message: 'Please enter a name'});
-        const paymentIntent = await stripe.paymentIntent.create({
-          currency:'USD',
-          payment_method_types: ['card'],
-          metadata: {name}
-        })
-        const clientSecret = paymentIntent.client_secret;
-        res.json({message: 'payment initiated', clientSecret })
+      const payment = await stripe.paymentIntents.create({
+        amount, 
+        currency:'USD',
+        description:'GraceShopper Bookerstore',
+        payment_method:id,
+        confirm: true      
+       })
+       console.log('Payment', payment)
+       res.json({
+        message: 'payment Succesfull',
+        success:true
+       })
     }
     catch(ex){
-      console.log(err)
-      res.status(500).json({ messegae: 'Internal server error '})
+      console.log('error', ex)
+      res.json({
+        message:"payment failed", 
+        success:false
+      })
     }
 });
 

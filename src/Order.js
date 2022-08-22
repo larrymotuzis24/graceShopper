@@ -74,7 +74,7 @@ class Order extends Component {
             <hr />
             <div id="payment-info">
               <h3>Payment Method</h3>
-              < StripeContainer />
+              < StripeContainer orderTotal={orderTotal} />
             </div>
             <hr />
             <div id="review-order">
