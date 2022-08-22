@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { fetchCart, exchangeToken, logout, fetchBooks, fetchStates, fetchCategories } from './store';
+import { fetchCart, exchangeToken, logout, fetchBooks, fetchStates, fetchCategories, fetchWishList } from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
 import Cart from './Cart';
@@ -14,10 +14,11 @@ import Book from './Book';
 import Order from './Order';
 import UserAddress from './UserAddress';
 import IsAdminPanel from './IsAdminPanel'
+import WishList from './WishList';
 
 
 class App extends React.Component {
-  componentDidMount() {
+  componentDidMount(prevProps) {
     window.addEventListener('hashchange', ()=> {
       this.props.setView(window.location.hash.slice(1));
     })
@@ -29,6 +30,7 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.auth.id && this.props.auth.id) {
       this.props.fetchCart();
+      this.props.fetchWishList(this.props.auth);
     }
   }
   render() {
@@ -41,6 +43,7 @@ class App extends React.Component {
           auth.id ? (
             <Fragment>
               <Route path='/cart' component={ Cart } />
+              <Route path='/wishList' component={ WishList } />
               <Route path='/user' component={ User } />
               <Route path='/editUser' component={ UserEdit} />
               <Route path='/passwordUser' component={ UserEditPwd } />
@@ -81,6 +84,7 @@ const mapDispatch = (dispatch) => {
     exchangeToken: () => dispatch(exchangeToken()),
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),
+    fetchWishList: (user) => dispatch(fetchWishList(user)),
     setView: ( view ) => {
       dispatch({ type:'SET_VIEW', view})
     }

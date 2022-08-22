@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import StarRatingDisplay from "./StarRatingDisplay";
-import { addToCart, fetchReviews, fetchUsers } from "./store";
+import { addToCart, addToWishList, fetchReviews, fetchUsers } from "./store";
 
 class Book extends Component {
   constructor() {
@@ -25,7 +25,7 @@ class Book extends Component {
   }
 
   render() {
-    const { book, auth, addToCart, reviews, users } = this.props;
+    const { book, auth, addToCart, reviews, users, addToWishList } = this.props;
     const { quantity } = this.state;
     const { onChange } = this;
     const reviewsBook =
@@ -83,6 +83,9 @@ class Book extends Component {
           <button onClick={() => addToCart(book, quantity * 1)}>
             Add to Cart
           </button>
+          <button onClick={() => addToWishList(auth, book, quantity * 1)}>
+            Add to Wishlist
+          </button>
         </div>
         <div id="review-book">
           <h3>Reviews</h3>
@@ -137,6 +140,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
     addToCart: (book, quantity) => {
       dispatch(addToCart(book, quantity, history));
     },
+    addToWishList: (user, book, quantity) => dispatch(addToWishList(user, book, quantity, history)),
     fetchReviews: () => dispatch(fetchReviews()),
     fetchUsers: () => dispatch(fetchUsers())
   };

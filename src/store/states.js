@@ -8,9 +8,9 @@ const states = (state = [], action)=> {
 };
 
 export const fetchStates = () => {
-    return async(dispactch) => {
+    return async(dispatch) => {
        const states = (await axios.get('/api/states')).data;
-       dispactch({type: 'SET_STATES', states})
+       dispatch({type: 'SET_STATES', states})
     }
 };
 
