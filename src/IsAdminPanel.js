@@ -86,7 +86,7 @@ componentDidUpdate(prevProps){
                 : 
                 <>
                 <tr>
-                  <td>No users to show here</td>
+                  <td>No users to show</td>
                   </tr>
                 </>
               }
