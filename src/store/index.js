@@ -8,6 +8,8 @@ import logger from 'redux-logger';
 import states from './states';
 import categories from './categories';
 import users from './users';
+import reviews from './reviews';
+import wishList from './wishList';
 
 const reducer = combineReducers({
   auth,
@@ -16,7 +18,9 @@ const reducer = combineReducers({
   view,
   states,
   categories,
-  users
+  users,
+  reviews,
+  wishList
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -28,4 +32,6 @@ export * from './cart';
 export * from './books';
 export * from './states';
 export * from './categories';
-export * from './users'
+export * from './users';
+export * from './reviews';
+export * from './wishList';

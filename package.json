@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.7.3",
     "react-bootstrap": "^2.5.0",
+    "react-icons": "^4.4.0",
     "react-rating-stars-component": "^2.2.0",
     "react-stars": "^2.2.5",
     "redux-logger": "^3.0.6",

@@ -3,72 +3,156 @@ import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux'
 import {fetchUsers} from './store'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import  UpdateUserPermissionModal  from './UpdateUserPermissionModal'
+import UpdateUser  from './UpdateUserPermissionModal'
 import axios from 'axios'
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import Badge from 'react-bootstrap/Badge';
+import DeleteUserModal from './DeleteUserModal'
+import DeleteProductModal from './DeleteProductModal'
+import UpdateProduct from './UpdateProduct'
+import AddProduct from './AddProduct'
+
 class IsAdminPanel extends Component {
  constructor(){
   super()
   this.state = {
-
   }
  }
 
  componentDidMount(){
   try {
     this.props.load()
+    
   }
   catch(err){
       console.log(err)
   }
 }
+
   render() {
+    const path = this.props.pathname
+    const amount =  this.props.users.length
+    const { books } = this.props.books
     return (
       <div>
         <div> 
-            <h4>  Users {this.props.users.length -1} </h4> 
-        </div>
-        <Table bordered hover>
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email </th>
-          <th>Admin</th>
-          <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update Permission </th>
-        </tr>
-      </thead>
-      <tbody>
-          {this.props.users.length > 1 ? 
-          this.props.users.map(user => {
-            return (
-                
-                 <tr key={user.id}>
-                  <td>{user.firstName}</td>
-                  <td>{user.lastName}</td>
-                  <td>{user.email}</td>
-                  <td>{user.isAdmin ? 'True' : 'False'}</td>
-                  <td style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                    <UpdateUserPermissionModal user={user.id}/>
-                  </td>
+          <div>
+            <Tabs
+              defaultActiveKey="Users"
+              className="mb-3"
+            >
+              <Tab 
+                eventKey="Users" 
+                title={
+                  <React.Fragment>
+                    Users
+                    <Badge style={{ marginLeft: '7px'}}variant='light'>{amount}</Badge>
+                  </React.Fragment>
+                }>
+          <Table hover style={{marginTop: '-17px', 
+                    backgroundColor: 'white', 
+                    borderLeft: 'thin solid #dadce5',
+                    borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
+                  }}>
+            <thead style={{backgroundColor: '#D3D3D3'}}>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email </th>
+                <th>Adminnß</th>
+                <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
+              </tr>
+            </thead>
+            <tbody>
+                {this.props.users.length > 1 ? 
+                this.props.users.map(user => {
+                  return (
+                      <tr key={user.id}>
+                        <td>{user.firstName}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.email}</td>
+                        <td>{user.isAdmin ? 'True' : 'False'}</td>
+                        <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
+                          <UpdateUser user={user}/>
+                          <DeleteUserModal user={user.firstName} userId={user.id}/>
+                        </td>
+                        </tr>
+                  )
+                })
+                : 
+                <>
+                <tr>
+                  <td>No users to show</td>
                   </tr>
-            )
-          })
-          : 
-          <>
-          <tr>
-            <td>No users to show</td>
-            </tr>
-          </>
-        }
-      </tbody>
-    </Table>
+                </>
+              }
+            </tbody>
+          </Table>
+              </Tab>
+              <Tab eventKey="Products"title={
+                  <React.Fragment>
+                    Products
+                    <Badge style={{ marginLeft: '7px'}}variant='light'>{this.props.books.length}</Badge>
+                  </React.Fragment>
+                }>
+              <Table hover style={{marginTop: '-17px', 
+                    backgroundColor: 'white', 
+                    borderLeft: 'thin solid #dadce5',
+                    borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
+                  }}>
+              <thead style={{backgroundColor: '#D3D3D3'}}>
+                <tr>
+                  <th>Title</th>
+                  <th>Author </th>
+                  <th>Price</th>
+                  <th style={{textAlign: 'center', verticalAlign: 'middle'}}>Update </th>
+                </tr>
+              </thead>
+              <tbody>
+              {this.props.books.length > 1 ? 
+                  this.props.books.map(book => {
+                    return (
+                        <tr key={book.id}>
+                          <td>{book.title}</td>
+                          <td>{book.author}</td>
+                          <td>{book.price}</td>
+                          <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
+                            <UpdateProduct product={book}/>
+                            <DeleteProductModal product={book}/>
+                          </td>
+                        </tr>
+                    )
+                  })
+                  : 
+                  <>
+                  <tr>
+                    <td>No users to show</td>
+                    </tr>
+                  </>
+                }
+              </tbody>
+            </Table>
+            </Tab>
+            <Tab eventKey="Actions"title={
+                  <React.Fragment>
+                    <AddProduct />
+                  </React.Fragment>
+                }>
+            </Tab>
+          </Tabs>
+          </div>
+        </div>
       </div>
     )
   }
 }
-const mapState = (state) => {
+const mapState = (state, otherParams) => {
+  const pathname = otherParams.match.path
   return {
-    users: state.users || {}
+    users: state.users || {},
+    books: state.books,
+    pathname
   }
 }
 

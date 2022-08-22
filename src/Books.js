@@ -148,7 +148,7 @@ class Books extends Component {
                   <Link to={`/books/${book.id}`}>{book.title}</Link>
                 </h3>
                 <p>
-                  <span>Author:</span> {book.publisher}
+                  <span>Author:</span> {book.author}
                 </p>
                 <p>
                   <span>Year:</span> {new Date(book.year).getFullYear()}

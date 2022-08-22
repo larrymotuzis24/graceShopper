@@ -10,6 +10,7 @@ app.post('/', async(req, res, next)=> {
     const credentials = {
       username: req.body.username, 
       password: req.body.password
+  
     }
     res.send({ token: await User.authenticate(credentials)});
   }

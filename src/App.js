@@ -7,6 +7,7 @@ import {
   fetchBooks,
   fetchStates,
   fetchCategories,
+  fetchWishList,
 } from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
@@ -21,10 +22,12 @@ import Book from './Book';
 import Footer from './Footer';
 import Order from './Order';
 import UserAddress from './UserAddress';
+
 import IsAdminPanel from './IsAdminPanel';
+import WishList from './WishList';
 
 class App extends React.Component {
-  componentDidMount() {
+  componentDidMount(prevProps) {
     window.addEventListener('hashchange', () => {
       this.props.setView(window.location.hash.slice(1));
     });
@@ -36,17 +39,19 @@ class App extends React.Component {
   componentDidUpdate(prevProps) {
     if (!prevProps.auth.id && this.props.auth.id) {
       this.props.fetchCart();
+      this.props.fetchWishList(this.props.auth);
     }
   }
   render() {
     const { auth } = this.props;
     return (
       <main>
-        <Route path="/:view?" component={NavBar} />
+        <Route path="/:view?" component={Nav} />
         <Route path="/" exact component={Home} />
         {auth.id ? (
           <Fragment>
             <Route path="/cart" component={Cart} />
+            <Route path="/wishList" component={WishList} />
             <Route path="/user" component={User} />
             <Route path="/editUser" component={UserEdit} />
             <Route path="/passwordUser" component={UserEditPwd} />
@@ -87,6 +92,8 @@ const mapDispatch = (dispatch) => {
     exchangeToken: () => dispatch(exchangeToken()),
     logout: () => dispatch(logout()),
     fetchCart: () => dispatch(fetchCart()),
+
+    fetchWishList: (user) => dispatch(fetchWishList(user)),
     setView: (view) => {
       dispatch({ type: 'SET_VIEW', view });
     },
