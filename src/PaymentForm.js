@@ -30,7 +30,7 @@ export default function PaymentForm() {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        cont [error, paymentmethod ] = await stripe.createPaymentMethod({
+        const [error, paymentmethod ] = await stripe.createPaymentMethod({
             type:'card', 
             card: elements.getElement(CardElement)
         })
