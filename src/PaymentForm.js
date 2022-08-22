@@ -1,6 +1,8 @@
 import React, { useState} from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+
 
 const CARD_OPTIONS = {
 	iconStyle: "solid",
@@ -23,39 +25,40 @@ const CARD_OPTIONS = {
 }
 
 
-export default function PaymentForm() {
+const PaymentForm = ({cart}) => {
+
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
 
     const handleSubmit = async(e) => {
-        e.preventDefault();
-        const [error, paymentmethod ] = await stripe.createPaymentMethod({
-            type:'card', 
+        e.preventDefault()
+        const {error, paymentMethod } = await stripe.createPaymentMethod({
+            type: "card",
             card: elements.getElement(CardElement)
         })
-
   
     if(!error){
         try{
-            const { id } = paymentmethod
-            const response = await axios.post('/payment', {
+            const { id } = paymentMethod
+            const response = await axios.post('/api/payment', {
                 amount:1000,
                 id
             })
+
             if(response.data.success){
                 console.log('succesful payment')
                 setSuccess(true)
             }
         }
-        catch(ex){
+        catch(error){
             console.log('error', error)
         }
 
     }
 
     else {  
-        console.log(eroor.message)
+        console.log(error.message)
     }
 }
 
@@ -78,4 +81,10 @@ export default function PaymentForm() {
 
         </>
     )
+};
+
+const mapStateToProps = (state) => {
+    return state
 }
+
+export default connect(mapStateToProps)(PaymentForm)
