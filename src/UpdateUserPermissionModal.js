@@ -25,6 +25,7 @@ class UpdateUserPermissionModal extends Component {
         handleShow () {
          this.setState({ show: true })
         }
+  
       render() {
         const { show } = this.state
         const { handleClose, handleShow, confirm } = this
@@ -39,7 +40,7 @@ class UpdateUserPermissionModal extends Component {
                              marginTop: '0px',
                              marginLeft: '12px'
                         }}>
-                             <FontAwesomeIcon style={{display: 'inlineblock'}}icon="fa-solid fa-highlighter" /> 
+                             <FontAwesomeIcon style={{display: 'inlineblock'}} icon="fa-solid fa-highlighter" /> 
                          </div>
                     </div>
                     <Modal show={show} onHide={handleClose}>
@@ -69,7 +70,7 @@ class UpdateUserPermissionModal extends Component {
 
 const mapState = (state) => {
     return {
-
+        users: state.users
     }
 }
 const mapDispatch = (dispatch) => {
