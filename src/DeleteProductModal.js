@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updateUserRole } from './store'
-class UpdateUser extends Component {
+import { updateUserRole, deleteProduct } from './store'
+class DeleteProductModal extends Component {
     constructor(){
         super()
         this.state = {
@@ -16,7 +16,7 @@ class UpdateUser extends Component {
         }
         confirm(){
             const user = this.props.user
-            this.props.update(user)
+            this.props.delete(this.props.product.id)
             this.handleClose()
         }
         handleClose () {
@@ -40,21 +40,18 @@ class UpdateUser extends Component {
                              marginTop: '0px',
                              marginLeft: '12px'
                         }}>
-                             <FontAwesomeIcon style={{display: 'inlineblock'}} icon="fa-solid fa-highlighter" /> 
+                             <FontAwesomeIcon style={{display: 'inlineblock'}} icon="fa-solid fa-trash" /> 
                          </div>
                     </div>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header>
-                        <Modal.Title>Update {this.props.user}</Modal.Title>
+                        <Modal.Title>Delete {this.props.product.title}?</Modal.Title>
                         <button onClick={() => this.setState({ show: !show })}> X </button>
                         </Modal.Header>
                         <Modal.Body>
-                                <form>
-                                    <input type='text'  placeholder='First Name' style={{marginBottom: '1%'}}/>
-                                    <input type='text' placeholder='Last Name' style={{marginBottom: '1%'}} />
-                                    <input type='text' placeholder='Email' style={{marginBottom: '1%'}} />
-                                    <input type='text' placeholder='Admin'  style={{marginBottom: '1%'}}/>
-                                </form>
+                                <div>
+                                    Are you sure you want to delete {this.props.product.title}? This action cannot be undone.
+                                </div>
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
@@ -80,7 +77,10 @@ const mapDispatch = (dispatch) => {
     return {
         update: (user) => {
             dispatch(updateUserRole(user))
+        },
+        delete: (num) => {
+            dispatch(deleteProduct(num))
         }
     }
 }
-export default connect(mapState, mapDispatch)(UpdateUser)
+export default connect(mapState, mapDispatch)(DeleteProductModal)
