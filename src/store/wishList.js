@@ -8,6 +8,9 @@ const wishList = (state = [], action) => {
     state = state.map(wishList => wishList.productId !== action.wishList.productId ? wishList : action.wishList );
     // state = [...state, action.wishList]
   }
+  if(action.type === 'DESTROY_ITEM_WISH_LIST'){
+    state  = state.filter(wishList => wishList.id !== action.wishList.id)
+  }
   return state;
 };
 
@@ -47,5 +50,17 @@ export const addToWishList = (user, book, quantity, history) => {
     history.push("/books");
   };
 };
+
+export const deleteItemFromWishList = (wishList, history) =>{
+  return async (dispatch) =>{
+    await axios.delete(`/api/orders/wish/${wishList.id}`, {
+      headers: {
+        authorization: window.localStorage.getItem("token"),
+      },
+    });
+    dispatch({type: 'DESTROY_ITEM_WISH_LIST', wishList});
+    history.push("/wishList");
+  }
+}
 
 export default wishList;
