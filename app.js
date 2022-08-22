@@ -93,8 +93,8 @@ app.get('/users', async(req, res) => {
 app.put('/users/update/:id', async (req, res) => {
   try{
     const user = await User.findByPk(req.params.id)
-    await user.update(req.body)
-    res.send(user)
+    const newuser = await user.update(req.body)
+    res.send(newuser)
   }
   catch(err){
     console.log(err)

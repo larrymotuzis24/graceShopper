@@ -3,6 +3,10 @@ body{
   padding: 1rem;
 }
 
+#uncontrolled-tab-example-tab-Users{
+  border-bottom: 2px solid red
+}
+
 form {
   display: flex;
   flex-direction: column;
