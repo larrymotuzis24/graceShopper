@@ -14,13 +14,9 @@ const users = (state = [], action)=> {
     return state;
 };
 
-export const updateUserRole = (user) => {
+export const updateUser = (user) => {
     return async(dispatch) => {
-        const response = await axios.put(`/users/update/${user}`, { isAdmin: true }, {
-          headers: {
-            authorization: window.localStorage.getItem("token"),
-          },
-        }) 
+        const response = await axios.put(`/users/update/${user.id}`, user)
         const updated = response.data
         dispatch({ type: "UPDATE_USER", updated })
     }

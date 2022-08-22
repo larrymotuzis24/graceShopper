@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updateUserRole, deleteProduct } from './store'
+import { deleteProduct } from './store'
 class DeleteProductModal extends Component {
     constructor(){
         super()
@@ -75,9 +75,6 @@ const mapState = (state) => {
 }
 const mapDispatch = (dispatch) => {
     return {
-        update: (user) => {
-            dispatch(updateUserRole(user))
-        },
         delete: (num) => {
             dispatch(deleteProduct(num))
         }

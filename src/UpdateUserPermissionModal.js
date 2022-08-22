@@ -3,21 +3,35 @@ import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updateUserRole } from './store'
+import { updateUser } from './store'
+import Form from 'react-bootstrap/Form';
+
+
 class UpdateUser extends Component {
     constructor(){
         super()
         this.state = {
             show: false,
+            firstName: '',
+            lastName: '',
+            email: '',
+            isAdmin: '',
+            checked: false
         },
             this.handleClose = this.handleClose.bind(this),
             this.handleShow = this.handleShow.bind(this),
-            this.confirm = this.confirm.bind(this)
+            this.confirm = this.confirm.bind(this),
+            this.handleChange = this.handleChange.bind(this)
         }
-        confirm(){
-            const user = this.props.user
+        confirm(e){
+            e.preventDefault()
+            const user = {id: this.props.user.id, firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, isAdmin: true}
             this.props.update(user)
+            this.setState({ firstName: '', lastName: '', email: '', checked: false })
             this.handleClose()
+        }
+        handleChange(){
+            this.setState({ checked: true})
         }
         handleClose () {
             this.setState({ show: false })
@@ -28,7 +42,7 @@ class UpdateUser extends Component {
   
       render() {
         const { show } = this.state
-        const { handleClose, handleShow, confirm } = this
+        const { handleClose, handleShow, confirm, handleChange } = this
         return (
           <div>
                <>
@@ -45,22 +59,30 @@ class UpdateUser extends Component {
                     </div>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header>
-                        <Modal.Title>Update {this.props.user}</Modal.Title>
+                        <Modal.Title>Update {this.props.user.firstName}</Modal.Title>
                         <button onClick={() => this.setState({ show: !show })}> X </button>
                         </Modal.Header>
                         <Modal.Body>
                                 <form>
-                                    <input type='text'  placeholder='First Name' style={{marginBottom: '1%'}}/>
-                                    <input type='text' placeholder='Last Name' style={{marginBottom: '1%'}} />
-                                    <input type='text' placeholder='Email' style={{marginBottom: '1%'}} />
-                                    <input type='text' placeholder='Admin'  style={{marginBottom: '1%'}}/>
+                                    <input type='text'  placeholder='First Name' style={{marginBottom: '1%'}} onChange={(e)=> this.setState({ firstName: e.target.value })}/>
+                                    <input type='text' placeholder='Last Name' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ lastName: e.target.value })}/>
+                                    <input type='text' placeholder='Email' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ email: e.target.value })}/>
+                                    <div style={{display: 'flex'}}>
+                                    <Form.Check 
+                                            style={{marginLeft: '-3%'}}
+                                            type='checkbox'
+                                            id={`default-checkbox`}
+                                            label={`default checkbox`}
+                                            onChange={handleChange}
+                                        />
+                                    </div>
                                 </form>
                         </Modal.Body>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
-                        <Button variant="primary" onClick={()=> confirm()} >
+                        <Button variant="primary" onClick={(e)=> confirm(e)} >
                             Confirm
                         </Button>
                         </Modal.Footer>
@@ -79,7 +101,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
         update: (user) => {
-            dispatch(updateUserRole(user))
+            dispatch(updateUser(user))
         }
     }
 }
