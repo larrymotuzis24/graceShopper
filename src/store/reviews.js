@@ -11,9 +11,9 @@ const reviews = (state = [], action)=> {
 };  
   
 export const fetchReviews = () => {
-    return async(dispactch) => {
+    return async(dispatch) => {
        const reviews = (await axios.get('/api/reviews')).data;
-       dispactch({type: 'SET_REVIEWS', reviews});
+       dispatch({type: 'SET_REVIEWS', reviews});
     }
 };
 

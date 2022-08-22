@@ -8,9 +8,9 @@ const categories = (state = [], action)=> {
 };
 
 export const fetchCategories = () => {
-    return async(dispactch) => {
+    return async(dispatch) => {
        const categories = (await axios.get('/api/categories')).data;
-       dispactch({type: 'SET_CATEGORIES', categories})
+       dispatch({type: 'SET_CATEGORIES', categories})
     }
 };
 

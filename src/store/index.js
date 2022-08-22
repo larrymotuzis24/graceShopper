@@ -9,6 +9,7 @@ import states from './states';
 import categories from './categories';
 import users from './users';
 import reviews from './reviews';
+import wishList from './wishList';
 
 const reducer = combineReducers({
   auth,
@@ -18,7 +19,8 @@ const reducer = combineReducers({
   states,
   categories,
   users,
-  reviews
+  reviews,
+  wishList
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
@@ -32,3 +34,4 @@ export * from './states';
 export * from './categories';
 export * from './users';
 export * from './reviews';
+export * from './wishList';

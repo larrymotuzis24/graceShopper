@@ -110,7 +110,22 @@ User.prototype.addToCart = async function({ product, quantity}){
     await conn.models.lineItem.create({ productId: product.id, quantity, orderId: cart.id });
   }
   return this.getCart();
-}
+};
+
+// User.prototype.addToWishList = async function({ productId, quantity}){
+//   const wishList = await this.getWishList();
+
+//   wishList.quantity = quantity;
+//   wishList.productId = productId
+
+//   if(wishList.quantity){
+//     await wishList.save();
+//   }else{
+//     await wishList.destroy();
+//   }
+
+//   return this.getWishList();
+// }
 
 User.prototype.getCart = async function(){
   let order = await conn.models.order.findOne({
@@ -132,7 +147,21 @@ User.prototype.getCart = async function(){
     });
   }
   return order;
-}
+};
+
+// User.prototype.getWishList = async function(){
+//   let wishList = await conn.models.wishList.findOne({
+//     where: {
+//       userId: this.id
+//     },
+//     include: [ conn.models.product ]
+//   });
+//   if(!wishList){
+//     wishList = await conn.models.wishList.create({ userId: this.id })
+//     wishList = await conn.models.wishList.findByPk(wishList.id)
+//   }
+//   return wishList;
+// };
 
 User.authenticate = async function(credentials){
   const user = await this.findOne({

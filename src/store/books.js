@@ -16,9 +16,9 @@ export const _setBooks = (books) => {
 };  
   
 export const fetchBooks = () => {
-    return async(dispactch) => {
+    return async(dispatch) => {
        const books = (await axios.get('/api/books')).data;
-       dispactch(_setBooks(books))
+       dispatch(_setBooks(books))
     }
 };
 
