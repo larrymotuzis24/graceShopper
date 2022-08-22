@@ -1,0 +1,242 @@
+[
+    {
+        "review": "It's an interesting book. I highly recommend it.",
+        "review_date": "08/15/2022",
+        "productId": 1,
+        "userId": 1
+    },
+    {
+        "review": "It contains basic concepts about how to write Clean code, but I was expecting something more professional.",
+        "review_date": "08/12/2022",
+        "productId": 1,
+        "userId": 2
+    },
+    {
+        "review": "I'd give this book all starts. It clearly explains how to be an efficient software engineer.",
+        "review_date": "08/14/2022",
+        "productId": 1,
+        "userId": 5
+    },
+    {
+        "review": "For shoppers preparing for a real interview: buy all four. I mean, come on. This is your future! You can get all four for the price you'd pay for a larger (way less useful) algo + data structure or individual language text, and maybe less. Some points about interview technique are common, but all four offer different and important examples in approaches to solutions, even though they share common algorithmic and data structure challenges.",
+        "review_date": "08/10/2022",
+        "productId": 2,
+        "userId": 3 
+    },
+    {
+        "review": "I have many years of experience in software development and need to get back into development. I am finding that many companies now require you take a technical coding test, which I know well but cannot whip up solution in 15 minutes. So, I decided to buy this book. I have read the first few chapters and I think they are pretty good and useful advice. What I am not happy about is that it that they send me a used book. I am pretty sure that I purchased a new book. I can return it, but I think it would be waste of time. Secondly, the book does not even mention C#. It mentions C and C++. I have programmed in C, C++, VB, Java, C# and Kotlin. There is no doubt in my mind that C# is most powerful and easy to use language, but this book does not even mention it as if it does not exist. And I just found out that a new (6th) edition is out. I was sent the old (5th) edition.",
+        "review_date": "08/09/2022",
+        "productId": 2,
+        "userId": 1
+    },
+    {
+        "review": "After learning more about the internal frameworks of these top companies (most of their code is actually in Java/C++, not scripting languages) and what they're looking for, I've changed my original view point and see the value of this book. Google, FB, etc haven't changed their interview processes, and probable won't for years to come; this book provides a solid plan and a comprehensive coverage of topics to prepare the reader.",
+        "review_date": "08/05/2022",
+        "productId": 2,
+        "userId": 6
+    },
+    {
+        "review": "A fundamental classic to programmers and high level software engineers.",
+        "review_date": "08/09/2022",
+        "productId": 3,
+        "userId": 7
+    },
+    {
+        "review": "Algorithms is the type of subject that can make you put your hand on your head in frustration due to the technical nature of the subject. This book does a terrific job of demystifying topics and giving you a clear and concise notion of the fundamentals which make the algorithm work. In turn, the authors have gotten me to love learning about algorithms. Every chapter is a new challenge, and the authors are there to help guide you the whole way.",
+        "review_date": "08/09/2022",
+        "productId": 3,
+        "userId": 10
+    },
+    {
+        "review": "The book is essentially best described as a detailed, mathematically-oriented analysis of algorithmic theory and covers a wide variety of topics. Proofs of various concepts are built up with lemmas throughout as well, and many of the exercises in the book often ask for a proof to show that something is correct. The authors do provide a Solutions file online, but for only some exercises up through chapter 26 when it has 35 chapters.",
+        "review_date": "08/19/2022",
+        "productId": 3,
+        "userId": 8
+    },
+    {
+        "review": "My background is Java backend and building microservices by Spring Boot, Framework does not solve all problems. This book helped a lot in how to write good code, in the high flexibility and “stability” perspective. It’s also stunning to see the evolution of architecture from 1970s, which needed people to write programs in assembly language!",
+        "review_date": "08/20/2022",
+        "productId": 4,
+        "userId": 2
+    },
+    {
+        "review": "The main idea is to avoid dependency applying the Dependency Rule at all levels, classes and components. The Dependency Inversion graph, where high-level functions calling middle-level functions through an interface that the middle-interface implements, is a medular software construction that should be applied as an obsessive pattern. It guarantees independence, reusable, clean architecture. This book explains how and why for this.",
+        "review_date": "08/11/2022",
+        "productId": 4,
+        "userId": 16
+    },
+    {
+        "review": "I was happily surprised that most of the stuff he taught. It seems like an old guy wrote the book and wanted to include the foundational elements of how to produce decent architecture in general. Luckily I must have had good professors because I found it to be a strong overlap with what I had found through my years of research anyway.",
+        "review_date": "08/15/2022",
+        "productId": 4,
+        "userId": 11
+    },
+    {
+        "review": "I’ve seen a couple reviews say that this book doesn’t know what it wants to be. For me, it was a finding-oneself-again story for Laurie, with a side of romance. The first 100 or so pages we go through turmoil with Laurie as she comes to grips with the fact that the man she thought was her soulmate, Dan, is done with her. And what’s worse? He’s gotten a woman pregnant. Plus they work together. Recipe for disaster. There is a bit of wallowing, justifiably so, but never in a way that makes Laurie come across as weak. Laurie is strong and resolved, even if it takes a bit for her to realize that for herself. I also love her quick wit, sass, and intelligence.",
+        "review_date": "08/01/2022",
+        "productId": 11,
+        "userId": 20
+    },
+    {
+        "review": "After 18 years, Laurie's boyfriend breaks it off suddenly. Aghast and stumbling through a world that doesn't make sense anymore, Laurie strikes a fake dating deal with a fellow coworker. She just wants to feel wanted again. Like herself again. Maybe the ruse will help?",
+        "review_date": "08/05/2022",
+        "productId": 11,
+        "userId": 21
+    },
+    {
+        "review": "I thoroughly enjoyed this book. I’m an American citizen so the British slang took a bit getting used to - in fact I had to use Google a few times - but once you get the diction down, it’s easy. It’s great seeing a book about an older protagonist for once, given that “older” in the average romance novel means “around 26, give or take.” As much as this is a romance novel, it’s much more about Laurie’s growth and self-development after the dissolution of a decades plus-long relationship.",
+        "review_date": "08/10/2022",
+        "productId": 11,
+        "userId": 22
+    },
+    {
+        "review": "This was a cute story about Becca and Brett, a bookworm who doesn’t believe in love and a jock who has never had a girlfriend. They agree to a fake relationship so Becca can save face when being teased and Brett can get his dad off his back about not being in a relationship. Things, as would be expected, get a little blurred between reality and pretend as the two navigate their budding friendship. Family dramas put a dent in their real relationship and everything seems bleak for their new reality. But never fear, a happily ever after is just around the corner.",
+        "review_date": "08/12/2022",
+        "productId": 15,
+        "userId": 21
+    },
+    {
+        "review": "A fun, flirty teen debut from Wattpad phenom Alex Light about a fake relationship and real love. It’s been years since seventeen-year-old Becca Hart believed in true love. But when her former best friend teases her for not having had a boyfriend, Becca impulsively pretends she’s been secretly seeing someone. Brett Wells has it all. As captain of the football team and one of the most popular guys in his school, he should have no problem finding someone to date, but he’s always been more focused on his future than who to bring to prom.",
+        "review_date": "08/10/2022",
+        "productId": 15,
+        "userId": 23
+    },
+    {
+        "review": "This book was one of the cutest high school romances that i have read. It was so lovey dovey and yet touched on some real life topics. As someone who has gone through some of the things talked about in this book it portrayed the emotions pretty well. I would 10000% recommend this book to anyone and everyone!",
+        "review_date": "08/10/2022",
+        "productId": 15,
+        "userId": 22
+    },
+    {
+        "review": "This was just the sweetest little romance! It's no wonder this was turned into a movie. Sally Thorne definitely created a hit when she wrote this.",
+        "review_date": "08/05/2022",
+        "productId": 18,
+        "userId": 9
+    },
+    {
+        "review": "The main character absolutely makes the story. She’s hilarious and unashamedly herself throughout the whole story. I loved hearing the direct thoughts she had to every situation— especially the thoughts that were the weirdly insane ones that you never act on or say out loud. They made me laugh and she felt really relatable.",
+        "review_date": "08/04/2022",
+        "productId": 18,
+        "userId": 5
+    },
+    {
+        "review": "The Hating Game, Sally Thorne’s debut novel, is a contemporary enemies-to-lovers office romance told from the first person perspective of the female main character, Lucy. The story follows the relationship between executive assistants Lucy Hutton and Joshua Templeman as they’re forced to share a workspace when their bosses become publishing-house co-CEOs after merging rival companies to save their struggling businesses. Lucy and Josh get off on the wrong foot and subsequently spend their time at the office irritating each other for sport. Things come to a head when they compete for a promotion with a high-stakes wager: the loser has to quit their job. But there’s a very thin line between love and hate.",
+        "review_date": "08/09/2022",
+        "productId": 18,
+        "userId": 3
+    },
+    {
+        "review": "This book of poetry by Rupi Kaur is amazing. Great for almost anyone but especially if you’re wanting to read emotional poetry that matches your own feelings. Love, loss and healing. I can thoroughly recommend it.",
+        "review_date": "08/09/2022",
+        "productId": 21,
+        "userId": 12
+    },
+    {
+        "review": "I bought two, one for me and one for my friend. We both really enjoyed the book and it’s my favorite now. It has strong messages and beautiful simple drawings. Would defend recommend!",
+        "review_date": "08/19/2022",
+        "productId": 21,
+        "userId": 11
+    },
+    {
+        "review": "I've always looked at poems and leave feeling like I had gotten nothing from them. This is the first time I've felt anything that wasn't confusion from poetry. And it melted me down. So much emotions flooded me as I read.",
+        "review_date": "08/10/2022",
+        "productId": 21,
+        "userId": 10
+    },
+    {
+        "review": "This book of poetry by Rupi Kaur is amazing. Great for almost anyone but especially if you’re wanting to read emotional poetry that matches your own feelings. Love, loss and healing. I can thoroughly recommend it.",
+        "review_date": "08/05/2022",
+        "productId": 30,
+        "userId": 5
+    },
+    {
+        "review": "I bought two, one for me and one for my friend. We both really enjoyed the book and it’s my favorite now. It has strong messages and beautiful simple drawings. Would defend recommend!",
+        "review_date": "08/06/2022",
+        "productId": 30,
+        "userId": 7
+    },
+    {
+        "review": "I've always looked at poems and leave feeling like I had gotten nothing from them. This is the first time I've felt anything that wasn't confusion from poetry. And it melted me down. So much emotions flooded me as I read.",
+        "review_date": "08/06/2022",
+        "productId": 30,
+        "userId": 9
+    },
+    {
+        "review": "This book got my attention i finished it in like a week it was so good!!I recommend, although a little heavy some times, its still an easy to read book.",
+        "review_date": "08/10/2022",
+        "productId": 33,
+        "userId": 21
+    },
+    {
+        "review": "This didn't grab me in the way I expected it too and whilst important issues are certainly raised, I simply didn't connect with the characters or the drama. Looking at some of the comments here, it is clear some of the characters at least are based on the events of Columbine. Yet whilst I felt the psychological aftermath was portrayed well, the whole drama lies in the story of one girl and a cross, a misunderstanding and a fervent congregation. It seemed strangely unimportant amongst the deaths and life altering aspects of school shootings.",
+        "review_date": "08/11/2022",
+        "productId": 33,
+        "userId": 20
+    },
+    {
+        "review": "I had read some of the reviews and honestly this book isn’t for everyone. This book is about a psychotic man, Clover, kidnapping 4 girls to “protect” them from the real world. The main character is Summer renamed as Lily like the flower. Which he does to 3 other girls as Rose, Poppy and Violet are also in the cellar. It does take a while to find out how they escape but even then it doesn’t go into detail which I think that should have been included.",
+        "review_date": "08/01/2022",
+        "productId": 36,
+        "userId": 12
+    },
+    {
+        "review": "I have read this book a few times. Its so well written. Such an easy read. Its very emotional-in my opinion- one of my favorite authors. I highly recommend any of her books.",
+        "review_date": "08/02/2022",
+        "productId": 36,
+        "userId": 11
+    },
+    {
+        "review": "The Butterfly Garden blew my mind, and it definitely left me wanting more. The combination of such a gripping and intriguing premise, profound and memorable characters and a fantastic use of language has caused this novel to become one of my favorite reads of the year, and one of my favorite mystery & thriller books. While there are some things that I dislike, such as the somewhat lackluster ending, as a whole, the book was nothing short of absolutely amazing.",
+        "review_date": "08/10/2022",
+        "productId": 38,
+        "userId": 15
+    },
+    {
+        "review": "I admit that I have a very high tolerance for gruesome and disturbing. I distinctly remember being 10 years old, spending my Friday nights with Jason and Friday the 13th, so I have been into the gruesome for as long as I can remember",
+        "review_date": "08/10/2022",
+        "productId": 38,
+        "userId": 14
+    },
+    {
+        "review": "I loved the concept of the story .Once you start reading this book, it can't be stopped. Thats all. Read if you want",
+        "review_date": "08/01/2022",
+        "productId": 40,
+        "userId": 18
+    },
+    {
+        "review": "Bryan Cranston is truly a journeyman actor who has spent his life working as hard as he can to be good. He's not chasing fame or money and to read about THAT kind of devotion and commitment is refreshing and inspiring. Great stories, some good gossip, and really entertaining.",
+        "review_date": "08/05/2022",
+        "productId": 41,
+        "userId": 18
+    },
+    {
+        "review": "I'd call myself a casual Bryan Cranston Fan. Only knowing his work through Seinfeld ( Dr. Whatley), and as LBJ in All The Way, Sneaky Pete on Amazon, Plus most recently as Your Honor On Showtime. ( Truly Must See and Binge Worthy)",
+        "review_date": "08/10/2022",
+        "productId": 41,
+        "userId": 6
+    },
+    {
+        "review": "Chernow is quickly becoming one of my favorite historians! While I realize that nearly every author probably can’t help but include some element of “spin,” the depth and detail of his research helped to convince me that he was as intellectually honest as he could possibly be with the evidence available.",
+        "review_date": "08/20/2022",
+        "productId": 43,
+        "userId": 12
+    },
+    {
+        "review": "Excellent read, the book is quite long but worth every page. He went from 0 to the top. A masterpiece from the writer, very eloquent. One of the men that shaped America into what it is today. I love this book. There's a lot of people that say he was Jewish, he was actually from the Baptist religion. I loved the part almost at the end of the book where he used to ride around the city with his driver and two young ladies from the neighborhood as companions.",
+        "review_date": "08/15/2022",
+        "productId": 43,
+        "userId": 21
+    },
+    {
+        "review": "Kobe inspired me to play basketball. Kobe inspired me to be a better person. Kobe inspired me to be a better leader. Kobe inspired me to be a champion. God Bless Kobe Bryant and Gianna Bryant.",
+        "review_date": "08/21/2022",
+        "productId": 45,
+        "userId": 18
+    },
+    {
+        "review": "I used to be an athlete and part of me always loves sports, but this book is much more than that. It's applicable to everything you do in life. I loved it because you can grasp the passion and dedication Kobe had. For me, it was inspiring to apply the same dedication and 'mamba mentality' in my business.",
+        "review_date": "08/18/2022",
+        "productId": 45,
+        "userId": 20
+    }
+]

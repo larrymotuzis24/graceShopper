@@ -650,3 +650,35 @@ div#books-category{
   padding: 2rem;
   margin: 1rem;
 }
+
+div#review-book{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+div#review-book h3{
+  padding: 2rem;
+}
+
+span.review{
+  font-weight: normal;
+}
+
+span.review-date{
+  font-size: medium;
+  font-weight: bold;
+  color: grey;
+}
+
+span.review-author{
+  font-size: medium;
+  font-weight: bold;
+  color: grey;
+}
+
+span.no-review{
+  font-weight: normal;
+  font-size: large;
+  color: gray;
+}
