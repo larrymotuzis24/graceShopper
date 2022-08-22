@@ -58,6 +58,40 @@ componentDidUpdate(prevProps){
                     <Badge style={{ marginLeft: '7px'}}variant='light'>{amount}</Badge>
                   </React.Fragment>
                 }>
+                   <Table bordered hover>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email </th>
+                <th>Admin</th>
+                <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
+              </tr>
+            </thead>
+            <tbody>
+                {this.props.users.length > 1 ? 
+                this.props.users.map(user => {
+                  return (
+                      <tr key={user.id}>
+                        <td>{user.firstName}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.email}</td>
+                        <td>{user.isAdmin ? 'True' : 'False'}</td>
+                        <td style={{textAlign: 'center', verticalAlign: 'middle'}}>
+                          <UpdateUserPermissionModal user={user.id}/>
+                        </td>
+                        </tr>
+                  )
+                })
+                : 
+                <>
+                <tr>
+                  <td>No users to show</td>
+                  </tr>
+                </>
+              }
+            </tbody>
+          </Table>
               </Tab>
               <Tab eventKey="Products"title={
                   <React.Fragment>
@@ -101,40 +135,6 @@ componentDidUpdate(prevProps){
           </Tabs>
           </div>
         </div>
-        <Table bordered hover>
-            <thead>
-              <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email </th>
-                <th>Admin</th>
-                <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
-              </tr>
-            </thead>
-            <tbody>
-                {this.props.users.length > 1 ? 
-                this.props.users.map(user => {
-                  return (
-                      <tr key={user.id}>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.email}</td>
-                        <td>{user.isAdmin ? 'True' : 'False'}</td>
-                        <td style={{textAlign: 'center', verticalAlign: 'middle'}}>
-                          <UpdateUserPermissionModal user={user.id}/>
-                        </td>
-                        </tr>
-                  )
-                })
-                : 
-                <>
-                <tr>
-                  <td>No users to show</td>
-                  </tr>
-                </>
-              }
-            </tbody>
-          </Table>
       </div>
     )
   }
