@@ -46,7 +46,7 @@ class App extends React.Component {
     const { auth } = this.props;
     return (
       <main>
-        <Route path="/:view?" component={Nav} />
+        <Route path="/:view?" component={NavBar} />
         <Route path="/" exact component={Home} />
         {auth.id ? (
           <Fragment>
