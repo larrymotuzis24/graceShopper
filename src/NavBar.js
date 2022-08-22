@@ -23,7 +23,7 @@ const NavBar = (props) => {
           justifyContent: 'space-between',
           position: 'sticky',
         }}
-        class="fixed-top"
+        className="fixed-top"
       >
         <Navbar.Brand href="/">Source Code Books</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

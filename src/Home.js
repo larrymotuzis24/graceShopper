@@ -13,9 +13,9 @@ const Home = ({ books, auth }) => {
   return (
     <Container id="home-page">
       <FeaturedCarousel />
-      <h2 class="display-4 my-4">Top Rated Books</h2>
-      <div class="container">
-        <div class="row" style={{ gap: '2rem' }}>
+      <h2 className="display-4 my-4">Top Rated Books</h2>
+      <div className="container">
+        <div className="row" style={{ gap: '2rem' }}>
           {topBooks.map((book) => {
             return (
               <Link to={`books/${book.id}`} style={{ display: 'contents' }}>
@@ -64,9 +64,9 @@ const Home = ({ books, auth }) => {
               // </div>
             );
           })}
-          {/* <div class="col card">1</div>
-          <div class="col card">2</div>
-          <div class="col card">3</div> */}
+          {/* <div className="col card">1</div>
+          <div className="col card">2</div>
+          <div className="col card">3</div> */}
         </div>
       </div>
     </Container>

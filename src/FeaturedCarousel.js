@@ -14,7 +14,7 @@ function FeaturedCarousel() {
         }}
       >
         <Carousel.Item
-          clasName="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
+          className="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
           style={{
             padding: '0',
             margin: '0',
@@ -29,8 +29,8 @@ function FeaturedCarousel() {
             }}
           >
             <p>Featured Books</p>
-            <h5 class="display-5">Subcultural Karate Turtles</h5>
-            <h5 class="display-5">Adam Green</h5>
+            <h5 className="display-5">Subcultural Karate Turtles</h5>
+            <h5 className="display-5">Adam Green</h5>
           </Carousel.Caption>
 
           <img
@@ -48,7 +48,7 @@ function FeaturedCarousel() {
         </Carousel.Item>
 
         <Carousel.Item
-          clasName="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
+          className="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
           style={{
             padding: '0',
             margin: '0',
@@ -63,8 +63,8 @@ function FeaturedCarousel() {
             }}
           >
             <p>Featured Books</p>
-            <h5 class="display-5">The Wandering Lake</h5>
-            <h5 class="display-5">Patty Chang</h5>
+            <h5 className="display-5">The Wandering Lake</h5>
+            <h5 className="display-5">Patty Chang</h5>
           </Carousel.Caption>
 
           <img
@@ -82,7 +82,7 @@ function FeaturedCarousel() {
         </Carousel.Item>
 
         <Carousel.Item
-          clasName="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
+          className="d-inline-flex flex-row justify-content-start align-items-stretch flex-nowrap"
           style={{
             padding: '0',
             margin: '0',
@@ -97,8 +97,8 @@ function FeaturedCarousel() {
             }}
           >
             <p>Featured Books</p>
-            <h5 class="display-5">Architectures of Violence</h5>
-            <h5 class="display-5">Caroline Sinders</h5>
+            <h5 className="display-5">Architectures of Violence</h5>
+            <h5 className="display-5">Caroline Sinders</h5>
           </Carousel.Caption>
 
           <img
