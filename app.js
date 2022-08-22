@@ -2,7 +2,7 @@ require('dotenv').config;
 const express = require('express');
 const app = express();
 app.use(express.json({limit: "50mb"}));
-const { User, Product, State, ProductCategory } = require('./db');
+const { User, Product, State, ProductCategory, Review } = require('./db');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -81,45 +81,65 @@ app.post('/users', async(req, res) => {
   }
 })
 
-app.get('/users', async(req, res) => {
+app.get('/users', isLoggedIn, async(req, res, next) => {
   try {
     res.send(await User.findAll())
   }
-  catch(err){
-    console.log(err)
+  catch(ex){
+    next(ex)
   }
 });
 
-app.put('/users/update/:id', async (req, res) => {
+app.put('/users/update/:id', isLoggedIn, async (req, res, next) => {
   try{
     const user = await User.findByPk(req.params.id)
     const newuser = await user.update(req.body)
     res.send(newuser)
   }
-  catch(err){
-    console.log(err)
+  catch(ex){
+    next(ex)
   }
 })
 
-app.get('/api/states', async(req, res) => {
+app.get('/api/states', async(req, res, next) => {
   try {
     res.send(await State.findAll({
       order: [['name']]
     }))
   }
-  catch(err){
-    console.log(err)
+  catch(ex){
+    next(ex);
   }
 });
 
-app.get('/api/categories', async(req, res) => {
+app.get('/api/categories', async(req, res, next) => {
   try {
     res.send(await ProductCategory.findAll({
       order: [['category']]
     }))
   }
-  catch(err){
-    console.log(err)
+  catch(ex){
+    next(ex)
+  }
+});
+
+app.get('/api/reviews', async(req, res, next) => {
+  try {
+    res.send(await Review.findAll({
+      order: [['review_date', 'DESC']]
+    }))
+  }
+  catch(ex){
+    next(ex)
+  }
+});
+
+app.post('/api/reviews', isLoggedIn, async(req, res, next) => {
+  try {
+    res.status(201).send(await Review.create(req.body));
+  }
+  catch(ex){
+    next(ex);
   }
 });
 

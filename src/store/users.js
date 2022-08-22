@@ -12,15 +12,22 @@ const users = (state = [], action)=> {
 
 export const updateUserRole = (user) => {
     return async(dispatch) => {
-        const response = await axios.put(`/users/update/${user}`, { isAdmin: true }) 
+        const response = await axios.put(`/users/update/${user}`, { isAdmin: true }, {
+          headers: {
+            authorization: window.localStorage.getItem("token"),
+          },
+        }) 
         const updated = response.data
         dispatch({ type: "UPDATE_USER", updated })
     }
 }
 export const fetchUsers = () => {
   return async (dispatch) => {
-    console.log('in store')
-    const response = await axios.get('/users')
+    const response = await axios.get('/users', {
+      headers: {
+        authorization: window.localStorage.getItem("token"),
+      },
+    })
     const users = response.data
     dispatch({ type: 'GET_USERS', users })
   }
