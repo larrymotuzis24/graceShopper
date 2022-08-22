@@ -70,7 +70,7 @@ componentDidUpdate(prevProps){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email </th>
-                <th>Admin</th>
+                <th>Adminnß</th>
                 <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
               </tr>
             </thead>
