@@ -1,4 +1,4 @@
-body{
+body {
   font-family: verdana;
   padding: 1rem;
 }
@@ -41,9 +41,9 @@ nav#nav-var {
 }
 
 .homeBookDiv > img {
- padding: 5px;
- height: 150px;
- width: 150px;
+  padding: 5px;
+  height: 150px;
+  width: 150px;
 }
 
 #homeTitle {
@@ -55,7 +55,7 @@ nav#nav-var {
 }
 
 #homeFooter {
-  border-top: solid black ;
+  border-top: solid black;
   border-bottom: solid black;
   text-align: center;
 }
@@ -68,7 +68,6 @@ nav#nav-var {
 .footer-individual-detail-div {
   display: flex;
   flex-direction: column;
-  
 }
 .footer-individual-detail-div p {
   border-bottom: solid lightgray;
@@ -85,46 +84,46 @@ div.top-books-info {
   flex-wrap: wrap;
 }
 
-nav#nav-var a{
+nav#nav-var a {
   color: black;
   text-decoration: none;
   font-weight: bold;
 }
 
-nav#nav-var a.selected{
+nav#nav-var a.selected {
   color: green;
   font-weight: bold;
   font-size: 1.75rem;
 }
 
-div#user-profile{
+div#user-profile {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#user-profile h2{
+div#user-profile h2 {
   text-align: end;
 }
 
-main.user-info{
+.user-info {
   display: flex;
   flex-direction: column;
 }
 
-div.user-links{
+div.user-links {
   display: flex;
   justify-content: space-evenly;
   margin: 1rem;
 }
 
-div.user-links a{
+div.user-links a {
   font-weight: bolder;
   color: black;
 }
 
-div.user-personal-info{
+div.user-personal-info {
   padding: 1rem;
   margin: 1rem;
   border: solid 2px grey;
@@ -134,32 +133,33 @@ div.user-personal-info{
   align-items: center;
 }
 
-img{
+img {
   width: 15%;
   height: 15%;
   border-radius: 20%;
 }
 
-pre{
+pre {
   text-align: center;
   color: red;
 }
 
-pre#sucess-register{
+pre#sucess-register {
   text-align: center;
   color: blue;
 }
 
-div#books-page{
+div#books-page {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#books-page h2{
+div#books-page h2 {
   text-align: end;
 }
+
 
 div#block-cart-page h2{
   text-align: end;
@@ -178,18 +178,18 @@ div#cart-page{
   justify-content: space-evenly;
 }
 
-div#cart-page h2{
+div#cart-page h2 {
   text-align: end;
 }
 
-div#home-page{
+div#home-page {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#home-page h2{
+div#home-page h2 {
   text-align: end;
 }
 
@@ -197,81 +197,81 @@ div#home-page h2{
   color: orange;
 }
 
-div#edit-user h2{
+div#edit-user h2 {
   text-align: end;
 }
 
-div#edit-user{
+div#edit-user {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#edit-user form{
+div#edit-user form {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: solid 2px grey;
 }
 
-div#edit-user form label{
+div#edit-user form label {
   font-weight: bold;
 }
 
-div#edit-user form input{
+div#edit-user form input {
   height: 2.3em;
   text-indent: 5px;
   width: 350px;
   margin-bottom: 0%;
 }
 
-div#edit-user form button{
+div#edit-user form button {
   background-color: black;
   color: white;
   margin: 1rem;
 }
 
-div#edit-user-password h2{
+div#edit-user-password h2 {
   text-align: end;
 }
 
-div#edit-user-password{
+div#edit-user-password {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#edit-user-password form{
+div#edit-user-password form {
   display: flex;
   flex-direction: column;
   align-items: center;
   border: solid 2px grey;
 }
 
-div#edit-user-password form label{
+div#edit-user-password form label {
   font-weight: bold;
 }
 
-div#edit-user-password form input{
+div#edit-user-password form input {
   height: 2.3em;
   text-indent: 5px;
   width: 350px;
   margin-bottom: 0%;
 }
 
-div#edit-user-password form button{
+div#edit-user-password form button {
   background-color: black;
   color: white;
   margin: 1rem;
 }
 
-div#books-page h2{
+div#books-page h2 {
   text-align: center;
 }
 
-div#books-page h2.user-name{
+div#books-page h2.user-name {
   text-align: end;
 }
 
@@ -287,12 +287,12 @@ div#books {
   flex-wrap: wrap;
 }
 
-div.book-info{
+div.book-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: calc(100%/4 - 1rem);
+  width: calc(100% / 4 - 1rem);
   padding: 1rem;
   margin: 1rem;
   border: solid 2px grey;
@@ -314,52 +314,52 @@ div.book-info > * {
   margin: 0.25rem;
 }
 
-img.photo-books{
+img.photo-books {
   width: 50%;
   height: 65%;
   border-radius: 20%;
 }
 
-span{
+span {
   font-weight: bold;
 }
 
-nav#page-list{
+nav#page-list {
   display: flex;
   justify-content: center;
 }
 
-ul#pages{
+ul#pages {
   display: flex;
   list-style-type: none;
   font-weight: bold;
 }
 
-ul#pages li{
-  padding: 0.30rem;
+ul#pages li {
+  padding: 0.3rem;
 }
 
-ul#pages li.pageSelected{
+ul#pages li.pageSelected {
   background-color: grey;
   border-radius: 0.25rem;
 }
 
-ul#pages li.pageSelected a{
+ul#pages li.pageSelected a {
   color: black;
 }
 
-div#book{
+div#book {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   margin: 1rem;
 }
 
-div#book h2{
+div#book h2 {
   text-align: end;
 }
 
-div#book-info{
+div#book-info {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -370,7 +370,7 @@ div#book-info{
   border-width: 1px;
 }
 
-div#book-info button{
+div#book-info button {
   background-color: black;
   color: white;
   margin: 1rem;
@@ -381,13 +381,13 @@ div#book-info > * {
   margin: 0.5rem;
 }
 
-img.photo-book{
+img.photo-book {
   width: 15%;
   height: 15%;
   border-radius: 20%;
 }
 
-p{
+p {
   font-size: 18px;
 }
 
