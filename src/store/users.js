@@ -11,9 +11,20 @@ const users = (state = [], action)=> {
     if (action.type === "DELETE_USER"){
       return state.filter(user => user.id !== action.num)
     }
+    if (action.type === "CREATE_USER"){
+      [...state, action.newUser]
+    }
     return state;
 };
 
+
+export const createUser = (user) => {
+  return async(dispatch) => {
+    const response = await axios.post('/createUser', user)
+    const newUser = response.data
+    dispatch({ type: "CREATE_USER", newUser})
+  }
+}
 export const updateUser = (user) => {
     return async(dispatch) => {
         const response = await axios.put(`/users/update/${user.id}`, user)
