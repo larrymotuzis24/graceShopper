@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 const WishList = (props) =>{
 
     const { wishList } = props;
-
     return (
         <p>Coming Soon!</p>
     )

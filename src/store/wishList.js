@@ -24,7 +24,7 @@ export const fetchWishList = (user) => {
 
 export const addToWishList = (user, book, quantity, history) => {
   return async (dispatch) => {
-    const response = await axios.put(
+    let response = await axios.put(
       `api/orders/wish/${book.id}`,
       {
         userId: user.id,
@@ -38,6 +38,12 @@ export const addToWishList = (user, book, quantity, history) => {
       }
     );
     dispatch({ type: "ADD_WISH_LIST", wishList: response.data });
+    response = await axios.get(`/api/orders/wish/${user.id}`, {
+      headers: {
+        authorization: window.localStorage.getItem("token"),
+      },
+    });
+    dispatch({ type: "SET_WISH_LIST", wishList: response.data });
     history.push("/books");
   };
 };
