@@ -70,7 +70,7 @@ componentDidUpdate(prevProps){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email </th>
-                <th>Admin</th>
+                <th>Adminnß</th>
                 <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
               </tr>
             </thead>
@@ -84,7 +84,7 @@ componentDidUpdate(prevProps){
                         <td>{user.email}</td>
                         <td>{user.isAdmin ? 'True' : 'False'}</td>
                         <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
-                          <UpdateUser user={user.firstName}/>
+                          <UpdateUser user={user}/>
                           <DeleteUserModal user={user.firstName} userId={user.id}/>
                         </td>
                         </tr>

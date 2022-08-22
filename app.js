@@ -122,7 +122,7 @@ app.get('/users', isLoggedIn, async(req, res, next) => {
   }
 });
 
-app.put('/users/update/:id', isLoggedIn, async (req, res, next) => {
+app.put('/users/update/:id', async (req, res, next) => {
   try{
     const user = await User.findByPk(req.params.id)
     const newuser = await user.update(req.body)
