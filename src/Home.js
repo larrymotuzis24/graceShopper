@@ -27,35 +27,35 @@ const Home = ({ books, auth }) => {
                  topBooks.map(book => {
                     return (
                         <div key={book.id} className='homeBookDiv'>
-                        <img
-                          className="photo-books"
-                          src={book.imageUrl}>
-                        </img>
-                        <h3>
-                          <Link to={`/books/${book.id}`}>{book.title}</Link>
-                        </h3>
-                        <p><span>Author:</span> {book.publisher}</p>
-                        <p><span>Year:</span>  {new Date(book.year).getFullYear()}</p>
-                        <p><span>Price:</span>  $ {book.price}</p>
-                        <p>
-                          {book.inventory >= 1 && book.inventory <= 10 ? (
-                          <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
-                          ) : book.inventory > 10 ? (
-                          <span id="in-stock">In Stock</span>
-                          ) : (
-                          <span id="out-stock">Out of Stock</span>
-                            )}
-                        </p>
-                        <div>
-                        <StarRatingDisplay  book={book} /> 
+                          <img
+                            className="photo-books"
+                            src={book.imageUrl}>
+                          </img>
+                          <h3>
+                            <Link to={`/books/${book.id}`}>{book.title}</Link>
+                          </h3>
+                          <p><span>Author:</span> {book.publisher}</p>
+                          <p><span>Year:</span>  {new Date(book.year).getFullYear()}</p>
+                          <p><span>Price:</span>  $ {book.price}</p>
+                          <p>
+                            {book.inventory >= 1 && book.inventory <= 10 ? (
+                            <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
+                            ) : book.inventory > 10 ? (
+                            <span id="in-stock">In Stock</span>
+                            ) : (
+                            <span id="out-stock">Out of Stock</span>
+                              )}
+                          </p>
+                          <div>
+                          <StarRatingDisplay  book={book} /> 
+                          </div>
+                          <button>
+                              <Link to={`/books/${book.id}`}>See Book Description</Link>
+                          </button>
                         </div>
-                        <button>
-                            <Link to={`/books/${book.id}`}>See Book Description</Link>
-                        </button>
-                      </div>
-                            )
-                        })
-                    }
+                          )
+                    })
+                  }
             </div>
             <footer id='homeFooter'>
                 <div id='homeFooterDiv'>

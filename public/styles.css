@@ -75,7 +75,6 @@ nav#nav-var {
 div.top-books-info {
   padding: 1rem;
   margin: 1rem;
-  border: solid 2px grey;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -685,4 +684,15 @@ span.no-review{
   font-weight: normal;
   font-size: large;
   color: gray;
+}
+
+div.homeBookDiv button a{
+  color: white;
+  text-decoration: none;
+}
+
+div.homeBookDiv button{
+  background-color: black;
+  color: white;
+  margin: 1rem;
 }
