@@ -47,7 +47,11 @@ export const addToWishList = (user, book, quantity, history) => {
       },
     });
     dispatch({ type: "SET_WISH_LIST", wishList: response.data });
-    history.push("/books");
+    if(history.location.pathname === '/wishList'){
+      history.push('/wishList')
+    }else{
+      history.push("/books");
+    }
   };
 };
 
