@@ -7,6 +7,9 @@ const Review = conn.define('review', {
     },
     review_date:{
         type: Sequelize.DATE
+    },
+    rating: {
+        type: Sequelize.DECIMAL
     }
 })
 

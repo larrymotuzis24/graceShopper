@@ -183,7 +183,7 @@ app.get('/api/reviews', async(req, res, next) => {
   }
 });
 
-app.post('/api/reviews', isLoggedIn, async(req, res, next) => {
+app.post('/api/reviews', async(req, res, next) => {
   try {
     res.status(201).send(await Review.create(req.body));
   }

@@ -28,6 +28,7 @@ class Book extends Component {
     const { book, auth, addToCart, reviews, users, addToWishList } = this.props;
     const { quantity } = this.state;
     const { onChange } = this;
+    console.log('reviews', reviews)
     const reviewsBook =
       reviews.filter((review) => review.productId === book.id) || [];
     return (
