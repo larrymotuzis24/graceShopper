@@ -72,43 +72,38 @@ class Books extends Component {
           </div>
         ) : null} */}
         <div class="row" style={{ gap: '2rem' }}>
-          {listBooks.map((book) => {
-            return (
-              <Link to={`books/${book.id}`} style={{ display: 'contents' }}>
-                <Card
-                  style={{
-                    width: '18rem',
-                    padding: '0',
-                  }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src={book.imageUrl}
-                    style={{
-                      height: '400px',
-                      objectFit: 'contain',
-                      backgroundColor: 'black',
-                      padding: '2rem',
-                    }}
-                  />
-                  <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                    <Card.Text>{book.author}</Card.Text>
-                    <Card.Text>{book.price}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-              // <div key={book.id} className="homeBookDiv">
-              //   <img src={book.imageUrl} />
-              //   <h5>
-              //     {' '}
-              //     <Link to={`books/${book.id}`}> {book.title} </Link>
-              //   </h5>
-              //   <p> {book.author}</p>
-              //   <StarRatingDisplay book={book} />
-              // </div>
-            );
-          })}
+          <div className="row row-cols-2 row-cols-lg-4">
+            {listBooks.map((book) => {
+              return (
+                <div className="col">
+                  <div className="card border-0 mb-5">
+                    <Link
+                      id={book.id}
+                      to={`books/${book.id}`}
+                      className="text-decoration-none"
+                    >
+                      <img
+                        src={book.imageUrl}
+                        style={{
+                          height: '400px',
+                          objectFit: 'contain',
+                          backgroundColor: 'black',
+                          padding: '2rem',
+                        }}
+                        className="rounded-2 mb-2 card-img-top"
+                      />
+                      <div className="card-body p-0">
+                        <p className="my-0 text-black">{book.title}</p>
+                        <p className="my-0 text-black">{book.author}</p>
+                        <p className="my-0 text-black">${book.price}</p>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
           {/* <div class="col card">1</div>
           <div class="col card">2</div>
           <div class="col card">3</div> */}

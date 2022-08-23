@@ -485,17 +485,6 @@ span.no-review {
   color: gray;
 }
 
-div.homeBookDiv button a {
-  color: white;
-  text-decoration: none;
-}
-
-div.homeBookDiv button {
-  background-color: black;
-  color: white;
-  margin: 1rem;
-}
-
 .FormGroup {
   margin: 0 15px 20px;
   padding: 0;
@@ -550,61 +539,61 @@ div.homeBookDiv button {
   transform: scale(0.99);
 }
 
-div#block-wish-list-page h2{
+div#block-wish-list-page h2 {
   text-align: end;
   margin: 1rem;
 }
 
-div#block-wish-list-page h2.wishlist-title{
+div#block-wish-list-page h2.wishlist-title {
   text-align: center;
   margin: 2.5rem;
 }
 
-div#wishlist-page{
+div#wishlist-page {
   display: flex;
   padding: 1rem;
   margin: 1rem;
   justify-content: space-evenly;
 }
 
-div#wishlist-cart{
+div#wishlist-cart {
   padding: 1rem;
   margin: 1rem;
 }
 
-div#wishlist-cart h2{
+div#wishlist-cart h2 {
   text-align: center;
 }
 
-main#display-wishlist{
+main#display-wishlist {
   display: flex;
   align-items: center;
   flex: 2;
   justify-content: space-evenly;
 }
 
-main#display-wishlist > *{
+main#display-wishlist > * {
   padding: 0.5rem;
   margin: 0.5rem;
 }
 
-img#display-photo-wishlist{
+img#display-photo-wishlist {
   width: 10%;
   height: 25%;
   border-radius: 20%;
 }
 
-div#div-info-wishlist{
+div#div-info-wishlist {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-div#div-info-wishlist > *{
+div#div-info-wishlist > * {
   padding: 0.25rem;
   margin: 0.25rem;
 }
 
-div#div-info-wishlist a{
+div#div-info-wishlist a {
   text-decoration: none;
 }
