@@ -5,7 +5,7 @@ const { WishList, Product } = require('../db')
 
 module.exports = app;
 
-app.post('/', isLoggedIn, async(req, res, next)=> {
+app.put('/', isLoggedIn, async(req, res, next)=> {
   try {
     res.send(await req.user.createOrderFromCart());
   }
