@@ -82,6 +82,7 @@ class Books extends Component {
                       to={`/books/${book.id}`}
                       className="text-decoration-none"
                     >
+      
                       <img
                         src={book.imageUrl}
                         style={{

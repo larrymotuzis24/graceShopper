@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StarRatingDisplay from './StarRatingDisplay';
-import { addToCart, addToWishList, fetchReviews, fetchUsers } from './store';
+import { addToCart, addToWishList, fetchReviews, fetchUsers, fetchBooks } from './store';
 import Footer from './Footer';
 
 class Book extends Component {
@@ -18,6 +18,12 @@ class Book extends Component {
     if (Object.keys(this.props.auth).length > 0) {
       this.props.fetchUsers();
     }
+    this.props.fetchBooks()
+  }
+  componentDidUpdate(prevProps){
+    if (prevProps.book.imageUrl === undefined && this.props.books.imageUrl !== undefined){
+      console.log('update')
+    }
   }
 
   onChange(ev) {
@@ -28,6 +34,7 @@ class Book extends Component {
     const { book, auth, addToCart, reviews, users, addToWishList } = this.props;
     const { quantity } = this.state;
     const { onChange } = this;
+    console.log('book image url', book.imageUrl)
     console.log('reviews', reviews)
     const reviewsBook =
       reviews.filter((review) => review.productId === book.id) || [];
@@ -39,7 +46,7 @@ class Book extends Component {
             className="d-flex justify-content-center align-items-center w-50 p-5 rounded-4"
             style={{ backgroundColor: 'black' }}
           >
-            <img className="" src={book.imageUrl}></img>
+            <img className="" src={book.imageUrl ? book.imageUrl : null}></img>
           </div>
           <div id="book-info" className="d-flex flex-column w-50 gap-3">
             <div>
@@ -146,6 +153,7 @@ const mapStateToProps = (state, { match }) => {
     book,
     reviews: state.reviews,
     users: state.users,
+    books: state.books
   };
 };
 
@@ -158,6 +166,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
       dispatch(addToWishList(user, book, quantity, history)),
     fetchReviews: () => dispatch(fetchReviews()),
     fetchUsers: () => dispatch(fetchUsers()),
+    fetchBooks: () => dispatch(fetchBooks())
   };
 };
 

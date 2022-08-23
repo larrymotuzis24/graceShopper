@@ -21,6 +21,7 @@ export const createProduct = (product) => {
   return async(dispatch) => {
     const response = await axios.post('/products', product)
     const newBook = response.data
+    console.log('new book', newBook)
     dispatch({ type: "CREATE_PRODUCT", newBook })
   }
 }

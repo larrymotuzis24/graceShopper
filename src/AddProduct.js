@@ -40,7 +40,7 @@ class AddProduct extends Component {
                 rating: this.state.rating * 1,
                 price: this.state.price *1, 
                 imageUrl: this.state.imageUrl,
-                selectedFile: this.state.selectedFile,
+                productUrlImage: this.state.selectedFile,
                 description: this.state.description,
                 id: Math.floor(Math.random() * (10000000 - 50) + 50)
             }
