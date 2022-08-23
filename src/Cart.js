@@ -48,7 +48,7 @@ const Cart = ({
       <div id="cart-page">
         <div id="shopping-cart">
           <hr />
-          {auth.id && cart.lineItems.length > 0 ? (
+          {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             cart.lineItems.map((lineItem) => {
               return (
                 <main id="display-lineitem" key={lineItem.id}>
@@ -173,7 +173,7 @@ const Cart = ({
           )}
           <hr />
         </div>
-        {auth.id && cart.lineItems.length > 0 ? (
+        {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
           <div id="subtotal-line-items">
             <p>
               <span>Subtotal ({totalQty} items): </span>
@@ -218,6 +218,7 @@ const mapStateToProps = ({ cart, auth }) => {
     accum += lineItem.quantity;
     return accum;
   }, 0);
+  
   return {
     cart,
     auth,
