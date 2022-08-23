@@ -92,7 +92,7 @@ const NavBar = (props) => {
                         </li>
                         <li>
                           <a
-                            href=""
+                            href="#orderHistory"
                             className={
                               view === 'orderHistory'
                                 ? 'active dropdown-item'
