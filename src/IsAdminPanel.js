@@ -37,6 +37,9 @@ class IsAdminPanel extends Component {
     return (
       <div>
         <div> 
+          <div style={{marginLeft: '10px'}}>
+          <AddProduct />
+          </div>
           <div>
             <Tabs
               defaultActiveKey="Users"
@@ -133,12 +136,6 @@ class IsAdminPanel extends Component {
                 }
               </tbody>
             </Table>
-            </Tab>
-            <Tab eventKey="Actions"title={
-                  <React.Fragment>
-                    <AddProduct />
-                  </React.Fragment>
-                }>
             </Tab>
           </Tabs>
           </div>
