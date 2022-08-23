@@ -23,7 +23,6 @@ class IsAdminPanel extends Component {
  componentDidMount(){
   try {
     this.props.load()
-    
   }
   catch(err){
       console.log(err)
