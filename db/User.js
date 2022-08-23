@@ -79,14 +79,13 @@ User.addHook('beforeSave', async(user)=> {
 User.prototype.createOrderFromCart = async function(){
   const cart = await this.getCart();
   cart.isCart = false;
-  /*cart.lineItems.map(async (lineItem) => {
+  cart.lineItems.map(async (lineItem) => {
     const quantity = lineItem.quantity;
     const productId = lineItem.productId;
-    const product = conn.models.product.findByPk(productId);
+    const product = await conn.models.product.findByPk(productId);
     product.inventory = product.inventory - quantity;
     await product.save();
   })
-  */
   return cart.save();
 }
 
