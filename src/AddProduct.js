@@ -79,13 +79,12 @@ class AddProduct extends Component {
                              marginTop: '0px',
                              marginLeft: '12px'
                         }}>
-                             <FontAwesomeIcon style={{display: 'inlineblock'}} icon="fa-solid fa-highlighter" /> 
+                             <Button style={{float: 'right', marginLeft: '10px', marginTop: '-3px', marginRight: '6px'}}> + Create Product </Button>
                          </div>
                     </div>
                     <Modal show={show} onHide={handleClose}>
-                        <Modal.Header>
-                        <Modal.Title> Create User</Modal.Title>
-                        <button onClick={() => this.setState({ show: !show })}> X </button>
+                        <Modal.Header closeButton>
+                        <Modal.Title> Create Product</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                                 <form>
