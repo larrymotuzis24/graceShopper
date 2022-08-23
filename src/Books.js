@@ -79,7 +79,7 @@ class Books extends Component {
                   <div className="card border-0 mb-5">
                     <Link
                       id={book.id}
-                      to={`books/${book.id}`}
+                      to={`/books/${book.id}`}
                       className="text-decoration-none"
                     >
                       <img
