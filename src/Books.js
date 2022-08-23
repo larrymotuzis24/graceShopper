@@ -54,7 +54,7 @@ class Books extends Component {
         : Math.ceil(filteredBooks.length / this.state.booksPerPage);
 
     return (
-      <div class="container">
+      <div className="container">
         {/* {auth.id ? (
           <h2 className="user-name">
             Welcome, {auth.firstName} {auth.lastName}!
@@ -71,7 +71,7 @@ class Books extends Component {
             </p>
           </div>
         ) : null} */}
-        <div class="row" style={{ gap: '2rem' }}>
+        <div className="row" style={{ gap: '2rem' }}>
           <div className="row row-cols-2 row-cols-lg-4">
             {listBooks.map((book) => {
               return (

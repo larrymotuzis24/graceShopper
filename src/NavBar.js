@@ -120,7 +120,7 @@ const NavBar = (props) => {
                           </li>
                         ) : null}
                         <li>
-                          <hr class="dropdown-divider" />
+                          <hr className="dropdown-divider" />
                         </li>
                         <li>
                           <a

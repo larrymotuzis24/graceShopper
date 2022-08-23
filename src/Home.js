@@ -17,7 +17,9 @@ const Home = ({ books, auth }) => {
       <div className="row row-cols-2 row-cols-lg-4">
         {topBooks.map((book) => {
           return (
-            <div className="col">
+            <div 
+              key={book.id}
+              className="col">
               <div className="card border-0 mb-5">
                 <Link
                   id={book.id}

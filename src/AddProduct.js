@@ -19,14 +19,16 @@ class AddProduct extends Component {
             inventory: '',
             rating: '',
             price: '',
-            imageUrl: '',
-            description: ''
+            selectedFile: '',
+            description: '',
+            localel: ''
         },
             this.handleClose = this.handleClose.bind(this),
             this.handleShow = this.handleShow.bind(this),
             this.confirm = this.confirm.bind(this),
             this.handleChange = this.handleChange.bind(this)
         }
+
         confirm(e){
             e.preventDefault()
             const product = {
@@ -38,6 +40,7 @@ class AddProduct extends Component {
                 rating: this.state.rating * 1,
                 price: this.state.price *1, 
                 imageUrl: this.state.imageUrl,
+                selectedFile: this.state.selectedFile,
                 description: this.state.description,
                 id: Math.floor(Math.random() * (10000000 - 50) + 50)
             }
@@ -50,7 +53,7 @@ class AddProduct extends Component {
                 inventory: '',
                 rating: '',
                 price: '', 
-                imageUrl: '',
+                selectedFile: '',
                 description: ''
              })
             this.handleClose()
@@ -64,10 +67,28 @@ class AddProduct extends Component {
         handleShow () {
          this.setState({ show: true })
         }
-  
+        // componentDidMount(){
+        //     console.log('this el', this.el)
+            
+        // }
+        componentDidUpdate(){
+           if (this.el !== undefined){
+           this.el.addEventListener('change', (ev) =>{
+                const file = ev.target.files[0];
+                const reader = new FileReader();
+                reader.addEventListener('load', () =>{
+                  this.setState({selectedFile: reader.result})
+                })
+                reader.readAsDataURL(file);
+              })
+           }
+        }
+
+
       render() {
         const { show } = this.state
-        const { handleClose, handleShow, confirm, handleChange } = this
+        const { handleClose, handleShow, confirm } = this
+        console.log('state of selected', this.state.selectedFile)
         return (
           <div>
                <>
@@ -95,8 +116,11 @@ class AddProduct extends Component {
                                     <input type='text' placeholder='inventory' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ inventory: e.target.value })}/>
                                     <input type='text' placeholder='rating' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ rating: e.target.value })}/>
                                     <input type='text' placeholder='price' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ price: e.target.value })}/>
-                                    <input type='text' placeholder='imageUrl' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ imageUrl: e.target.value })}/>
                                     <input type='text' placeholder='description' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ description: e.target.value })}/>
+                                        <p>
+                                            <span>Upload product image</span>
+                                            </p>
+                                        <input type='file' ref={el => this.el = el}/>
                                 </form>
                         </Modal.Body>
                         <Modal.Footer>
