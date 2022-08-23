@@ -18,7 +18,9 @@ const Home = ({ books, auth }) => {
         <div className="row" style={{ gap: '2rem' }}>
           {topBooks.map((book) => {
             return (
-              <Link id={book.id} to={`books/${book.id}`} style={{ display: 'contents' }}>
+
+              <Link key={book.id} to={`books/${book.id}`} style={{ display: 'contents' }}>
+
                 <Card
                   style={{
                     width: '18rem',
