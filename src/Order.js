@@ -167,9 +167,6 @@ class Order extends Component {
                 <span id="total-text">Order total: </span>
                 <span id="total-amount">${orderTotal.toFixed(2)}</span>
               </p>
-              <button>
-                <Link to="/order">Checkout</Link>
-              </button>
             </div>
           </div>
         </main>

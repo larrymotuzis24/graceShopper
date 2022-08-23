@@ -157,6 +157,7 @@ export const createOrderFromCart = () => {
         authorization: userToken
       }
     })
+    dispatch({type: "SET_CART", cart: response.data});
   }
 }
 

@@ -2,9 +2,7 @@ import React, { useState} from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import {fetchUsers} from './store'
-import states from "./store/states";
-import { createOrderFromCart } from "./store";
+import { createOrderFromCart } from './store'
 
 
 

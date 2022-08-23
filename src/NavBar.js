@@ -152,7 +152,7 @@ const NavBar = (props) => {
               className={view === 'cart' ? 'selected' : ''}
             >
               {auth.id
-                ? `Cart (${cart.lineItems.length})`
+                ? `Cart (${cart.isCart ? cart.lineItems.length : 0})`
                 : !auth.id && localStorage.getItem('lineItem')
                 ? `Cart (${
                     JSON.parse(localStorage.getItem('lineItem')).length
