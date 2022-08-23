@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import {fetchUsers} from './store'
 import states from "./store/states";
 import { createOrderFromCart } from "./store";
 
@@ -29,8 +30,10 @@ const CARD_OPTIONS = {
 
 
 const PaymentForm = (props) => {
+
    const orderTotal = Math.round(props.orderTotal * 100)
-   console.log(orderTotal)
+
+    console.log(props.auth)
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -78,6 +81,7 @@ const PaymentForm = (props) => {
                 </div>
             </fieldset>
             <button id='paymentBTN' > Pay </button>
+
         </form> 
         :
         <div>
@@ -113,6 +117,7 @@ const mapStateToProps = ({ auth, cart }) => {
       orderTotal
     };
   };
+
 
   const mapDispatch = (dispatch) => {
     return {
