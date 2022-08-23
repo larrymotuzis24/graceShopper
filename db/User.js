@@ -78,7 +78,6 @@ User.addHook('beforeSave', async(user)=> {
 
 User.prototype.createOrderFromCart = async function(){
   const cart = await this.getCart();
-  console.log('CART!!!!!!!', cart)
   cart.isCart = false;
   /*cart.lineItems.map(async (lineItem) => {
     const quantity = lineItem.quantity;
@@ -160,7 +159,6 @@ User.findByToken = async function findByToken(token){
     if(!user){
       throw 'error';
     }
-    console.log(user)
     return user;
   }
   catch(ex){

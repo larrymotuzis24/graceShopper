@@ -157,7 +157,6 @@ export const createOrderFromCart = () => {
         authorization: userToken
       }
     })
-    console.log('paymentRes', response.data)
   }
 }
 
