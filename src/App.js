@@ -7,7 +7,7 @@ import {
   fetchBooks,
   fetchStates,
   fetchCategories,
-  fetchWishList,
+  fetchWishList
 } from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
