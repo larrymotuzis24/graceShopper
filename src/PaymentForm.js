@@ -31,9 +31,7 @@ const CARD_OPTIONS = {
 
 const PaymentForm = (props) => {
 
-   const orderTotal = Math.round(props.orderTotal * 100)
-
-    console.log(props.auth)
+   const orderTotal = Math.round(props.orderTotal * 100);
 
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
@@ -122,7 +120,6 @@ const mapStateToProps = ({ auth, cart }) => {
   const mapDispatch = (dispatch) => {
     return {
         createOrderFromCart:() => {
-            console.log('createOrderPAyment')
             dispatch(createOrderFromCart())
         }
     }   
