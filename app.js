@@ -202,7 +202,6 @@ app.post('/api/payment', cors(), async(req, res) => {
         payment_method:id,
         confirm: true      
        })
-       console.log('Payment', payment)
        res.json({
         message: 'payment Succesfull',
         success:true

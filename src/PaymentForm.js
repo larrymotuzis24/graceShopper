@@ -4,6 +4,8 @@ import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import {fetchUsers} from './store'
 import states from "./store/states";
+import { createOrderFromCart } from "./store";
+
 
 
 const CARD_OPTIONS = {
@@ -36,6 +38,7 @@ const PaymentForm = (props) => {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
+    const {createOrderFromCart} = props;
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -43,7 +46,7 @@ const PaymentForm = (props) => {
             type: "card",
             card: elements.getElement(CardElement)
         })
-  
+        
     if(!error){
         try{
             const { id } = paymentMethod
@@ -53,7 +56,7 @@ const PaymentForm = (props) => {
             })
 
             if(response.data.success){
-                console.log('succesful payment')
+                createOrderFromCart()
                 setSuccess(true)
             }
         }
@@ -77,7 +80,8 @@ const PaymentForm = (props) => {
 
                 </div>
             </fieldset>
-            <button id='paymentBTN' onClick={() => console.log('updateInventroy')}> Pay </button>
+            <button id='paymentBTN' > Pay </button>
+
         </form> 
         :
         <div>
@@ -114,17 +118,14 @@ const mapStateToProps = ({ auth, cart }) => {
     };
   };
 
-const mapDispatchToProps = (dispatch, { history }) => {
-    return {
-      updateLineItem: (book, quantity) =>
-        dispatch(updateLineItem(book, quantity, history)),
-      deleteLineItem: (book, qtyZero) =>
-        dispatch(deleteLineItem(book, qtyZero, history)),
-        load: () => {
-            dispatch(fetchUsers())
-          }
-    };
-  }; 
-  
 
-export default connect(mapStateToProps, mapDispatchToProps)(PaymentForm)
+  const mapDispatch = (dispatch) => {
+    return {
+        createOrderFromCart:() => {
+            console.log('createOrderPAyment')
+            dispatch(createOrderFromCart())
+        }
+    }   
+  };
+
+export default connect(mapStateToProps, mapDispatch)(PaymentForm)

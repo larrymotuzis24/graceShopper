@@ -149,4 +149,16 @@ export const deleteLineItem = (book, qtyZero, history) => {
   };
 };
 
+export const createOrderFromCart = () => {
+  return async(dispatch)=> {
+    const userToken = window.localStorage.getItem('token')
+    const response = await axios.put('/api/orders', {
+      headers: {
+        authorization: userToken
+      }
+    })
+    console.log('paymentRes', response.data)
+  }
+}
+
 export default cart;
