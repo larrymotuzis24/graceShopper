@@ -85,7 +85,7 @@ app.delete('/wish/:id', isLoggedIn, async(req, res, next) =>{
   }
 })
 
-app.get('/history/:id', async(req, res, next) =>{
+app.get('/history/:id', isLoggedIn, async(req, res, next) =>{
   try {
     res.send(await Order.findAll({
       where: {
