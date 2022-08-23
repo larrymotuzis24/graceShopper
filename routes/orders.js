@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const { isLoggedIn } = require('./middleware');
-const { WishList, Product } = require('../db')
+const { WishList, Product, Order, LineItem } = require('../db')
 
 module.exports = app;
 
@@ -80,6 +80,25 @@ app.delete('/wish/:id', isLoggedIn, async(req, res, next) =>{
     const wishList = await WishList.findByPk(req.params.id);
     await wishList.destroy();
     res.sendStatus(204);
+  } catch (ex) {
+    next(ex);
+  }
+})
+
+app.get('/history/:id', async(req, res, next) =>{
+  try {
+    res.send(await Order.findAll({
+      where: {
+        userId: req.params.id,
+        isCart: false
+      },
+      include: [
+        {
+          model: LineItem,
+          include: [ Product ]
+        }
+      ]
+    }))
   } catch (ex) {
     next(ex);
   }

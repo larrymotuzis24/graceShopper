@@ -22,6 +22,7 @@ import Book from './Book';
 import Footer from './Footer';
 import Order from './Order';
 import UserAddress from './UserAddress';
+import OrderHistory from './OrderHistory';
 
 import IsAdminPanel from './IsAdminPanel';
 import WishList from './WishList';
@@ -57,6 +58,7 @@ class App extends React.Component {
             <Route path="/passwordUser" component={UserEditPwd} />
             <Route path="/addressUser" component={UserAddress} />
             <Route exact path="/books" component={Books} />
+            <Route path="/orderHistory" component={OrderHistory} />
             {auth.isAdmin ? (
               <Route path="/adminPriveldges" component={IsAdminPanel} />
             ) : null}
