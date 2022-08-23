@@ -19,7 +19,7 @@ class AddProduct extends Component {
             inventory: '',
             rating: '',
             price: '',
-            selectedFile: '',
+            imageUrl: '',
             description: '',
             localel: ''
         },
@@ -40,7 +40,6 @@ class AddProduct extends Component {
                 rating: this.state.rating * 1,
                 price: this.state.price *1, 
                 imageUrl: this.state.imageUrl,
-                productUrlImage: this.state.selectedFile,
                 description: this.state.description,
                 id: Math.floor(Math.random() * (10000000 - 50) + 50)
             }
@@ -53,7 +52,7 @@ class AddProduct extends Component {
                 inventory: '',
                 rating: '',
                 price: '', 
-                selectedFile: '',
+                imageUrl: '',
                 description: ''
              })
             this.handleClose()
@@ -67,17 +66,14 @@ class AddProduct extends Component {
         handleShow () {
          this.setState({ show: true })
         }
-        // componentDidMount(){
-        //     console.log('this el', this.el)
-            
-        // }
+        
         componentDidUpdate(){
            if (this.el !== undefined){
            this.el.addEventListener('change', (ev) =>{
                 const file = ev.target.files[0];
                 const reader = new FileReader();
                 reader.addEventListener('load', () =>{
-                  this.setState({selectedFile: reader.result})
+                  this.setState({imageUrl: reader.result})
                 })
                 reader.readAsDataURL(file);
               })
@@ -87,8 +83,7 @@ class AddProduct extends Component {
 
       render() {
         const { show } = this.state
-        const { handleClose, handleShow, confirm } = this
-        console.log('state of selected', this.state.selectedFile)
+        const { handleClose, handleShow, confirm } = this;
         return (
           <div>
                <>
