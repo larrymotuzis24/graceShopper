@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchOrders } from './store';
+import WriteReview from './WriteReview';
 
 
 class OrderHistory extends Component{
@@ -53,7 +54,7 @@ class OrderHistory extends Component{
                                                         </div>
                                                         <div className='order-history-button'>
                                                             <Link to={`/books/${lineItem.productId}`}><button>Buy it again</button></Link>
-                                                            <button>Write a review</button>
+                                                            <WriteReview order={lineItem.product} />
                                                         </div>
                                                         
                                                     </div>
