@@ -18,10 +18,23 @@ Order.addHook("afterSave", async (order) => {
     /**If user email was real, for now, hardcoding the email*/
     const email = user.email;
     const msg = ['<div><h3>Order details</h3></div><br>']
+
+    const subTotal = order.lineItems.reduce((accum, lineItem) =>{
+      const qty = lineItem.quantity;
+      accum += qty * lineItem.product.price;
+      return accum;
+    }, 0);
+
+    const shipping = subTotal * 0.02;
+    const taxCollected = subTotal * 0.081;
+    const orderTotal = subTotal + shipping + taxCollected;
+    const totalMsg = [`<div><h4>Order Total: ${orderTotal.toFixed(2)}</h4></div><br>`];
+    
     const html = order.lineItems.map((lineItem) => {
       return `<div><span style="font-weight:bold">Title:</span> ${lineItem.product.title}</div><br><div><span style="font-weight:bold">Price:</span> ${lineItem.product.price}</div><br><div><span style="font-weight:bold">Quantity:</span> ${lineItem.quantity}</div><hr/>`;
     });
 
+    html.unshift(totalMsg);
     html.unshift(msg);
 
     const mailOptions = {
