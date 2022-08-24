@@ -12,7 +12,7 @@ import DeleteUserModal from './DeleteUserModal'
 import DeleteProductModal from './DeleteProductModal'
 import UpdateProduct from './UpdateProduct'
 import AddProduct from './AddProduct'
-
+import LineGraphChart from './LineGraphChart'
 class IsAdminPanel extends Component {
  constructor(){
   super()
@@ -136,6 +136,15 @@ class IsAdminPanel extends Component {
               </tbody>
             </Table>
             </Tab>
+            <Tab 
+                eventKey="Analytics" 
+                title={
+                  <React.Fragment>
+                    Analytics
+                  </React.Fragment>
+                }>
+                  <LineGraphChart />
+              </Tab>
           </Tabs>
           </div>
         </div>

@@ -31,7 +31,9 @@ Order.addHook("afterSave", async (order) => {
     const totalMsg = [`<div><h4>Order Total: ${orderTotal.toFixed(2)}</h4></div><br>`];
     
     const html = order.lineItems.map((lineItem) => {
-      return `<div><span style="font-weight:bold">Title:</span> ${lineItem.product.title}</div><br><div><span style="font-weight:bold">Price:</span> ${lineItem.product.price}</div><br><div><span style="font-weight:bold">Quantity:</span> ${lineItem.quantity}</div><hr/>`;
+      return `
+      <div>
+        <span style="font-weight:bold">Title:</span> ${lineItem.product.title}</div><br><div><span style="font-weight:bold">Price:</span> ${lineItem.product.price}</div><br><div><span style="font-weight:bold">Quantity:</span> ${lineItem.quantity}</div><hr/>`;
     });
 
     html.unshift(totalMsg);
