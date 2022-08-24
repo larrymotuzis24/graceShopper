@@ -195,7 +195,10 @@ const mapStateToProps = ({ auth, cart }) => {
 
 const mapDispatchToProps = (dispatch, { history }) => {
   return {
-  
+    updateLineItem: (book, quantity) =>
+      dispatch(updateLineItem(book, quantity, history)),
+    deleteLineItem: (book, qtyZero) =>
+      dispatch(deleteLineItem(book, qtyZero, history)),
   };
 };
 
