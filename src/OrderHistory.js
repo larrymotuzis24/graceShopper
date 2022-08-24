@@ -33,7 +33,7 @@ class OrderHistory extends Component{
                 <div id="order-history-page">
                     <div id="order-history">
                         <hr/>
-                        {
+                        { orders.length > 0 ?
                             orders.map((order, idx) => {
                                 return (
                                     <main id='display-order-history' key={order.id}>
@@ -64,8 +64,9 @@ class OrderHistory extends Component{
                                         <hr/>
                                     </main>
                                 )
-                            })
+                            }) : <p>No Order History!</p>
                         }
+                        <hr/>
                     </div>
                 </div>
                 

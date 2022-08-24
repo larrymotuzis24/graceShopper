@@ -18,12 +18,7 @@ class Book extends Component {
     if (Object.keys(this.props.auth).length > 0) {
       this.props.fetchUsers();
     }
-    this.props.fetchBooks()
-  }
-  componentDidUpdate(prevProps){
-    if (prevProps.book.imageUrl === undefined && this.props.books.imageUrl !== undefined){
-      console.log('update')
-    }
+    this.props.fetchBooks();
   }
 
   onChange(ev) {
@@ -34,10 +29,9 @@ class Book extends Component {
     const { book, auth, addToCart, reviews, users, addToWishList } = this.props;
     const { quantity } = this.state;
     const { onChange } = this;
-    console.log('book image url', book.imageUrl)
-    console.log('reviews', reviews)
     const reviewsBook =
       reviews.filter((review) => review.productId === book.id) || [];
+    
     return (
       <div id="book-page" className="container">
         <div id="book-info-container" className="d-flex gap-5">
@@ -106,9 +100,10 @@ class Book extends Component {
             </button>
           </div>
         </div>
+        <br></br>
         <div id="review-book">
           <h3>Reviews</h3>
-          {reviewsBook.length > 1 ? (
+          {reviewsBook.length > 0 ? (
             reviewsBook.map((review) => {
               const reviewAuthor =
                 users.find((user) => user.id === review.userId) || {};
@@ -119,9 +114,9 @@ class Book extends Component {
                       <span className="review">{review.review}</span>
                       <span className="review-date">{` - Written on: ${new Date(
                         review.review_date
-                      ).getMonth()}/${new Date(
+                      ).getMonth() + 1}/${new Date(
                         review.review_date
-                      ).getDay()}/${new Date(
+                      ).getDate()}/${new Date(
                         review.review_date
                       ).getFullYear()}`}</span>
                       {!Object.keys(auth).length ? (
