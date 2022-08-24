@@ -26,6 +26,7 @@ import OrderHistory from './OrderHistory';
 
 import IsAdminPanel from './IsAdminPanel';
 import WishList from './WishList';
+import ConfirmationPage from './ConfirmationPage';
 
 class App extends React.Component {
   componentDidMount(prevProps) {
@@ -59,6 +60,7 @@ class App extends React.Component {
             <Route path="/addressUser" component={UserAddress} />
             <Route exact path="/books" component={Books} />
             <Route path="/orderHistory" component={OrderHistory} />
+            <Route path="/confirmation" component={ConfirmationPage } />
             {auth.isAdmin ? (
               <Route path="/adminPriveldges" component={IsAdminPanel} />
             ) : null}

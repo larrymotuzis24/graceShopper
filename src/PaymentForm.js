@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { createOrderFromCart } from './store'
+import ConfirmationPage from "./ConfirmationPage";
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -80,9 +82,7 @@ const PaymentForm = (props) => {
 
         </form> 
         :
-        <div>
-            <h2> You just bought some sweet books!! </h2>
-        </div>
+        <Redirect to='/confirmation' />
          }
 
         </>
