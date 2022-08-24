@@ -75,6 +75,7 @@ class Book extends Component {
                 name="quantity"
                 onChange={onChange}
                 className="form-select"
+                disabled={book.inventory < 1}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
@@ -92,12 +93,14 @@ class Book extends Component {
             <button
               onClick={() => addToCart(book, quantity * 1)}
               className="btn btn-primary w-50"
+              disabled={book.inventory < 1}
             >
               Add to Cart
             </button>
             <button
               onClick={() => addToWishList(auth, book, quantity * 1)}
               className="btn btn-secondary w-50"
+              disabled={book.inventory < 1}
             >
               Add to Wishlist
             </button>
