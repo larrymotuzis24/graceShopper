@@ -9,7 +9,9 @@ module.exports = {
         options: {
           presets: ['@babel/preset-react']
         }
-      }
+      },
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.ts$/, use: 'ts-loader' }
     ]
   }
 };
