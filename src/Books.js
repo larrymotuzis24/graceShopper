@@ -75,7 +75,7 @@ class Books extends Component {
           <div className="row row-cols-2 row-cols-lg-4">
             {listBooks.map((book) => {
               return (
-                <div className="col">
+                <div className="col" key={book.id}>
                   <div className="card border-0 mb-5">
                     <Link
                       id={book.id}

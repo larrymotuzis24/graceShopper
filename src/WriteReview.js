@@ -25,7 +25,8 @@ class WriteReview extends Component {
             review: this.state.reviewText, 
             rating: this.state.rating * 1,
             productId:this.props.order.id,
-            userId: this.props.auth.id
+            userId: this.props.auth.id,
+            review_date: new Date()
         }
         this.props.addRating(rating)
         this.setState({ reviewText: '', rating: 0 })
