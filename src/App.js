@@ -28,6 +28,9 @@ import IsAdminPanel from './IsAdminPanel';
 import WishList from './WishList';
 import './scss/app.scss';
 
+import ConfirmationPage from './ConfirmationPage';
+
+
 class App extends React.Component {
   componentDidMount(prevProps) {
     window.addEventListener('hashchange', () => {
@@ -60,6 +63,7 @@ class App extends React.Component {
             <Route path="/addressUser" component={UserAddress} />
             <Route exact path="/books" component={Books} />
             <Route path="/orderHistory" component={OrderHistory} />
+            <Route path="/confirmation" component={ConfirmationPage } />
             {auth.isAdmin ? (
               <Route path="/adminPriveldges" component={IsAdminPanel} />
             ) : null}

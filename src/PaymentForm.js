@@ -2,7 +2,9 @@ import React, { useState} from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { createOrderFromCart } from './store'
+import { createOrderFromCart, fetchOrders } from './store'
+import ConfirmationPage from "./ConfirmationPage";
+import { Redirect } from 'react-router-dom'
 
 
 
@@ -34,7 +36,7 @@ const PaymentForm = (props) => {
     const [success, setSuccess] = useState(false)
     const stripe = useStripe()
     const elements = useElements()
-    const {createOrderFromCart} = props;
+    const {createOrderFromCart, auth, address} = props;
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -52,7 +54,7 @@ const PaymentForm = (props) => {
             })
 
             if(response.data.success){
-                createOrderFromCart()
+                createOrderFromCart(auth)
                 setSuccess(true)
             }
         }
@@ -80,9 +82,7 @@ const PaymentForm = (props) => {
 
         </form> 
         :
-        <div>
-            <h2> You just bought some sweet books!! </h2>
-        </div>
+        <Redirect to='/confirmation' />
          }
 
         </>
@@ -117,8 +117,9 @@ const mapStateToProps = ({ auth, cart }) => {
 
   const mapDispatch = (dispatch) => {
     return {
-        createOrderFromCart:() => {
+        createOrderFromCart:(user) => {
             dispatch(createOrderFromCart())
+            dispatch(fetchOrders(user))
         }
     }   
   };

@@ -33,6 +33,12 @@ export const updateBook = (book) => {
   }
 }
 
+export const updateBookCoupon = (coupon) => {
+  return async(dispatch) => {
+      console.log('in store', coupon)
+  }
+}
+
 export const deleteProduct = (num) => {
   return async(dispatch) => {
     await axios.delete(`/products/${num}`)

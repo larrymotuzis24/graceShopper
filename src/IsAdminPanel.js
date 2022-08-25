@@ -12,6 +12,8 @@ import DeleteUserModal from './DeleteUserModal'
 import DeleteProductModal from './DeleteProductModal'
 import UpdateProduct from './UpdateProduct'
 import AddProduct from './AddProduct'
+import LineGraphChart from './LineGraphChart'
+import AddCoupon from './AddCoupon';
 
 class IsAdminPanel extends Component {
  constructor(){
@@ -38,6 +40,7 @@ class IsAdminPanel extends Component {
         <div> 
           <div style={{marginLeft: '10px'}}>
           <AddProduct />
+          <AddCoupon />
           </div>
           <div>
             <Tabs
@@ -108,6 +111,7 @@ class IsAdminPanel extends Component {
                   <th>Title</th>
                   <th>Author </th>
                   <th>Price</th>
+                  <th>Coupon Code</th>
                   <th style={{textAlign: 'center', verticalAlign: 'middle'}}>Update </th>
                 </tr>
               </thead>
@@ -119,6 +123,7 @@ class IsAdminPanel extends Component {
                           <td>{book.title}</td>
                           <td>{book.author}</td>
                           <td>{book.price}</td>
+                          <th>{book.coupon ? book.coupon : 'No coupon'}</th>
                           <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
                             <UpdateProduct product={book}/>
                             <DeleteProductModal product={book}/>
@@ -135,6 +140,15 @@ class IsAdminPanel extends Component {
                 }
               </tbody>
             </Table>
+            </Tab>
+            <Tab 
+                eventKey="Analytics" 
+                title={
+                  <React.Fragment>
+                    Analytics
+                  </React.Fragment>
+                }>
+                  <LineGraphChart />
             </Tab>
           </Tabs>
           </div>

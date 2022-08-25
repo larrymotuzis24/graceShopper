@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const stripe = require('stripe')('sk_test_51LY9OXEi9E0TRZFzdXz2VcsDGfpdGj8esyVkY5JxUsDlnBtPwivg08Ci6DtwnZ41kd2nL3TYQ30LpBWxKhK1Lh9800tkJxNAwB');
 const cors = require('cors');
 app.use(express.json({limit: "50mb"}));
-const { User, Product, State, ProductCategory, Review } = require('./db');
+const { User, Product, State, ProductCategory, Review, Order } = require('./db');
 const path = require('path');
 
 app.use('/dist', express.static('dist'));
@@ -191,6 +191,11 @@ app.post('/api/reviews', async(req, res, next) => {
     next(ex);
   }
 });
+
+app.get('/orders', async(req, res)=> {
+  let orders = await Order.findAll()
+  res.send(orders)
+})
 
 app.post('/api/payment', cors(), async(req, res) => {
   let { amount, id } = req.body;

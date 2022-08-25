@@ -51,6 +51,9 @@ const Product = conn.define('product', {
       notEmpty: true
     }
   },
+  coupon: {
+    type: Sequelize.TEXT
+  },
   price:{
     type: Sequelize.DECIMAL(10,2),
     allowNull: false,
