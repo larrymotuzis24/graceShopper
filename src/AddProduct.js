@@ -21,7 +21,8 @@ class AddProduct extends Component {
             price: '',
             imageUrl: '',
             description: '',
-            localel: ''
+            localel: '',
+            productCategoryId: ''
         },
             this.handleClose = this.handleClose.bind(this),
             this.handleShow = this.handleShow.bind(this),
@@ -41,8 +42,10 @@ class AddProduct extends Component {
                 price: this.state.price *1, 
                 imageUrl: this.state.imageUrl,
                 description: this.state.description,
+                productCategoryId: this.state.productCategoryId,
                 id: Math.floor(Math.random() * (10000000 - 50) + 50)
             }
+            
             this.props.create(product)
             this.setState({ 
                 title: '', 
@@ -53,7 +56,8 @@ class AddProduct extends Component {
                 rating: '',
                 price: '', 
                 imageUrl: '',
-                description: ''
+                description: '',
+                productCategoryId: ''
              })
             this.handleClose()
         }
@@ -84,6 +88,7 @@ class AddProduct extends Component {
       render() {
         const { show } = this.state
         const { handleClose, handleShow, confirm } = this;
+        const { categories } = this.props;
         return (
           <div>
                <>
@@ -104,6 +109,18 @@ class AddProduct extends Component {
                         </Modal.Header>
                         <Modal.Body>
                                 <form>
+                                    <select name='productCategoryId' onChange={(e) => this.setState({ productCategoryId: e.target.value})}>
+                                        <option value=''>Select a Category</option>
+                                        {
+                                            categories.map(category => {
+                                                return (
+                                                    <option key={category.id} value={category.id}>
+                                                        {category.category}
+                                                    </option>
+                                                )
+                                            })
+                                        }
+                                    </select>
                                     <input type='text' placeholder='title' style={{marginBottom: '1%'}} onChange={(e)=> this.setState({ title: e.target.value })}/>
                                     <input type='text' placeholder='author' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ author: e.target.value })}/>
                                     <input type='text' placeholder='publisher' style={{marginBottom: '1%'}}  onChange={(e)=> this.setState({ publisher: e.target.value })}/>
@@ -135,7 +152,8 @@ class AddProduct extends Component {
 
 const mapState = (state) => {
     return {
-        users: state.users
+        users: state.users,
+        categories: state.categories
     }
 }
 const mapDispatch = (dispatch) => {

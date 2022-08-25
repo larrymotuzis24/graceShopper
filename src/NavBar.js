@@ -107,9 +107,9 @@ const NavBar = (props) => {
                           <li>
                             <hr className="dropdown-divider" />
                             <a
-                              href="#adminPriveldges"
+                              href="#adminPrivileges"
                               className={
-                                view === 'adminPriveldges'
+                                view === 'adminPrivileges'
                                   ? 'active dropdown-item'
                                   : 'dropdown-item'
                               }

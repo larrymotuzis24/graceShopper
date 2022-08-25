@@ -65,7 +65,7 @@ class App extends React.Component {
             <Route path="/orderHistory" component={OrderHistory} />
             <Route path="/confirmation" component={ConfirmationPage } />
             {auth.isAdmin ? (
-              <Route path="/adminPriveldges" component={IsAdminPanel} />
+              <Route path="/adminPrivileges" component={IsAdminPanel} />
             ) : null}
             <Route path="/books/page/:id" component={Books} />
             <Route exact path="/books/:id" component={Book} />
