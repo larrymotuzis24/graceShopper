@@ -45,12 +45,76 @@ class Order extends Component {
         <h2 className="checkout-title">Checkout ({totalQty} items)</h2>
         <main id="order-info">
           <div id="order-info-div">
-            <div id="shipping-info">
-              <h3>Shipping Address</h3>
+            <div id="shipping-info" >
+              <h3 style={{
+              margin:'40px'
+            }}>Billing Address</h3>
               <div>
-                <p>
-                  {auth.firstName} {auth.lastName}
-                </p>
+        
+     <form class="row g-3">
+     
+  <div class="col" style={{
+    display:'flex',
+    flexDirection:'row',
+    justifyContent:"space-between"
+  }}>
+    <input type="text" class="form-control" placeholder="First name" aria-label="First name" style={{width:'45%'}} />
+
+    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" style={{width:'45%'}} />
+
+</div>
+
+  <div  class="col-md-6" style={{
+    width:'100%'
+  }}>
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" />
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+  </div>
+  <div style={{
+    display:'flex',
+
+  }}>
+    <div class="col-md-6" style={{
+      margin:'3px'
+    }}>
+      <label for="inputCity" class="form-label">City</label>
+      <input type="text" class="form-control" id="inputCity" />
+    </div>
+    <div class="col-md-4" style={{
+      margin:'3px'
+    }}>
+      <label for="inputState" class="form-label">State</label>
+      <select id="inputState" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="col-md-2" style={{
+      margin:'3px'
+    }}>
+      <label for="inputZip" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="inputZip" />
+    </div>
+  </div>
+    <div class="form-check" style={{
+      display:'flex',
+      flexDirection:'row'
+    }}>
+      <input class="form-check-input" type="checkbox" id="gridCheck" style={{margin:'3px'}} />
+      <label class="form-check-label" for="gridCheck">
+      Shipping Address same as Billing Address
+      </label>
+    </div>
+</form>
+              
                 <div>
                   {!auth.secondaryAddress ? (
                     <p>{auth.address}</p>
