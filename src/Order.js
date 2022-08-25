@@ -25,6 +25,7 @@ class Order extends Component {
   render() {
     const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty } =
       this.props;
+      console.log(auth)
     const { onChange } = this;
     const { address } = this.state;
     const qtyZero = 0;
@@ -68,11 +69,11 @@ class Order extends Component {
     width:'100%'
   }}>
     <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4" />
+    <input type="email" placeholder={auth.email} class="form-control" id="inputEmail4" />
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+    <input type="text"  class="form-control" id="inputAddress" placeholder={auth.address}/>
   </div>
   <div class="col-12">
     <label for="inputAddress2" class="form-label">Address 2</label>
@@ -86,14 +87,14 @@ class Order extends Component {
       margin:'3px'
     }}>
       <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" id="inputCity" />
+      <input type="text" placeholder={auth.city} class="form-control" id="inputCity" />
     </div>
     <div class="col-md-4" style={{
       margin:'3px'
     }}>
       <label for="inputState" class="form-label">State</label>
       <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
+        <option selected> {auth.state} </option>
         <option>...</option>
       </select>
     </div>
@@ -101,7 +102,7 @@ class Order extends Component {
       margin:'3px'
     }}>
       <label for="inputZip" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="inputZip" />
+      <input type="text" placeholder={auth.zipCode } class="form-control" id="inputZip" />
     </div>
   </div>
     <div class="form-check" style={{
