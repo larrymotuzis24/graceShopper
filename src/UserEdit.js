@@ -103,7 +103,7 @@ class UserEdit extends Component {
                   <img
                     src={auth.imageUrl}
                     style={{
-                      height: "100%",
+                      height: "70%",
                       objectFit: "contain",
                       backgroundColor: "black",
                       padding: "1rem",
@@ -113,7 +113,7 @@ class UserEdit extends Component {
                   <img
                     src={avatar}
                     style={{
-                      height: "100%",
+                      height: "70%",
                       objectFit: "contain",
                       backgroundColor: "black",
                       padding: "1rem",
@@ -219,13 +219,19 @@ class UserEdit extends Component {
                 </div>
               </div>
 
-              <div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                 <button
                   disabled={!firstName || !lastName || !email || !address}
+                  className="btn btn-primary w-50"
                 >
                   Edit
                 </button>
-                <button onClick={() => history.push("/user")}>Cancel</button>
+                <br/>
+                <button onClick={() => history.push("/user")}
+                  className="btn btn-secondary w-50"
+                >
+                  Cancel
+                </button>
               </div>
 
               <pre>{error ? JSON.stringify(error) : null}</pre>
