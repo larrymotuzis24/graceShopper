@@ -105,7 +105,7 @@ const NavBar = (props) => {
                         </li>
                         {auth.isAdmin ? (
                           <li>
-                            <hr class="dropdown-divider" />
+                            <hr className="dropdown-divider" />
                             <a
                               href="#adminPriveldges"
                               className={
