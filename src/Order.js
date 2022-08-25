@@ -18,6 +18,10 @@ class Order extends Component {
     this.setState({[ev.target.name]: ev.target.value});
   }
 
+  componentDidMount(){
+    this.setState({address: this.props.auth.address})
+  }
+
   render() {
     const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty } =
       this.props;
@@ -74,7 +78,7 @@ class Order extends Component {
             <hr />
             <div id="payment-info">
               <h3>Payment Method</h3>
-              < StripeContainer orderTotal={orderTotal} />
+              < StripeContainer orderTotal={orderTotal} address={address}/>
             </div>
             <hr />
             <div id="review-order">
