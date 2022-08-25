@@ -1,29 +1,19 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
 import { fetchOrders} from './store'
+
 class ConfirmationPage extends Component{ 
   constructor(){
     super();
-    this.state = {
-      orders:[], 
-      lastOrder: {}
-    }
   };
   componentDidMount(){
     this.props.fetchOrders(this.props.auth)
-    console.log('orders' , this.props.orders)
-    
+  }
 
-  }
-  componentDidUpdate(previousProps){
-    if(previousProps.orders.length === 0 && this.props.orders.length > 0 ){
-      this.setState({orders: this.props.orders, lastOrder: this.props.orders[this.props.orders.length -1 ] } )
-    }
-  }
   render() {
    
     const { auth, orders } = this.props;
-    const  lastOrder  = this.state.lastOrder
+    const lastOrder = orders[orders.length - 1] || [];
   
    
     return (
@@ -69,7 +59,9 @@ const mapStateToProps = ({orders, auth}) =>{
 
 const mapDispatchToProps = (dispatch) =>{
   return {
-      fetchOrders: (user) => dispatch(fetchOrders(user))
+      fetchOrders: (user) => {
+        dispatch(fetchOrders(user))
+      }
   }
 }
 
