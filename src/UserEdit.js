@@ -10,6 +10,11 @@ class UserEdit extends Component {
       lastName: "",
       email: "",
       address: "",
+      city: "",
+      state: "",
+      zipCode: "",
+      imageUrl: "",
+      avatar: "",
       error: "",
     };
     this.onChange = this.onChange.bind(this);
@@ -17,11 +22,22 @@ class UserEdit extends Component {
   }
 
   componentDidMount() {
+    this.el.addEventListener("change", (ev) => {
+      const file = ev.target.files[0];
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        this.setState({ avatar: reader.result });
+      });
+      reader.readAsDataURL(file);
+    });
     this.setState({
       firstName: this.props.auth.firstName,
       lastName: this.props.auth.lastName,
       email: this.props.auth.email,
       address: this.props.auth.address,
+      city: this.props.auth.city,
+      state: this.props.auth.state,
+      zipCode: this.props.auth.zipCode,
     });
   }
 
@@ -39,6 +55,10 @@ class UserEdit extends Component {
       lastName: this.state.lastName.trim(),
       email: this.state.email,
       address: this.state.address,
+      city: this.state.city,
+      state: this.state.state,
+      zipCode: this.state.zipCode,
+      imageUrl: this.state.avatar,
     };
 
     try {
@@ -60,52 +80,159 @@ class UserEdit extends Component {
   }
 
   render() {
-    const { auth, history } = this.props;
-    const { firstName, lastName, email, address, error } = this.state;
+    const { auth, history, states } = this.props;
+    const { firstName, lastName, email, address, error, zipCode, state, city } =
+      this.state;
     const { onChange, save } = this;
+    const { avatar } = this.state;
 
     return (
-      <div id="edit-user">
-        <h2>
-          Welcome, {auth.firstName} {auth.lastName}!
-        </h2>
-        <form onSubmit={save} >
-          <label htmlFor="firstName">First Name</label>
-          <input
-            placeholder="First Name"
-            value={firstName}
-            name="firstName"
-            onChange={onChange}
-            className='input'
-          />
-          <label htmlFor="lastName">Last Name</label>
-          <input
-            placeholder="Last Name"
-            value={lastName}
-            name="lastName"
-            onChange={onChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            placeholder="Email"
-            value={email}
-            name="email"
-            onChange={onChange}
-          />
-          <label htmlFor="address">Address</label>
-          <input
-            placeholder="Address"
-            value={address}
-            name="address"
-            onChange={onChange}
-          />
-          <button disabled={!firstName || !lastName || !email || !address}>
-            Edit
-          </button>
-          <button onClick={() => history.push("/user")}>Cancel</button>
-        </form>
-        <pre>{error ? JSON.stringify(error) : null}</pre>
-      </div>
+      <main id="order-info">
+        <div id="order-info-div">
+          <div id="shipping-info">
+            <h3
+              style={{
+                margin: "40px",
+              }}
+            >
+              Edit Personal Information
+            </h3>
+            <form className="row g-3" onSubmit={save}>
+              <div style={{ height: "25vh", display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
+                {!avatar ? (
+                  <img
+                    src={auth.imageUrl}
+                    style={{
+                      height: "100%",
+                      objectFit: "contain",
+                      backgroundColor: "black",
+                      padding: "1rem",
+                    }}
+                  ></img>
+                ) : (
+                  <img
+                    src={avatar}
+                    style={{
+                      height: "100%",
+                      objectFit: "contain",
+                      backgroundColor: "black",
+                      padding: "1rem",
+                    }}
+                  ></img>
+                )}
+                <input type="file" ref={(el) => (this.el = el)}></input>
+                <label>UPLOAD AVATAR</label>
+              </div>
+              <div
+                className="col"
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <input
+                  placeholder="First Name"
+                  value={firstName}
+                  name="firstName"
+                  onChange={onChange}
+                  className="form-control"
+                  style={{ width: "45%" }}
+                ></input>
+                <input
+                  placeholder="Last Name"
+                  value={lastName}
+                  name="lastName"
+                  onChange={onChange}
+                  className="form-control"
+                  style={{ width: "45%" }}
+                ></input>
+              </div>
+              <div className="col-md-6" style={{ width: "100%" }}>
+                <label htmlFor="email" className="form-label">
+                  Email
+                </label>
+                <input
+                  placeholder="Email"
+                  value={email}
+                  name="email"
+                  onChange={onChange}
+                  className="form-control"
+                ></input>
+              </div>
+              <div className="col-10" style={{ width: "100%" }}>
+                <label htmlFor="address" className="form-label">
+                  Address
+                </label>
+                <input
+                  placeholder="Address"
+                  value={address}
+                  name="address"
+                  onChange={onChange}
+                  className="form-control"
+                ></input>
+              </div>
+              <div style={{ display: "flex" }}>
+                <div className="col-md-6" style={{ margin: "3px" }}>
+                  <label htmlFor="city" className="form-label">
+                    City
+                  </label>
+                  <input
+                    placeholder="City"
+                    value={city}
+                    name="city"
+                    onChange={onChange}
+                    className="form-control"
+                  ></input>
+                </div>
+                <div className="col-md-4" style={{ margin: "3px" }}>
+                  <label htmlFor="state" className="form-label">
+                    State
+                  </label>
+                  <select
+                    name="state"
+                    value={state}
+                    onChange={onChange}
+                    className="form-select"
+                  >
+                    <option value="">-- Select a State --</option>
+                    {states.map((state) => {
+                      return (
+                        <option key={state.id} value={state.name}>
+                          {state.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className="col-md-2" style={{ margin: "3px" }}>
+                  <label htmlFor="zipCode" className="form-label">
+                    Zip Code
+                  </label>
+                  <input
+                    placeholder="Zip Code"
+                    value={zipCode}
+                    name="zipCode"
+                    onChange={onChange}
+                    className="form-control"
+                  ></input>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  disabled={!firstName || !lastName || !email || !address}
+                >
+                  Edit
+                </button>
+                <button onClick={() => history.push("/user")}>Cancel</button>
+              </div>
+
+              <pre>{error ? JSON.stringify(error) : null}</pre>
+            </form>
+          </div>
+        </div>
+      </main>
     );
   }
 }
