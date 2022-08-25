@@ -59,9 +59,9 @@ class Order extends Component {
     flexDirection:'row',
     justifyContent:"space-between"
   }}>
-    <input type="text" class="form-control" placeholder="First name" aria-label="First name" style={{width:'45%'}} />
+    <input type="text" class="form-control" placeholder={auth.firstName} aria-label="First name" style={{width:'45%'}} />
 
-    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name" style={{width:'45%'}} />
+    <input type="text" class="form-control" placeholder={auth.lastName} aria-label="Last name" style={{width:'45%'}} />
 
 </div>
 
