@@ -11,7 +11,8 @@ import StarRatingDisplay from './StarRatingDisplay';
 const Home = ({ books, auth }) => {
   const topBooks = books.filter((book) => (book.rating = 5));
   return (
-    <div className="container p-4" id="home-page">
+    <div>
+    <div className="container p-0" id="home-page">
       <FeaturedCarousel />
       <h2 className="display-4 my-4">Top Rated Books</h2>
       <div className="row row-cols-2 row-cols-lg-4">
@@ -47,7 +48,7 @@ const Home = ({ books, auth }) => {
           );``
         })}
       </div>
-      <div style={{display: 'flex', height: '600px', width: '58vw', borderRadius: '25px'}}>
+      <div style={{display: 'flex', height: '600px', width: '35vw', borderRadius: '25px'}}>
         <div style={{display: 'inline-block', height: '100%', width: '100%', float: 'right'}}>
           <div style={{
           height: '100%',
@@ -67,7 +68,7 @@ const Home = ({ books, auth }) => {
         </div>
       </div>
     </div>
-    
+    </div>
   );
 };
 

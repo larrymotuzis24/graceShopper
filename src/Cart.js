@@ -2,7 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateLineItem, deleteLineItem } from './store';
-
+import { Button } from 'react-bootstrap'
+import {
+  BsFillTrashFill
+} from 'react-icons/bs'
 const Cart = ({
   cart,
   auth,
@@ -37,21 +40,51 @@ const Cart = ({
   }
 
   return (
-    <div id="block-cart-page">
-      {auth.id ? (
-        <h2>
-          Welcome, {auth.firstName} {auth.lastName}!
-        </h2>
-      ) : null}
+    <div id="block-cart-page" style={{height: '85vh'}}>
 
-      <h2 className="cart-title">Shopping Cart</h2>
-      <div id="cart-page">
-        <div id="shopping-cart">
-          <hr />
+      <div>
+        <div style={{ display: 'inline-block', height: '16vh', marginLeft: '26%'}}>
+          <h2 className="cart-title" style={{
+            textAlign: 'left',
+            marginLeft: '10%'}}>Cart</h2>
+        </div>
+        <div style={{ display: 'inline-block', width: '10vw', marginLeft: '32%'}}>
+          {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
+              <div style={{
+                display: 'flex'
+              }}>
+                {/*
+                  we can move this downward to fit the new design
+                <p>
+                  <span>Subtotal ({totalQty} items): </span>
+                  <span>${subTotal.toFixed(2)}</span>
+                </p> */}
+                <Button style={{marginLeft: '16px'}}>
+                  <Link to="/order">Proceed to checkout</Link>
+                </Button>
+                <Button style={{marginLeft: '16px'}}>
+                  <Link to="/">Go Back</Link>
+                </Button>
+              </div>
+            ) : !auth.id && localStorage.getItem('lineItem') ? (
+              <div id="subtotal-line-items">
+                <p>
+                  <span>Subtotal ({totalQtyGuest} items): </span>
+                  <span>${subTotalGuest.toFixed(2)}</span>
+                </p>
+                <button>
+                  <Link to="/signIn">Login to checkout</Link>
+                </button>
+              </div>
+            ) : null}
+            </div>
+        </div>
+      <div id="cart-page" style={{marginTop: '-9vh'}}>
+        <div id="shopping-cart" style={{ borderTop: '1px solid'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             cart.lineItems.map((lineItem) => {
               return (
-                <main id="display-lineitem" key={lineItem.id}>
+                <main id="display-lineitem" key={lineItem.id}  style={{ borderBottom: '1px solid black'}}>
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
@@ -74,34 +107,41 @@ const Cart = ({
                         <span id="out-stock">Out of Stock</span>
                       )}
                     </p>
-                    <p>
-                      <span>Quantity</span>{' '}
-                    </p>
-                    <select
-                      defaultValue={lineItem.quantity}
-                      onChange={(ev) =>
-                        updateLineItem(lineItem.product, ev.target.value)
-                      }
-                    >
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                      <option value={6}>6</option>
-                      <option value={7}>7</option>
-                      <option value={8}>8</option>
-                      <option value={9}>9</option>
-                      <option value={10}>10</option>
-                    </select>
-                    <Link
-                      to="/cart"
-                      onClick={() => deleteLineItem(lineItem.product, qtyZero)}
-                    >
-                      Delete
-                    </Link>
+                    <div>
+                      <div style={{display: 'flex'}}>
+                      {/* marginLeft: '366%' */}
+                          <p style={{marginRight: '10px'}}>
+                            <span>Quantity</span>{' '}
+                          </p>
+                          <select
+
+                            style={{height: '26px', marginRight: '10px'}}
+                            defaultValue={lineItem.quantity}
+                            onChange={(ev) =>
+                              updateLineItem(lineItem.product, ev.target.value)
+                            }
+                          >
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                            <option value={6}>6</option>
+                            <option value={7}>7</option>
+                            <option value={8}>8</option>
+                            <option value={9}>9</option>
+                            <option value={10}>10</option>
+                          </select>
+                          <Link
+                            to="/cart"
+                            onClick={() => deleteLineItem(lineItem.product, qtyZero)}
+                          >
+                           <BsFillTrashFill size={25} />
+                          </Link>
+                      </div>
+                    </div>
                   </div>
-                  <div id="div-price-product">
+                  <div id="div-price-product" style={{marginLeft: '53%'}}>
                     <h5>Price</h5>
                     <h5>${lineItem.product.price}</h5>
                   </div>
@@ -111,7 +151,8 @@ const Cart = ({
           ) : !auth.id && localStorage.getItem('lineItem') ? (
             JSON.parse(localStorage.getItem('lineItem')).map((lineItem) => {
               return (
-                <main id="display-lineitem" key={lineItem.product.id}>
+                <div>
+                <main id="display-lineitem" key={lineItem.product.id} >
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
@@ -166,34 +207,13 @@ const Cart = ({
                     <h5>${lineItem.product.price}</h5>
                   </div>
                 </main>
+                </div>
               );
             })
           ) : (
             <p>No items added to your cart!</p>
           )}
-          <hr />
         </div>
-        {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
-          <div id="subtotal-line-items">
-            <p>
-              <span>Subtotal ({totalQty} items): </span>
-              <span>${subTotal.toFixed(2)}</span>
-            </p>
-            <button>
-              <Link to="/order">Proceed to checkout</Link>
-            </button>
-          </div>
-        ) : !auth.id && localStorage.getItem('lineItem') ? (
-          <div id="subtotal-line-items">
-            <p>
-              <span>Subtotal ({totalQtyGuest} items): </span>
-              <span>${subTotalGuest.toFixed(2)}</span>
-            </p>
-            <button>
-              <Link to="/signIn">Login to checkout</Link>
-            </button>
-          </div>
-        ) : null}
       </div>
     </div>
   );
