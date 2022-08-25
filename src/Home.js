@@ -18,17 +18,17 @@ const Home = ({ books, auth }) => {
         {topBooks.map((book) => {
           return (
             <div key={book.id} className="col">
-              <div className="card border-0 bg-transparent mb-5">
-                <Link
-                  id={book.id}
-                  to={`books/${book.id}`}
-                  className="text-decoration-none"
-                >
-                  <div style={{}}>
+              <div className="card border-0 bg-transparent mb-5" style={{background: '#eef7ea'}}>
+                  <Link
+                    id={book.id}
+                    to={`books/${book.id}`}
+                    className="text-decoration-none"
+                  >
+                  <div style={{height: '19vh'}}>
                     <img
                       src={book.imageUrl}
                       style={{
-                        height: 'auto',
+                        height: '100%',
                         objectFit: 'contain',
                         backgroundColor: 'black',
                         padding: '2rem',
@@ -36,7 +36,7 @@ const Home = ({ books, auth }) => {
                       className="rounded-2 mb-2 card-img-top"
                     />
                   </div>
-                  <div className="card-body p-0">
+                  <div className="card-body p-0" style={{background: '#eef7ea'}}>
                     <p className="my-0 text-black">{book.title}</p>
                     <p className="my-0 text-black">{book.author}</p>
                     <p className="my-0 text-black">${book.price}</p>
@@ -44,7 +44,7 @@ const Home = ({ books, auth }) => {
                 </Link>
               </div>
             </div>
-          );
+          );``
         })}
       </div>
     </div>

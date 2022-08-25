@@ -93,7 +93,7 @@ class Books extends Component {
                         }}
                         className="rounded-2 mb-2 card-img-top"
                       />
-                      <div className="card-body p-0">
+                      <div className="card-body p-0" style={{background: '#eef7ea'}}>
                         <p className="my-0 text-black">{book.title}</p>
                         <p className="my-0 text-black">{book.author}</p>
                         <p className="my-0 text-black">${book.price}</p>
