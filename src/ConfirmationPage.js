@@ -1,20 +1,12 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-import { fetchOrders} from './store'
+// import { fetchOrders} from './store'
 
 class ConfirmationPage extends Component{ 
-  constructor(){
-    super();
-  };
-  componentDidMount(){
-    this.props.fetchOrders(this.props.auth)
-  }
 
   render() {
 
-    const { auth, orders} = this.props;
-    const lastOrder = orders[orders.length - 1] || [];
-  
+    const { auth, cart} = this.props;
    
     return (
         <div>
@@ -23,7 +15,7 @@ class ConfirmationPage extends Component{
         <div id="order-history">
         <main id='display-order-history'>
         {
-          lastOrder.lineItems ? lastOrder.lineItems.map(lineItem => {
+          cart.lineItems ? cart.lineItems.map(lineItem => {
             return (
               <div key={lineItem.id} id="display-line-item-order">
               <div className='order-book-info'>
@@ -54,19 +46,11 @@ class ConfirmationPage extends Component{
 };
 
 
-const mapStateToProps = ({orders, auth}) =>{
+const mapStateToProps = ({ auth, cart }) =>{
   return {
-      orders,
-      auth
+      auth,
+      cart
   };
 }
 
-const mapDispatchToProps = (dispatch) =>{
-  return {
-      fetchOrders: (user) => {
-        dispatch(fetchOrders(user))
-      }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationPage);
+export default connect(mapStateToProps)(ConfirmationPage);
