@@ -13,7 +13,7 @@ const NavBar = (props) => {
   const { auth, cart, logout, match, wishList } = props;
   const view = match.params.view;
   return (
-    <Navbar bg="white" expand="lg" className="sticky-top mb-3">
+    <Navbar expand="lg" className="bg-light sticky-top mb-3">
       <Container
         style={{
           display: 'flex',

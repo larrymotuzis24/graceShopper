@@ -7,7 +7,7 @@ import {
   fetchBooks,
   fetchStates,
   fetchCategories,
-  fetchWishList
+  fetchWishList,
 } from './store';
 import { Link, Route, Switch } from 'react-router-dom';
 import Home from './Home';
@@ -26,6 +26,7 @@ import OrderHistory from './OrderHistory';
 
 import IsAdminPanel from './IsAdminPanel';
 import WishList from './WishList';
+import './scss/app.scss';
 
 class App extends React.Component {
   componentDidMount(prevProps) {
