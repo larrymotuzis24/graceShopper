@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import { updateLineItem, deleteLineItem } from './store';
 import { Button } from 'react-bootstrap'
 import {
-  BsFillTrashFill
+  BsFillTrashFill,
 } from 'react-icons/bs'
+import {
+  GiBookshelf
+} from 'react-icons/gi'
 const Cart = ({
   cart,
   auth,
@@ -211,7 +214,23 @@ const Cart = ({
               );
             })
           ) : (
-            <p>No items added to your cart!</p>
+            <div >
+            <div style= {{ height: '200px', width: '87vw'}} > 
+                    <div style={{ textAlign: 'center', justifyContent: 'center', marginTop: '150px' }}>
+                        <div>
+                            <GiBookshelf size={180}/>   
+                            <h3>No items added to your cart! </h3>
+                        </div>
+                        <h5 style={{ marginLeft: '20px', marginTop: '20px' }}> 
+                        <Button varient="secondary" style={{color: 'white'}}>
+                          <Link to='/'>
+                          Back
+                          </Link>
+                        </Button>
+                        </h5>
+                    </div>
+              </div>
+           </div>
           )}
         </div>
       </div>
