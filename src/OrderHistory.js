@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchOrders } from './store';
 import WriteReview from './WriteReview';
-
+import {
+    FaClipboardList
+} from 'react-icons/fa'
+import { Button } from 'react-bootstrap'
 
 class OrderHistory extends Component{
     
@@ -22,13 +25,6 @@ class OrderHistory extends Component{
         });
         return (
             <div id='block-order-history-page'>
-                {
-                    auth.id ? (
-                        <h2>
-                            Welcome, {auth.firstName} {auth.lastName}!
-                        </h2>
-                    ) : null
-                }
                 <h2 className='order-history-title'>Order History</h2>
                 <div id="order-history-page">
                     <div id="order-history">
@@ -64,7 +60,17 @@ class OrderHistory extends Component{
                                         <hr/>
                                     </main>
                                 )
-                            }) : <p>No Order History!</p>
+                            }) : 
+                                <div >
+                                     <div style= {{ height: '200px', width: '87vw', marginBottom: '42px'}} > 
+                                            <div style={{ textAlign: 'center', justifyContent: 'center', marginTop: '150px' }}>
+                                                <div>
+                                                    <FaClipboardList size={180}/>   
+                                                            <h3>No order history </h3>
+                                                     </div>
+                                            </div>
+                                    </div>
+                                </div>
                         }
                     </div>
                 </div>

@@ -47,9 +47,10 @@ const Cart = ({
 
       <div>
         <div style={{ display: 'inline-block', height: '16vh', marginLeft: '9%'}}>
-          <h2 className="cart-title" style={{
+          {auth.id && cart.lineItems.length > 0 && cart.isCart ? <h2 className="cart-title" style={{
             textAlign: 'left',
-            marginLeft: '10%'}}>Cart</h2>
+            marginLeft: '10%'}}>Cart</h2> : null
+          }
         </div>
         <div style={{ display: 'inline-block', width: '10vw', marginLeft: '66%'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
