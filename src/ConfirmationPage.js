@@ -11,8 +11,8 @@ class ConfirmationPage extends Component{
   }
 
   render() {
-   
-    const { auth, orders } = this.props;
+
+    const { auth, orders} = this.props;
     const lastOrder = orders[orders.length - 1] || [];
   
    
@@ -33,6 +33,7 @@ class ConfirmationPage extends Component{
                   >
                   </img>
                   <h5>{lineItem.product.title}</h5>
+                  <p> Quantity:{lineItem.quantity}</p>
               </div>
               
           </div>
@@ -41,7 +42,10 @@ class ConfirmationPage extends Component{
           null
         }
         </main>
-        <p> <span>Please check email for confirmation, send to : </span> {auth.email} </p>
+        <div className='order-book-info'>
+        <p> <span> Confirmation send to : </span> {auth.email} </p>
+        <p> Shipped to {auth.address}</p> 
+        </div>
         </div>
         </div>
         </div>
