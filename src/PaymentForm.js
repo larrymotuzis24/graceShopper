@@ -2,8 +2,7 @@ import React, { useState} from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { createOrderFromCart, fetchOrders } from './store'
-import ConfirmationPage from "./ConfirmationPage";
+import { createOrderFromCart } from './store'
 import { Redirect } from 'react-router-dom'
 
 
@@ -54,7 +53,7 @@ const PaymentForm = (props) => {
             })
 
             if(response.data.success){
-                createOrderFromCart(auth)
+                createOrderFromCart()
                 setSuccess(true)
             }
         }
@@ -117,9 +116,8 @@ const mapStateToProps = ({ auth, cart }) => {
 
   const mapDispatch = (dispatch) => {
     return {
-        createOrderFromCart:(user) => {
+        createOrderFromCart:() => {
             dispatch(createOrderFromCart())
-            dispatch(fetchOrders(user))
         }
     }   
   };

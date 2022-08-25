@@ -66,7 +66,6 @@ class OrderHistory extends Component{
                                 )
                             }) : <p>No Order History!</p>
                         }
-                        <hr/>
                     </div>
                 </div>
                 
