@@ -23,7 +23,6 @@ export const createRating = (rating) => {
     review = {
       ...review, rating: review.rating * 1
     }
-    console.log('review', review)
     dispatch({type: 'CREATE_REVIEW', review});
   }
 }
