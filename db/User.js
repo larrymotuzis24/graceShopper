@@ -55,6 +55,27 @@ const User = conn.define('user', {
       notEmpty: true,
     },
   },
+  city:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  state: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
+  zipCode: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+    },
+  },
   secondaryAddress:{
     type: Sequelize.STRING,
     get: function(){

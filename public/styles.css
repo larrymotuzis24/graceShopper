@@ -1,4 +1,4 @@
-/* #uncontrolled-tab-example-tab-Users {
+#uncontrolled-tab-example-tab-Users {
   border-bottom: 2px solid red;
 }
 
@@ -71,7 +71,7 @@ div#block-cart-page h2 {
 
 div#block-cart-page h2.cart-title {
   text-align: center;
-  margin: 2.5rem;
+  margin: 2.5rem
 }
 
 div#cart-page {
@@ -183,6 +183,15 @@ ul#pages li {
   padding: 0.3rem;
 }
 
+.buttonStyle {
+  margin-left: 16px;
+  background: black; 
+  color: white !important
+}
+button a {
+  color: black
+}
+
 ul#pages li.pageSelected {
   background-color: grey;
   border-radius: 0.25rem;
@@ -234,9 +243,7 @@ div#shopping-cart h2 {
 
 main#display-lineitem {
   display: flex;
-  align-items: center;
   flex: 2;
-  justify-content: space-evenly;
 }
 
 main#display-lineitem > * {
@@ -251,7 +258,6 @@ img#display-photo-lineitem {
 }
 
 div#div-info-line-item {
-  display: flex;
   flex-direction: column;
   align-items: center;
 }
@@ -263,6 +269,7 @@ div#div-info-line-item > * {
 
 div#div-info-line-item a {
   text-decoration: none;
+  color: black
 }
 
 #searchbar-input {
@@ -293,16 +300,10 @@ div#div-info-line-item a {
 }
 
 div#subtotal-line-items {
-  width: 15%;
-  height: 20%;
-  border: solid 2px grey;
-  padding: 1rem;
   margin: 1rem;
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 20px;
-  flex-direction: column;
 }
 
 div#subtotal-line-items button {
@@ -594,6 +595,9 @@ div#div-info-wishlist > * {
   margin: 0.25rem;
 }
 
+a {
+  color: black
+}
 div#div-info-wishlist a {
   text-decoration: none;
 }
@@ -666,5 +670,3 @@ div div.order-history-button button{
   color: white;
   margin: 1rem;
 }
-
- */

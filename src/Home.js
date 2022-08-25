@@ -11,7 +11,9 @@ import StarRatingDisplay from './StarRatingDisplay';
 const Home = ({ books, auth }) => {
   const topBooks = books.filter((book) => (book.rating = 5));
   return (
+
     <div className="container" id="home-page">
+
       <FeaturedCarousel />
       <h2 className="display-4 my-4">Top Rated Books</h2>
       <div className="row row-cols-2 row-cols-lg-4">
@@ -47,6 +49,26 @@ const Home = ({ books, auth }) => {
           );``
         })}
       </div>
+      <div style={{display: 'flex', height: '600px', width: '35vw', borderRadius: '25px'}}>
+        <div style={{display: 'inline-block', height: '100%', width: '100%', float: 'right'}}>
+          <div style={{
+          height: '100%',
+          width: '100%',
+          borderRadius: '25px 0px 0px 25px',
+          background: '#0F301D'
+          }}>
+            <h4 style={{textIndent: '15px', color: 'pink'}}> Code Source Books was developed by Luis, Larry, Seth, and Ioan. </h4>
+            <h4 style={{textIndent: '15px', color: 'pink'}}> This is the nicest bookstore website you've ever seen!</h4>
+          </div>
+        </div>
+        <div style={{display: 'inline-block', height: '100%', width: '100%', float: 'left'}}>
+          <img style={{
+          height: '100%',
+          width: '100%',
+          borderRadius: '0 25px 25px 0'}}src='https://images.pexels.com/photos/1029807/pexels-photo-1029807.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'/>
+        </div>
+      </div>
+    </div>
     </div>
   );
 };
