@@ -7,7 +7,6 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-
           presets: ['@babel/preset-react'],
         },
       },
@@ -25,14 +24,8 @@ module.exports = {
           },
         ],
       },
+      { test: /\.css$/, use: 'css-loader' },
+      { test: /\.ts$/, use: 'ts-loader' },
     ],
   },
-
-          presets: ['@babel/preset-react']
-        }
-      },
-      { test: /\.css$/, use: 'css-loader' },
-      { test: /\.ts$/, use: 'ts-loader' }
-    ]
-  }
 };
