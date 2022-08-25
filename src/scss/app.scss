@@ -3,16 +3,61 @@
 
 // 2. Include any default variable overrides here
 $body-bg: #eef7ea;
-$primary: #dffc21;
-$bs-card-bg: red;
+$body-color: #000;
+$primary: #000;
 $light: #eef7ea;
 $dark: #000;
 $body-color: #111;
 
+$dropdown-link-color: #000;
+$navbar-color: #000;
+$navbar-nav-link-color: #000;
+$navbar-light-color: #000 !important;
+$link-color: #000;
+
+@font-face {
+  font-family: inter-regular;
+  src: url(../../public/fonts/Inter-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: inter-light;
+  src: url(../../public/fonts/Inter-Light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: tobias-light;
+  src: url(../../public/fonts/Tobias-Light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: tobias-thin;
+  src: url(../../public/fonts/Tobias-Thin.woff2) format('woff2');
+}
+
+$display-font-sizes: (
+  1: 5rem,
+  2: 4.5rem,
+  3: 3.5rem,
+  4: 3rem,
+  5: 2.5rem,
+  6: 2rem,
+);
+$display-font-family: tobias-thin;
+$headings-font-family: inter-light;
+$font-family-sans-serif: inter-regular;
+
+$carousel-caption-width: 100%;
+
+// $dropdown-link-hover-color: shade-color($dropdown-link-color, 10%) !default;
+// $dropdown-link-hover-bg: $gray-200 !default;
+// $dropdown-link-active-color: $component-active-color !default;
+// $dropdown-link-active-bg: $component-active-bg !default;
 // 3. Include remainder of required Bootstrap stylesheets
 @import '../../node_modules/bootstrap/scss/variables';
 
 // 4. Include any default map overrides here
+$bs-nav-link-color: #000;
 
 // 5. Include remainder of required parts
 @import '../../node_modules/bootstrap/scss/maps';
@@ -32,3 +77,102 @@ $body-color: #111;
 @import '../../node_modules/bootstrap/scss/utilities/api';
 
 // 8. Add additional custom code here
+
+.nav-link-active {
+  color: #000;
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 5rem;
+}
+h2 {
+  font-size: 4.5rem;
+}
+h3 {
+  font-size: 3.5rem;
+}
+h4 {
+  font-size: 3rem;
+}
+h5 {
+  font-size: 2.5rem;
+}
+h6 {
+  font-size: 2rem;
+}
+
+.carousel-caption {
+  right: 0;
+  left: 0;
+  position: static;
+  bottom: 0;
+  color: $light;
+}
+
+// .carousel-control-next,
+// .carousel-control-prev {
+//   align-items: flex-end;
+//   padding-bottom: 1.5rem;
+//   top: auto;
+//   color: #fff;
+//   text-decoration: none;
+//   outline: 0;
+//   opacity: 0.7;
+//   top: auto;
+//   width: auto;
+//   right: auto;
+//   left: auto;
+//   position: static;
+// }
+
+.carousel-control-next:focus,
+.carousel-control-next:hover,
+.carousel-control-prev:focus,
+.carousel-control-prev:hover {
+  color: #fff;
+  text-decoration: none;
+  outline: 0;
+  opacity: 1;
+  // cursor: pointer;
+}
+
+.carousel-control-next:hover {
+  cursor: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="%23EEF7EA" class="bi bi-arrow-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>'),
+    auto !important;
+}
+
+.carousel-control-prev:hover {
+  cursor: url('data:image/svg+xml, <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="%23EEF7EA" class="bi bi-arrow-left" viewBox="0 0 16 16"> <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" /></svg>'),
+    auto !important;
+}
+
+.carousel-control-prev-icon {
+  border: 1px solid red;
+  background-image: none;
+}
+
+.carousel-indicators {
+  position: absolute;
+  left: 0;
+  width: 50%;
+  margin: 0;
+  right: auto;
+  justify-content: space-between;
+}
+
+.carousel-indicators [data-bs-target] {
+  border-bottom: 0;
+  border-top: 0;
+  text-indent: 0;
+  padding: 0rem 0.5rem;
+  margin: 0;
+  height: auto;
+  width: auto;
+  color: #eef7ea;
+  background-color: #000;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem !important;
+}

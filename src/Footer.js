@@ -4,25 +4,25 @@ import { connect } from 'react-redux';
 const Footer = () => {
   return (
     <div className="" style={{ backgroundColor: 'black' }}>
-      <footer className="p-4 mt-4 text-center">
+      <footer className="p-4 mt-4 text-center container">
         <ul className="nav d-flex w-100 justify-content-between pb-4">
           <li className="nav-item w-25 text-start">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               ABOUT
             </a>
           </li>
           <li className="nav-item w-25 text-center">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               INSTAGRAM
             </a>
           </li>
           <li className="nav-item w-25 text-center">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               NEWSLETTER
             </a>
           </li>
           <li className="nav-item w-25 text-end">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               CONTACT
             </a>
           </li>
@@ -99,22 +99,22 @@ const Footer = () => {
 
         <ul className="nav d-flex w-100 justify-content-between pt-4">
           <li className="nav-item w-25 text-start">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               SHIPPING
             </a>
           </li>
           <li className="nav-item w-25 text-center">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               PRIVACY
             </a>
           </li>
           <li className="nav-item w-25 text-center">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               TERMS
             </a>
           </li>
           <li className="nav-item w-25 text-end">
-            <a href="#" className="d-inline-block nav-link p-0 text-white">
+            <a href="#" className="d-inline-block nav-link p-0 text-light">
               ©2022 SOURCE CODE BOOKS
             </a>
           </li>
