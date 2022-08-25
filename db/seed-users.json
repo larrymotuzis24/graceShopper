@@ -7,7 +7,10 @@
       "password": "moe_pw",
       "isAdmin": true,
       "email": "moe11@yahoo.com",
-      "address": "364 Shanahan Fork Burlington WV 94179",
+      "address": "364 Shanahan Fork",
+      "city": "Burlington",
+      "state": "West Virginia",
+      "zipCode": "94179",
       "secondaryAddress": [
           "568 Texas Street Houston TX 77032",
           "3345 Lakeway Dr Houston TX 77324",
@@ -21,7 +24,10 @@
         "username": "lucy",
         "password": "lucy_pw",
         "email": "lucy123@hotmail.com",
-        "address": "972 Eunice Creek Bowling Green NH 78736-8287"
+        "address": "972 Eunice Creek",
+        "city": "Bowling Green",
+        "state": "New Hampshire",
+        "zipCode": "78736"
     },
     {
         "id": 3,
@@ -30,7 +36,10 @@
         "username": "larry",
         "password": "larry_pw",
         "email": "larry12@yahoo.com",
-        "address": "154 Breana Ford Middletown TX 90066"
+        "address": "154 Breana Ford",
+        "city": "Middletown",
+        "state": "Texas",
+        "zipCode": "90066"
     },
     {
         "id": 4,
@@ -39,7 +48,10 @@
         "username": "john",
         "password": "john_pw",
         "email": "john_12@yahoo.com",
-        "address": "44596 Franey Green Plano CT 22954"
+        "address": "44596 Franey Green",
+        "city": "Plano",
+        "state": "Connecticut",
+        "zipCode": "22954"
     },
     {
         "id": 5,
@@ -48,7 +60,10 @@
         "username": "kevin",
         "password": "kevin_pw",
         "email": "kevin_ac@gmail.com",
-        "address": "6961 Porter Mission Middletown ID 64368-2972"
+        "address": "6961 Porter Mission",
+        "city": "Meridian",
+        "state": "Idaho",
+        "zipCode": "64368"
     },
     {
         "id": 6,
@@ -57,7 +72,10 @@
         "username": "kathy",
         "password": "kathy_pw",
         "email": "katty_123@yahoo.com",
-        "address": "6343 Harris Dr Middletown ID 64368-2972"
+        "address": "6343 Harris Dr",
+        "city": "Nampa",
+        "state": "Idaho",
+        "zipCode": "64368"
     },
     {
         "id": 7,
@@ -66,7 +84,10 @@
         "username": "mark",
         "password": "mark_pw",
         "email": "mark.hr@gmail.com",
-        "address": "2345 Eagle Creek Lane Houston TX 77034-2972"
+        "address": "2345 Eagle Creek Lane",
+        "city": "Houston",
+        "state": "Texas",
+        "zipCode": "77034"
     },
     {
         "id": 8,
@@ -75,7 +96,10 @@
         "username": "pat",
         "password": "pat_pw",
         "email": "pat.34@yahoo.com",
-        "address": "2783 Milan Avenue Denver CO 77234-2972"
+        "address": "2783 Milan Avenue",
+        "city": "Denver",
+        "state": "Colorado",
+        "zipCode": "77234"
     },
     {
         "id": 9,
@@ -84,7 +108,10 @@
         "username": "nathan",
         "password": "nathan_pw",
         "email": "nathan123@hotmail.com",
-        "address": "9133 Augusta Street Palm Beach Gardens, FL 33410"
+        "address": "9133 Augusta Street",
+        "city": "Miami",
+        "state": "Florida",
+        "zipCode": "33410"
     },
     {
         "id": 10,
@@ -93,7 +120,10 @@
         "username": "mark12",
         "password": "mark12_pw",
         "email": "mark132@yahoo.com",
-        "address": "57 Washington St. Shakopee, MN 55379"
+        "address": "57 Washington St.",
+        "city": "Mankato",
+        "state": "Minnesota",
+        "zipCode": "55379"
     },
     {
         "id": 11,
@@ -102,7 +132,10 @@
         "username": "robert",
         "password": "robert_pw",
         "email": "robert.king@yahoo.com",
-        "address": "712 Mill St. Fair Lawn, NJ 07410"
+        "address": "712 Mill St. Fair",
+        "city": "Jersey City",
+        "state": "New Jersey",
+        "zipCode": "07410"
     },
     {
         "id": 12,
@@ -111,7 +144,10 @@
         "username": "yvette",
         "password": "yvette_pw",
         "email": "yvette09@yahoo.com",
-        "address": "45 Edgewater Street Kennewick, WA 99337"
+        "address": "45 Edgewater Street",
+        "city": "Tacoma",
+        "state": "Washington",
+        "zipCode": "99337"
     },
     {
         "id": 13,
@@ -120,7 +156,10 @@
         "username": "tevin",
         "password": "tevin_pw",
         "email": "tevin12@yahoo.com",
-        "address": "9236 Prospect Lane Queensbury, NY 12804"
+        "address": "9236 Prospect Lane",
+        "city": "New York",
+        "state": "New York",
+        "zipCode": "12804"
     },
     {
         "id": 14,
@@ -129,7 +168,10 @@
         "username": "brandon",
         "password": "brandon_pw",
         "email": "brandon.re@yahoo.com",
-        "address": "45 Edgewater Street Kennewick, WA 99337"
+        "address": "45 Edgewater Street",
+        "city": "Vancouver",
+        "state": "Washington",
+        "zipCode": "99337"
     },
     {
         "id": 15,
@@ -138,7 +180,10 @@
         "username": "luis",
         "password": "luisu_pw",
         "email": "luis_12@yahoo.com",
-        "address": "644 Jockey Hollow Street Menasha, WI 54952"
+        "address": "644 Jockey Hollow Street",
+        "city": "Madison",
+        "state": "Wisconsin",
+        "zipCode": "54952"
     },
     {
         "id": 16,
@@ -147,7 +192,10 @@
         "username": "seth",
         "password": "seth_pw",
         "email": "seth@yahoo.com",
-        "address": "8596 Maiden Dr. Neenah, WI 54956"
+        "address": "8596 Maiden Dr.",
+        "city": "Appleton",
+        "state": "Wisconsin",
+        "zipCode": "54956"
     },
     {
         "id": 17,
@@ -156,7 +204,10 @@
         "username": "ioan",
         "password": "ioan_pw",
         "email": "ioan_12@yahoo.com",
-        "address": "95 Deerfield Dr. Piscataway, NJ 08854"
+        "address": "95 Deerfield Dr.",
+        "city": "Newark",
+        "state": "New Jersey",
+        "zipCode": "08854"
     },
     {
         "id": 18,
@@ -165,7 +216,10 @@
         "username": "prof",
         "password": "prof_pw",
         "email": "prof123@yahoo.com",
-        "address": "90 Talbot St. Patchogue, NY 11772"
+        "address": "90 Talbot St. Patchogue",
+        "city": "New York",
+        "state": "New York",
+        "zipCode": "11772"
     },
     {
         "id": 19,
@@ -174,7 +228,10 @@
         "username": "carlos",
         "password": "carlos_pw",
         "email": "carlos_crow@yahoo.com",
-        "address": "7836 Westport St. Dearborn, MI 48124"
+        "address": "7836 Westport St.",
+        "city": "Detroit",
+        "state": "Michigan",
+        "zipCode": "48124"
     },
     {
         "id": 20,
@@ -183,7 +240,10 @@
         "username": "joe",
         "password": "joe_pw",
         "email": "joe.lo@yahoo.com",
-        "address": "7547A Glendale Ave. Abingdon, MD 21009"
+        "address": "7547A Glendale Ave.",
+        "city": "Baltimore",
+        "state": "Maryland",
+        "zipCode": "21009"
     },
     {
         "id": 21,
@@ -192,7 +252,10 @@
         "username": "tony",
         "password": "tony_pw",
         "email": "tony_po@yahoo.com",
-        "address": "8825 Carriage Ave. Banning, CA 92220"
+        "address": "8825 Carriage Ave.",
+        "city": "San Francisco",
+        "state": "California",
+        "zipCode": "92220"
     },
     {
         "id": 22,
@@ -201,7 +264,10 @@
         "username": "tivi",
         "password": "tivi_pw",
         "email": "tivi123@yahoo.com",
-        "address": "45 W. Wagon Lane Saratoga Springs, NY 12866"
+        "address": "45 W. Wagon Lane Saratoga",
+        "city": "New York",
+        "state": "New York",
+        "zipCode": "12866"
     },
     {
         "id": 23,
@@ -210,7 +276,10 @@
         "username": "robert",
         "password": "robert_pw",
         "email": "robert45@yahoo.com",
-        "address": "74 Rockland Circle Vicksburg, MS 39180"
+        "address": "74 Rockland Circle",
+        "city": "Jackson",
+        "state": "Mississippi",
+        "zipCode": "39180"
     }
 
   ]
