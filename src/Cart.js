@@ -43,12 +43,12 @@ const Cart = ({
     <div id="block-cart-page" style={{height: '85vh'}}>
 
       <div>
-        <div style={{ display: 'inline-block', height: '16vh', marginLeft: '26%'}}>
+        <div style={{ display: 'inline-block', height: '16vh', marginLeft: '9%'}}>
           <h2 className="cart-title" style={{
             textAlign: 'left',
             marginLeft: '10%'}}>Cart</h2>
         </div>
-        <div style={{ display: 'inline-block', width: '10vw', marginLeft: '32%'}}>
+        <div style={{ display: 'inline-block', width: '10vw', marginLeft: '66%'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
               <div style={{
                 display: 'flex'
@@ -59,11 +59,11 @@ const Cart = ({
                   <span>Subtotal ({totalQty} items): </span>
                   <span>${subTotal.toFixed(2)}</span>
                 </p> */}
-                <Button style={{marginLeft: '16px'}}>
-                  <Link to="/order">Proceed to checkout</Link>
+                <Button className='buttonStyle'>
+                  <Link to="/order">Checkout</Link>
                 </Button>
-                <Button style={{marginLeft: '16px'}}>
-                  <Link to="/">Go Back</Link>
+                <Button style={{marginLeft: '16px', background: 'white', color: 'black'}}>
+                  <Link to="/">Back</Link>
                 </Button>
               </div>
             ) : !auth.id && localStorage.getItem('lineItem') ? (
@@ -80,7 +80,7 @@ const Cart = ({
             </div>
         </div>
       <div id="cart-page" style={{marginTop: '-9vh'}}>
-        <div id="shopping-cart" style={{ borderTop: '1px solid'}}>
+        <div id="shopping-cart" style={{ borderTop: '1px solid', width: '80vw', overflowY: 'auto', height: '76vh'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             cart.lineItems.map((lineItem) => {
               return (
