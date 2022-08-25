@@ -11,31 +11,31 @@ import StarRatingDisplay from './StarRatingDisplay';
 const Home = ({ books, auth }) => {
   const topBooks = books.filter((book) => (book.rating = 5));
   return (
-    <Container id="home-page">
+    <div className="container p-4" id="home-page">
       <FeaturedCarousel />
       <h2 className="display-4 my-4">Top Rated Books</h2>
       <div className="row row-cols-2 row-cols-lg-4">
         {topBooks.map((book) => {
           return (
-            <div 
-              key={book.id}
-              className="col">
-              <div className="card border-0 mb-5">
+            <div key={book.id} className="col">
+              <div className="card border-0 bg-transparent mb-5">
                 <Link
                   id={book.id}
                   to={`books/${book.id}`}
                   className="text-decoration-none"
                 >
-                  <img
-                    src={book.imageUrl}
-                    style={{
-                      height: '400px',
-                      objectFit: 'contain',
-                      backgroundColor: 'black',
-                      padding: '2rem',
-                    }}
-                    className="rounded-2 mb-2 card-img-top"
-                  />
+                  <div style={{}}>
+                    <img
+                      src={book.imageUrl}
+                      style={{
+                        height: 'auto',
+                        objectFit: 'contain',
+                        backgroundColor: 'black',
+                        padding: '2rem',
+                      }}
+                      className="rounded-2 mb-2 card-img-top"
+                    />
+                  </div>
                   <div className="card-body p-0">
                     <p className="my-0 text-black">{book.title}</p>
                     <p className="my-0 text-black">{book.author}</p>
@@ -47,7 +47,7 @@ const Home = ({ books, auth }) => {
           );
         })}
       </div>
-    </Container>
+    </div>
   );
 };
 
