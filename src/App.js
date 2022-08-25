@@ -23,13 +23,12 @@ import Footer from './Footer';
 import Order from './Order';
 import UserAddress from './UserAddress';
 import OrderHistory from './OrderHistory';
-
+import Banner from './Banner';
 import IsAdminPanel from './IsAdminPanel';
 import WishList from './WishList';
 import './scss/app.scss';
 
 import ConfirmationPage from './ConfirmationPage';
-
 
 class App extends React.Component {
   componentDidMount(prevProps) {
@@ -51,6 +50,8 @@ class App extends React.Component {
     const { auth } = this.props;
     return (
       <main>
+        <Route path="/:view?" component={Banner} />
+
         <Route path="/:view?" component={NavBar} />
         <Route path="/" exact component={Home} />
         {auth.id ? (
@@ -63,7 +64,7 @@ class App extends React.Component {
             <Route path="/addressUser" component={UserAddress} />
             <Route exact path="/books" component={Books} />
             <Route path="/orderHistory" component={OrderHistory} />
-            <Route path="/confirmation" component={ConfirmationPage } />
+            <Route path="/confirmation" component={ConfirmationPage} />
             {auth.isAdmin ? (
               <Route path="/adminPrivileges" component={IsAdminPanel} />
             ) : null}

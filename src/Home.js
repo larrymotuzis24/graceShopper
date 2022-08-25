@@ -11,8 +11,9 @@ import StarRatingDisplay from './StarRatingDisplay';
 const Home = ({ books, auth }) => {
   const topBooks = books.filter((book) => (book.rating = 5));
   return (
-    <div>
-    <div className="container p-0" id="home-page">
+
+    <div className="container" id="home-page">
+
       <FeaturedCarousel />
       <h2 className="display-4 my-4">Top Rated Books</h2>
       <div className="row row-cols-2 row-cols-lg-4">

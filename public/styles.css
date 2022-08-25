@@ -619,13 +619,13 @@ div#order-history-page {
   justify-content: space-evenly;
 }
 
-/* main#display-order-history {
+main#display-order-history {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 2;
   justify-content: space-evenly;
-} */
+}
 
 main#display-order-history p{
   font-weight: bold;
@@ -670,4 +670,3 @@ div div.order-history-button button{
   color: white;
   margin: 1rem;
 }
-
