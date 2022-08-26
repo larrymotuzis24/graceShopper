@@ -106,13 +106,13 @@ class Order extends Component {
                   className="form-select"
                 >
                   <option>{auth.address}</option>
-                  {auth.secondaryAddress.map((secAddress, idx) => {
+                  {auth.secondaryAddress ? auth.secondaryAddress.map((secAddress, idx) => {
                     return (
                       <option key={idx} value={secAddress}>
                         {secAddress}
                       </option>
                     );
-                  })}
+                  }): null }
                 </select>
               </div>
               <div className="d-flex">
