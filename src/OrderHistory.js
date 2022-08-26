@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { fetchOrders } from "./store";
-import WriteReview from "./WriteReview";
-import { FaClipboardList } from "react-icons/fa";
-import { Button } from "react-bootstrap";
+import React, { Component } from 'react';
+import { render } from 'react-dom';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchOrders } from './store';
+import WriteReview from './WriteReview';
+import { FaClipboardList } from 'react-icons/fa';
+import { Button } from 'react-bootstrap';
 
 class OrderHistory extends Component {
   componentDidMount() {
@@ -20,94 +20,110 @@ class OrderHistory extends Component {
       return subT + shipTotal + taxCol;
     });
     return (
-      <div id="block-order-history-page" style={{ height: "74vh" }}>
-        <div
-          style={{ display: "inline-block", height: "16vh", marginLeft: "9%" }}
-        >
-          { orders.length > 0 ?
-            <h2
-              className="order-history-title"
-              style={{
-                textAlign: "left",
-                marginLeft: "10%",
-              }}
-            >
-              Order History
-            </h2>
-            :
-            null
-          }
-          <div id="order-history">
-            <div
-              id="shopping-cart"
-              style={{
-                borderTop: orders.length > 0 ? "1px solid" : null,
-                width: "80vw",
-                overflowY: "auto",
-                height: "76vh",
-              }}
-            >
+      <div id="" style={{}} className="container mt-4">
+        <div className="d-flex justify-content-between align-items-center">
+          {orders.length > 0 ? (
+            <div className="w-100">
+              <h2 className="mb-4" style={{}}>
+                Order History
+              </h2>
+              {/* <hr /> */}
+            </div>
+          ) : null}
+        </div>
+        <div style={{}}>
+          <div id="">
+            <div id="" style={{}}>
               {orders.length > 0 ? (
                 orders.map((order, idx) => {
                   return (
-                    <main key={order.id}>
-                      <div style={{ display: "flex", flexDirection: 'column' }}>
-                        <p>
-                          <span style={{ fontSize: "30px" }}>{`${new Date(
-                            order.updatedAt
-                          ).toLocaleString("default", {
-                            month: "long",
-                          })} ${new Date(
-                            order.updatedAt
-                          ).getDate()}, ${new Date(
-                            order.updatedAt
-                          ).getFullYear()}`}</span>
-                        </p>
-                        <p>
-                          Total:{" "}
-                          <span style={{ fontSize: "20px" }}>
-                            ${orderTotal[idx].toFixed(2)} USD
-                          </span>
-                        </p>
-                      </div>
-                      {order.lineItems.map((lineItem) => {
-                        return (
-                          <div key={lineItem.id}>
-                            <div >
-                              <img
-                                src={lineItem.product.imageUrl}
-                                
-                              ></img>
-                              <h5>{lineItem.product.title}</h5>
-                            </div>
-                            <div >
-                              <Link to={`/books/${lineItem.productId}`}>
-                                <Button>Buy it again</Button>
-                              </Link>
-                              <WriteReview order={lineItem.product} />
-                            </div>
+                    <div key={order.id}>
+                      <hr />
+                      <div className="d-flex justify-content-between w-100">
+                        <div
+                          className="d-flex mt-2 me-3 w-25"
+                          style={{ borderRight: '1px solid black' }}
+                        >
+                          <div className="me-3 text-secondary">
+                            <p className="">Date</p>
+                            <p className="">Total</p>
                           </div>
-                        );
-                      })}
-                    </main>
+                          <div>
+                            <p>
+                              {`${new Date(order.updatedAt).toLocaleString(
+                                'default',
+                                {
+                                  month: 'long',
+                                }
+                              )} ${new Date(
+                                order.updatedAt
+                              ).getDate()}, ${new Date(
+                                order.updatedAt
+                              ).getFullYear()}`}
+                            </p>
+                            <p>${orderTotal[idx].toFixed(2)}</p>
+                          </div>
+                        </div>
+                        <div className="w-75 order-history-books-container">
+                          {order.lineItems.map((lineItem) => {
+                            return (
+                              <div key={lineItem.id} className="">
+                                <div className="d-flex justify-content-between my-3">
+                                  <div className="d-flex w-50">
+                                    <img
+                                      src={lineItem.product.imageUrl}
+                                      style={{ width: '6rem' }}
+                                      className="me-4"
+                                    ></img>
+                                    <p>
+                                      {lineItem.product.title}
+                                      <br />
+                                      {lineItem.product.author}
+                                      <br />${lineItem.product.price}
+                                    </p>
+                                  </div>
+                                  <div className="text-end">
+                                    <a
+                                      to={`/books/${lineItem.productId}`}
+                                      className="text-link"
+                                      style-={{
+                                        marginBottom: '2rem !important',
+                                        display: 'block',
+                                      }}
+                                    >
+                                      BUY IT AGAIN
+                                    </a>
+                                    <WriteReview order={lineItem.product} />
+                                  </div>
+                                </div>
+                                <hr />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                      <hr />
+                    </div>
                   );
                 })
               ) : (
-                <div style={{
-                  marginLeft: '-100px'
-                }}>
+                <div
+                  style={{
+                    marginLeft: '-100px',
+                  }}
+                >
                   <div
                     style={{
-                      height: "200px",
-                      width: "87vw",
-                      marginBottom: "42px",
+                      height: '200px',
+                      width: '87vw',
+                      marginBottom: '42px',
                     }}
                   >
                     <div
                       style={{
-                        textAlign: "center",
-                        justifyContent: "center",
-                        marginTop: "500px",
+                        textAlign: 'center',
+                        justifyContent: 'center',
+                        marginTop: '500px',
                       }}
                     >
                       <div>
