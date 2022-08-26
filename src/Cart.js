@@ -9,6 +9,9 @@ import {
 import {
   GiBookshelf
 } from 'react-icons/gi'
+import {
+  IoIosArrowBack
+} from 'react-icons/io'
 const Cart = ({
   cart,
   auth,
@@ -52,7 +55,7 @@ const Cart = ({
             marginLeft: '10%'}}>Cart</h2> : null
           }
         </div>
-        <div style={{ display: 'inline-block', width: '10vw', marginLeft:  '69.4%'}}>
+        <div style={{ display: 'inline-block', width: '10vw', marginLeft:  '64.4%'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
               <div style={{
                 display: 'flex'
@@ -96,6 +99,7 @@ const Cart = ({
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
+                    style={{height: '250px'}}
                   ></img>
                   <div id="div-info-line-item">
                     <h5>{lineItem.product.title}</h5>
@@ -231,11 +235,13 @@ const Cart = ({
                             <h3>No items added to your cart! </h3>
                         </div>
                         <h5 style={{ marginLeft: '20px', marginTop: '20px' }}> 
-                        <Button varient="secondary" style={{color: 'white'}}>
+                        <div style={{
+                          marginLeft: '-78px'
+                        }}>
                           <Link to='/'>
-                          Back
+                              <IoIosArrowBack/> Back 
                           </Link>
-                        </Button>
+                          </div>
                         </h5>
                     </div>
               </div>
