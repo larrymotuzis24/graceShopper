@@ -90,9 +90,10 @@ class UserEditPwd extends Component {
               <div style={{
                 display: 'flex'
               }}>
-                <Button style={{
+                <button style={{
                   backgroundColor: 'blue'
-                }} >Update Password</Button>
+                }} 
+                className="btn btn-primary w-50">Update Password</button>
                 <Button  onClick={() => history.push("/user")}>Cancel</Button>
               </div>
             </form>
