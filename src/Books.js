@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import StarRatingDisplay from './StarRatingDisplay';
 import Pagination from './Pagination';
+import SearchBar from './SearchBar';
+
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 
@@ -11,7 +13,7 @@ class Books extends Component {
     super();
     this.state = {
       currPage: 1,
-      booksPerPage: 6,
+      booksPerPage: 16,
       option: '',
       category: '',
     };
@@ -55,48 +57,40 @@ class Books extends Component {
 
     return (
       <div className="container">
-        {/* {auth.id ? (
-          <h2 className="user-name">
-            Welcome, {auth.firstName} {auth.lastName}!
-          </h2>
-        ) : null}
-        {cart.lineItems.length > 0 ? (
-          <div id="cart-books">
-            <img
-              src={cart.lineItems[cart.lineItems.length - 1].product.imageUrl}
-              className='photo-last-item'
-            ></img>{" "}
-            <p>
-              <span>Last Item added to the Cart</span>
-            </p>
-          </div>
-        ) : null} */}
-        <div className="row" style={{ gap: '2rem' }}>
+        {/* <div className="row" style={{ gap: '2rem' }}>
           <div className="row row-cols-2 row-cols-lg-4">
             {listBooks.map((book) => {
               return (
-                <div className="col" key={book.id}>
-                  <div className="card border-0 mb-5">
+                <div className="col">
+                  <div
+                    key={book.id}
+                    className="card border-0 bg-transparent mb-5"
+                    style={{ background: '#eef7ea' }}
+                  >
                     <Link
                       id={book.id}
-                      to={`/books/${book.id}`}
+                      to={`books/${book.id}`}
                       className="text-decoration-none"
                     >
-      
-                      <img
-                        src={book.imageUrl}
-                        style={{
-                          height: '400px',
-                          objectFit: 'contain',
-                          backgroundColor: 'black',
-                          padding: '2rem',
-                        }}
-                        className="rounded-2 mb-2 card-img-top"
-                      />
-                      <div className="card-body p-0" style={{background: '#eef7ea'}}>
-                        <p className="my-0 text-black">{book.title}</p>
-                        <p className="my-0 text-black">{book.author}</p>
-                        <p className="my-0 text-black">${book.price}</p>
+                      <div style={{ height: '400px' }}>
+                        <img
+                          src={book.imageUrl}
+                          style={{
+                            height: '100%',
+                            objectFit: 'contain',
+                            backgroundColor: 'black',
+                            padding: '20%',
+                          }}
+                          className="rounded-4 mb-2 card-img-top"
+                        />
+                      </div>
+                      <div
+                        className="card-body pt-3 pb-0 px-0"
+                        style={{ background: '#eef7ea' }}
+                      >
+                        <p className="my-0 text-black lead">{book.title}</p>
+                        <p className="my-0 text-black lead">{book.author}</p>
+                        <p className="my-0 text-black lead">${book.price}</p>
                       </div>
                     </Link>
                   </div>
@@ -104,73 +98,78 @@ class Books extends Component {
               );
             })}
           </div>
-
-          {/* <div class="col card">1</div>
-          <div class="col card">2</div>
-          <div class="col card">3</div> */}
-        </div>
-        {/* <div class="row">
-          <div class="col card">4</div>
-          <div class="col card">5</div>
-          <div class="col card">6</div>
         </div> */}
 
-        {/* <div id="books">
-=======
-        <div id='search-books'>
+        <div id="search-books">
           <SearchBar />
         </div>
         <div id="books-category">
-          <select onChange={ onChange } value= { option } name='option'>
-            <option value=''>Select a Category</option>
-              {
-                categories.map(category => {
-                  return (
-                    <option key={category.id} value={category.id}>
-                      {category.category}
-                    </option>
-                  )
-                })
-              }
+          <ul>
+            {categories.map((category) => {
+              return (
+                <button
+                  onClick={onChange}
+                  name="option"
+                  key={category.id}
+                  value={category.id}
+                >
+                  {category.category}
+                </button>
+              );
+            })}
+          </ul>
+          <select onChange={onChange} value={option} name="option">
+            <option value="">All</option>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.category}
+                </option>
+              );
+            })}
           </select>
         </div>
-        <div id="books">
->>>>>>> main
-          {listBooks.map((book) => {
-            return (
-              <div key={book.id} className="book-info">
-                <img className="photo-books" src={book.imageUrl}></img>
-                <h3>
-                  <Link to={`/books/${book.id}`}>{book.title}</Link>
-                </h3>
-                <p>
-                  <span>Author:</span> {book.author}
-                </p>
-                <p>
-                  <span>Year:</span> {new Date(book.year).getFullYear()}
-                </p>
-                <p>
-                  <span>Price:</span> $ {book.price}
-                </p>
-                <p>
-                  {book.inventory >= 1 && book.inventory <= 10 ? (
-                    <span id="stock-left">Only {book.inventory} left in Stock - Order soon.</span>
-                  ) : book.inventory > 10 ? (
-                    <span id="in-stock">In Stock</span>
-                  ) : (
-                    <span id="out-stock">Out of Stock</span>
-                  )}
-                </p>
-                <div>
-                <StarRatingDisplay book={book} />
+        <div className="row" style={{ gap: '2rem' }}>
+          <div className="row row-cols-2 row-cols-lg-4">
+            {listBooks.map((book) => {
+              return (
+                <div key={book.id} className="col">
+                  <div
+                    className="card border-0 bg-transparent mb-5"
+                    style={{ background: '#eef7ea' }}
+                  >
+                    <Link
+                      id={book.id}
+                      to={`books/${book.id}`}
+                      className="text-decoration-none"
+                    >
+                      <div style={{ height: '400px' }}>
+                        <img
+                          src={book.imageUrl}
+                          style={{
+                            height: '100%',
+                            objectFit: 'contain',
+                            backgroundColor: 'black',
+                            padding: '20%',
+                          }}
+                          className="rounded-4 mb-2 card-img-top"
+                        />
+                      </div>
+                      <div
+                        className="card-body pt-3 pb-0 px-0"
+                        style={{ background: '#eef7ea' }}
+                      >
+                        <p className="my-0 text-black lead">{book.title}</p>
+                        <p className="my-0 text-black lead">{book.author}</p>
+                        <p className="my-0 text-black lead">${book.price}</p>
+                      </div>
+                    </Link>
+                  </div>
                 </div>
-                <button>
-                  <Link to={`/books/${book.id}`}>See Book Description</Link>
-                </button>
-              </div>
-            );
-          })}
-        </div> */}
+              );
+            })}
+          </div>
+        </div>
         <Pagination
           numPages={numPages}
           setCurrentPage={setCurrentPage}

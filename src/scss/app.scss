@@ -176,3 +176,15 @@ h6 {
 .nav-link {
   padding: 0.5rem 1rem !important;
 }
+
+.a {
+  text-decoration: none;
+}
+
+.a:hover {
+  text-decoration: underline;
+}
+
+.carousel-item {
+  height: 100%;
+}
