@@ -58,7 +58,7 @@ class SignIn extends Component {
     };
 
     try {
-      await this.props.register(user);
+      await this.props.register(user)
       this.setState({ regPassword: "" });
       this.setState({ regEmail: "" });
       this.setState({ regUsername: "" });
@@ -92,13 +92,13 @@ class SignIn extends Component {
       successMessage
     } = this.state;
     return (
-      <div>
+      <div style={{height: '58vh'}}>
         <div style={{ marginTop: "13%" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ display: "inline-block", marginRight: "3%" }}>
               <h2
                 style={{
-                  marginRight: "73%",
+                  marginRight: "91%",
                   marginBottom: "3%",
                   textIndent: "-15%",
                 }}
@@ -108,6 +108,7 @@ class SignIn extends Component {
               <form onSubmit={onSubmit}>
                 <input
                   style={{
+                    backgroundColor: username.length > 0 ? 'white' : '#f0eded',
                     textIndent: "5px",
                     width: "350px",
                     marginTop: "3%",
@@ -126,6 +127,7 @@ class SignIn extends Component {
                     width: "350px",
                     marginBottom: "3%",
                     height: "2.3em",
+                    backgroundColor: password.length > 0 ? 'white' : '#f0eded'
                   }}
                   placeholder="Password"
                   type="password"
@@ -144,14 +146,14 @@ class SignIn extends Component {
                 >
                   Sign In{" "}
                 </button>
-                <p
+                {/* <p
                   style={{
                     marginTop: "0%",
                     marginLeft: "-49%",
                   }}
                 >
                   <Link to="/placeholder"> Forgot your password? </Link>
-                </p>
+                </p> */}
               </form>
             </div>
             <div style={{ display: "inline-block" }}>
@@ -168,6 +170,7 @@ class SignIn extends Component {
                     height: "2.3em",
                     marginBottom: "3%",
                     textIndent: "5px",
+                    backgroundColor: regUsername.length > 0 ? 'white' : '#f0eded'
                   }}
                   name="username"
                   onChange={(ev) =>
@@ -182,6 +185,7 @@ class SignIn extends Component {
                     height: "2.3em",
                     marginBottom: "3%",
                     textIndent: "5px",
+                    backgroundColor: regPassword.length > 0 ? 'white' : '#f0eded'
                   }}
                   type="password"
                   name="password"
@@ -197,6 +201,7 @@ class SignIn extends Component {
                     width: "350px",
                     height: "2.3em",
                     marginBottom: "3%",
+                    backgroundColor: regEmail.length > 0 ? 'white' : '#f0eded'
                   }}
                   name="password"
                   value={regEmail}
@@ -211,6 +216,7 @@ class SignIn extends Component {
                     width: "350px",
                     height: "2.3em",
                     marginBottom: "3%",
+                    backgroundColor: firstName.length > 0 ? 'white' : '#f0eded'
                   }}
                   name="password"
                   value={firstName}
@@ -225,6 +231,7 @@ class SignIn extends Component {
                     width: "350px",
                     height: "2.3em",
                     marginBottom: "3%",
+                    backgroundColor: lastName.length > 0 ? 'white' : '#f0eded'
                   }}
                   name="password"
                   value={lastName}
@@ -239,6 +246,7 @@ class SignIn extends Component {
                     width: "350px",
                     height: "2.3em",
                     marginBottom: "3%",
+                    backgroundColor: address.length > 0 ? 'white' : '#f0eded'
                   }}
                   name="password"
                   value={address}
