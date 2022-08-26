@@ -67,7 +67,7 @@ class IsAdminPanel extends Component {
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email </th>
-                <th>Adminnß</th>
+                <th>Admin</th>
                 <th style={{textAlign: 'center', verticalAlign: 'middle'}}> Update </th>
               </tr>
             </thead>
