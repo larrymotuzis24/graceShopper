@@ -61,7 +61,7 @@ class Order extends Component {
       <div id="" className="container mt-4" style={{ marginBottom: '20vh' }}>
         {/* Checkout page heading */}
         <div className="d-flex justify-content-between align-items-center">
-          <h2 className="checkout-title">Checkout</h2>
+          <h2 className="">Checkout</h2>
           {auth.id ? (
             <div className="d-flex align-items-center">
               {!avatar ? (
