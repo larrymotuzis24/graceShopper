@@ -8,11 +8,11 @@ const PUBLIC_KEY = 'pk_test_51LY9OXEi9E0TRZFzHZ7ngRoIwJQSJFmsILaHC27Z416tSbMOefI
 
 const stripeTestProimse = loadStripe(PUBLIC_KEY);
 
-export default function StripeContainer({address}) {
+export default function StripeContainer({address, email, firstName, lastName, }) {
     
     return (
         <Elements stripe={stripeTestProimse}>
-            <PaymentForm address={address}/>
+            <PaymentForm address={address} email={email} firstName={firstName} lastName={lastName}/>
         </Elements>
     )
 };

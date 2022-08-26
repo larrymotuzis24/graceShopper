@@ -9,23 +9,26 @@ class Order extends Component {
   constructor(){
     super();
     this.state = {
+      firstName:'',
+      lastName:'',
+      email:'',
       address: ''
     }
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(ev){
+    console.log(this.state.firstName)
     this.setState({[ev.target.name]: ev.target.value});
   }
 
   componentDidMount(){
-    this.setState({address: this.props.auth.address})
+    this.setState({firstName:this.props.auth.firstName, lastName:this.props.auth.lastName, email:this.props.auth.email, address:this.props.auth.address})
   }
 
   render() {
     const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty } =
       this.props;
-      console.log(auth)
     const { onChange } = this;
     const { address } = this.state;
     const qtyZero = 0;
@@ -59,9 +62,9 @@ class Order extends Component {
     flexDirection:'row',
     justifyContent:"space-between"
   }}>
-    <input type="text" class="form-control" placeholder={auth.firstName} aria-label="First name" style={{width:'45%'}} />
+    <input type="text" class="form-control" placeholder={auth.firstName} aria-label="First name" style={{width:'45%'}}  onChange={(e) => this.setState({firstName: e.target.value})} />
 
-    <input type="text" class="form-control" placeholder={auth.lastName} aria-label="Last name" style={{width:'45%'}} />
+    <input type="text" class="form-control" placeholder={auth.lastName} aria-label="Last name" style={{width:'45%'}} onChange={(e) => this.setState({lastName: e.target.value})}/>
 
 </div>
 
@@ -69,15 +72,15 @@ class Order extends Component {
     width:'100%'
   }}>
     <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" placeholder={auth.email} class="form-control" id="inputEmail4" />
+    <input type="email" placeholder={auth.email} class="form-control" id="inputEmail4" onChange={(e) => console.log(e.target.value)}/>
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Address</label>
-    <input type="text"  class="form-control" id="inputAddress" placeholder={auth.address}/>
+    <input type="text"  class="form-control" id="inputAddress" placeholder={auth.address} onChange={(e) => console.log(e.target.value)}/>
   </div>
   <div class="col-12">
     <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" />
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" onChange={(e) => console.log(e.target.value)} />
   </div>
   <div style={{
     display:'flex',
@@ -86,7 +89,7 @@ class Order extends Component {
     <div class="col-md-6" style={{
       margin:'3px'
     }}>
-      <label for="inputCity" class="form-label">City</label>
+      <label for="inputCity" class="form-label" onChange={(e) => console.log(e.target.value)}>City</label>
       <input type="text" placeholder={auth.city} class="form-control" id="inputCity" />
     </div>
     <div class="col-md-4" style={{

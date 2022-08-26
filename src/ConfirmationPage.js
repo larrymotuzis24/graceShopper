@@ -7,6 +7,7 @@ class ConfirmationPage extends Component{
   render() {
 
     const { auth, cart} = this.props;
+    console.log(this.props)
    
     return (
         <div>
