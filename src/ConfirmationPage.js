@@ -10,36 +10,28 @@ class ConfirmationPage extends Component{
     console.log(this.props)
    
     return (
-        <div>
-        <h1> {auth.firstName},  Your order is being prepared </h1>
-        <div id="order-history-page">
-        <div id="order-history">
-        <main id='display-order-history'>
-        {
-          cart.lineItems ? cart.lineItems.map(lineItem => {
-            return (
-              <div key={lineItem.id} id="display-line-item-order">
-              <div className='order-book-info'>
-                  <img
-                  src={lineItem.product.imageUrl}
-                  id="display-photo-line-item-order"
-                  >
-                  </img>
-                  <h5>{lineItem.product.title}</h5>
-                  <p> Quantity:{lineItem.quantity}</p>
-              </div>
-              
-          </div>
-            )
-          }) :
-          null
-        }
-        </main>
-        <div className='order-book-info'>
-        <p> <span> Confirmation send to : </span> {auth.email} </p>
-        <p> Shipped to {auth.address}</p> 
-        </div>
-        </div>
+        <div style={{
+          alignItems:'center',
+          marginTop:'100px'
+        }}>
+        <h3 style={{
+          textAlign:'center',
+        }}> {auth.firstName}, Thank you for your order! </h3>
+        <div style={{
+          display:'flex',
+          flexDirection:'column',
+          alignItems:'center',
+          marginBottom:'200px'
+        }}>
+        <p
+        style={{
+          padding:'10px'
+        }}> We sent a confirmation email to {auth.email}. </p>
+        <p style={{
+          padding:'10px'
+        }}> A second email will be sent once your order is shipped . </p> 
+
+
         </div>
         </div>
     )
