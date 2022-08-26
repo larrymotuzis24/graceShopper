@@ -87,7 +87,7 @@ class UserEdit extends Component {
     const { avatar } = this.state;
 
     return (
-      <main id="order-info" style={{height: '100vh'}}>
+      <main id="order-info" style={{height: '70vh'}}>
         <div id="order-info-div">
           <div id="shipping-info">
             <h3
@@ -98,7 +98,7 @@ class UserEdit extends Component {
               Edit Personal Information
             </h3>
             <form className="row g-3" onSubmit={save}>
-              <div style={{ display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
+            <div style={{ display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
                 {!avatar ? (
                   <img
                     src={auth.imageUrl}
@@ -123,7 +123,9 @@ class UserEdit extends Component {
                   ></img>
                 )}
                 <input type="file" ref={(el) => (this.el = el)}></input>
-                <label><span style={{ fontSize: '25px' }}>UPLOAD AVATAR</span></label>
+                <label>
+                  <span style={{ fontSize: '25px' }}>UPLOAD AVATAR</span>
+                </label>
               </div>
               <div
                 className="col"
@@ -151,7 +153,9 @@ class UserEdit extends Component {
                 ></input>
               </div>
               <div className="col-md-6" style={{ width: "100%" }}>
-                <label htmlFor="email" className="form-label">
+                <label style={{
+                      marginRight: '93%'
+                }} htmlFor="email" className="form-label">
                   Email
                 </label>
                 <input
@@ -163,7 +167,9 @@ class UserEdit extends Component {
                 ></input>
               </div>
               <div className="col-10" style={{ width: "100%" }}>
-                <label htmlFor="address" className="form-label">
+                <label style={{
+                      marginRight: '93%'
+                }} htmlFor="address" className="form-label">
                   Address
                 </label>
                 <input
@@ -176,7 +182,9 @@ class UserEdit extends Component {
               </div>
               <div style={{ display: "flex" }}>
                 <div className="col-md-6" style={{ margin: "3px" }}>
-                  <label htmlFor="city" className="form-label">
+                  <label style={{
+                      marginRight: '93%'
+                }} htmlFor="city" className="form-label">
                     City
                   </label>
                   <input
@@ -188,7 +196,9 @@ class UserEdit extends Component {
                   ></input>
                 </div>
                 <div className="col-md-4" style={{ margin: "3px" }}>
-                  <label htmlFor="state" className="form-label">
+                  <label style={{
+                      marginRight: '93%'
+                }} htmlFor="state" className="form-label">
                     State
                   </label>
                   <select
@@ -208,7 +218,10 @@ class UserEdit extends Component {
                   </select>
                 </div>
                 <div className="col-md-2" style={{ margin: "3px" }}>
-                  <label htmlFor="zipCode" className="form-label">
+                  <label style={{
+                    whiteSpace: 'nowrap',
+                      marginRight: '93%'
+                }} htmlFor="zipCode" className="form-label">
                     Zip Code
                   </label>
                   <input

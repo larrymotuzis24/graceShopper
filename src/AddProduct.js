@@ -100,7 +100,7 @@ class AddProduct extends Component {
                              marginTop: '0px',
                              marginLeft: '12px'
                         }}>
-                             <Button style={{float: 'right', marginLeft: '10px', marginTop: '-3px', marginRight: '6px'}}> + Create Product </Button>
+                             <Button style={{float: 'right', marginLeft: '10px', marginTop: '4px', marginRight: '6px'}}> + Create Product </Button>
                          </div>
                     </div>
                     <Modal show={show} onHide={handleClose}>

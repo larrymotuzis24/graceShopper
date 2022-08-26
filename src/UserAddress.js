@@ -61,19 +61,22 @@ class UserAddress extends Component {
     const { save, onChange } = this;
 
     return (
-      <main id="order-info" style={{height: '100vh'}}>
+      <main id="order-info" style={{height: '70vh'}}>
         <div id="order-info-div">
           <div id="shipping-info">
             <h3
               style={{
                 margin: "40px",
+                marginLeft: '10px'
               }}
             >
               Add an Address
             </h3>
             <form className="row g-3" onSubmit={save}>
               <div className="col-10" style={{ width: "100%" }}>
-                <label htmlFor="address" className="form-label">
+                <label htmlFor="address" className="form-label" style={{
+                      marginRight: '93%'
+                }}>
                   Address
                 </label>
                 <input
@@ -86,7 +89,9 @@ class UserAddress extends Component {
               </div>
               <div style={{ display: "flex" }}>
                 <div className="col-md-6" style={{ margin: "3px" }}>
-                  <label htmlFor="city" className="form-label">
+                  <label htmlFor="city" className="form-label" style={{
+                      marginRight: '93%'
+                }}>
                     City
                   </label>
                   <input
@@ -98,7 +103,9 @@ class UserAddress extends Component {
                   ></input>
                 </div>
                 <div className="col-md-4" style={{ margin: "3px" }}>
-                  <label htmlFor="state" className="form-label">
+                  <label htmlFor="state" className="form-label" style={{
+                      marginRight: '93%'
+                }}>
                     State
                   </label>
                   <select
@@ -118,7 +125,10 @@ class UserAddress extends Component {
                   </select>
                 </div>
                 <div className="col-md-2" style={{ margin: "3px" }}>
-                  <label htmlFor="zipCode" className="form-label">
+                  <label htmlFor="zipCode" className="form-label" style={{
+                      marginRight: '93%',
+                      whiteSpace: 'nowrap'
+                }}>
                     Zip Code
                   </label>
                   <input
