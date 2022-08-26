@@ -60,7 +60,11 @@ export const addToCart = (book, quantity, history) => {
       );
       dispatch({ type: "SET_CART", cart: response.data });
     }
-    history.push("/books");
+    if(history.location.pathname === "/wishList") {
+      history.push("/wishList");
+    } else {
+      history.push("/books");
+    }
   };
 };
 

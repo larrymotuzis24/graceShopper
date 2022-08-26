@@ -10,7 +10,7 @@ const SearchBar = ({ books }) => {
         <input
           className="searchbar"
           id="searchbar-input"
-          placeholder="search by title"
+          placeholder="Search by title"
           onChange={(e) => setQuery(e.target.value)}
         />
 

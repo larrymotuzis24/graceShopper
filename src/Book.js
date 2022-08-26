@@ -91,13 +91,16 @@ class Book extends Component {
             >
               Add to Cart
             </button>
-            <button
+            {
+              auth.id ? <button
               onClick={() => addToWishList(auth, book, quantity * 1)}
               className="btn btn-secondary w-50"
               disabled={book.inventory < 1}
             >
               Add to Wishlist
-            </button>
+            </button> : null
+            }
+            
           </div>
         </div>
         <br></br>

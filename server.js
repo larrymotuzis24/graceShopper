@@ -1,5 +1,4 @@
 const app = require('./app');
-const { conn, User, Product } = require('./db');
 const { seeder } = require('./db/index');
 
 const setUp = async()=> {

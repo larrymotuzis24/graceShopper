@@ -24,7 +24,7 @@ const Home = ({ books, auth }) => {
       <div className="row row-cols-2 row-cols-lg-4">
         {firstTopBooks.map((book) => {
           return (
-            <div className="col">
+            <div className="col" key={book.id}>
               <div
                 key={book.id}
                 className="card border-0 bg-transparent mb-5"
