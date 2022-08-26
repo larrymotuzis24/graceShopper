@@ -6,7 +6,9 @@ const SearchBar = ({ books }) => {
   const [query, setQuery] = useState('');
   return (
     <div className="dropdown">
-      <div id="myDropdown" className="dropdown-content">
+      <div id="myDropdown" className="dropdown-content" style={{
+        zIndex:'10'
+      }}>
         <input
           className="searchbar"
           id="searchbar-input"
@@ -21,7 +23,7 @@ const SearchBar = ({ books }) => {
             } else if (book.title.toLowerCase().includes(query.toLowerCase())) {
               return book;
             }
-          })
+          }).slice(0, 9)
           .map((book) => {
             if (query !== '') {
               return (
