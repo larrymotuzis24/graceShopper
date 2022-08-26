@@ -20,27 +20,15 @@ class Books extends Component {
   }
 
   setCurrentPage(currPage) {
-    console.log('page number', currPage)
-    //if the current page is not 1 and the category is not all
-        //set the current page to 1
-    //else
-        //set it to this currPage
-    if (currPage !== 1 && this.state.option !== 'all'){
-      console.log('we changed')
-      console.log('the option is', this.state.option)
-      window.location.href = '/#/books/page/1'
-    } else {
-      this.setState({ currPage: currPage });
-      console.log('curr page', currPage)
-    }
+    this.setState({ currPage: currPage });
   }
-  // if one page 3
-  // we needd to set it back to page 1
-  //pagination potentailly may only apply if you select all, and won't if you select a certain category from the options
 
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
-}
+    if(window.location.href.includes('/page/')){
+      window.location.href = '/#/books/page/1'
+    }
+  }
 
   componentDidMount(){
     window.scrollTo({
@@ -51,12 +39,12 @@ class Books extends Component {
   }
 
   render() {
-    console.log('curr page local state', this.state.currPage, 'option local state', this.state.option)
-
+    
     const pageNumber = this.props.match.params.id * 1;
     const { books, auth, cart, categories } = this.props;
     const { option } = this.state;
     const { setCurrentPage, onChange } = this;
+
     let idxOfLastRecord;
     if (!pageNumber) {
       idxOfLastRecord = this.state.currPage * this.state.booksPerPage;
@@ -126,7 +114,6 @@ class Books extends Component {
           <SearchBar />
         </div>
         <div id="books-category">
-          <ul>
             {categories.map((category) => {
               return (
                 <button
@@ -134,24 +121,24 @@ class Books extends Component {
                   name="option"
                   key={category.id}
                   value={category.id}
+                  className="btn btn-secondary w-30"
                 >
                   {category.category}
                 </button>
               );
             })}
-          </ul>
+        </div>
+        <div style={{display:'flex', justifyContent: 'center', padding: '2rem'}}>
           <select onChange={onChange} value={option} name="option">
-            <option value="all">All</option>
-            {/* if the value is all
-              go to books page */}
-            {categories.map((category) => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.category}
-                </option>
-              );
-            })}
-          </select>
+              <option value="all">All</option>
+              {categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.category}
+                  </option>
+                );
+              })}
+            </select>
         </div>
         <div className="row" style={{ gap: '2rem' }}>
           <div className="row row-cols-2 row-cols-lg-4">
@@ -164,7 +151,7 @@ class Books extends Component {
                   >
                     <Link
                       id={book.id}
-                      to={`books/${book.id}`}
+                      to={`/books/${book.id}`}
                       className="text-decoration-none"
                     >
                       <div style={{ height: '400px' }}>
@@ -194,12 +181,19 @@ class Books extends Component {
             })}
           </div>
         </div>
+        {/* {
+          numPages > 1 ? <Pagination
+          numPages={numPages}
+          setCurrentPage={setCurrentPage}
+          pageNumber={pageNumber}
+        /> : null
+        } */}
         <Pagination
           numPages={numPages}
           setCurrentPage={setCurrentPage}
           pageNumber={pageNumber}
-          flag="books"
-        />
+        /> 
+        
       </div>
     );
   }

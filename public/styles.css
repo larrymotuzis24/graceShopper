@@ -13,10 +13,6 @@ form > * {
   margin: 1rem;
 }
 
-#searchBarInput {
-  width: 350px;
-}
-
 div#user-profile {
   display: flex;
   flex-direction: column;
@@ -287,7 +283,6 @@ div#div-info-line-item a {
 }
 
 .dropdown-content {
-  position: absolute;
   background-color: #f6f6f6;
   width: 300px;
   border: 1px solid #ddd;
@@ -439,6 +434,11 @@ div#user-address form {
   border: solid 2px grey;
 }
 
+div#search-books{
+  display: flex;
+  justify-content: center;
+}
+
 div#user-address form label {
   font-weight: bold;
 }
@@ -458,10 +458,8 @@ div#user-address form button {
 
 div#books-category {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  margin: 1rem;
+  justify-content: space-evenly;
+  padding-top: 3rem;
 }
 
 span.review {

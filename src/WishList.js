@@ -5,6 +5,17 @@ import { addToCart, addToWishList, deleteItemFromWishList } from "./store";
 
 const WishList = ({wishList, auth, books, addToWishList, addToCart, deleteItemFromWishList}) =>{
 
+    console.log(wishList)
+    wishList = wishList.sort((a, b) => {
+        if (a.productId < b.productId) {
+            return -1;
+        }
+        if (a.productId > b.productId) {
+            return 1;
+        }
+        return 0;
+    });
+    console.log(wishList)
     return (
         <div id="block-wish-list-page">
             {
