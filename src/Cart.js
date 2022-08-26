@@ -3,16 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateLineItem, deleteLineItem } from './store';
 
-import { Button } from 'react-bootstrap'
-import {
-  BsFillTrashFill,
-} from 'react-icons/bs'
-import {
-  GiBookshelf
-} from 'react-icons/gi'
-import {
-  IoIosArrowBack
-} from 'react-icons/io'
+import { Button } from 'react-bootstrap';
+import { BsFillTrashFill } from 'react-icons/bs';
+import { GiBookshelf } from 'react-icons/gi';
+import { IoIosArrowBack } from 'react-icons/io';
 const Cart = ({
   cart,
   auth,
@@ -47,7 +41,6 @@ const Cart = ({
   }
 
   return (
-
     <div id="" style={{}} className="container">
       {/* Cart page heading */}
       <div
@@ -60,7 +53,6 @@ const Cart = ({
           </h2>
         ) : null}
         <div style={{}}>
-
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             <div style={{}}>
               {/*
@@ -121,7 +113,7 @@ const Cart = ({
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
-                    style={{height: '250px'}}
+                    style={{ height: '250px' }}
                   ></img>
                   <div id="div-info-line-item">
                     <h5>{lineItem.product.title}</h5>
@@ -254,27 +246,15 @@ const Cart = ({
               );
             })
           ) : (
-
-            <div style={{
-              marginLeft: '-100px'
-            }}>
-            <div style= {{ height: '200px', width: '87vw'}} > 
-                    <div style={{ textAlign: 'center', justifyContent: 'center', marginTop: '150px' }}>
-                        <div>
-                            <GiBookshelf size={180}/>   
-                            <h3>No items added to your cart! </h3>
-                        </div>
-                        <h5 style={{ marginLeft: '20px', marginTop: '20px' }}> 
-                        <div style={{
-                          marginLeft: '-78px'
-                        }}>
-                          <Link to='/'>
-                              <IoIosArrowBack/> Back 
-                          </Link>
-                          </div>
-                        </h5>
-                    </div>
-
+            <div className="container h-75" style={{}}>
+              <div className="d-flex flex-column justify-content-center align-items-center">
+                <GiBookshelf size={180} />
+                <h3 className="d-block mt-4 mb-5">
+                  There are no items in your cart
+                </h3>
+                <a type="button" className="btn btn-dark" href="#books">
+                  BROWSE BOOKS
+                </a>
               </div>
             </div>
           )}
