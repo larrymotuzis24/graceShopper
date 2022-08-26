@@ -111,9 +111,20 @@ class Books extends Component {
         </div> */}
 
         <div id="search-books">
-          <SearchBar />
+          <div style={{
+            padding:'15px'
+          }}>
+           <SearchBar />
+
+          </div>
+        
+
         </div>
-        <div id="books-category">
+        <div id="books-category" style={{
+          display:'flex',
+          flexDirection:'row',
+          justifyContent:'space-around',
+        }}>
             {categories.map((category) => {
               return (
                 <button
@@ -128,7 +139,7 @@ class Books extends Component {
               );
             })}
         </div>
-        <div style={{display:'flex', justifyContent: 'center', padding: '2rem'}}>
+        <div style={{display:'flex', justifyContent: 'center', padding: '2rem', marginTop:'-30px', marginRight:'60px'}}>
           <select onChange={onChange} value={option} name="option">
               <option value="all">All</option>
               {categories.map((category) => {
