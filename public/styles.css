@@ -139,7 +139,7 @@ div#edit-user-password form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 2px grey;
+
 }
 
 div#edit-user-password form label {
