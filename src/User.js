@@ -129,7 +129,7 @@ class User extends Component {
             <h6 style={{
               borderBottom: '1px solid black'
             }}>  Addresses  </h6>
-                {auth.secondaryAddress.map(address => {
+                {auth.secondaryAddress ?  auth.secondaryAddress.map(address => {
                   return (
                     <div key={address.id} className='display-lineitem' style={{
                       marginTop: '40px'
@@ -141,7 +141,7 @@ class User extends Component {
                       </p>
                     </div>
                   )
-                })}
+                }) : null}
                  <Button style={{
                             marginBottom: '20px',
                             color: 'white'

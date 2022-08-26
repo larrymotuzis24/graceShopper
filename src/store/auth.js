@@ -17,8 +17,19 @@ export const logout = (history) => {
 
 export const register = (user, history) => {
   return async (dispatch) => {
-    const response = await axios.post("/users", user);
-    history.push("/signIn");
+    const credentials = {username: user.username, password: user.password}
+    let response = await axios.post("/users", user);
+    response = await axios.post("/api/sessions", credentials);
+      const { token } = response.data;
+      window.localStorage.setItem("token", token);
+      response = await axios.get("/api/sessions", {
+        headers: {
+          authorization: token,
+        },
+      });
+      const auth = response.data;
+      dispatch({ auth, type: "SET_AUTH" });
+    history.push("/");
   };
 };
 

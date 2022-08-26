@@ -17,6 +17,9 @@ class SignIn extends Component {
       firstName: "",
       lastName: "",
       address: "",
+      city: "",
+      state: "",
+      zipCode: "",
       error: "",
       successMessage: ''
     };
@@ -55,6 +58,9 @@ class SignIn extends Component {
       address: this.state.address,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      city: this.state.city,
+      state: this.state.state,
+      zipCode: this.state.zipCode
     };
 
     try {
@@ -66,19 +72,27 @@ class SignIn extends Component {
       this.setState({ firstName: "" });
       this.setState({ lastName: "" });
       this.setState({error: ''});
+      this.setState({city: ""});
+      this.setState({state: ""});
+      this.setState({zipCode: ""});
       this.setState({successMessage: 'A new user has been registered. Please Login!.'});
     } catch (error) {
       this.setState({ error: error.response.data.error });
+      console.log(error);
       this.setState({ regPassword: "" });
       this.setState({ regEmail: "" });
       this.setState({ regUsername: "" });
       this.setState({ address: "" });
       this.setState({ firstName: "" });
       this.setState({ lastName: "" });
+      this.setState({city: ""});
+      this.setState({state: ""});
+      this.setState({zipCode: ""});
     }
   }
   render() {
     const { onChange, onSubmit, onRegister } = this;
+    const { states } = this.props;
     const {
       username,
       password,
@@ -88,11 +102,14 @@ class SignIn extends Component {
       firstName,
       lastName,
       address,
+      city,
+      state,
+      zipCode,
       error,
       successMessage
     } = this.state;
     return (
-      <div style={{height: '58vh'}}>
+      <div style={{height: '100vh'}}>
         <div style={{ marginTop: "13%" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ display: "inline-block", marginRight: "3%" }}>
@@ -146,14 +163,6 @@ class SignIn extends Component {
                 >
                   Sign In{" "}
                 </button>
-                {/* <p
-                  style={{
-                    marginTop: "0%",
-                    marginLeft: "-49%",
-                  }}
-                >
-                  <Link to="/placeholder"> Forgot your password? </Link>
-                </p> */}
               </form>
             </div>
             <div style={{ display: "inline-block" }}>
@@ -248,26 +257,51 @@ class SignIn extends Component {
                     marginBottom: "3%",
                     backgroundColor: address.length > 0 ? 'white' : '#f0eded'
                   }}
-                  name="password"
+                  name="address"
                   value={address}
                   onChange={(ev) => this.setState({ address: ev.target.value })}
                 />
-                {/* <select 
-                  value={isAdmin}
-                  defaultValue="" 
+                <input
+                  placeholder="City"
                   style={{
-                        textIndent: '5px',
-                        width: '350px', 
-                        height: '2.3em', 
-                        marginBottom: '0%',
-                        defaultValue: 'Admin or User',
-                      }} 
-                  onChange={(ev) => this.setState({ isAdmin: ev.target.value })  }
-                  >
-                      <option value="" disabled>Select User Permissions</option>
-                      <option value="true">Admin</option>
-                      <option value='false'>User</option>
-                    </select> */}
+                    textIndent: "5px",
+                    width: "350px",
+                    height: "2.3em",
+                    marginBottom: "3%",
+                    backgroundColor: city.length > 0 ? 'white' : '#f0eded'
+                  }}
+                  name="city"
+                  value={city}
+                  onChange={(ev) => this.setState({ city: ev.target.value })}
+                />
+                <select
+                    name="state"
+                    value={state}
+                    onChange={(ev) =>  this.setState({state: ev.target.value})}
+                    className="form-select"
+                >
+                    <option value="">-- Select a State --</option>
+                    {states.map((state) => {
+                      return (
+                        <option key={state.id} value={state.name}>
+                          {state.name}
+                        </option>
+                      );
+                    })}
+                </select>
+                <input
+                  placeholder="Zip Code"
+                  style={{
+                    textIndent: "5px",
+                    width: "350px",
+                    height: "2.3em",
+                    marginBottom: "3%",
+                    backgroundColor: zipCode.length > 0 ? 'white' : '#f0eded'
+                  }}
+                  name="zipCode"
+                  value={zipCode}
+                  onChange={(ev) => this.setState({ zipCode: ev.target.value })}
+                />
                 <button
                   onClick={onRegister}
                   style={{
@@ -293,6 +327,10 @@ class SignIn extends Component {
   }
 }
 
+const mapStateToProps = (state) =>{
+  return state;
+}
+
 const mapDispatch = (dispatch, { history }) => {
   return {
     login: (credentials) =>  dispatch(login(credentials, history)),
@@ -300,4 +338,4 @@ const mapDispatch = (dispatch, { history }) => {
   };
 };
 
-export default connect(null, mapDispatch)(SignIn);
+export default connect(mapStateToProps, mapDispatch)(SignIn);
