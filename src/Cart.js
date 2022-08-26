@@ -227,7 +227,9 @@ const Cart = ({
               );
             })
           ) : (
-            <div >
+            <div style={{
+              marginLeft: '-100px'
+            }}>
             <div style= {{ height: '200px', width: '87vw'}} > 
                     <div style={{ textAlign: 'center', justifyContent: 'center', marginTop: '150px' }}>
                         <div>

@@ -20,24 +20,28 @@ class OrderHistory extends Component {
       return subT + shipTotal + taxCol;
     });
     return (
-      <div id="block-order-history-page" style={{ height: "85vh" }}>
+      <div id="block-order-history-page" style={{ height: "74vh" }}>
         <div
           style={{ display: "inline-block", height: "16vh", marginLeft: "9%" }}
         >
-          <h2
-            className="order-history-title"
-            style={{
-              textAlign: "left",
-              marginLeft: "10%",
-            }}
-          >
-            Order History
-          </h2>
+          { orders.length > 0 ?
+            <h2
+              className="order-history-title"
+              style={{
+                textAlign: "left",
+                marginLeft: "10%",
+              }}
+            >
+              Order History
+            </h2>
+            :
+            null
+          }
           <div id="order-history">
             <div
               id="shopping-cart"
               style={{
-                borderTop: "1px solid",
+                borderTop: orders.length > 0 ? "1px solid" : null,
                 width: "80vw",
                 overflowY: "auto",
                 height: "76vh",
@@ -89,7 +93,9 @@ class OrderHistory extends Component {
                   );
                 })
               ) : (
-                <div>
+                <div style={{
+                  marginLeft: '-100px'
+                }}>
                   <div
                     style={{
                       height: "200px",
@@ -101,7 +107,7 @@ class OrderHistory extends Component {
                       style={{
                         textAlign: "center",
                         justifyContent: "center",
-                        marginTop: "150px",
+                        marginTop: "500px",
                       }}
                     >
                       <div>
