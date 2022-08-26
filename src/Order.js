@@ -50,7 +50,8 @@ class Order extends Component {
         <main id="order-info">
           <div id="order-info-div">
             <div id="shipping-info" >
-              <h3 style={{
+              <h3 
+              style={{
               margin:'40px'
             }}>Billing Address</h3>
               <div>
@@ -144,10 +145,44 @@ class Order extends Component {
               </div>
             </div>
             <hr />
-            <div id="payment-info">
-              <h3>Payment Method</h3>
-              < StripeContainer orderTotal={orderTotal} address={address}/>
+            <div style={{
+              display:'flex',
+              flexDirection:'row',
+              justifyContent:'space-around'
+            }}>
+              <div id="payment-info">
+                <h3>Payment Method</h3>
+                < StripeContainer orderTotal={orderTotal} address={address}/>
             </div>
+           
+          <div id="total-line-items" style={{
+            width:'50%',
+            marginTop:'75px'
+          }}>
+              <p>
+                <span>({totalQty} items): </span>
+                <span>${subTotal.toFixed(2)}</span>
+              </p>
+              <p>
+                <span>Shipping: </span>
+                <span>${shippingTotal.toFixed(2)}</span>
+              </p>
+              <p>
+                <span>Total before tax: </span>
+                <span>${beforeTax.toFixed(2)}</span>
+              </p>
+              <p>
+                <span>Tax to be collected: </span>
+                <span>${taxCollected.toFixed(2)}</span>
+              </p>
+              <p>
+                <span id="total-text">Order total: </span>
+                <span id="total-amount">${orderTotal.toFixed(2)}</span>
+              </p>
+            
+          </div>
+            </div>
+
             <hr />
             <div id="review-order">
               <h3>Review Order</h3>
@@ -207,9 +242,10 @@ class Order extends Component {
                         </Link>
                       </div>
                       <div id="div-price-product">
-                        <h5>Price</h5>
-                        <h5>${lineItem.product.price}</h5>
+                        <p>Price</p>
+                        <h5 style={{fontSize:'20px'}}>${lineItem.product.price}</h5>
                       </div>
+                     
                     </main>
                   );
                 })}
@@ -217,31 +253,8 @@ class Order extends Component {
               <hr />
             </div>
           </div>
-          <div>
-            <div id="total-line-items">
-              <p>
-                <span>({totalQty} items): </span>
-                <span>${subTotal.toFixed(2)}</span>
-              </p>
-              <p>
-                <span>Shipping: </span>
-                <span>${shippingTotal.toFixed(2)}</span>
-              </p>
-              <p>
-                <span>Total before tax: </span>
-                <span>${beforeTax.toFixed(2)}</span>
-              </p>
-              <p>
-                <span>Tax to be collected: </span>
-                <span>${taxCollected.toFixed(2)}</span>
-              </p>
-              <p>
-                <span id="total-text">Order total: </span>
-                <span id="total-amount">${orderTotal.toFixed(2)}</span>
-              </p>
-            </div>
-          </div>
         </main>
+        
       </div>
     );
   }
