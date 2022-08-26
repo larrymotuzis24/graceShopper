@@ -41,7 +41,7 @@ Order.addHook("afterSave", async (order) => {
 
     const mailOptions = {
       from: "sourcecodebooks@gmail.com",
-      to: "rcla1112@gmail.com",
+      to: "sethking97@yahoo.com",
       subject: `Hello ${user.firstName}, ` + orderConf,
       html: html.join("")
     };
