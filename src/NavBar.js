@@ -12,6 +12,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 const NavBar = (props) => {
   const { auth, cart, logout, match, wishList } = props;
   const view = match.params.view;
+  const onChange = () => {
+    window.location.hash === '#/books' ? window.location.reload() : null
+  }
   return (
     <nav className="navbar navbar-expand-lg bg-light sticky-top py-4">
       <div style={{}} className="container d-flex justify-content-between">
@@ -102,7 +105,7 @@ const NavBar = (props) => {
           style={{}}
         >
           <ul className="navbar-nav" style={{ marginRight: '-1rem' }}>
-            <li
+            <li onClick={onChange}
               className="nav-item"
               // className={view === 'books' ? 'selected nav-item' : 'nav-item'}
             >
