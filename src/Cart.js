@@ -51,16 +51,12 @@ const Cart = ({
           <h2 className="" style={{}}>
             Cart
           </h2>
-        ) : null}
+        ) : <h2 className="" style={{}}>
+        Cart
+      </h2>}
         <div style={{}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             <div style={{}}>
-              {/*
-                  we can move this downward to fit the new design
-                <p>
-                  <span>Subtotal ({totalQty} items): </span>
-                  <span>${subTotal.toFixed(2)}</span>
-                </p> */}
               <a
                 type="button"
                 className="btn btn-light border-dark"
@@ -79,12 +75,9 @@ const Cart = ({
               </a>
             </div>
           ) : !auth.id && localStorage.getItem("lineItem") ? (
-            <div id="subtotal-line-items">
-              <p>
-                <span>Subtotal ({totalQtyGuest} items): </span>
-                <span>${subTotalGuest.toFixed(2)}</span>
-              </p>
-              <button>
+            <div id="subtotal-line-items" >
+              
+              <button className="btn btn-dark ms-4" >
                 <Link to="/signIn">Login to checkout</Link>
               </button>
             </div>
@@ -137,11 +130,8 @@ const Cart = ({
                       <div
                         style={{
                           display: "flex",
-                          // marginLeft: '64vw',
-                          // marginTop: '64%'
                         }}
                       >
-                        {/* marginLeft: '366%' */}
                         <p style={{ marginRight: "10px" }}>
                           <span>Quantity</span>{" "}
                         </p>
@@ -217,8 +207,6 @@ const Cart = ({
                         <div
                           style={{
                             display: "flex",
-                            // marginLeft: '64vw',
-                            // marginTop: '64%'
                           }}
                         >
                           <p style={{ marginRight: "10px" }}>
