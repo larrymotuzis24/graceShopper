@@ -120,11 +120,6 @@ const NavBar = (props) => {
                 BOOKS
               </a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link link-primary" href="">
-                SEARCH
-              </a>
-            </li>
             {auth.id ? (
               <div className="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul className="navbar-nav">

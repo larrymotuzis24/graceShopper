@@ -112,7 +112,8 @@ class Books extends Component {
 
         <div id="search-books">
           <div style={{
-            padding:'15px'
+            padding:'15px',
+            marginLeft:'10px'
           }}>
            <SearchBar />
 
