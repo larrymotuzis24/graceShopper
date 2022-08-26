@@ -11,14 +11,9 @@ const CARD_OPTIONS = {
     base: {
       iconColor: '#000',
       color: '#000',
-      // fontWeight: 500,
-      // fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
       fontSize: '16px',
       fontSmoothing: 'antialiased',
-      // border: '1px solid black',
-      // dropShadow: '0 0 0 0',
-      // ':-webkit-autofill': { color: '#fce883' },
-      // '::placeholder': { color: '#87bbfd' },
+
     },
     invalid: {
       iconColor: '#666',

@@ -124,7 +124,16 @@ class Books extends Component {
           display:'flex',
           flexDirection:'row',
           justifyContent:'space-around',
-        }}>
+        }}> 
+        <button
+                 onClick={onChange}
+                  name="option"
+                  
+                  className="btn btn-secondary w-30"
+                >
+                  All Books
+                </button>
+
             {categories.map((category) => {
               return (
                 <button
@@ -138,18 +147,6 @@ class Books extends Component {
                 </button>
               );
             })}
-        </div>
-        <div style={{display:'flex', justifyContent: 'center', padding: '2rem', marginTop:'-30px', marginRight:'60px'}}>
-          <select onChange={onChange} value={option} name="option">
-              <option value="all">All</option>
-              {categories.map((category) => {
-                return (
-                  <option key={category.id} value={category.id}>
-                    {category.category}
-                  </option>
-                );
-              })}
-            </select>
         </div>
         <div className="row" style={{ gap: '2rem' }}>
           <div className="row row-cols-2 row-cols-lg-4">
