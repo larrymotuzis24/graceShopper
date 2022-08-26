@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { editUser } from "./store";
-
+import Button from 'react-bootstrap/Button'
 class UserEditPwd extends Component {
   constructor() {
     super();
@@ -43,30 +43,60 @@ class UserEditPwd extends Component {
     const { onChange, save } = this;
 
     return (
-        <div id="edit-user-password">
-          <h2>
-            Welcome, {auth.firstName} {auth.lastName}!
-          </h2>
-          <form onSubmit={save}>
-            <label htmlFor="password">Current Password</label>
-            <input
-              type="password"
-              placeholder="Current Password"
-              value={password}
-              name="password"
-              onChange={onChange}
-            />
-            <label htmlFor="newPassword">New Password</label>
-            <input
-              type="password"
-              placeholder="New Password"
-              value={newPassword}
-              name="newPassword"
-              onChange={onChange}
-            />
-            <button>Update Password</button>
-            <button onClick={() => history.push("/user")}>Cancel</button>
-          </form>
+        <div id="edit-user-password" style={{
+          height: '70vh'
+        }}>
+          <div style={{
+            marginTop: '200px'
+          }}>
+            <h2 style={{
+                  marginRight: '42%'
+            }}>
+              Welcome, {auth.firstName} {auth.lastName}!
+            </h2>
+            <h4 style={{
+                  marginLeft: '37%',
+                  marginBottom: '20px'
+            }}> Let's get your password changed, shall we? </h4>
+            <form onSubmit={save}>
+              <label style={{
+                marginRight: '5.7%',
+                fontWeight: '10px'
+              }} htmlFor="password">Current Password
+              </label>
+              <input
+                style={{
+                  borderRadius: '10px'
+                }}
+                type="password"
+                placeholder="Current Password"
+                value={password}
+                name="password"
+                onChange={onChange}
+              />
+              <label style={{
+                marginRight: '6.4%'
+              }}htmlFor="newPassword">New Password</label>
+              <input
+                style={{
+                  borderRadius: '10px'
+                }}
+                type="password"
+                placeholder="New Password"
+                value={newPassword}
+                name="newPassword"
+                onChange={onChange}
+              />
+              <div style={{
+                display: 'flex'
+              }}>
+                <Button style={{
+                  backgroundColor: 'blue'
+                }} >Update Password</Button>
+                <Button  onClick={() => history.push("/user")}>Cancel</Button>
+              </div>
+            </form>
+          </div>
           <pre>{error ? JSON.stringify(error) : null}</pre>
         </div>
     );
