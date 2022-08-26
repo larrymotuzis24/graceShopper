@@ -87,7 +87,7 @@ class UserEdit extends Component {
     const { avatar } = this.state;
 
     return (
-      <main id="order-info">
+      <main id="order-info" style={{height: '100vh'}}>
         <div id="order-info-div">
           <div id="shipping-info">
             <h3
@@ -98,30 +98,32 @@ class UserEdit extends Component {
               Edit Personal Information
             </h3>
             <form className="row g-3" onSubmit={save}>
-              <div style={{ height: "25vh", display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
+              <div style={{ display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
                 {!avatar ? (
                   <img
                     src={auth.imageUrl}
                     style={{
-                      height: "70%",
-                      objectFit: "contain",
-                      backgroundColor: "black",
-                      padding: "1rem",
+                      width: '150px',
+                      height: '150px',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'top center',
+                      borderRadius: '50%'
                     }}
                   ></img>
                 ) : (
                   <img
                     src={avatar}
                     style={{
-                      height: "70%",
-                      objectFit: "contain",
-                      backgroundColor: "black",
-                      padding: "1rem",
+                      width: '150px',
+                      height: '150px',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'top center',
+                      borderRadius: '50%'
                     }}
                   ></img>
                 )}
                 <input type="file" ref={(el) => (this.el = el)}></input>
-                <label>UPLOAD AVATAR</label>
+                <label><span style={{ fontSize: '25px' }}>UPLOAD AVATAR</span></label>
               </div>
               <div
                 className="col"

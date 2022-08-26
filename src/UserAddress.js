@@ -61,7 +61,7 @@ class UserAddress extends Component {
     const { save, onChange } = this;
 
     return (
-      <main id="order-info">
+      <main id="order-info" style={{height: '100vh'}}>
         <div id="order-info-div">
           <div id="shipping-info">
             <h3
