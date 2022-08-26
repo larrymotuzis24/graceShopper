@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const SearchBar = ({ books }) => {
   const [query, setQuery] = useState('');
   return (
-    <div className="dropdown">
-      <div id="myDropdown" className="dropdown-content" style={{
-        zIndex:'10'
-      }}>
+    <div className="dropdown" style={{
+      zIndex:'10'
+    }} >
+      <div id="myDropdown" className="dropdown-content" >
         <input
           className="searchbar"
           id="searchbar-input"
