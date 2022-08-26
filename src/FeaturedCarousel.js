@@ -6,9 +6,10 @@ function FeaturedCarousel() {
     <div style={{}}>
       <div
         id="carouselExampleCaptions"
-        className="carousel slide h-75 bg-dark rounded-4"
+        className="carousel slide h-80 bg-dark rounded-4"
         data-bs-ride="false"
-        stle={{
+        style={{
+          maxHeight: '700px',
           overflow: 'hidden',
         }}
       >
@@ -133,13 +134,14 @@ function FeaturedCarousel() {
         </div>
         <div className="carousel-inner rounded-4">
           <div className="carousel-item active">
-            <div className="d-flex h-100 flex-row-reverse align-items-center">
+            <div className="d-flex h-100 flex-row-reverse align-items-start">
               <img
                 src="https://cdn.sanity.io/images/vgvol637/production/c372ae0433833f5ae1bcc3d851a91e21819324de-1432x1928.png"
                 className="d-block w-50 h-100 bg-dark"
                 alt="..."
                 style={{
                   objectFit: 'contain',
+                  maxHeight: '700px',
                   padding: '7%',
                 }}
               />
@@ -150,13 +152,14 @@ function FeaturedCarousel() {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex h-100 flex-row-reverse align-items-center">
+            <div className="d-flex h-100 flex-row-reverse align-items-start">
               <img
                 src="https://cdn.sanity.io/images/vgvol637/production/5fda45194719b5b536f9dc2e64f0f966d41e4f49-1557x2401.png"
                 className="d-block w-50 h-100 bg-dark"
                 alt="..."
                 style={{
                   objectFit: 'contain',
+                  maxHeight: '700px',
                   padding: '7%',
                 }}
               />
@@ -169,13 +172,14 @@ function FeaturedCarousel() {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex h-100 flex-row-reverse align-items-center">
+            <div className="d-flex h-100 flex-row-reverse align-items-start">
               <img
                 src="https://cdn.sanity.io/images/vgvol637/production/f389ffccda2b0594913e9e95526eb631584fba87-768x1094.png"
                 className="d-block w-50 h-100 bg-dark"
                 alt="..."
                 style={{
                   objectFit: 'contain',
+                  maxHeight: '700px',
                   padding: '7%',
                 }}
               />
@@ -188,13 +192,14 @@ function FeaturedCarousel() {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex h-100 flex-row-reverse align-items-center">
+            <div className="d-flex h-100 flex-row-reverse align-items-start">
               <img
                 src="https://cdn.sanity.io/images/vgvol637/production/81890e6529c6a12675f66052efc2a7a9f0ab1200-730x1113.png"
                 className="d-block w-50 h-100 bg-dark"
                 alt="..."
                 style={{
                   objectFit: 'contain',
+                  maxHeight: '700px',
                   padding: '7%',
                 }}
               />
@@ -205,13 +210,14 @@ function FeaturedCarousel() {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="d-flex h-100 flex-row-reverse align-items-center">
+            <div className="d-flex h-100 flex-row-reverse align-items-start">
               <img
                 src="https://cdn.sanity.io/images/vgvol637/production/7a2347b7808fc310ba8663206a2e536d742aa1dd-1417x2480.png"
                 className="d-block w-50 h-100 bg-dark"
                 alt="..."
                 style={{
                   objectFit: 'contain',
+                  maxHeight: '700px',
                   padding: '7%',
                 }}
               />
