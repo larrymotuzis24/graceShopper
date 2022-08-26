@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { editUser } from "./store";
-
+import  Button  from 'react-bootstrap/Button'
 class User extends Component {
   constructor(){
     super();
@@ -13,14 +13,14 @@ class User extends Component {
   }
 
   componentDidMount(){
-    this.el.addEventListener('change', (ev) =>{
-      const file = ev.target.files[0];
-      const reader = new FileReader();
-      reader.addEventListener('load', () =>{
-        this.setState({avatar: reader.result})
-      })
-      reader.readAsDataURL(file);
-    })
+    // this.el.addEventListener('change', (ev) =>{
+    //   const file = ev.target.files[0];
+    //   const reader = new FileReader();
+    //   reader.addEventListener('load', () =>{
+    //     this.setState({avatar: reader.result})
+    //   })
+    //   reader.readAsDataURL(file);
+    // })
   }
 
   save(ev){
@@ -39,41 +39,125 @@ class User extends Component {
     const { save } = this;
     return (
       <div id="user-profile">
-        <h2>
-          Welcome, {auth.firstName} {auth.lastName}!
+        <h2 style={{
+          marginRight: '83%',
+          whiteSpace: 'nowrap',
+          marginLeft: '750px'
+        }}>
+         Account Details
         </h2>
-        <main className="user-info">
-            <div className="user-links">
-              <Link to="/user">Account Details</Link>
-              <Link to="/editUser">Edit Personal Information</Link>
-              <Link to="/passwordUser">Change Password</Link>
-              <Link to="/addressUser">Add a new Shipping Address</Link>
-            </div>
-            {path === "/user" ? (
-              <div className="user-personal-info">
-                { !avatar ? <img src={auth.imageUrl}/> : <img src={ avatar }/>}
-                <div id="user-avatar">
-                  <form onSubmit={save}>
-                    <p><span>Change your avatar</span></p>
-                    <input type='file' ref={el => this.el = el}/>
-                    <button id="btn-avatar">Save Avatar</button>
-                  </form>
-                </div>
-                <h3>First Name</h3>
-                <p>{auth.firstName}</p>
-                <h3>Last Name</h3>
-                <p>{auth.lastName}</p>
-                <h3>Address</h3>
-                <p>{auth.address}</p>
-                <h3>Email</h3>
-                <p>{auth.email}</p>
+        <div style={{
+          height: '63vh'
+        }}>
+          <div style={{
+            marginTop: '60px'
+          }}>
+            <div style={{display: 'inline-block', marginLeft: '750px'}}>
+              <h6 style={{
+              borderBottom: '1px solid black'
+            }}> Personal Information </h6>
+              <div className='display-line-item'
+                style={{
+                  marginTop: '40px'
+                }}
+              >
+                   {path === "/user" ? (
+                        <div>
+                            <div>
+                              <div style={{display: 'inline-block'}}>
+                                  { !avatar ? <img 
+                                      style={{
+                                        marginTop: '-382px',
+                                        borderRadius: '50%',
+                                        height: '300px',
+                                        width: '300px',
+                                        marginRight: '50px'
+                                      }}
+                                      src={auth.imageUrl}/> : 
+                                  <img 
+                                    src={ avatar }
+                                      style={{
+                                        marginTop: '-304px',
+                                        borderRadius: '50%',
+                                        height: '300px',
+                                        width: '300px',
+                                        marginRight: '50px'
+                                      }}
+                                  />}
+                              </div>
+                              <div style={{display: 'inline-block'}}>
+                                  <h6 >First Name</h6>
+                                  <p style={{
+                                    fontSize: '25px'
+                                  }}>{auth.firstName}</p>
+                                  <h6 >Last Name</h6>
+                                  <p style={{
+                                    fontSize: '25px'
+                                  }}>{auth.lastName}</p>
+                                  <h6>Address</h6>
+                                  <p style={{
+                                    fontSize: '25px'
+                                  }}>{auth.address}</p>
+                                  <h6>Email</h6>
+                                  <p style={{
+                                    fontSize: '25px'
+                                  }}>{auth.email}</p>
+                              </div>
+                          </div>
+                          <Button style={{
+                            marginBottom: '20px',
+                            color: 'white'
+                          }}
+                          variant='primary'
+                          >
+                              <Link to="/editUser">Edit Personal Information</Link>
+                          </Button>
+                          <br/>
+                          <Button
+                            variant='secondary'
+                            style={{
+                              color: 'white !important'
+                            }}
+                          >
+                              <Link to="/passwordUser">Change Password</Link>
+                          </Button>
+                      </div>
+                      ) : null}
               </div>
-            ) : null}
-        </main>
-      </div>
+          </div>
+          <div style={{display: 'inline-block', float: 'right', marginRight: '1050px'}}>
+            <h6 style={{
+              borderBottom: '1px solid black'
+            }}>  Addresses  </h6>
+                {auth.secondaryAddress.map(address => {
+                  return (
+                    <div key={address.id} className='display-lineitem' style={{
+                      marginTop: '40px'
+                    }}>
+                      <p style={{
+                         fontSize: '25px'
+                         }}> 
+                         {address}
+                      </p>
+                    </div>
+                  )
+                })}
+                 <Button style={{
+                            marginBottom: '20px',
+                            color: 'white'
+                          }}
+                          variant='primary'
+                          >
+                              <Link to="/addressUser">Add a new Shipping Address</Link>
+                    </Button>
+                </div>
+            </div>
+          </div>
+        </div>
     );
   }
 }
+
 
 const mapStateToProps = (state) => {
   return state;

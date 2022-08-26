@@ -87,7 +87,7 @@ class UserEdit extends Component {
     const { avatar } = this.state;
 
     return (
-      <main id="order-info" style={{height: '100vh'}}>
+      <main id="order-info" style={{height: '70vh'}}>
         <div id="order-info-div">
           <div id="shipping-info">
             <h3
