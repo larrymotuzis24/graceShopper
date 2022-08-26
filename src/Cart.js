@@ -1,7 +1,7 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { updateLineItem, deleteLineItem } from "./store";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { updateLineItem, deleteLineItem } from './store';
 
 import { Button } from 'react-bootstrap';
 import { BsFillTrashFill } from 'react-icons/bs';
@@ -23,8 +23,8 @@ const Cart = ({
     return a.id - b.id;
   });
 
-  if (!auth.id && localStorage.getItem("lineItem")) {
-    subTotalGuest = JSON.parse(localStorage.getItem("lineItem")).reduce(
+  if (!auth.id && localStorage.getItem('lineItem')) {
+    subTotalGuest = JSON.parse(localStorage.getItem('lineItem')).reduce(
       (accum, lineItem) => {
         const qty = lineItem.qty;
         accum += qty * lineItem.product.price;
@@ -32,7 +32,7 @@ const Cart = ({
       },
       0
     );
-    totalQtyGuest = JSON.parse(localStorage.getItem("lineItem")).reduce(
+    totalQtyGuest = JSON.parse(localStorage.getItem('lineItem')).reduce(
       (accum, lineItem) => {
         accum += lineItem.qty * 1;
         return accum;
@@ -52,9 +52,7 @@ const Cart = ({
           <h2 className="" style={{}}>
             Cart
           </h2>
-        ) : <h2 className="" style={{}}>
-        Cart
-      </h2>}
+        ) : null}
         <div style={{}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             <div style={{}}>
@@ -75,10 +73,9 @@ const Cart = ({
                 CHECKOUT
               </a>
             </div>
-          ) : !auth.id && localStorage.getItem("lineItem") ? (
-            <div id="subtotal-line-items" >
-              
-              <button className="btn btn-dark ms-4" >
+          ) : !auth.id && localStorage.getItem('lineItem') ? (
+            <div id="subtotal-line-items">
+              <button className="btn btn-dark ms-4">
                 <Link to="/signIn">Login to checkout</Link>
               </button>
             </div>
@@ -92,7 +89,7 @@ const Cart = ({
           style={{
             borderTop:
               auth.id && cart.lineItems.length > 0 && cart.isCart
-                ? "1px solid"
+                ? '1px solid'
                 : null,
           }}
         >
@@ -102,15 +99,12 @@ const Cart = ({
                 <main
                   id="display-lineitem"
                   key={lineItem.id}
-                  style={{ borderBottom: "1px solid black" }}
+                  style={{ borderBottom: '1px solid black' }}
                 >
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
-
-
-                    style={{ height: "250px" }}
-
+                    style={{ height: '250px' }}
                   ></img>
                   <div id="div-info-line-item">
                     <h5>{lineItem.product.title}</h5>
@@ -133,14 +127,14 @@ const Cart = ({
                     <div>
                       <div
                         style={{
-                          display: "flex",
+                          display: 'flex',
                         }}
                       >
-                        <p style={{ marginRight: "10px" }}>
-                          <span>Quantity</span>{" "}
+                        <p style={{ marginRight: '10px' }}>
+                          <span>Quantity</span>{' '}
                         </p>
                         <select
-                          style={{ height: "26px", marginRight: "10px" }}
+                          style={{ height: '26px', marginRight: '10px' }}
                           defaultValue={lineItem.quantity}
                           onChange={(ev) =>
                             updateLineItem(lineItem.product, ev.target.value)
@@ -168,26 +162,26 @@ const Cart = ({
                       </div>
                     </div>
                   </div>
-                  <div id="div-price-product" style={{ marginLeft: "70%" }}>
+                  <div id="div-price-product" style={{ marginLeft: '70%' }}>
                     <h5>Price</h5>
                     <h5>${lineItem.product.price}</h5>
                   </div>
                 </main>
               );
             })
-          ) : !auth.id && localStorage.getItem("lineItem") ? (
-            JSON.parse(localStorage.getItem("lineItem")).map(
+          ) : !auth.id && localStorage.getItem('lineItem') ? (
+            JSON.parse(localStorage.getItem('lineItem')).map(
               (lineItem, idx) => {
                 return (
                   <main
                     id="display-lineitem"
                     key={lineItem.product.id}
-                    style={{ borderBottom: "1px solid black" }}
+                    style={{ borderBottom: '1px solid black' }}
                   >
                     <img
                       src={lineItem.product.imageUrl}
                       id="display-photo-lineitem"
-                      style={{ height: "250px" }}
+                      style={{ height: '250px' }}
                     ></img>
                     <div id="div-info-line-item">
                       <h5>{lineItem.product.title}</h5>
@@ -210,14 +204,14 @@ const Cart = ({
                       <div>
                         <div
                           style={{
-                            display: "flex",
+                            display: 'flex',
                           }}
                         >
-                          <p style={{ marginRight: "10px" }}>
-                            <span>Quantity</span>{" "}
+                          <p style={{ marginRight: '10px' }}>
+                            <span>Quantity</span>{' '}
                           </p>
                           <select
-                            style={{ height: "26px", marginRight: "10px" }}
+                            style={{ height: '26px', marginRight: '10px' }}
                             defaultValue={lineItem.qty}
                             onChange={(ev) =>
                               updateLineItem(lineItem.product, ev.target.value)
@@ -245,7 +239,7 @@ const Cart = ({
                         </div>
                       </div>
                     </div>
-                    <div id="div-price-product" style={{ marginLeft: "70%" }}>
+                    <div id="div-price-product" style={{ marginLeft: '70%' }}>
                       <h5>Price</h5>
                       <h5>${lineItem.product.price}</h5>
                     </div>
@@ -254,7 +248,6 @@ const Cart = ({
               }
             )
           ) : (
-
             <div className="container h-75" style={{}}>
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <GiBookshelf size={180} />
@@ -264,7 +257,6 @@ const Cart = ({
                 <a type="button" className="btn btn-dark" href="#books">
                   BROWSE BOOKS
                 </a>
-
               </div>
             </div>
           )}
