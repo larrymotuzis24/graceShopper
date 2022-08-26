@@ -37,7 +37,7 @@ class IsAdminPanel extends Component {
     const { books } = this.props.books
     return (
       <div>
-        <div> 
+        <div style={{ height: '72vh'}}> 
           <div style={{marginLeft: '10px'}}>
           <AddProduct />
           <AddCoupon />
@@ -55,7 +55,9 @@ class IsAdminPanel extends Component {
                     <Badge style={{ marginLeft: '7px'}}variant='light'>{amount}</Badge>
                   </React.Fragment>
                 }>
-          <Table hover style={{marginTop: '-17px', 
+          <div style={{ height: '70vh', position: 'relative', overflow: 'scroll' }}> 
+          <Table hover style={{
+                  marginTop: '-5px', 
                     backgroundColor: 'white', 
                     borderLeft: 'thin solid #dadce5',
                     borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
@@ -94,6 +96,7 @@ class IsAdminPanel extends Component {
               }
             </tbody>
           </Table>
+          </div>
               </Tab>
               <Tab eventKey="Products"title={
                   <React.Fragment>
@@ -101,45 +104,50 @@ class IsAdminPanel extends Component {
                     <Badge style={{ marginLeft: '7px'}}variant='light'>{this.props.books.length}</Badge>
                   </React.Fragment>
                 }>
-              <Table hover style={{marginTop: '-17px', 
-                    backgroundColor: 'white', 
-                    borderLeft: 'thin solid #dadce5',
-                    borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
-                  }}>
-              <thead style={{backgroundColor: '#D3D3D3'}}>
-                <tr>
-                  <th>Title</th>
-                  <th>Author </th>
-                  <th>Price</th>
-                  <th>Coupon Code</th>
-                  <th style={{textAlign: 'center', verticalAlign: 'middle'}}>Update </th>
-                </tr>
-              </thead>
-              <tbody>
-              {this.props.books.length > 1 ? 
-                  this.props.books.map(book => {
-                    return (
-                        <tr key={book.id}>
-                          <td>{book.title}</td>
-                          <td>{book.author}</td>
-                          <td>{book.price}</td>
-                          <th>{book.coupon ? book.coupon : 'No coupon'}</th>
-                          <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
-                            <UpdateProduct product={book}/>
-                            <DeleteProductModal product={book}/>
-                          </td>
-                        </tr>
-                    )
-                  })
-                  : 
-                  <>
+              <div style={{ height: '70vh', position: 'relative', overflow: 'scroll' }}>
+                <Table hover style={{
+                      maxHeight: '100%',
+                      overflow: 'auto',
+                      marginTop: '-5px', 
+                      backgroundColor: 'white', 
+                      borderLeft: 'thin solid #dadce5',
+                      borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
+                    }}>
+                <thead style={{backgroundColor: '#D3D3D3'}}>
                   <tr>
-                    <td>No users to show</td>
-                    </tr>
-                  </>
-                }
-              </tbody>
-            </Table>
+                    <th>Title</th>
+                    <th>Author </th>
+                    <th>Price</th>
+                    <th>Coupon Code</th>
+                    <th style={{textAlign: 'center', verticalAlign: 'middle'}}>Update </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {this.props.books.length > 1 ? 
+                    this.props.books.map(book => {
+                      return (
+                          <tr key={book.id}>
+                            <td>{book.title}</td>
+                            <td>{book.author}</td>
+                            <td>{book.price}</td>
+                            <th>{book.coupon ? book.coupon : 'No coupon'}</th>
+                            <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
+                              <UpdateProduct product={book}/>
+                              <DeleteProductModal product={book}/>
+                            </td>
+                          </tr>
+                      )
+                    })
+                    : 
+                    <>
+                    <tr>
+                      <td>No users to show</td>
+                      </tr>
+                    </>
+                  }
+                </tbody>
+              </Table>
+            </div>
             </Tab>
             <Tab 
                 eventKey="Analytics" 
