@@ -107,30 +107,15 @@ class OrderHistory extends Component {
                   );
                 })
               ) : (
-                <div
-                  style={{
-                    marginLeft: '-100px',
-                  }}
-                >
-                  <div
-                    style={{
-                      height: '200px',
-                      width: '87vw',
-                      marginBottom: '42px',
-                    }}
-                  >
-                    <div
-                      style={{
-                        textAlign: 'center',
-                        justifyContent: 'center',
-                        marginTop: '500px',
-                      }}
-                    >
-                      <div>
-                        <FaClipboardList size={180} />
-                        <h3>No order history </h3>
-                      </div>
-                    </div>
+                <div className="container h-75" style={{}}>
+                  <div className="d-flex flex-column justify-content-center align-items-center">
+                    <FaClipboardList size={180} />
+                    <h3 className="d-block mt-4 mb-5">
+                      You haven't placed any orders yet
+                    </h3>
+                    <a type="button" className="btn btn-dark" href="#books">
+                      BROWSE BOOKS
+                    </a>
                   </div>
                 </div>
               )}
