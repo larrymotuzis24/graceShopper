@@ -52,7 +52,7 @@ const Cart = ({
             marginLeft: '10%'}}>Cart</h2> : null
           }
         </div>
-        <div style={{ display: 'inline-block', width: '10vw', marginLeft: '66%'}}>
+        <div style={{ display: 'inline-block', width: '10vw', marginLeft:  '69.4%'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
               <div style={{
                 display: 'flex'
@@ -63,8 +63,12 @@ const Cart = ({
                   <span>Subtotal ({totalQty} items): </span>
                   <span>${subTotal.toFixed(2)}</span>
                 </p> */}
-                <Button className='buttonStyle'>
-                  <Link to="/order">Checkout</Link>
+                <Button className='buttonStyle' style={{
+                  color: 'white', 
+                  width: '148px',
+                  height: '54px'
+                }}>
+                  <Link to="/order" style={{color: 'white'}}>Checkout</Link>
                 </Button>
                 <Button style={{marginLeft: '16px', background: 'white', color: 'black'}}>
                   <Link to="/">Back</Link>
@@ -84,7 +88,7 @@ const Cart = ({
             </div>
         </div>
       <div id="cart-page" style={{marginTop: '-9vh'}}>
-        <div id="shopping-cart" style={{ borderTop: '1px solid', width: '80vw', overflowY: 'auto', height: '76vh'}}>
+        <div id="shopping-cart" style={{ borderTop:  auth.id && cart.lineItems.length > 0 && cart.isCart ? '1px solid' : null, width: '80vw', overflowY: 'auto', height: '76vh'}}>
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             cart.lineItems.map((lineItem) => {
               return (
@@ -112,7 +116,10 @@ const Cart = ({
                       )}
                     </p>
                     <div>
-                      <div style={{display: 'flex'}}>
+                      <div style={{display: 'flex',
+                        // marginLeft: '64vw',
+                        // marginTop: '64%'
+                  }}>
                       {/* marginLeft: '366%' */}
                           <p style={{marginRight: '10px'}}>
                             <span>Quantity</span>{' '}
@@ -145,7 +152,7 @@ const Cart = ({
                       </div>
                     </div>
                   </div>
-                  <div id="div-price-product" style={{marginLeft: '53%'}}>
+                  <div id="div-price-product" style={{marginLeft: '70%'}}>
                     <h5>Price</h5>
                     <h5>${lineItem.product.price}</h5>
                   </div>
@@ -157,10 +164,11 @@ const Cart = ({
               return (
                 <div>
                 <main id="display-lineitem" key={lineItem.product.id} >
-                  <img
-                    src={lineItem.product.imageUrl}
-                    id="display-photo-lineitem"
-                  ></img>
+                    <img
+                      src={lineItem.product.imageUrl}
+                      id="display-photo-lineitem"
+                    >
+                    </img>
                   <div id="div-info-line-item">
                     <h5>{lineItem.product.title}</h5>
                     <p>
@@ -206,7 +214,7 @@ const Cart = ({
                       Delete
                     </Link>
                   </div>
-                  <div id="div-price-product">
+                  <div id="div-price-product" >
                     <h5>Price</h5>
                     <h5>${lineItem.product.price}</h5>
                   </div>
