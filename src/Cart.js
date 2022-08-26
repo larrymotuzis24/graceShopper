@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateLineItem, deleteLineItem } from './store';
+
 import { Button } from 'react-bootstrap'
 import {
   BsFillTrashFill,
@@ -46,56 +47,77 @@ const Cart = ({
   }
 
   return (
-    <div id="block-cart-page" style={{height: '85vh'}}>
 
-      <div>
-        <div style={{ display: 'inline-block', height: '16vh', marginLeft: '9%'}}>
-          {auth.id && cart.lineItems.length > 0 && cart.isCart ? <h2 className="cart-title" style={{
-            textAlign: 'left',
-            marginLeft: '10%'}}>Cart</h2> : null
-          }
-        </div>
-        <div style={{ display: 'inline-block', width: '10vw', marginLeft:  '64.4%'}}>
+    <div id="" style={{}} className="container">
+      {/* Cart page heading */}
+      <div
+        id=""
+        className="d-flex justify-content-between align-items-end my-4"
+      >
+        {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
+          <h2 className="" style={{}}>
+            Cart
+          </h2>
+        ) : null}
+        <div style={{}}>
+
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
-              <div style={{
-                display: 'flex'
-              }}>
-                {/*
+            <div style={{}}>
+              {/*
                   we can move this downward to fit the new design
                 <p>
                   <span>Subtotal ({totalQty} items): </span>
                   <span>${subTotal.toFixed(2)}</span>
                 </p> */}
-                <Button className='buttonStyle' style={{
-                  color: 'white', 
-                  width: '148px',
-                  height: '54px'
-                }}>
-                  <Link to="/order" style={{color: 'white'}}>Checkout</Link>
-                </Button>
-                <Button style={{marginLeft: '16px', background: 'white', color: 'black'}}>
-                  <Link to="/">Back</Link>
-                </Button>
-              </div>
-            ) : !auth.id && localStorage.getItem('lineItem') ? (
-              <div id="subtotal-line-items">
-                <p>
-                  <span>Subtotal ({totalQtyGuest} items): </span>
-                  <span>${subTotalGuest.toFixed(2)}</span>
-                </p>
-                <button>
-                  <Link to="/signIn">Login to checkout</Link>
-                </button>
-              </div>
-            ) : null}
+              <a
+                type="button"
+                className="btn btn-light border-dark"
+                href="#books"
+                style={{}}
+              >
+                CONTINUE BROWSING
+              </a>
+              <a
+                type="button"
+                className="btn btn-dark ms-4"
+                href="#order"
+                style={{}}
+              >
+                CHECKOUT
+              </a>
             </div>
+          ) : !auth.id && localStorage.getItem('lineItem') ? (
+            <div id="subtotal-line-items">
+              <p>
+                <span>Subtotal ({totalQtyGuest} items): </span>
+                <span>${subTotalGuest.toFixed(2)}</span>
+              </p>
+              <button>
+                <Link to="/signIn">Login to checkout</Link>
+              </button>
+            </div>
+          ) : null}
         </div>
-      <div id="cart-page" style={{marginTop: '-9vh'}}>
-        <div id="shopping-cart" style={{ borderTop:  auth.id && cart.lineItems.length > 0 && cart.isCart ? '1px solid' : null, width: '80vw', overflowY: 'auto', height: '76vh'}}>
+      </div>
+      {/* Cart page body */}
+      <div id="" style={{}} className="container">
+        <div
+          id=""
+          style={{
+            borderTop:
+              auth.id && cart.lineItems.length > 0 && cart.isCart
+                ? '1px solid'
+                : null,
+          }}
+        >
           {auth.id && cart.lineItems.length > 0 && cart.isCart ? (
             cart.lineItems.map((lineItem) => {
               return (
-                <main id="display-lineitem" key={lineItem.id}  style={{ borderBottom: '1px solid black'}}>
+                <main
+                  id="display-lineitem"
+                  key={lineItem.id}
+                  style={{ borderBottom: '1px solid black' }}
+                >
                   <img
                     src={lineItem.product.imageUrl}
                     id="display-photo-lineitem"
@@ -120,43 +142,47 @@ const Cart = ({
                       )}
                     </p>
                     <div>
-                      <div style={{display: 'flex',
-                        // marginLeft: '64vw',
-                        // marginTop: '64%'
-                  }}>
-                      {/* marginLeft: '366%' */}
-                          <p style={{marginRight: '10px'}}>
-                            <span>Quantity</span>{' '}
-                          </p>
-                          <select
-
-                            style={{height: '26px', marginRight: '10px'}}
-                            defaultValue={lineItem.quantity}
-                            onChange={(ev) =>
-                              updateLineItem(lineItem.product, ev.target.value)
-                            }
-                          >
-                            <option value={1}>1</option>
-                            <option value={2}>2</option>
-                            <option value={3}>3</option>
-                            <option value={4}>4</option>
-                            <option value={5}>5</option>
-                            <option value={6}>6</option>
-                            <option value={7}>7</option>
-                            <option value={8}>8</option>
-                            <option value={9}>9</option>
-                            <option value={10}>10</option>
-                          </select>
-                          <Link
-                            to="/cart"
-                            onClick={() => deleteLineItem(lineItem.product, qtyZero)}
-                          >
-                           <BsFillTrashFill size={25} />
-                          </Link>
+                      <div
+                        style={{
+                          display: 'flex',
+                          // marginLeft: '64vw',
+                          // marginTop: '64%'
+                        }}
+                      >
+                        {/* marginLeft: '366%' */}
+                        <p style={{ marginRight: '10px' }}>
+                          <span>Quantity</span>{' '}
+                        </p>
+                        <select
+                          style={{ height: '26px', marginRight: '10px' }}
+                          defaultValue={lineItem.quantity}
+                          onChange={(ev) =>
+                            updateLineItem(lineItem.product, ev.target.value)
+                          }
+                        >
+                          <option value={1}>1</option>
+                          <option value={2}>2</option>
+                          <option value={3}>3</option>
+                          <option value={4}>4</option>
+                          <option value={5}>5</option>
+                          <option value={6}>6</option>
+                          <option value={7}>7</option>
+                          <option value={8}>8</option>
+                          <option value={9}>9</option>
+                          <option value={10}>10</option>
+                        </select>
+                        <Link
+                          to="/cart"
+                          onClick={() =>
+                            deleteLineItem(lineItem.product, qtyZero)
+                          }
+                        >
+                          <BsFillTrashFill size={25} />
+                        </Link>
                       </div>
                     </div>
                   </div>
-                  <div id="div-price-product" style={{marginLeft: '70%'}}>
+                  <div id="div-price-product" style={{ marginLeft: '70%' }}>
                     <h5>Price</h5>
                     <h5>${lineItem.product.price}</h5>
                   </div>
@@ -167,66 +193,68 @@ const Cart = ({
             JSON.parse(localStorage.getItem('lineItem')).map((lineItem) => {
               return (
                 <div>
-                <main id="display-lineitem" key={lineItem.product.id} >
+                  <main id="display-lineitem" key={lineItem.product.id}>
                     <img
                       src={lineItem.product.imageUrl}
                       id="display-photo-lineitem"
-                    >
-                    </img>
-                  <div id="div-info-line-item">
-                    <h5>{lineItem.product.title}</h5>
-                    <p>
-                      <span>Author:</span> {lineItem.product.author}
-                    </p>
-                    <p>
-                      {lineItem.product.inventory >= 1 &&
-                      lineItem.product.inventory <= 10 ? (
-                        <span id="stock-left">
-                          Only {lineItem.product.inventory} left in Stock -
-                          Order soon.
-                        </span>
-                      ) : lineItem.product.inventory > 10 ? (
-                        <span id="in-stock">In Stock</span>
-                      ) : (
-                        <span id="out-stock">Out of Stock</span>
-                      )}
-                    </p>
-                    <p>
-                      <span>Quantity</span>{' '}
-                    </p>
-                    <select
-                      defaultValue={lineItem.qty}
-                      onChange={(ev) =>
-                        updateLineItem(lineItem.product, ev.target.value)
-                      }
-                    >
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                      <option value={6}>6</option>
-                      <option value={7}>7</option>
-                      <option value={8}>8</option>
-                      <option value={9}>9</option>
-                      <option value={10}>10</option>
-                    </select>
-                    <Link
-                      to="/cart"
-                      onClick={() => deleteLineItem(lineItem.product, qtyZero)}
-                    >
-                      Delete
-                    </Link>
-                  </div>
-                  <div id="div-price-product" >
-                    <h5>Price</h5>
-                    <h5>${lineItem.product.price}</h5>
-                  </div>
-                </main>
+                    ></img>
+                    <div id="div-info-line-item">
+                      <h5>{lineItem.product.title}</h5>
+                      <p>
+                        <span>Author:</span> {lineItem.product.author}
+                      </p>
+                      <p>
+                        {lineItem.product.inventory >= 1 &&
+                        lineItem.product.inventory <= 10 ? (
+                          <span id="stock-left">
+                            Only {lineItem.product.inventory} left in Stock -
+                            Order soon.
+                          </span>
+                        ) : lineItem.product.inventory > 10 ? (
+                          <span id="in-stock">In Stock</span>
+                        ) : (
+                          <span id="out-stock">Out of Stock</span>
+                        )}
+                      </p>
+                      <p>
+                        <span>Quantity</span>{' '}
+                      </p>
+                      <select
+                        defaultValue={lineItem.qty}
+                        onChange={(ev) =>
+                          updateLineItem(lineItem.product, ev.target.value)
+                        }
+                      >
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                        <option value={6}>6</option>
+                        <option value={7}>7</option>
+                        <option value={8}>8</option>
+                        <option value={9}>9</option>
+                        <option value={10}>10</option>
+                      </select>
+                      <Link
+                        to="/cart"
+                        onClick={() =>
+                          deleteLineItem(lineItem.product, qtyZero)
+                        }
+                      >
+                        Delete
+                      </Link>
+                    </div>
+                    <div id="div-price-product">
+                      <h5>Price</h5>
+                      <h5>${lineItem.product.price}</h5>
+                    </div>
+                  </main>
                 </div>
               );
             })
           ) : (
+
             <div style={{
               marginLeft: '-100px'
             }}>
@@ -246,8 +274,9 @@ const Cart = ({
                           </div>
                         </h5>
                     </div>
+
               </div>
-           </div>
+            </div>
           )}
         </div>
       </div>
@@ -274,7 +303,7 @@ const mapStateToProps = ({ cart, auth }) => {
     accum += lineItem.quantity;
     return accum;
   }, 0);
-  
+
   return {
     cart,
     auth,

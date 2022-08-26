@@ -101,7 +101,7 @@ const NavBar = (props) => {
           id="navbarNav"
           style={{}}
         >
-          <ul className="navbar-nav" style={{}}>
+          <ul className="navbar-nav" style={{ marginRight: '-1rem' }}>
             <li
               className="nav-item"
               // className={view === 'books' ? 'selected nav-item' : 'nav-item'}
@@ -231,6 +231,7 @@ const NavBar = (props) => {
                     ? 'nav-link nav-link-active'
                     : 'nav-link link-primary'
                 }
+                style={{ paddingRight: '0 !important' }}
               >
                 {auth.id
                   ? `CART (${cart.isCart ? cart.lineItems.length : 0})`

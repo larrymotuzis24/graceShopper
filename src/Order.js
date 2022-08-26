@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateLineItem, deleteLineItem } from "./store";
-import { Link } from "react-router-dom";
-import StripeContainer from "./StripeContainer";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { updateLineItem, deleteLineItem } from './store';
+import { Link } from 'react-router-dom';
+import StripeContainer from './StripeContainer';
 
 class Order extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      address: "",
-      city: "",
-      state: "",
-      zipCode: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
     };
     this.onChange = this.onChange.bind(this);
   }
@@ -36,8 +36,15 @@ class Order extends Component {
   }
 
   render() {
-    const { auth, cart, updateLineItem, deleteLineItem, subTotal, totalQty, states } =
-      this.props;
+    const {
+      auth,
+      cart,
+      updateLineItem,
+      deleteLineItem,
+      subTotal,
+      totalQty,
+      states,
+    } = this.props;
     const { onChange } = this;
     const { firstName, lastName, email, address, zipCode, state, city } =
       this.state;
@@ -46,315 +53,273 @@ class Order extends Component {
     const beforeTax = subTotal + shippingTotal;
     const taxCollected = subTotal * 0.081;
     const orderTotal = subTotal + shippingTotal + taxCollected;
+    const { avatar } = this.state;
     cart.lineItems.sort((a, b) => {
       return a.id - b.id;
     });
     return (
-      <div id="order-page">
-        {auth.id ? (
-          <h2 className="user-name">
-            Welcome, {auth.firstName} {auth.lastName}!
-          </h2>
-        ) : null}
-        <h2 className="checkout-title">Checkout ({totalQty} items)</h2>
-        <main id="order-info">
-          <div id="order-info-div">
-            <div id="shipping-info">
-              <h3
-                style={{
-                  margin: "40px",
-                }}
-              >
-                Billing Address
-              </h3>
+      <div id="" className="container mt-4" style={{ marginBottom: '20vh' }}>
+        {/* Checkout page heading */}
+        <div className="d-flex justify-content-between align-items-center">
+          <h2 className="checkout-title">Checkout</h2>
+          {auth.id ? (
+            <div className="d-flex align-items-center">
+              {!avatar ? (
+                <img
+                  src={auth.imageUrl}
+                  style={{
+                    height: '4rem',
+                    width: '4rem',
+                    borderRadius: '1000px',
+                    overflow: 'hidden',
+                  }}
+                />
+              ) : (
+                <img src={avatar} />
+              )}
+              <p className="lead ms-4 mb-0">
+                Welcome, {auth.firstName} {auth.lastName}!
+              </p>
+            </div>
+          ) : null}
+        </div>
+        {/* <p>{totalQty} items</p> */}
+        {/* Checkout page heading */}
+        <div className="w-100 row row-cols-2 g-2 justify-content-between">
+          <div className="mt-5 col-md-6">
+            {/*Shipping address and payment information container */}
+            <form className="">
+              <h6 className="" style={{}}>
+                Shipping Address
+              </h6>
+              <hr style={{}} />
+
               <div>
-                <form className="row g-3">
-                  <div
-                    className="col"
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="First Name"
-                      value={firstName}
-                      aria-label="First name"
-                      style={{ width: "45%" }}
-                      onChange={onChange}
-                    />
-
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Last Name"
-                      value={lastName}
-                      aria-label="Last name"
-                      style={{ width: "45%" }}
-                      onChange={onChange}
-                    />
-                  </div>
-
-                  <div
-                    className="col-md-6"
-                    style={{
-                      width: "100%",
-                    }}
-                  >
-                    <label htmlFor="inputEmail4" className="form-label">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      placeholder="Email"
-                      className="form-control"
-                      value={email}
-                      id="inputEmail4"
-                      onChange={onChange}
-                    />
-                  </div>
-                  <div className="col-12">
-                    <label htmlFor="inputAddress" className="form-label">
-                      Address
-                    </label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="inputAddress"
-                      value={address}
-                      placeholder="Address"
-                      onChange={onChange}
-                    />
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                    }}
-                  >
-                    <div
-                      className="col-md-6"
-                      style={{
-                        margin: "3px",
-                      }}
-                    >
-                      <label htmlFor="inputCity" className="form-label">
-                        City
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="City"
-                        value={city}
-                        className="form-control"
-                        id="inputCity"
-                        onChange={onChange}
-                      />
-                    </div>
-                    <div
-                      className="col-md-4"
-                      style={{
-                        margin: "3px",
-                      }}
-                    >
-                      <label htmlFor="inputState" className="form-label">
-                        State
-                      </label>
-                      <select
-                        name="state"
-                        value={state}
-                        onChange={onChange}
-                        className="form-select"
-                      >
-                        <option value="">-- Select a State --</option>
-                        {states.map((state) => {
-                          return (
-                            <option key={state.id} value={state.name}>
-                              {state.name}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                    <div
-                      className="col-md-2"
-                      style={{
-                        margin: "3px",
-                      }}
-                    >
-                      <label htmlFor="inputZip" className="form-label">
-                        Zip
-                      </label>
-                      <input
-                        type="text"
-                        placeholder= "Zip Code"
-                        value={zipCode}
-                        className="form-control"
-                        id="inputZip"
-                        onChange={onChange}
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className="form-check"
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                    }}
-                  >
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id="gridCheck"
-                      style={{ margin: "3px" }}
-                    />
-                    <label className="form-check-label" htmlFor="gridCheck">
-                      Shipping Address same as Billing Address
-                    </label>
-                  </div>
-                </form>
-
-                <div>
-                  {!auth.secondaryAddress ? (
-                    <p>{auth.address}</p>
-                  ) : (
-                    <div id="shipping-address">
-                      <label>Select the shipping address</label>
-                      <select
-                        value={address}
-                        name="address"
-                        onChange={onChange}
-                      >
-                        <option>{auth.address}</option>
-                        {auth.secondaryAddress.map((secAddress, idx) => {
-                          return (
-                            <option key={idx} value={secAddress}>
-                              {secAddress}
-                            </option>
-                          );
-                        })}
-                      </select>
-                    </div>
-                  )}
+                <label htmlFor="selectAddress" className="form-label small">
+                  Select one of your addresses
+                </label>
+                <select
+                  value={address}
+                  name="address"
+                  id="selectAddress"
+                  onChange={onChange}
+                  className="form-select"
+                >
+                  <option>{auth.address}</option>
+                  {auth.secondaryAddress.map((secAddress, idx) => {
+                    return (
+                      <option key={idx} value={secAddress}>
+                        {secAddress}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
+              <div className="d-flex">
+                <div className="w-50 me-2">
+                  <label htmlFor="firstName" className="form-label small">
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="First Name"
+                    value={firstName}
+                    aria-label="First name"
+                    style={{}}
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="w-50 ms-2">
+                  <label htmlFor="firstName" className="form-label small">
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Last Name"
+                    value={lastName}
+                    aria-label="Last name"
+                    style={{}}
+                    onChange={onChange}
+                  />
                 </div>
               </div>
-            </div>
-            <hr />
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-around",
-              }}
-            >
-              <div id="payment-info">
-                <h3>Payment Method</h3>
-                <StripeContainer orderTotal={orderTotal} address={address} />
+              <div>
+                <label htmlFor="inputEmail4" className="form-label small">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Email"
+                  className="form-control"
+                  value={email}
+                  id="inputEmail4"
+                  onChange={onChange}
+                />
               </div>
-
-              <div
-                id="total-line-items"
-                style={{
-                  width: "50%",
-                  marginTop: "75px",
-                }}
-              >
-                <p>
-                  <span>({totalQty} items): </span>
-                  <span>${subTotal.toFixed(2)}</span>
-                </p>
-                <p>
-                  <span>Shipping: </span>
-                  <span>${shippingTotal.toFixed(2)}</span>
-                </p>
-                <p>
-                  <span>Total before tax: </span>
-                  <span>${beforeTax.toFixed(2)}</span>
-                </p>
-                <p>
-                  <span>Tax to be collected: </span>
-                  <span>${taxCollected.toFixed(2)}</span>
-                </p>
-                <p>
-                  <span id="total-text">Order total: </span>
-                  <span id="total-amount">${orderTotal.toFixed(2)}</span>
-                </p>
+              <div>
+                <label htmlFor="inputAddress" className="form-label small">
+                  Address
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputAddress"
+                  value={address}
+                  placeholder="Address"
+                  onChange={onChange}
+                />
               </div>
+              <div className="d-flex">
+                <div className="me-2" style={{}}>
+                  <label htmlFor="inputCity" className="form-label small">
+                    City
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="City"
+                    value={city}
+                    className="form-control"
+                    id="inputCity"
+                    onChange={onChange}
+                  />
+                </div>
+                <div className="mx-2" style={{}}>
+                  <label
+                    htmlFor="inputState"
+                    className="form-label small small"
+                  >
+                    State
+                  </label>
+                  <select
+                    name="state"
+                    value={state}
+                    onChange={onChange}
+                    className="form-select"
+                  >
+                    <option value="">-- Select a State --</option>
+                    {states.map((state) => {
+                      return (
+                        <option key={state.id} value={state.name}>
+                          {state.name}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className="ms-2" style={{}}>
+                  <label htmlFor="inputZip" className="form-label small small">
+                    Zip Code
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Zip Code"
+                    value={zipCode}
+                    className="form-control"
+                    id="inputZip"
+                    onChange={onChange}
+                  />
+                </div>
+              </div>
+            </form>
+            <div>
+              <h6 className="mt-5">Payment Method</h6>
+              <hr />
+              <div className="form-check" style={{ margin: '1.25rem 0rem' }}>
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="gridCheck"
+                  style={{}}
+                  defaultChecked
+                />
+                <label className="form-check-label" htmlFor="gridCheck">
+                  Billing Address is the same as Shipping Address
+                </label>
+              </div>
+              <StripeContainer orderTotal={orderTotal} address={address} />
             </div>
+            <div>
+              {!auth.secondaryAddress ? (
+                <p>{auth.address}</p>
+              ) : (
+                <div id=""></div>
+              )}
+            </div>
+          </div>
+          <div className="col-md-5 mt-5">
+            {/* Cart summary container */}
 
-            <hr />
-            <div id="review-order">
-              <h3>Review Order</h3>
+            <div id="">
+              {/* Cart summary items */}
+              <div className="d-flex justify-content-between align-items-baseline">
+                <h6 className="" style={{ margin: '0.5rem 0rem' }}>
+                  Cart Summary
+                </h6>
+                <a href="#cart" className="text-link">
+                  EDIT CART
+                </a>
+              </div>
+              <hr style={{ margin: '0.5rem 0rem' }} />
               <div>
                 {cart.lineItems.map((lineItem) => {
                   return (
-                    <main id="display-lineitem" key={lineItem.id}>
-                      <img
-                        src={lineItem.product.imageUrl}
-                        id="display-photo-lineitem"
-                      ></img>
-                      <div id="div-info-line-item">
-                        <h5>{lineItem.product.title}</h5>
-                        <p>
-                          <span>Author:</span> {lineItem.product.author}
-                        </p>
-                        <p>
-                          {lineItem.product.inventory >= 1 &&
-                          lineItem.product.inventory <= 10 ? (
-                            <span id="stock-left">
-                              Only {lineItem.product.inventory} left in Stock -
-                              Order soon.
-                            </span>
-                          ) : lineItem.product.inventory > 10 ? (
-                            <span id="in-stock">In Stock</span>
-                          ) : (
-                            <span id="out-stock">Out of Stock</span>
-                          )}
-                        </p>
-                        <p>
-                          <span>Quantity</span>{" "}
-                        </p>
-                        <select
-                          defaultValue={lineItem.quantity}
-                          onChange={(ev) =>
-                            updateLineItem(lineItem.product, ev.target.value)
-                          }
+                    <div key={lineItem.id}>
+                      <div className="d-flex flex-row-nowrap justify-content-between my-3">
+                        <a
+                          href={`#books/${lineItem.productId}`}
+                          className="d-flex img-link"
                         >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                          <option value={9}>9</option>
-                          <option value={10}>10</option>
-                        </select>
-                        <Link
-                          to="/order"
-                          onClick={() =>
-                            deleteLineItem(lineItem.product, qtyZero)
-                          }
-                        >
-                          Delete
-                        </Link>
+                          <img
+                            src={lineItem.product.imageUrl}
+                            id=""
+                            style={{
+                              width: '6rem',
+                              marginRight: '1rem',
+                            }}
+                          ></img>
+
+                          <p>
+                            {lineItem.product.title}
+                            <br />
+                            {lineItem.product.author}
+                          </p>
+                        </a>
+                        <p style={{}}>${lineItem.product.price}</p>
                       </div>
-                      <div id="div-price-product">
-                        <p>Price</p>
-                        <h5 style={{ fontSize: "20px" }}>
-                          ${lineItem.product.price}
-                        </h5>
-                      </div>
-                    </main>
+                      <hr />
+                    </div>
                   );
                 })}
               </div>
+            </div>
+            <div id="" style={{}}>
+              {/* Cart summary total */}
+              <div className="d-flex justify-content-between">
+                <p>Subtotal</p>
+                <p>${subTotal.toFixed(2)}</p>
+              </div>
+              <div className="d-flex justify-content-between">
+                <p>Shipping</p>
+                <p>${shippingTotal.toFixed(2)}</p>
+              </div>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Taxes</p>
+                <p className="mb-0">${taxCollected.toFixed(2)}</p>
+              </div>
               <hr />
+              <div className="d-flex justify-content-between">
+                <p id="" className="lead my-3">
+                  Total
+                </p>
+                <p id="" className="lead my-3">
+                  ${orderTotal.toFixed(2)}
+                </p>
+              </div>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     );
   }
@@ -375,7 +340,7 @@ const mapStateToProps = ({ auth, cart, states }) => {
     cart,
     subTotal,
     totalQty,
-    states
+    states,
   };
 };
 
