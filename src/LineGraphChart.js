@@ -55,15 +55,16 @@ class LineGraphChart extends Component {
       ]
 
     return (
-        <div className="app">
-        <div className="row">
-          <div className="mixed-chart">
+        <div >
+        <div >
+          <div >
             <h4> Orders by Month </h4>
             <Chart
               options={options}
               series={series}
               type="line"
               width="100%"
+              height='80%'
             />
           </div>
         </div>
