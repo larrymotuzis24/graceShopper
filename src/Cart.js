@@ -250,7 +250,7 @@ const Cart = ({
               }
             )
           ) : (
-            <div className="container h-75" style={{}}>
+            <div className="container h-75" style={{marginTop: '400px'}}>
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <GiBookshelf size={180} />
                 <h3 className="d-block mt-4 mb-5">
