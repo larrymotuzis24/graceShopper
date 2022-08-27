@@ -20,7 +20,7 @@ class OrderHistory extends Component {
       return subT + shipTotal + taxCol;
     });
     return (
-      <div id="" style={{}} className="container mt-4">
+      <div id="" style={{ minHeight: '75vh' }} className="container mt-4">
         <div className="d-flex justify-content-between align-items-center">
           {orders.length > 0 ? (
             <div className="w-100">
@@ -84,7 +84,7 @@ class OrderHistory extends Component {
                                   </div>
                                   <div className="text-end">
                                     <a
-                                      to={`/books/${lineItem.productId}`}
+                                      href={`#books/${lineItem.productId}`}
                                       className="text-link"
                                       style-={{
                                         marginBottom: '2rem !important',

@@ -5,17 +5,21 @@ import { Link } from 'react-router-dom';
 const SearchBar = ({ books }) => {
   const [query, setQuery] = useState('');
   return (
-    <div className="dropdown" style={{
-      zIndex:'10'
-    }} >
-      <div id="myDropdown" className="dropdown-content" >
-        <input
-          className="searchbar"
-          id="searchbar-input"
-          placeholder="Search by title"
-          onChange={(e) => setQuery(e.target.value)}
-        />
-
+    <div
+      className="dropdown"
+      style={{
+        zIndex: '10',
+      }}
+    >
+      <input
+        // className="searchbar"
+        // id="searchbar-input"
+        type="text"
+        class="form-control"
+        placeholder="Search books by title"
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <div id="myDropdown" className="dropdown-content">
         {books
           .filter((book) => {
             if (query === '') {
@@ -23,14 +27,25 @@ const SearchBar = ({ books }) => {
             } else if (book.title.toLowerCase().includes(query.toLowerCase())) {
               return book;
             }
-          }).slice(0, 9)
+          })
+          .slice(0, 9)
           .map((book) => {
             if (query !== '') {
               return (
-                <p key={book.id}>
-                  {' '}
-                  <Link to={`/books/${book.id}`}> {book.title} </Link>{' '}
-                </p>
+                <a
+                  href={`#books/${book.id}`}
+                  key={book.id}
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    border: '1px solid black',
+                    marginTop: '-1px',
+                  }}
+                  className="text-link p-2"
+                >
+                  {book.title}
+                </a>
               );
             }
           })}

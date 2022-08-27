@@ -13,7 +13,7 @@ class Books extends Component {
       booksPerPage: 16,
       option: '',
       category: '',
-      selectAll: ''
+      selectAll: '',
     };
     this.setCurrentPage = this.setCurrentPage.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -25,21 +25,29 @@ class Books extends Component {
 
   onChange(ev) {
     this.setState({ [ev.target.name]: ev.target.value });
-    if(window.location.href.includes('/page/')){
-      window.location.href = '/#/books/page/1'
+    if (window.location.href.includes('/page/')) {
+      window.location.href = '/#/books/page/1';
     }
+    console.log(ev.target);
+    const filters = document.getElementsByClassName('category-filters');
+    const filtersArr = Array.from(filters);
+    filtersArr.map(
+      (filter) => (filter.style.borderBottom = '2px solid rgba(0, 0, 0, 0)')
+    );
+    // ev.target.style.color = '#B7C6E5';
+    // ev.target.style.color = '#B7C6E5';
+    ev.target.style.borderBottom = '2px solid black';
   }
 
-  componentDidMount(){
+  componentDidMount() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'auto'
+      behavior: 'auto',
     });
   }
 
   render() {
-    
     const pageNumber = this.props.match.params.id * 1;
     const { books, auth, cart, categories } = this.props;
     const { option } = this.state;
@@ -65,89 +73,42 @@ class Books extends Component {
       filteredBooks.length === 0
         ? Math.ceil(books.length / this.state.booksPerPage)
         : Math.ceil(filteredBooks.length / this.state.booksPerPage);
+
     return (
-      <div className="container">
-        {/* <div className="row" style={{ gap: '2rem' }}>
-          <div className="row row-cols-2 row-cols-lg-4">
-            {listBooks.map((book) => {
-              return (
-                <div className="col">
-                  <div
-                    key={book.id}
-                    className="card border-0 bg-transparent mb-5"
-                    style={{ background: '#eef7ea' }}
-                  >
-                    <Link
-                      id={book.id}
-                      to={`books/${book.id}`}
-                      className="text-decoration-none"
-                    >
-                      <div style={{ height: '400px' }}>
-                        <img
-                          src={book.imageUrl}
-                          style={{
-                            height: '100%',
-                            objectFit: 'contain',
-                            backgroundColor: 'black',
-                            padding: '20%',
-                          }}
-                          className="rounded-4 mb-2 card-img-top"
-                        />
-                      </div>
-                      <div
-                        className="card-body pt-3 pb-0 px-0"
-                        style={{ background: '#eef7ea' }}
-                      >
-                        <p className="my-0 text-black lead">{book.title}</p>
-                        <p className="my-0 text-black lead">{book.author}</p>
-                        <p className="my-0 text-black lead">${book.price}</p>
-                      </div>
-                    </Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div> */}
-
-        <div id="search-books">
-          <div style={{
-            padding:'15px',
-            marginLeft:'10px'
-          }}>
-           <SearchBar />
-
-          </div>
-        
-
+      <main className="container">
+        <div className="my-4">
+          <SearchBar />
         </div>
-        <div id="books-category" style={{
-          display:'flex',
-          flexDirection:'row',
-          justifyContent:'space-around',
-        }}> 
-        <button
-                 onClick={onChange}
-                  name="option"
-                  
-                  className="btn btn-secondary w-30"
-                >
-                  All Books
-                </button>
+        <div className="d-flex flex-wrap my-4" style={{}}>
+          <button
+            onClick={onChange}
+            name="option"
+            className="display-2 d-inline-block p-0 bg-transparent me-5 mb-3 category-filters"
+            style={{
+              borderBottom: '2px solid black',
+              textDecoration: 'none',
+            }}
+          >
+            All Books
+          </button>
 
-            {categories.map((category) => {
-              return (
-                <button
-                  onClick={onChange}
-                  name="option"
-                  key={category.id}
-                  value={category.id}
-                  className="btn btn-secondary w-30"
-                >
-                  {category.category}
-                </button>
-              );
-            })}
+          {categories.map((category) => {
+            return (
+              <button
+                onClick={onChange}
+                name="option"
+                key={category.id}
+                value={category.id}
+                className="display-2 d-inline-block p-0 bg-transparent me-5 mb-3 category-filters"
+                style={{
+                  textDecoration: 'none',
+                  borderBottom: '2px solid rgba(0, 0, 0, 0)',
+                }}
+              >
+                {category.category}
+              </button>
+            );
+          })}
         </div>
         <div className="row" style={{ gap: '2rem' }}>
           <div className="row row-cols-2 row-cols-lg-4">
@@ -201,9 +162,8 @@ class Books extends Component {
           numPages={numPages}
           setCurrentPage={setCurrentPage}
           pageNumber={pageNumber}
-        /> 
-        
-      </div>
+        />
+      </main>
     );
   }
 }
