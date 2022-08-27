@@ -33,7 +33,7 @@ class Books extends Component {
     filtersArr.map(
       (filter) => (filter.style.borderBottom = '2px solid rgba(0, 0, 0, 0)')
     );
-    
+
     ev.target.style.borderBottom = '2px solid black';
   }
 

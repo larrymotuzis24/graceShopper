@@ -242,12 +242,6 @@ div#shopping-cart h2 {
 
 main#display-lineitem {
   display: flex;
-  flex: 2;
-}
-
-main#display-lineitem > * {
-  padding: 0.5rem;
-  margin: 0.5rem;
 }
 
 li:first-child {
@@ -260,13 +254,12 @@ img#display-photo-lineitem {
   width: 10%;
   height: 25%;
   border-radius: 20%;
-  margin-bottom: 27px !important;
 }
 
 div#div-info-line-item {
   flex-direction: column;
   align-items: center;
-  width: 15%;
+  width: auto;
 }
 
 div#div-info-line-item > * {

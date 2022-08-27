@@ -42,9 +42,13 @@ const Cart = ({
   }
 
   return (
-    <div id="" style={{ 
-      height: '71vh'
-    }} className="container">
+    <div
+      id=""
+      style={{
+        minHeight: '90vh',
+      }}
+      className="container"
+    >
       {/* Cart page heading */}
       <div
         id=""
@@ -102,71 +106,76 @@ const Cart = ({
                   id="display-lineitem"
                   key={lineItem.id}
                   style={{ borderBottom: '1px solid black' }}
+                  className="d-flex justify-content-between align-items-start py-4"
                 >
-                  <img
-                    src={lineItem.product.imageUrl}
-                    id="display-photo-lineitem"
-                    style={{ height: '250px' }}
-                  ></img>
-                  <div id="div-info-line-item">
-                    <h5>{lineItem.product.title}</h5>
-                    <p>
-                      <span>Author:</span> {lineItem.product.author}
-                    </p>
-                    <p>
-                      {lineItem.product.inventory >= 1 &&
-                      lineItem.product.inventory <= 10 ? (
-                        <span id="stock-left">
-                          Only {lineItem.product.inventory} left in Stock -
-                          Order soon.
-                        </span>
-                      ) : lineItem.product.inventory > 10 ? (
-                        <span id="in-stock">In Stock</span>
-                      ) : (
-                        <span id="out-stock">Out of Stock</span>
-                      )}
-                    </p>
-                    <div>
-                      <div
-                        style={{
-                          display: 'flex',
-                        }}
-                      >
-                        <p style={{ marginRight: '10px' }}>
-                          <span>Quantity</span>{' '}
-                        </p>
-                        <select
-                          style={{ height: '26px', marginRight: '10px' }}
-                          defaultValue={lineItem.quantity}
-                          onChange={(ev) =>
-                            updateLineItem(lineItem.product, ev.target.value)
-                          }
+                  <div className="d-flex gap-4">
+                    <img
+                      src={lineItem.product.imageUrl}
+                      id=""
+                      style={{
+                        width: '10rem',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        objectPosition: 'right top',
+                      }}
+                    ></img>
+                    <div id="div-info-line-item">
+                      <p className="lead">{lineItem.product.title}</p>
+                      <p>{lineItem.product.author}</p>
+                      <p>
+                        {lineItem.product.inventory >= 1 &&
+                        lineItem.product.inventory <= 10 ? (
+                          <span id="stock-left">
+                            Only {lineItem.product.inventory} left in Stock -
+                            Order soon.
+                          </span>
+                        ) : lineItem.product.inventory > 10 ? (
+                          <span id="in-stock">In Stock</span>
+                        ) : (
+                          <span id="out-stock">Out of Stock</span>
+                        )}
+                      </p>
+                      <div>
+                        <div
+                          style={{
+                            display: 'flex',
+                          }}
                         >
-                          <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                          <option value={6}>6</option>
-                          <option value={7}>7</option>
-                          <option value={8}>8</option>
-                          <option value={9}>9</option>
-                          <option value={10}>10</option>
-                        </select>
-                        <Link
-                          to="/cart"
-                          onClick={() =>
-                            deleteLineItem(lineItem.product, qtyZero)
-                          }
-                        >
-                          <BsFillTrashFill size={25} />
-                        </Link>
+                          <p style={{ marginRight: '10px' }}>
+                            <span>Quantity</span>{' '}
+                          </p>
+                          <select
+                            style={{ height: '26px', marginRight: '10px' }}
+                            defaultValue={lineItem.quantity}
+                            onChange={(ev) =>
+                              updateLineItem(lineItem.product, ev.target.value)
+                            }
+                          >
+                            <option value={1}>1</option>
+                            <option value={2}>2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                            <option value={6}>6</option>
+                            <option value={7}>7</option>
+                            <option value={8}>8</option>
+                            <option value={9}>9</option>
+                            <option value={10}>10</option>
+                          </select>
+                          <Link
+                            to="/cart"
+                            onClick={() =>
+                              deleteLineItem(lineItem.product, qtyZero)
+                            }
+                          >
+                            <BsFillTrashFill size={25} />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div id="div-price-product" style={{ marginLeft: '70%' }}>
-                    <h5>Price</h5>
-                    <h5>${lineItem.product.price}</h5>
+                  <div id="div-price-product" style={{}}>
+                    <h6>${lineItem.product.price}</h6>
                   </div>
                 </main>
               );
@@ -250,7 +259,7 @@ const Cart = ({
               }
             )
           ) : (
-            <div className="container h-75" style={{marginTop: '400px'}}>
+            <div className="container h-75" style={{ marginTop: '400px' }}>
               <div className="d-flex flex-column justify-content-center align-items-center">
                 <GiBookshelf size={180} />
                 <h3 className="d-block mt-4 mb-5">

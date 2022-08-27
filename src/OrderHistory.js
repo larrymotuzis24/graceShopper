@@ -20,7 +20,7 @@ class OrderHistory extends Component {
       return subT + shipTotal + taxCol;
     });
     return (
-      <div id="" style={{ minHeight: '75vh' }} className="container mt-4">
+      <div id="" style={{ minHeight: '80vh' }} className="container mt-4">
         <div className="d-flex justify-content-between align-items-center">
           {orders.length > 0 ? (
             <div className="w-100">
@@ -108,9 +108,12 @@ class OrderHistory extends Component {
                 })
               ) : (
                 <div className="container h-75" style={{}}>
-                  <div className="d-flex flex-column justify-content-center align-items-center"   style={{
-                        marginTop: '100px'
-                    }}>
+                  <div
+                    className="d-flex flex-column justify-content-center align-items-center"
+                    style={{
+                      marginTop: '100px',
+                    }}
+                  >
                     <FaClipboardList size={180} />
                     <h3 className="d-block mt-4 mb-5">
                       You haven't placed any orders yet
@@ -131,12 +134,14 @@ class OrderHistory extends Component {
 
 const mapStateToProps = ({ orders, auth }) => {
   const subTotal = orders.map((lineItem) => {
-    return lineItem.lineItems ? lineItem.lineItems.reduce((accum, item) => {
-      console.log(item.product)
-      const qty = item.quantity;
-      accum += qty * item.product.price*1;
-      return accum;
-    }, 0) : 0
+    return lineItem.lineItems
+      ? lineItem.lineItems.reduce((accum, item) => {
+          console.log(item.product);
+          const qty = item.quantity;
+          accum += qty * item.product.price * 1;
+          return accum;
+        }, 0)
+      : 0;
   });
 
   return {
