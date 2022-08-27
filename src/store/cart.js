@@ -1,4 +1,7 @@
 import axios from "axios";
+import {reducer as toastrReducer} from 'react-redux-toastr'
+import {toastr} from 'react-redux-toastr'
+
 const cart = (state = { lineItems: [] }, action) => {
   if (action.type === "SET_CART") {
     state = action.cart;
@@ -27,7 +30,8 @@ export const addToCart = (book, quantity, history) => {
           qty: quantity,
         });
         localStorage.setItem("lineItem", JSON.stringify(cartObj));
-      } else {
+      } 
+      else {
         const existLineItem = JSON.parse(localStorage.getItem("lineItem"));
 
         for (let i = 0; i < existLineItem.length; i++) {
@@ -59,6 +63,7 @@ export const addToCart = (book, quantity, history) => {
         }
       );
       dispatch({ type: "SET_CART", cart: response.data });
+      toastr.success('Product added', 'Reading is life.')
     }
     if(history.location.pathname === "/wishList") {
       history.push("/wishList");
@@ -162,6 +167,7 @@ export const createOrderFromCart = () => {
       }
     })
     dispatch({type: "SET_CART", cart: response.data});
+    toastr.success('Order successful')
   }
 }
 

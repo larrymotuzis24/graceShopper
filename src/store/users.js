@@ -1,5 +1,8 @@
 import axios from 'axios';
 import Alert from 'react-bootstrap/Alert';
+import {reducer as toastrReducer} from 'react-redux-toastr'
+import {toastr} from 'react-redux-toastr'
+
 
 const users = (state = [], action)=> {
     if(action.type === 'GET_USERS'){

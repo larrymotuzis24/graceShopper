@@ -33,7 +33,10 @@ class Book extends Component {
       reviews.filter((review) => review.productId === book.id) || [];
     
     return (
-      <div id="book-page" className="container">
+      <div id="book-page" className="container" style={{
+          marginTop: '138px',
+          height: '65vh'
+      }}>
         <div id="book-info-container" className="d-flex gap-5">
           <div
             id="book-image"
