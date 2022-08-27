@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updateUser, createProduct, fetchBooks, updateBookCoupon } from './store'
+import { createCoupon, fetchCoupons } from './store'
 
 
 class AddCoupon extends Component {
@@ -11,9 +11,8 @@ class AddCoupon extends Component {
         super()
         this.state = {
             show: false,
-            selectedBook: '',
-            couponCode: '',
-            percent: '',
+            code: '',
+            percentage: '',
             value: new Date()
         },
             this.handleClose = this.handleClose.bind(this),
@@ -25,13 +24,11 @@ class AddCoupon extends Component {
         confirm(e){
             e.preventDefault()
             const coupon = {
-                selectedBook: this.state.selectedBook, 
-                coupon: this.state.couponCode,
-                percent: this.state.percent * 1
+                code: this.state.code,
+                percentage: this.state.percentage * 1
             }
             this.props.createCoupon(coupon)
             this.setState({ 
-                selectedBook: '', 
                 couponCode: '', 
                 percent: ''
              })
@@ -49,12 +46,9 @@ class AddCoupon extends Component {
         handleShow () {
          this.setState({ show: true })
         }
-        componentDidMount(){
-            this.props.getBooks()
-        }
 
       render() {
-        const { show } = this.state
+        const { show, code, percentage } = this.state
         const { handleClose, handleShow, confirm } = this;
         return (
           <div>
@@ -72,20 +66,12 @@ class AddCoupon extends Component {
                     </div>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
-                        <Modal.Title> Create Product</Modal.Title>
+                        <Modal.Title> Create Coupon</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                                 <form>
-                                    <select onChange={(e) => this.setState({ selectedBook: e.target.value })}>
-                                        <option> Select Product</option>
-                                        {this.props.products.map(product => {
-                                            return (
-                                                <option key={product.id}> {product.title} </option>
-                                            )
-                                        })}
-                                    </select>
-                                    <input type='text' placeholder='Create Coupon Code' onChange={(e) => this.setState({ couponCode: e.target.value})}/>
-                                    <input type='text' placeholder='Percentage off the product' onChange={(e) => this.setState({ percent: e.target.value})}/>
+                                    <input type='text' placeholder='Create Coupon Code' onChange={(e) => this.setState({ code: e.target.value})}/>
+                                    <input type='text' placeholder='Percentage off the product' onChange={(e) => this.setState({ percentage: e.target.value})}/>
                                 </form>
                         </Modal.Body>
                         <Modal.Footer>
@@ -103,20 +89,18 @@ class AddCoupon extends Component {
       }
 }
 
-const mapState = (state) => {
+const mapStateToProps = (state) =>{
     return {
-        users: state.users,
-        products: state.books
+        coupons: state.coupons
     }
 }
+
+
 const mapDispatch = (dispatch) => {
     return {
         createCoupon: (coupon) => {
-            dispatch(updateBookCoupon(coupon))
-        },
-        getBooks: () => {
-            dispatch(fetchBooks())
+            dispatch(createCoupon(coupon))
         }
     }
 }
-export default connect(mapState, mapDispatch)(AddCoupon)
+export default connect(mapStateToProps, mapDispatch)(AddCoupon)

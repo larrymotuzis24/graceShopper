@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const stripe = require('stripe')('sk_test_51LY9OXEi9E0TRZFzdXz2VcsDGfpdGj8esyVkY5JxUsDlnBtPwivg08Ci6DtwnZ41kd2nL3TYQ30LpBWxKhK1Lh9800tkJxNAwB');
 const cors = require('cors');
 app.use(express.json({limit: "50mb"}));
-const { User, Product, State, ProductCategory, Review, Order } = require('./db');
+const { User, Product, State, ProductCategory, Review, Order, Coupon } = require('./db');
 const path = require('path');
 
 app.use('/dist', express.static('dist'));

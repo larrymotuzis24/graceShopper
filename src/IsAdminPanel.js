@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Table from 'react-bootstrap/Table';
 import { connect } from 'react-redux'
-import {fetchUsers} from './store'
+import {fetchUsers, fetchCoupons} from './store'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import UpdateUser  from './UpdateUserPermissionModal'
 import axios from 'axios'
@@ -40,7 +40,7 @@ class IsAdminPanel extends Component {
         <div style={{ height: '72vh'}}> 
           <div style={{marginLeft: '10px'}}>
           <AddProduct />
-          {/* <AddCoupon /> */}
+          <AddCoupon />
           </div>
           <div>
             <Tabs
@@ -149,6 +149,48 @@ class IsAdminPanel extends Component {
               </Table>
             </div>
             </Tab>
+            <Tab eventKey="Coupons"title={
+                  <React.Fragment>
+                    Coupons
+                    <Badge style={{ marginLeft: '7px'}}variant='light'>{this.props.coupons.length}</Badge>
+                  </React.Fragment>
+                }>
+              <div style={{ height: '70vh', position: 'relative', overflow: 'scroll' }}>
+                <Table hover style={{
+                      maxHeight: '100%',
+                      overflow: 'auto',
+                      marginTop: '-5px', 
+                      backgroundColor: 'white', 
+                      borderLeft: 'thin solid #dadce5',
+                      borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
+                    }}>
+                <thead style={{backgroundColor: '#D3D3D3'}}>
+                  <tr>
+                    <th>Code</th>
+                    <th>Percentage </th>
+                  </tr>
+                </thead>
+                <tbody>
+                {this.props.coupons.length > 1 ? 
+                    this.props.coupons.map(coupon => {
+                      return (
+                          <tr key={coupon.id}>
+                            <td>{coupon.code}</td>
+                            <td>{coupon.percentage}</td>
+                          </tr>
+                      )
+                    })
+                    : 
+                    <>
+                    <tr>
+                      <td>No coupons to show</td>
+                      </tr>
+                    </>
+                  }
+                </tbody>
+              </Table>
+            </div>
+            </Tab>
             <Tab 
                 eventKey="Analytics" 
                 title={
@@ -170,6 +212,7 @@ const mapState = (state, otherParams) => {
   return {
     users: state.users || {},
     books: state.books,
+    coupons: state.coupons,
     pathname
   }
 }
@@ -177,7 +220,8 @@ const mapState = (state, otherParams) => {
 const mapDispatch = (dispatch) => {
   return {
     load: () => {
-      dispatch(fetchUsers())
+      dispatch(fetchUsers()),
+      dispatch(fetchCoupons())
     }
   }
 }
