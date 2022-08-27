@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { editUser } from "./store";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { editUser } from './store';
 
 class UserAddress extends Component {
   constructor() {
     super();
     this.state = {
-      address: "",
-      city: "",
-      state: "",
-      zipCode: "",
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
     };
     this.save = this.save.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -23,22 +23,22 @@ class UserAddress extends Component {
     if (!this.props.auth.secondaryAddress) {
       address.push(
         this.state.address.trim() +
-          " " +
+          ' ' +
           this.state.city.trim() +
-          " " +
+          ' ' +
           this.state.state +
-          " " +
+          ' ' +
           this.state.zipCode.trim()
       );
     } else {
       address = [...this.props.auth.secondaryAddress];
       address.push(
         this.state.address.trim() +
-          " " +
+          ' ' +
           this.state.city.trim() +
-          " " +
+          ' ' +
           this.state.state +
-          " " +
+          ' ' +
           this.state.zipCode.trim()
       );
     }
@@ -61,22 +61,19 @@ class UserAddress extends Component {
     const { save, onChange } = this;
 
     return (
-      <main id="order-info" style={{height: '70vh'}}>
+      <main id="order-info" className="mt-4" style={{ minHeight: '80vh' }}>
         <div id="order-info-div">
           <div id="shipping-info">
-            <h3
-              style={{
-                margin: "40px",
-                marginLeft: '10px'
-              }}
-            >
-              Add an Address
-            </h3>
+            <h3 style={{}}>Add an Address</h3>
             <form className="row g-3" onSubmit={save}>
-              <div className="col-10" style={{ width: "100%" }}>
-                <label htmlFor="address" className="form-label" style={{
-                      marginRight: '93%'
-                }}>
+              <div className="col-12" style={{ width: '100%' }}>
+                <label
+                  htmlFor="address"
+                  className="form-label small"
+                  style={{
+                    marginRight: '93%',
+                  }}
+                >
                   Address
                 </label>
                 <input
@@ -87,11 +84,15 @@ class UserAddress extends Component {
                   className="form-control"
                 ></input>
               </div>
-              <div style={{ display: "flex" }}>
-                <div className="col-md-6" style={{ margin: "3px" }}>
-                  <label htmlFor="city" className="form-label" style={{
-                      marginRight: '93%'
-                }}>
+              <div style={{ display: 'flex' }}>
+                <div className="col-md-6" style={{ margin: '3px' }}>
+                  <label
+                    htmlFor="city"
+                    className="form-label small"
+                    style={{
+                      marginRight: '93%',
+                    }}
+                  >
                     City
                   </label>
                   <input
@@ -99,13 +100,17 @@ class UserAddress extends Component {
                     value={city}
                     name="city"
                     onChange={onChange}
-                    className="form-control"
+                    className="form-control small"
                   ></input>
                 </div>
-                <div className="col-md-4" style={{ margin: "3px" }}>
-                  <label htmlFor="state" className="form-label" style={{
-                      marginRight: '93%'
-                }}>
+                <div className="col-md-4" style={{ margin: '3px' }}>
+                  <label
+                    htmlFor="state"
+                    className="form-label small"
+                    style={{
+                      marginRight: '93%',
+                    }}
+                  >
                     State
                   </label>
                   <select
@@ -124,11 +129,15 @@ class UserAddress extends Component {
                     })}
                   </select>
                 </div>
-                <div className="col-md-2" style={{ margin: "3px" }}>
-                  <label htmlFor="zipCode" className="form-label" style={{
+                <div className="col-md-2" style={{ margin: '3px' }}>
+                  <label
+                    htmlFor="zipCode"
+                    className="form-label small"
+                    style={{
                       marginRight: '93%',
-                      whiteSpace: 'nowrap'
-                }}>
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
                     Zip Code
                   </label>
                   <input
@@ -140,19 +149,23 @@ class UserAddress extends Component {
                   ></input>
                 </div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
                 <button
-                  className="btn btn-primary w-50"
+                  onClick={() => history.push('/user')}
+                  className="btn btn-dark w-50"
                 >
-                  Save Address
+                  SAVE ADDRESS
                 </button>
-                <br/>
-                <button
-                  onClick={() => history.push("/user")}
-                  className="btn btn-secondary w-50"
-                >
-                  Cancel
-                </button>
+                <br />
+                <a href="#user" className="btn btn-light border-dark w-50">
+                  CANCEL
+                </a>
               </div>
             </form>
           </div>

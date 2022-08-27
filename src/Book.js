@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StarRatingDisplay from './StarRatingDisplay';
-import { addToCart, addToWishList, fetchReviews, fetchUsers, fetchBooks } from './store';
+import {
+  addToCart,
+  addToWishList,
+  fetchReviews,
+  fetchUsers,
+  fetchBooks,
+} from './store';
 import Footer from './Footer';
+import books from './store/books';
 
 class Book extends Component {
   constructor() {
@@ -31,30 +38,40 @@ class Book extends Component {
     const { onChange } = this;
     const reviewsBook =
       reviews.filter((review) => review.productId === book.id) || [];
-    
+
     return (
-      <div id="book-page" className="container" style={{
-          marginTop: '138px',
-          height: '65vh'
-      }}>
-        <div id="book-info-container" className="d-flex gap-5">
-          <div
-            id="book-image"
-            className="d-flex justify-content-center align-items-center w-50 p-5 rounded-4"
-            style={{ backgroundColor: 'black' }}
-          >
-            <img className="" src={book.imageUrl ? book.imageUrl : null}></img>
-          </div>
+      <div
+        id="book-page"
+        className="container mt-4"
+        style={{ minHeight: '90vh' }}
+      >
+        <div
+          id="book-info-container"
+          className="d-flex justify-content-between gap-5"
+        >
+          <img
+            className="w-50 align-self-stretch rounded-4"
+            style={{
+              backgroundColor: 'black',
+              maxHeight: '700px',
+              padding: '10%',
+              objectFit: 'contain',
+            }}
+            src={book.imageUrl ? book.imageUrl : null}
+          ></img>
+
           <div id="book-info" className="d-flex flex-column w-50 gap-3">
             <div>
-              <h1 className="display-5">{book.title}</h1>
-              <h1 className="display-5">{book.author}</h1>
+              <h4 className="display-4">{book.title}</h4>
+              <h5 className="">{book.author}</h5>
             </div>
             {book.description}
-            <p className="m-0">${book.price}</p>
-            <p className="m-0">
+            <p className="m-0 lead">${book.price}</p>
+            <small className="m-0">
+              <b>Publisher</b> {book.publisher}
+              <br />
               <b>Year</b> {new Date(book.year).getFullYear()}
-            </p>
+            </small>
             <StarRatingDisplay book={book} />
 
             {book.inventory >= 1 && book.inventory <= 10 ? (
@@ -89,59 +106,68 @@ class Book extends Component {
             </div>
             <button
               onClick={() => addToCart(book, quantity * 1)}
-              className="btn btn-primary w-50"
+              className="btn btn-dark w-50"
               disabled={book.inventory < 1}
             >
-              Add to Cart
+              ADD TO CART
             </button>
-            {
-              auth.id ? <button
-              onClick={() => addToWishList(auth, book, quantity * 1)}
-              className="btn btn-secondary w-50"
-              disabled={book.inventory < 1}
-            >
-              Add to Wishlist
-            </button> : null
-            }
-            
+            {auth.id ? (
+              <button
+                onClick={() => addToWishList(auth, book, quantity * 1)}
+                className="btn btn-light border-dark w-50"
+                disabled={book.inventory < 1}
+              >
+                ADD TO WISHLIST
+              </button>
+            ) : null}
           </div>
         </div>
-        <br></br>
-        <div id="review-book">
-          <h3>Reviews</h3>
-          {reviewsBook.length > 0 ? (
-            reviewsBook.map((review) => {
-              const reviewAuthor =
-                users.find((user) => user.id === review.userId) || {};
-              return (
-                <div key={review.id}>
-                  <div>
-                    <p>
-                      <span className="review">{review.review}</span>
-                      <span className="review-date">{` - Written on: ${new Date(
-                        review.review_date
-                      ).getMonth() + 1}/${new Date(
-                        review.review_date
-                      ).getDate()}/${new Date(
-                        review.review_date
-                      ).getFullYear()}`}</span>
-                      {!Object.keys(auth).length ? (
-                        <span className="review-author"> by anonymous.</span>
-                      ) : (
-                        <span className="review-author">
-                          {' '}
-                          by {reviewAuthor.firstName} {reviewAuthor.lastName}.
-                        </span>
-                      )}
-                    </p>
+
+        <div id="review-book" className="my-5 w-100">
+          <h6 className="mt-5">Reviews for "{book.title}"</h6>
+          <div className="d-flex justify-content-between gap-5 mb-5">
+            {reviewsBook.length > 0 ? (
+              reviewsBook.map((review) => {
+                const reviewAuthor =
+                  users.find((user) => user.id === review.userId) || {};
+                return (
+                  <div
+                    key={review.id}
+                    className="p-4 rounded-4 my-4 w-50"
+                    style={{ backgroundColor: '#DDE9D8' }}
+                  >
+                    <div>
+                      <p>
+                        <span className="review">{review.review}</span>
+                        <br></br>
+                        <br></br>
+                        <span className="small">{`${
+                          new Date(review.review_date).getMonth() + 1
+                        }/${new Date(review.review_date).getDate()}/${new Date(
+                          review.review_date
+                        ).getFullYear()}`}</span>
+                        {!Object.keys(auth).length ? (
+                          <span className="small"> by Anonymous</span>
+                        ) : (
+                          <span className="small">
+                            {' '}
+                            by {reviewAuthor.firstName} {reviewAuthor.lastName}
+                          </span>
+                        )}
+                      </p>
+                    </div>
                   </div>
-                  <hr />
-                </div>
-              );
-            })
-          ) : (
-            <span className="no-review">{`No Reviews for "${book.title}"`}</span>
-          )}
+                );
+              })
+            ) : (
+              <div
+                className="p-5 rounded-4 my-4 w-100 text-center"
+                style={{ backgroundColor: '#DDE9D8' }}
+              >
+                <span className="">{`No Reviews for "${book.title} yet!"`}</span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -157,7 +183,7 @@ const mapStateToProps = (state, { match }) => {
     book,
     reviews: state.reviews,
     users: state.users,
-    books: state.books
+    books: state.books,
   };
 };
 
@@ -170,7 +196,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
       dispatch(addToWishList(user, book, quantity, history)),
     fetchReviews: () => dispatch(fetchReviews()),
     fetchUsers: () => dispatch(fetchUsers()),
-    fetchBooks: () => dispatch(fetchBooks())
+    fetchBooks: () => dispatch(fetchBooks()),
   };
 };
 
