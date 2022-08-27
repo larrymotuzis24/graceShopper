@@ -40,7 +40,7 @@ class IsAdminPanel extends Component {
         <div style={{ height: '72vh'}}> 
           <div style={{marginLeft: '10px'}}>
           <AddProduct />
-          <AddCoupon />
+          {/* <AddCoupon /> */}
           </div>
           <div>
             <Tabs
@@ -118,7 +118,7 @@ class IsAdminPanel extends Component {
                     <th>Title</th>
                     <th>Author </th>
                     <th>Price</th>
-                    <th>Coupon Code</th>
+                    {/* <th>Coupon Code</th> */}
                     <th style={{textAlign: 'center', verticalAlign: 'middle'}}>Update </th>
                   </tr>
                 </thead>
@@ -130,7 +130,7 @@ class IsAdminPanel extends Component {
                             <td>{book.title}</td>
                             <td>{book.author}</td>
                             <td>{book.price}</td>
-                            <th>{book.coupon ? book.coupon : 'No coupon'}</th>
+                            {/* <th>{book.coupon ? book.coupon : 'No coupon'}</th> */}
                             <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
                               <UpdateProduct product={book}/>
                               <DeleteProductModal product={book}/>

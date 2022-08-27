@@ -80,7 +80,7 @@ class AddCoupon extends Component {
                                         <option> Select Product</option>
                                         {this.props.products.map(product => {
                                             return (
-                                                <option> {product.title} </option>
+                                                <option key={product.id}> {product.title} </option>
                                             )
                                         })}
                                     </select>

@@ -28,14 +28,12 @@ class Books extends Component {
     if (window.location.href.includes('/page/')) {
       window.location.href = '/#/books/page/1';
     }
-    console.log(ev.target);
     const filters = document.getElementsByClassName('category-filters');
     const filtersArr = Array.from(filters);
     filtersArr.map(
       (filter) => (filter.style.borderBottom = '2px solid rgba(0, 0, 0, 0)')
     );
-    // ev.target.style.color = '#B7C6E5';
-    // ev.target.style.color = '#B7C6E5';
+    
     ev.target.style.borderBottom = '2px solid black';
   }
 
