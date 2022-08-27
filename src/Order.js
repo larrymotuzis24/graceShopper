@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateLineItem, deleteLineItem } from './store';
+import { updateLineItem, deleteLineItem, fetchCoupons } from './store';
 import { Link } from 'react-router-dom';
 import StripeContainer from './StripeContainer';
 
@@ -15,8 +15,11 @@ class Order extends Component {
       city: '',
       state: '',
       zipCode: '',
+      couponCode: '',
+      orderCalculated: 0
     };
     this.onChange = this.onChange.bind(this);
+    this.applyDiscount = this.applyDiscount.bind(this);
   }
 
   onChange(ev) {
@@ -24,6 +27,7 @@ class Order extends Component {
   }
 
   componentDidMount() {
+    this.props.fetchCoupons();
     this.setState({
       firstName: this.props.auth.firstName,
       lastName: this.props.auth.lastName,
@@ -35,6 +39,12 @@ class Order extends Component {
     });
   }
 
+  applyDiscount(orderTotal, percentage){
+    const discount = orderTotal * (percentage / 100);
+    const totalCalculated = orderTotal - discount;
+    this.setState({totalCalculated: totalCalculated.toFixed(2)});
+  }
+
   render() {
     const {
       auth,
@@ -44,10 +54,13 @@ class Order extends Component {
       subTotal,
       totalQty,
       states,
+      coupons
     } = this.props;
-    const { onChange } = this;
-    const { firstName, lastName, email, address, zipCode, state, city } =
+    const { onChange, applyDiscount } = this;
+    const { firstName, lastName, email, address, zipCode, state, city, couponCode, totalCalculated } =
       this.state;
+    
+    const coupon = coupons.find(coupon => coupon.code === couponCode.trim()) || {};
     const qtyZero = 0;
     const shippingTotal = subTotal * 0.02;
     const beforeTax = subTotal + shippingTotal;
@@ -310,13 +323,26 @@ class Order extends Component {
                 <p className="mb-0">Taxes</p>
                 <p className="mb-0">${taxCollected.toFixed(2)}</p>
               </div>
+              <div className="d-flex justify-content-between" style={{marginTop: '1rem'}}>
+                <p className="mb-0">Coupon Code</p>
+                <input
+                  type="text"
+                  placeholder='Add Coupon Code'
+                  value={couponCode}
+                  onChange={(ev) => this.setState({couponCode: ev.target.value})}
+                  disabled={totalCalculated > 0 ? true : false}
+                >
+                  
+                </input>
+                <button onClick={() => applyDiscount(orderTotal, coupon.percentage)}>Apply</button>
+              </div>
               <hr />
               <div className="d-flex justify-content-between">
                 <p id="" className="lead my-3">
                   Total
                 </p>
                 <p id="" className="lead my-3">
-                  ${orderTotal.toFixed(2)}
+                  {totalCalculated > 0 ? totalCalculated : orderTotal.toFixed(2)}
                 </p>
               </div>
             </div>
@@ -327,7 +353,7 @@ class Order extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, cart, states }) => {
+const mapStateToProps = ({ auth, cart, states, coupons }) => {
   const subTotal = cart.lineItems.reduce((accum, lineItem) => {
     const qty = lineItem.quantity;
     accum += qty * lineItem.product.price;
@@ -343,6 +369,7 @@ const mapStateToProps = ({ auth, cart, states }) => {
     subTotal,
     totalQty,
     states,
+    coupons
   };
 };
 
@@ -352,6 +379,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
       dispatch(updateLineItem(book, quantity, history)),
     deleteLineItem: (book, qtyZero) =>
       dispatch(deleteLineItem(book, qtyZero, history)),
+    fetchCoupons: () => dispatch(fetchCoupons())
   };
 };
 

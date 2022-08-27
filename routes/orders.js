@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 const { isLoggedIn } = require('./middleware');
-const { WishList, Product, Order, LineItem } = require('../db')
+const { WishList, Product, Order, LineItem, Coupon } = require('../db')
 
 module.exports = app;
 
@@ -103,3 +103,21 @@ app.get('/history/:id', isLoggedIn, async(req, res, next) =>{
     next(ex);
   }
 })
+
+app.get('/coupons', isLoggedIn, async(req, res, next) => {
+  try {
+    res.send(await Coupon.findAll());
+  }
+  catch(ex){
+    next(ex)
+  }
+});
+
+app.post('/coupons', isLoggedIn, async(req, res, next) => {
+  try {
+    res.status(201).send(await Coupon.create(req.body));
+  }
+  catch(ex){
+    next(ex)
+  }
+});

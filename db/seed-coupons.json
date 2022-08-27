@@ -1,0 +1,14 @@
+[
+    {
+        "code": "10SALE",
+        "percentage": 10
+    },
+    {
+        "code": "15SALE",
+        "percentage": 15
+    },
+    {
+        "code": "20SALE",
+        "percentage": 20
+    }
+]

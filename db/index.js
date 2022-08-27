@@ -8,6 +8,7 @@ const State = require('./State');
 const ProductCategory = require('./ProductCategory');
 const Review = require('./Review');
 const WishList = require('./WishList');
+const Coupon = require('./Coupon');
 const seedUsers = require('./seed-users.json');
 const seedProducts = require('./seed-products.json');
 const seedOrders = require('./seed-orders.json');
@@ -16,6 +17,7 @@ const seedStates = require('./seed-states.json');
 const seedProductCategory = require('./seed-productCategory.json');
 const seedReviews = require('./seed-reviews.json')
 const seedWishList = require('./seed-wishList.json');
+const seedCoupons = require('./seed-coupons.json');
 
 User.hasMany(Order);
 Order.hasMany(LineItem);
@@ -36,6 +38,7 @@ const seeder = async() =>{
   await Promise.all(seedStates.map(state => State.create(state)));
   await Promise.all(seedReviews.map(review => Review.create(review)));
   await Promise.all(seedWishList.map(wishList => WishList.create(wishList)));
+  await Promise.all(seedCoupons.map(coupon => Coupon.create(coupon)));
 }
 
 module.exports = {
@@ -48,5 +51,6 @@ module.exports = {
   ProductCategory,
   Review,
   WishList,
+  Coupon,
   seeder
 };

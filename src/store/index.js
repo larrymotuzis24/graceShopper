@@ -11,6 +11,7 @@ import users from './users';
 import reviews from './reviews';
 import wishList from './wishList';
 import orders from './orders';
+import coupons from './coupons';
 import {reducer as toastrReducer} from 'react-redux-toastr'
 
 const reducer = combineReducers({
@@ -24,6 +25,7 @@ const reducer = combineReducers({
   reviews,
   wishList,
   orders,
+  coupons,
   toastr: toastrReducer
 });
 
@@ -40,3 +42,4 @@ export * from './users';
 export * from './reviews';
 export * from './wishList';
 export * from './orders';
+export * from './coupons';
