@@ -49,6 +49,11 @@ $font-family-sans-serif: inter-regular;
 
 $carousel-caption-width: 100%;
 
+$input-group-addon-color: $light;
+$input-group-addon-bg: #000;
+
+$input-bg: #000;
+
 // $dropdown-link-hover-color: shade-color($dropdown-link-color, 10%) !default;
 // $dropdown-link-hover-bg: $gray-200 !default;
 // $dropdown-link-active-color: $component-active-color !default;
@@ -184,6 +189,7 @@ h6 {
 
 .text-link:hover {
   text-decoration: underline !important;
+  cursor: pointer;
 }
 
 .carousel-item {
@@ -232,4 +238,11 @@ small {
 
 .order-history-books-container > div:last-of-type > hr {
   display: none;
+}
+
+.category-filters {
+  box-sizing: border-box;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
 }

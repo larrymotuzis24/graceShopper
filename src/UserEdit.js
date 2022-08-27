@@ -1,31 +1,31 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { editUser } from "./store";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { editUser } from './store';
 
 class UserEdit extends Component {
   constructor() {
     super();
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      address: "",
-      city: "",
-      state: "",
-      zipCode: "",
-      imageUrl: "",
-      avatar: "",
-      error: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      imageUrl: '',
+      avatar: '',
+      error: '',
     };
     this.onChange = this.onChange.bind(this);
     this.save = this.save.bind(this);
   }
 
   componentDidMount() {
-    this.el.addEventListener("change", (ev) => {
+    this.el.addEventListener('change', (ev) => {
       const file = ev.target.files[0];
       const reader = new FileReader();
-      reader.addEventListener("load", () => {
+      reader.addEventListener('load', () => {
         this.setState({ avatar: reader.result });
       });
       reader.readAsDataURL(file);
@@ -66,12 +66,12 @@ class UserEdit extends Component {
         !/^[a-zA-Z ]*$/g.test(user.firstName) ||
         !/^[a-zA-Z ]*$/g.test(user.lastName)
       ) {
-        throw "First Name and Last Name must be alphabet characters";
+        throw 'First Name and Last Name must be alphabet characters';
       } else {
         await this.props.editUser(user);
       }
     } catch (error) {
-      if (typeof error === "string") {
+      if (typeof error === 'string') {
         this.setState({ error: error });
       } else {
         this.setState({ error: error.response.data.err.errors[0].message });
@@ -87,75 +87,83 @@ class UserEdit extends Component {
     const { avatar } = this.state;
 
     return (
-      <main id="order-info" style={{height: '70vh'}}>
-        <div id="order-info-div">
-          <div id="shipping-info">
-            <h3
-              style={{
-                margin: "40px",
-              }}
-            >
-              Edit Personal Information
-            </h3>
-            <form className="row g-3" onSubmit={save}>
-            <div style={{ display: 'flex', alignItems:'center', justifyContent: "space-evenly" }}>
+      <main id="" className="container mt-4" style={{ minHeight: '75vh' }}>
+        <div id="">
+          <div id="">
+            <h2 style={{}}>Edit Information</h2>
+
+            <form className="row g-3 w-50 mt-4" onSubmit={save}>
+              <div style={{}}>
                 {!avatar ? (
                   <img
                     src={auth.imageUrl}
                     style={{
-                      width: '150px',
-                      height: '150px',
+                      width: '8rem',
+                      height: '8rem',
                       backgroundSize: 'cover',
                       backgroundPosition: 'top center',
-                      borderRadius: '50%'
+                      borderRadius: '50%',
                     }}
                   ></img>
                 ) : (
                   <img
                     src={avatar}
                     style={{
-                      width: '150px',
-                      height: '150px',
+                      width: '8rem',
+                      height: '8rem',
                       backgroundSize: 'cover',
                       backgroundPosition: 'top center',
-                      borderRadius: '50%'
+                      borderRadius: '50%',
                     }}
                   ></img>
                 )}
-                <input type="file" ref={(el) => (this.el = el)}></input>
-                <label>
-                  <span style={{ fontSize: '25px' }}>UPLOAD AVATAR</span>
-                </label>
+                <div className="mt-4">
+                  <label className="form-label small">Upload Avatar</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    ref={(el) => (this.el = el)}
+                    id="inputGroupFile02"
+                  ></input>
+                </div>
               </div>
-              <div
-                className="col"
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
+
+              <div className="" style={{}}>
+                <label
+                  style={{}}
+                  htmlFor="firstName"
+                  className="form-label small"
+                >
+                  First Name
+                </label>
                 <input
                   placeholder="First Name"
                   value={firstName}
                   name="firstName"
                   onChange={onChange}
                   className="form-control"
-                  style={{ width: "45%" }}
+                  style={{}}
                 ></input>
+              </div>
+              <div>
+                <label
+                  style={{}}
+                  htmlFor="lastName"
+                  className="form-label small"
+                >
+                  Last Name
+                </label>
                 <input
                   placeholder="Last Name"
                   value={lastName}
                   name="lastName"
                   onChange={onChange}
                   className="form-control"
-                  style={{ width: "45%" }}
+                  style={{}}
                 ></input>
               </div>
-              <div className="col-md-6" style={{ width: "100%" }}>
-                <label style={{
-                      marginRight: '93%'
-                }} htmlFor="email" className="form-label">
+              <div className="" style={{}}>
+                <label style={{}} htmlFor="email" className="form-label small">
                   Email
                 </label>
                 <input
@@ -166,10 +174,12 @@ class UserEdit extends Component {
                   className="form-control"
                 ></input>
               </div>
-              <div className="col-10" style={{ width: "100%" }}>
-                <label style={{
-                      marginRight: '93%'
-                }} htmlFor="address" className="form-label">
+              <div className="" style={{}}>
+                <label
+                  style={{}}
+                  htmlFor="address"
+                  className="form-label small"
+                >
                   Address
                 </label>
                 <input
@@ -180,11 +190,9 @@ class UserEdit extends Component {
                   className="form-control"
                 ></input>
               </div>
-              <div style={{ display: "flex" }}>
-                <div className="col-md-6" style={{ margin: "3px" }}>
-                  <label style={{
-                      marginRight: '93%'
-                }} htmlFor="city" className="form-label">
+              <div className="d-flex">
+                <div className="" style={{}}>
+                  <label style={{}} htmlFor="city" className="form-label small">
                     City
                   </label>
                   <input
@@ -195,10 +203,12 @@ class UserEdit extends Component {
                     className="form-control"
                   ></input>
                 </div>
-                <div className="col-md-4" style={{ margin: "3px" }}>
-                  <label style={{
-                      marginRight: '93%'
-                }} htmlFor="state" className="form-label">
+                <div className="mx-4" style={{}}>
+                  <label
+                    style={{}}
+                    htmlFor="state"
+                    className="form-label small"
+                  >
                     State
                   </label>
                   <select
@@ -217,11 +227,12 @@ class UserEdit extends Component {
                     })}
                   </select>
                 </div>
-                <div className="col-md-2" style={{ margin: "3px" }}>
-                  <label style={{
-                    whiteSpace: 'nowrap',
-                      marginRight: '93%'
-                }} htmlFor="zipCode" className="form-label">
+                <div className="" style={{}}>
+                  <label
+                    style={{}}
+                    htmlFor="zipCode"
+                    className="form-label small"
+                  >
                     Zip Code
                   </label>
                   <input
@@ -233,19 +244,19 @@ class UserEdit extends Component {
                   ></input>
                 </div>
               </div>
-
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+              <div style={{}}>
                 <button
                   disabled={!firstName || !lastName || !email || !address}
-                  className="btn btn-primary w-50"
+                  className="btn btn-dark mb-4"
                 >
-                  Edit
+                  SAVE CHANGES
                 </button>
-                <br/>
-                <button onClick={() => history.push("/user")}
-                  className="btn btn-secondary w-50"
+                <br />
+                <button
+                  onClick={() => history.push('/user')}
+                  className="btn btn-light border-dark"
                 >
-                  Cancel
+                  CANCEL
                 </button>
               </div>
 
