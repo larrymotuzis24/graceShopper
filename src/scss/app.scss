@@ -15,25 +15,25 @@ $navbar-nav-link-color: #000;
 $navbar-light-color: #000 !important;
 $link-color: #000;
 
-// @font-face {
-//   font-family: inter-regular;
-//   src: url(../../public/fonts/Inter-Regular.woff2) format('woff2');
-// }
+@font-face {
+  font-family: inter-regular;
+  src: url(../../public/Fonts/Inter-Regular.woff2) format('woff2');
+}
 
-// @font-face {
-//   font-family: inter-light;
-//   src: url(../../public/fonts/Inter-Light.woff2) format('woff2');
-// }
+@font-face {
+  font-family: inter-light;
+  src: url(../../public/Fonts/Inter-Light.woff2) format('woff2');
+}
 
-// @font-face {
-//   font-family: tobias-light;
-//   src: url(../../public/fonts/Tobias-Light.woff2) format('woff2');
-// }
+@font-face {
+  font-family: tobias-light;
+  src: url(../../public/Fonts/Tobias-Light.woff2) format('woff2');
+}
 
-// @font-face {
-//   font-family: tobias-thin;
-//   src: url(../../public/fonts/Tobias-Thin.woff2) format('woff2');
-// }
+@font-face {
+  font-family: tobias-thin;
+  src: url(../../public/Fonts/Tobias-Thin.woff2) format('woff2');
+}
 
 $display-font-sizes: (
   1: 4.5rem,
