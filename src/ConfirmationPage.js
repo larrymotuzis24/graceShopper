@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import { connect } from 'react-redux';
-// import { fetchOrders} from './store'
-
+import {
+  MdCelebration
+} from 'react-icons/md'
 class ConfirmationPage extends Component{ 
 
   render() {
@@ -12,7 +13,8 @@ class ConfirmationPage extends Component{
     return (
         <div style={{
           alignItems:'center',
-          marginTop:'100px'
+          marginTop:'300px',
+          height: '57vh'
         }}>
         <h3 style={{
           textAlign:'center',
@@ -23,15 +25,15 @@ class ConfirmationPage extends Component{
           alignItems:'center',
           marginBottom:'200px'
         }}>
-        <p
+        <h4
         style={{
           padding:'10px'
-        }}> We sent a confirmation email to {auth.email}. </p>
-        <p style={{
+        }}> We sent a confirmation email to {auth.email}. </h4>
+        <h6 style={{
           padding:'10px'
-        }}> A second email will be sent once your order is shipped . </p> 
-
-
+        }}> Another email will be sent once your orer has been sent. 
+        </h6> 
+        <MdCelebration size={300}/>
         </div>
         </div>
     )

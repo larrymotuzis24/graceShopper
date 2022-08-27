@@ -42,7 +42,9 @@ const Cart = ({
   }
 
   return (
-    <div id="" style={{}} className="container">
+    <div id="" style={{ 
+      height: '71vh'
+    }} className="container">
       {/* Cart page heading */}
       <div
         id=""

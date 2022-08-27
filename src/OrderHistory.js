@@ -123,69 +123,18 @@ class OrderHistory extends Component {
           </div>
         </div>
       </div>
-      // <div id='block-order-history-page'>
-      //     <h2 className='order-history-title'>Order History</h2>
-      //     <div id="order-history-page">
-      //         <div id="order-history">
-      //             <hr/>
-      //             { orders.length > 0 ?
-      //                 orders.map((order, idx) => {
-      //                     return (
-      //                         <main id='display-order-history' key={order.id}>
-
-      //                             <p>Order Placed: <span>{`${new Date(order.updatedAt).getMonth()+1}/${new Date(order.updatedAt).getDate()}/${new Date(order.updatedAt).getFullYear()}`}</span></p>
-      //                             <p>Total: <span>{orderTotal[idx].toFixed(2)}</span></p>
-      //                             {
-      //                                 order.lineItems.map(lineItem => {
-      //                                     return (
-      //                                         <div key={lineItem.id} id="display-line-item-order">
-      //                                             <div className='order-book-info'>
-      //                                                 <img
-      //                                                 src={lineItem.product.imageUrl}
-      //                                                 id="display-photo-line-item-order"
-      //                                                 >
-      //                                                 </img>
-      //                                                 <h5>{lineItem.product.title}</h5>
-      //                                             </div>
-      //                                             <div className='order-history-button'>
-      //                                                 <Link to={`/books/${lineItem.productId}`}><Button>Buy it again</Button></Link>
-      //                                                 <WriteReview order={lineItem.product} />
-      //                                             </div>
-
-      //                                         </div>
-      //                                     )
-      //                                 })
-      //                             }
-      //                             <hr/>
-      //                         </main>
-      //                     )
-      //                 }) :
-      //                     <div >
-      //                          <div style= {{ height: '200px', width: '87vw', marginBottom: '42px'}} >
-      //                                 <div style={{ textAlign: 'center', justifyContent: 'center', marginTop: '150px' }}>
-      //                                     <div>
-      //                                         <FaClipboardList size={180}/>
-      //                                                 <h3>No order history </h3>
-      //                                          </div>
-      //                                 </div>
-      //                         </div>
-      //                     </div>
-      //             }
-      //         </div>
-      //     </div>
-
-      // </div>
     );
   }
 }
 
 const mapStateToProps = ({ orders, auth }) => {
   const subTotal = orders.map((lineItem) => {
-    return lineItem.lineItems.reduce((accum, item) => {
+    return lineItem.lineItems ? lineItem.lineItems.reduce((accum, item) => {
+      console.log(item.product)
       const qty = item.quantity;
-      accum += qty * item.product.price;
+      accum += qty * item.product.price*1;
       return accum;
-    }, 0);
+    }, 0) : 0
   });
 
   return {
