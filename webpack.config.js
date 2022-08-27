@@ -26,6 +26,7 @@ module.exports = {
       },
       { test: /\.css$/, use: 'css-loader' },
       { test: /\.ts$/, use: 'ts-loader' },
+      // { test: /\.(woff|woff2|eot|ttf|otf)$/i, type: 'asset/resource' },
     ],
   },
 };
