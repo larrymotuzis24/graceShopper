@@ -24,7 +24,9 @@ const WishList = ({
   });
   console.log(wishList);
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{
+      height: '71vh'
+    }}>
       {wishList.length > 0 ? (
         <div className="w-100">
           <h2 className="mb-5">{auth.firstName}'s Wishlist</h2>
