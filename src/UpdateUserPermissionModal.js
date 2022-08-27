@@ -25,7 +25,6 @@ class UpdateUser extends Component {
       (this.handleShow = this.handleShow.bind(this)),
       (this.confirm = this.confirm.bind(this)),
       (this.handleChange = this.handleChange.bind(this));
-      this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
 
@@ -38,10 +37,6 @@ class UpdateUser extends Component {
       state: this.props.user.state,
       zipCode: this.props.user.zipCode,
     });
-  }
-
-  onChange(ev){
-    this.setState({[ev.target.name]: ev.target.value})
   }
 
   confirm(e) {
@@ -73,7 +68,7 @@ class UpdateUser extends Component {
 
   render() {
     const { show, firstName, lastName, email, address, city, state, zipCode } = this.state;
-    const { handleClose, handleShow, confirm, handleChange, onChange } = this;
+    const { handleClose, handleShow, confirm, handleChange } = this;
     const { states } = this.props;
     return (
       <div>
@@ -114,35 +109,35 @@ class UpdateUser extends Component {
                   name="firstName"
                   value={firstName}
                   style={{ marginBottom: "1%" }}
-                  onChange={onChange}
+                  onChange={(ev) => this.setState({firstName: ev.target.value})}
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
                   value={lastName}
                   style={{ marginBottom: "1%" }}
-                  onChange={(e) => this.setState({ lastName: e.target.value })}
+                  onChange={(ev) => this.setState({ lastName: ev.target.value })}
                 />
                 <input
                   type="text"
                   placeholder="Email"
                   value={email}
                   style={{ marginBottom: "1%" }}
-                  onChange={(e) => this.setState({ email: e.target.value })}
+                  onChange={(ev) => this.setState({ email: ev.target.value })}
                 />
                 <input
                   type="text"
                   placeholder="Address"
                   value={address}
                   style={{ marginBottom: "1%" }}
-                  onChange={(e) => this.setState({ address: e.target.value })}
+                  onChange={(ev) => this.setState({ address: ev.target.value })}
                 />
                 <input
                   type="text"
                   placeholder="City"
                   value={city}
                   style={{ marginBottom: "1%" }}
-                  onChange={(e) => this.setState({ city: e.target.value })}
+                  onChange={(ev) => this.setState({ city: ev.target.value })}
                 />
                 <select
                   name="state"
