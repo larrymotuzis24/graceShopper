@@ -255,13 +255,13 @@ class Order extends Component {
               </div>
               <StripeContainer orderTotal={orderTotal} address={address} />
             </div>
-            <div>
+            {/* <div>
               {!auth.secondaryAddress ? (
                 <p>{auth.address}</p>
               ) : (
                 <div id=""></div>
               )}
-            </div>
+            </div> */}
           </div>
           <div className="col-md-5 mt-5">
             {/* Cart summary container */}
