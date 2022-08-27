@@ -91,7 +91,7 @@ class LineGraphChart extends Component {
               series={series}
               type="line"
               width="100%"
-              maxHeight="600px"
+              height="1000px"
             />
           </div>
         </div>
