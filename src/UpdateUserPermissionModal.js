@@ -25,18 +25,23 @@ class UpdateUser extends Component {
       (this.handleShow = this.handleShow.bind(this)),
       (this.confirm = this.confirm.bind(this)),
       (this.handleChange = this.handleChange.bind(this));
+      this.onChange = this.onChange.bind(this);
   }
   componentDidMount() {
 
     this.setState({
-      firstName: this.props.auth.firstName,
-      lastName: this.props.auth.lastName,
-      email: this.props.auth.email,
-      address: this.props.auth.address,
-      city: this.props.auth.city,
-      state: this.props.auth.state,
-      zipCode: this.props.auth.zipCode,
+      firstName: this.props.user.firstName,
+      lastName: this.props.user.lastName,
+      email: this.props.user.email,
+      address: this.props.user.address,
+      city: this.props.user.city,
+      state: this.props.user.state,
+      zipCode: this.props.user.zipCode,
     });
+  }
+
+  onChange(ev){
+    this.setState({[ev.target.name]: ev.target.value})
   }
 
   confirm(e) {
@@ -53,7 +58,7 @@ class UpdateUser extends Component {
       isAdmin: true,
     };
     this.props.update(user);
-    this.setState({ firstName: "", lastName: "", email: "", checked: false });
+    this.setState({ checked: false });
     this.handleClose();
   }
   handleChange() {
@@ -67,8 +72,8 @@ class UpdateUser extends Component {
   }
 
   render() {
-    const { show, state, auth, firstName, lastName, email, address, city, zipCode } = this.state;
-    const { handleClose, handleShow, confirm, handleChange } = this;
+    const { show, firstName, lastName, email, address, city, state, zipCode } = this.state;
+    const { handleClose, handleShow, confirm, handleChange, onChange } = this;
     const { states } = this.props;
     return (
       <div>
@@ -106,9 +111,10 @@ class UpdateUser extends Component {
                 <input
                   type="text"
                   placeholder="First Name"
+                  name="firstName"
                   value={firstName}
                   style={{ marginBottom: "1%" }}
-                  onChange={(e) => this.setState({ firstName: e.target.value })}
+                  onChange={onChange}
                 />
                 <input
                   type="text"
@@ -187,6 +193,7 @@ class UpdateUser extends Component {
 }
 
 const mapState = (state) => {
+
   return {
     users: state.users,
     states: state.states,
@@ -197,7 +204,7 @@ const mapDispatch = (dispatch) => {
   return {
     update: (user) => {
       dispatch(updateUser(user));
-    },
+    }
   };
 };
 export default connect(mapState, mapDispatch)(UpdateUser);
