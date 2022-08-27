@@ -1,6 +1,6 @@
 import axios from "axios";
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import {toastr} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {toastr} from 'react-redux-toastr'
 
 const cart = (state = { lineItems: [] }, action) => {
   if (action.type === "SET_CART") {
@@ -63,7 +63,7 @@ export const addToCart = (book, quantity, history) => {
         }
       );
       dispatch({ type: "SET_CART", cart: response.data });
-      toastr.success('Product added', 'Reading is life.')
+      // toastr.success('Product added', 'Reading is life.')
     }
     if(history.location.pathname === "/wishList") {
       history.push("/wishList");
@@ -167,7 +167,7 @@ export const createOrderFromCart = () => {
       }
     })
     dispatch({type: "SET_CART", cart: response.data});
-    toastr.success('Order successful')
+    // toastr.success('Order successful')
   }
 }
 

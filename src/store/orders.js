@@ -1,6 +1,6 @@
 import axios from "axios";
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import {toastr} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {toastr} from 'react-redux-toastr'
 
 
 const orders = (state = [], action) => {
