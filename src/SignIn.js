@@ -109,7 +109,7 @@ class SignIn extends Component {
       successMessage
     } = this.state;
     return (
-      <div style={{height: '100vh'}}>
+      <div style={{height: '57vh'}}>
         <div style={{ marginTop: "13%" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ display: "inline-block", marginRight: "3%" }}>

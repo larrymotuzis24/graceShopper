@@ -58,7 +58,7 @@ class Order extends Component {
       return a.id - b.id;
     });
     return (
-      <div id="" className="container mt-4" style={{ marginBottom: '20vh' }}>
+      <div id="" className="container mt-4" style={{ marginBottom: '20vh', height: '52vh' }}>
         {/* Checkout page heading */}
         <div className="d-flex justify-content-between align-items-center">
           <h2 className="">Checkout</h2>
