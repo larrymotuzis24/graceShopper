@@ -78,7 +78,6 @@ class SignIn extends Component {
       this.setState({successMessage: 'A new user has been registered. Please Login!.'});
     } catch (error) {
       this.setState({ error: error.response.data.error });
-      console.log(error);
       this.setState({ regPassword: "" });
       this.setState({ regEmail: "" });
       this.setState({ regUsername: "" });

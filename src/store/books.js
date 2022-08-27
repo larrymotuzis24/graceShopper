@@ -1,4 +1,7 @@
 import axios from 'axios';
+import {reducer as toastrReducer} from 'react-redux-toastr'
+import {toastr} from 'react-redux-toastr'
+
 
 const books = (state = [], action)=> {
   if(action.type === 'SET_BOOKS'){
