@@ -92,6 +92,7 @@ export const login = (credentials, history) => {
     }
 
     history.push("/");
+    toastr.success('Your logged in.', 'Welcome.')
   };
 };
 

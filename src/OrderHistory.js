@@ -108,7 +108,9 @@ class OrderHistory extends Component {
                 })
               ) : (
                 <div className="container h-75" style={{}}>
-                  <div className="d-flex flex-column justify-content-center align-items-center">
+                  <div className="d-flex flex-column justify-content-center align-items-center"   style={{
+                        marginTop: '100px'
+                    }}>
                     <FaClipboardList size={180} />
                     <h3 className="d-block mt-4 mb-5">
                       You haven't placed any orders yet
