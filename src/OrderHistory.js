@@ -65,7 +65,7 @@ class OrderHistory extends Component {
                           </div>
                         </div>
                         <div className="w-75 order-history-books-container">
-                          {order.lineItems.map((lineItem) => {
+                          {order.lineItems ? order.lineItems.map((lineItem) => {
                             return (
                               <div key={lineItem.id} className="">
                                 <div className="d-flex justify-content-between my-3">
@@ -99,7 +99,7 @@ class OrderHistory extends Component {
                                 <hr />
                               </div>
                             );
-                          })}
+                          }) : null}
                         </div>
                       </div>
                       <hr />
