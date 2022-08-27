@@ -83,7 +83,7 @@ class LineGraphChart extends Component {
 
     return (
       <div>
-        <div>
+        <div >
           <div>
             <h4> Orders by Month </h4>
             <Chart
