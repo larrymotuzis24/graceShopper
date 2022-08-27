@@ -3,6 +3,7 @@ import { login } from './store';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { register } from './store/auth';
+import Alert from 'react-bootstrap/Alert';
 
 class SignIn extends Component {
   constructor() {
@@ -80,6 +81,7 @@ class SignIn extends Component {
       });
     } catch (error) {
       this.setState({ error: error.response.data.error });
+      this.setState({ show: true })
       this.setState({ regPassword: '' });
       this.setState({ regEmail: '' });
       this.setState({ regUsername: '' });
@@ -111,6 +113,14 @@ class SignIn extends Component {
     } = this.state;
     return (
       <div style={{ minHeight: '80vh' }}>
+                {error ? 
+          <Alert key='warning' variant='warning' style={{
+            textAlign: 'center'
+          }}>
+            {JSON.stringify(error)}
+          </Alert> : 
+         null
+        }
         <div style={{ marginTop: '10%' }}>
           <div style={{ textAlign: 'center' }}>
             <div style={{ display: 'inline-block', marginRight: '3%' }}>
@@ -334,10 +344,18 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
-        <pre>{error ? JSON.stringify(error) : null}</pre>
-        <pre id="sucess-register">
-          {successMessage ? JSON.stringify(successMessage) : null}
-        </pre>
+        {/* <pre>{error ? JSON.stringify(error) : null}</pre> */}
+        {/* <pre id="sucess-register"> */}
+        {/* </pre> */}
+        {/* {error ? 
+          <Alert key='warning' variant='warning' style={{
+            marginTop: '55vh',
+            textAlign: 'center'
+          }}>
+            {JSON.stringify(error)}
+          </Alert> : 
+         null
+        } */}
       </div>
     );
   }
