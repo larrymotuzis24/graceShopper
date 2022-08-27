@@ -14,6 +14,8 @@ app.use('/public', express.static('public'));
 
 app.use('/public/Images', express.static('public/Images'));
 
+app.use('/public/Fonts', express.static('public/Fonts'));
+
 app.use(cors());
 
 
