@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
-
-import { connect } from 'react-redux'
-import {fetchUsers, fetchCoupons} from './store'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import UpdateUser  from './UpdateUserPermissionModal'
-import axios from 'axios'
+import { connect } from 'react-redux';
+import { fetchUsers, fetchCoupons } from './store';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UpdateUser from './UpdateUserPermissionModal';
+import axios from 'axios';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Badge from 'react-bootstrap/Badge';
@@ -15,13 +14,11 @@ import UpdateProduct from './UpdateProduct';
 import AddProduct from './AddProduct';
 import LineGraphChart from './LineGraphChart';
 import AddCoupon from './AddCoupon';
-
 class IsAdminPanel extends Component {
   constructor() {
     super();
     this.state = {};
   }
-
   componentDidMount() {
     try {
       this.props.load();
@@ -29,22 +26,16 @@ class IsAdminPanel extends Component {
       console.log(err);
     }
   }
-
   render() {
     const path = this.props.pathname;
     const amount = this.props.users.length;
     const { books } = this.props.books;
     return (
-
-      <div className="container">
-        <div style={{ minHeight: '80vh' }}>
+      <div>
+        <div style={{ height: '72vh' }}>
           <div style={{ marginLeft: '10px' }}>
             <AddProduct />
-            {/* <AddCoupon /> */}
-
-
-          <AddCoupon />
-
+            <AddCoupon />
           </div>
           <div>
             <Tabs defaultActiveKey="Users" className="mb-3">
@@ -61,7 +52,7 @@ class IsAdminPanel extends Component {
               >
                 <div
                   style={{
-                    maxHeight: '70vh',
+                    height: '70vh',
                     position: 'relative',
                     overflow: 'scroll',
                   }}
@@ -71,10 +62,10 @@ class IsAdminPanel extends Component {
                     style={{
                       marginTop: '-5px',
                       backgroundColor: 'white',
-                      borderLeft: 'thin solid #dadce5',
-                      borderRight: 'thin solid #dadce5',
-                      borderTop: 'thin solid #dadce5',
-                      borderBottom: 'thin solid #dadce5 !important',
+                      borderLeft: 'thin solid #DADCE5',
+                      borderRight: 'thin solid #DADCE5',
+                      borderTop: 'thin solid #DADCE5',
+                      borderBottom: 'thin solid #DADCE5 !important',
                     }}
                   >
                     <thead style={{ backgroundColor: '#D3D3D3' }}>
@@ -156,10 +147,10 @@ class IsAdminPanel extends Component {
                       overflow: 'auto',
                       marginTop: '-5px',
                       backgroundColor: 'white',
-                      borderLeft: 'thin solid #dadce5',
-                      borderRight: 'thin solid #dadce5',
-                      borderTop: 'thin solid #dadce5',
-                      borderBottom: 'thin solid #dadce5 !important',
+                      borderLeft: 'thin solid #DADCE5',
+                      borderRight: 'thin solid #DADCE5',
+                      borderTop: 'thin solid #DADCE5',
+                      borderBottom: 'thin solid #DADCE5 !important',
                     }}
                   >
                     <thead style={{ backgroundColor: '#D3D3D3' }}>
@@ -177,66 +168,106 @@ class IsAdminPanel extends Component {
                           Update{' '}
                         </th>
                       </tr>
-
-                    </>
-                  }
-                </tbody>
-              </Table>
-            </div>
-            </Tab>
-            <Tab eventKey="Coupons"title={
-                  <React.Fragment>
-                    Coupons
-                    <Badge style={{ marginLeft: '7px'}}variant='light'>{this.props.coupons.length}</Badge>
-                  </React.Fragment>
-                }>
-              <div style={{ height: '70vh', position: 'relative', overflow: 'scroll' }}>
-                <Table hover style={{
-                      maxHeight: '100%',
-                      overflow: 'auto',
-                      marginTop: '-5px', 
-                      backgroundColor: 'white', 
-                      borderLeft: 'thin solid #dadce5',
-                      borderRight: 'thin solid #dadce5', borderTop: 'thin solid #dadce5', borderBottom: 'thin solid #dadce5 !important'
-                    }}>
-                <thead style={{backgroundColor: '#D3D3D3'}}>
-                  <tr>
-                    <th>Code</th>
-                    <th>Percentage </th>
-                  </tr>
-                </thead>
-                <tbody>
-                {this.props.coupons.length > 1 ? 
-                    this.props.coupons.map(coupon => {
-                      return (
-                          <tr key={coupon.id}>
-                            <td>{coupon.code}</td>
-                            <td>{coupon.percentage}</td>
+                    </thead>
+                    <tbody>
+                      {this.props.books.length > 1 ? (
+                        this.props.books.map((book) => {
+                          return (
+                            <tr key={book.id}>
+                              <td>{book.title}</td>
+                              <td>{book.author}</td>
+                              <td>{book.price}</td>
+                              {/* <th>{book.coupon ? book.coupon : 'No coupon'}</th> */}
+                              <td
+                                style={{
+                                  textAlign: 'center',
+                                  verticalAlign: 'middle',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <UpdateProduct product={book} />
+                                <DeleteProductModal product={book} />
+                              </td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <>
+                          <tr>
+                            <td>No users to show</td>
                           </tr>
-                      )
-                    })
-                    : 
-                    <>
-                    <tr>
-                      <td>No coupons to show</td>
-                      </tr>
-                    </>
-                  }
-                </tbody>
-              </Table>
-            </div>
-            </Tab>
-            <Tab 
-                eventKey="Analytics" 
+                        </>
+                      )}
+                    </tbody>
+                  </Table>
+                </div>
+              </Tab>
+              <Tab
+                eventKey="Coupons"
                 title={
                   <React.Fragment>
-                    Analytics
+                    Coupons
+                    <Badge style={{ marginLeft: '7px' }} variant="light">
+                      {this.props.coupons.length}
+                    </Badge>
                   </React.Fragment>
-                }>
-                  <LineGraphChart />
-            </Tab>
-          </Tabs>
-
+                }
+              >
+                <div
+                  style={{
+                    height: '70vh',
+                    position: 'relative',
+                    overflow: 'scroll',
+                  }}
+                >
+                  <Table
+                    hover
+                    style={{
+                      maxHeight: '100%',
+                      overflow: 'auto',
+                      marginTop: '-5px',
+                      backgroundColor: 'white',
+                      borderLeft: 'thin solid #DADCE5',
+                      borderRight: 'thin solid #DADCE5',
+                      borderTop: 'thin solid #DADCE5',
+                      borderBottom: 'thin solid #DADCE5 !important',
+                    }}
+                  >
+                    <thead style={{ backgroundColor: '#D3D3D3' }}>
+                      <tr>
+                        <th>Code</th>
+                        <th>Percentage </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {this.props.coupons.length > 1 ? (
+                        this.props.coupons.map((coupon) => {
+                          return (
+                            <tr key={coupon.id}>
+                              <td>{coupon.code}</td>
+                              <td>{coupon.percentage}</td>
+                            </tr>
+                          );
+                        })
+                      ) : (
+                        <>
+                          <tr>
+                            <td>No coupons to show</td>
+                          </tr>
+                        </>
+                      )}
+                    </tbody>
+                  </Table>
+                </div>
+              </Tab>
+              <Tab
+                eventKey="Analytics"
+                title={<React.Fragment>Analytics</React.Fragment>}
+              >
+                <LineGraphChart />
+              </Tab>
+            </Tabs>
           </div>
         </div>
       </div>
@@ -249,20 +280,14 @@ const mapState = (state, otherParams) => {
     users: state.users || {},
     books: state.books,
     coupons: state.coupons,
-    pathname
-  }
-}
-
-
+    pathname,
+  };
+};
 const mapDispatch = (dispatch) => {
   return {
     load: () => {
-
-      dispatch(fetchUsers()),
-      dispatch(fetchCoupons())
-    }
-  }
-}
-
-
+      dispatch(fetchUsers()), dispatch(fetchCoupons());
+    },
+  };
+};
 export default connect(mapState, mapDispatch)(IsAdminPanel);
