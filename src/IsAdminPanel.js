@@ -81,7 +81,7 @@ class IsAdminPanel extends Component {
                         <td>{user.email}</td>
                         <td>{user.isAdmin ? 'True' : 'False'}</td>
                         <td style={{textAlign: 'center', verticalAlign: 'middle', display: 'flex', justifyContent: 'center'}}>
-                          <UpdateUser user={user}/>
+                          <UpdateUser user={user} />
                           <DeleteUserModal user={user.firstName} userId={user.id}/>
                         </td>
                         </tr>
