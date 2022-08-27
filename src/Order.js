@@ -16,7 +16,7 @@ class Order extends Component {
       state: '',
       zipCode: '',
       couponCode: '',
-      orderCalculated: 0
+      orderCalculated: 0,
     };
     this.onChange = this.onChange.bind(this);
     this.applyDiscount = this.applyDiscount.bind(this);
@@ -39,10 +39,10 @@ class Order extends Component {
     });
   }
 
-  applyDiscount(orderTotal, percentage){
+  applyDiscount(orderTotal, percentage) {
     const discount = orderTotal * (percentage / 100);
     const totalCalculated = orderTotal - discount;
-    this.setState({totalCalculated: totalCalculated.toFixed(2)});
+    this.setState({ totalCalculated: totalCalculated.toFixed(2) });
   }
 
   render() {
@@ -54,13 +54,23 @@ class Order extends Component {
       subTotal,
       totalQty,
       states,
-      coupons
+      coupons,
     } = this.props;
     const { onChange, applyDiscount } = this;
-    const { firstName, lastName, email, address, zipCode, state, city, couponCode, totalCalculated } =
-      this.state;
-    
-    const coupon = coupons.find(coupon => coupon.code === couponCode.trim()) || {};
+    const {
+      firstName,
+      lastName,
+      email,
+      address,
+      zipCode,
+      state,
+      city,
+      couponCode,
+      totalCalculated,
+    } = this.state;
+
+    const coupon =
+      coupons.find((coupon) => coupon.code === couponCode.trim()) || {};
     const qtyZero = 0;
     const shippingTotal = subTotal * 0.02;
     const beforeTax = subTotal + shippingTotal;
@@ -71,7 +81,11 @@ class Order extends Component {
       return a.id - b.id;
     });
     return (
-      <div id="" className="container mt-4" style={{ marginBottom: '20vh', height: '52vh' }}>
+      <div
+        id=""
+        className="container mt-4"
+        style={{ marginBottom: '20vh', height: '52vh' }}
+      >
         {/* Checkout page heading */}
         <div className="d-flex justify-content-between align-items-center">
           <h2 className="">Checkout</h2>
@@ -323,18 +337,26 @@ class Order extends Component {
                 <p className="mb-0">Taxes</p>
                 <p className="mb-0">${taxCollected.toFixed(2)}</p>
               </div>
-              <div className="d-flex justify-content-between" style={{marginTop: '1rem'}}>
+              <div
+                className="d-flex justify-content-between"
+                style={{ marginTop: '1rem' }}
+              >
                 <p className="mb-0">Coupon Code</p>
                 <input
                   type="text"
-                  placeholder='Add Coupon Code'
+                  placeholder="Add Coupon Code"
                   value={couponCode}
-                  onChange={(ev) => this.setState({couponCode: ev.target.value})}
+                  onChange={(ev) =>
+                    this.setState({ couponCode: ev.target.value })
+                  }
                   disabled={totalCalculated > 0 ? true : false}
+                ></input>
+                <button
+                  className="btn btn-dark"
+                  onClick={() => applyDiscount(orderTotal, coupon.percentage)}
                 >
-                  
-                </input>
-                <button onClick={() => applyDiscount(orderTotal, coupon.percentage)}>Apply</button>
+                  APPLY
+                </button>
               </div>
               <hr />
               <div className="d-flex justify-content-between">
@@ -342,7 +364,9 @@ class Order extends Component {
                   Total
                 </p>
                 <p id="" className="lead my-3">
-                  {totalCalculated > 0 ? totalCalculated : orderTotal.toFixed(2)}
+                  {totalCalculated > 0
+                    ? totalCalculated
+                    : orderTotal.toFixed(2)}
                 </p>
               </div>
             </div>
@@ -369,7 +393,7 @@ const mapStateToProps = ({ auth, cart, states, coupons }) => {
     subTotal,
     totalQty,
     states,
-    coupons
+    coupons,
   };
 };
 
@@ -379,7 +403,7 @@ const mapDispatchToProps = (dispatch, { history }) => {
       dispatch(updateLineItem(book, quantity, history)),
     deleteLineItem: (book, qtyZero) =>
       dispatch(deleteLineItem(book, qtyZero, history)),
-    fetchCoupons: () => dispatch(fetchCoupons())
+    fetchCoupons: () => dispatch(fetchCoupons()),
   };
 };
 

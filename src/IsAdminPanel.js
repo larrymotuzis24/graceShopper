@@ -31,8 +31,8 @@ class IsAdminPanel extends Component {
     const amount = this.props.users.length;
     const { books } = this.props.books;
     return (
-      <div>
-        <div style={{ height: '72vh' }}>
+      <div className="container">
+        <div style={{ minHeight: '90vh' }}>
           <div style={{ marginLeft: '10px' }}>
             <AddProduct />
             <AddCoupon />
