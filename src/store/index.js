@@ -12,7 +12,7 @@ import reviews from './reviews';
 import wishList from './wishList';
 import orders from './orders';
 import coupons from './coupons';
-import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
 
 const reducer = combineReducers({
   auth,
@@ -26,7 +26,7 @@ const reducer = combineReducers({
   wishList,
   orders,
   coupons,
-  toastr: toastrReducer
+  // toastr: toastrReducer
 });
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));

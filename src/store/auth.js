@@ -1,6 +1,6 @@
 import axios from "axios";
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import {toastr} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {toastr} from 'react-redux-toastr'
 const auth = (state = {}, action) => {
   if (action.type === "SET_AUTH") {
     state = action.auth;
@@ -29,7 +29,7 @@ export const register = (user, history) => {
         },
       });
       const auth = response.data;
-      toastr.success('User Created', 'You are now registerd and can login.')
+      // toastr.success('User Created', 'You are now registerd and can login.')
       dispatch({ auth, type: "SET_AUTH" });
     history.push("/");
   };
@@ -92,7 +92,7 @@ export const login = (credentials, history) => {
     }
 
     history.push("/");
-    toastr.success('Your logged in.', 'Welcome.')
+    // toastr.success('Your logged in.', 'Welcome.')
   };
 };
 
@@ -103,10 +103,10 @@ export const editUser = (user, history) => {
         authorization: window.localStorage.getItem("token"),
       },
     });
-    toastr.success('User Updated', 'The field is updated.')
+    // toastr.success('User Updated', 'The field is updated.')
     dispatch({ type: "SET_AUTH", auth: response.data });
     history.push("/user");
-    toastr.success("Information was updated.")
+    // toastr.success("Information was updated.")
   };
 };
 

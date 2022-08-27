@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import {toastr} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {toastr} from 'react-redux-toastr'
 
 
 const books = (state = [], action)=> {
@@ -32,6 +32,7 @@ export const updateBook = (book) => {
     const response = await axios.put(`/products/${book.id}`, book)
     const newbook = response.data
     dispatch({ type: "UPDATE_PRODUCT", newbook})
+    // toastr.success('Product Updated');
   }
 }
 

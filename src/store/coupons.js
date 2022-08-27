@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {reducer as toastrReducer} from 'react-redux-toastr'
-import {toastr} from 'react-redux-toastr'
+// import {reducer as toastrReducer} from 'react-redux-toastr'
+// import {toastr} from 'react-redux-toastr'
 
 const coupons = (state = [], action)=> {
     if(action.type === 'SET_COUPONS'){
@@ -33,7 +33,7 @@ export const createCoupon = (coupon) =>{
             },
         })).data;
         dispatch({type: 'CREATE_COUPON', coupon})
-        toastr.success('Coupon created.')
+        // toastr.success('Coupon created.')
     }
 }
 
