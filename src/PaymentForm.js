@@ -4,6 +4,7 @@ import axios from 'axios';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { createOrderFromCart } from './store';
 import { Redirect } from 'react-router-dom';
+import Alert from 'react-bootstrap/Alert';
 
 const CARD_OPTIONS = {
   iconStyle: 'solid',
@@ -24,14 +25,16 @@ const CARD_OPTIONS = {
 
 const PaymentForm = (props) => {
   const orderTotal = Math.round(props.orderTotal * 100);
-
+  const [show, setShow] = useState(false)
   const [success, setSuccess] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false)
   const stripe = useStripe();
   const elements = useElements();
   const { createOrderFromCart, auth, address } = props;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShow(true)
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement),
@@ -47,60 +50,80 @@ const PaymentForm = (props) => {
 
         if (response.data.success) {
           createOrderFromCart();
+          setShow(false)
           setSuccess(true);
         }
       } catch (error) {
         console.log('error', error);
+        setErrorMsg(error)
+        setShow(false)
       }
     } else {
-      console.log(error.message);
+      console.log(error.message)
+      setErrorMsg(error.message)
+      setShow(false)
     }
   };
-
+  console.log(errorMsg)
   return (
     <>
-      {!success ? (
-        <form onSubmit={handleSubmit}>
-          <fieldset
-            className="FormGroup m-0 mb-4"
-            style={{
-              border: '1px solid black',
-              borderRadius: '.375rem',
-              backgroundColor: '#EEF7EA',
-              boxShadow: 'none',
-              padding: '0 .75rem',
-            }}
-          >
-            <div
-              className="FormRow"
+      <div>
+        {!success ? (
+          <form onSubmit={handleSubmit}>
+            <fieldset
+              className="FormGroup m-0 mb-4"
               style={{
-                border: 'none',
-                padding: '0',
+                border: '1px solid black',
+                borderRadius: '.375rem',
+                backgroundColor: '#EEF7EA',
+                boxShadow: 'none',
+                padding: '0 .75rem',
+              }}
+            >
+              <div
+                className="FormRow"
+                style={{
+                  border: 'none',
+                  padding: '0',
+                  margin: '0',
+                }}
+              >
+                <CardElement options={CARD_OPTIONS} />
+              </div>
+            </fieldset>
+            {
+              !show ?
+            <button
+              id="paymentBTN"
+              style={{
+                backgroundColor: 'black',
+                width: 'fit-content',
+                boxShadow: 'none',
+                color: '#EEF7EA',
+                borderRadius: '.375rem',
+                padding: '.375rem .75rem',
                 margin: '0',
               }}
             >
-              <CardElement options={CARD_OPTIONS} />
-            </div>
-          </fieldset>
-          <button
-            id="paymentBTN"
-            style={{
-              backgroundColor: 'black',
-              width: 'fit-content',
-              boxShadow: 'none',
-              color: '#EEF7EA',
-              borderRadius: '.375rem',
-              padding: '.375rem .75rem',
-              margin: '0',
-            }}
-          >
-            SUBMIT ORDER
-          </button>
-        </form>
-      ) : (
-        <Redirect to="/confirmation" />
-      )}
-    </>
+              SUBMIT ORDER
+            </button>
+            : 
+            'Loading...'
+            }
+          </form>
+        ) : (
+          <Redirect to="/confirmation" />
+        )}
+        {
+          errorMsg ?
+          <Alert key='warning' variant='warning'>
+          {errorMsg}
+        </Alert>
+          :
+          null
+        }
+        </div>
+      </>
   );
 };
 
